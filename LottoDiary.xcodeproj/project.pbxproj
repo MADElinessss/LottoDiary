@@ -26,6 +26,8 @@
 		C1F35CE72B99B73000B32B4E /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C1F35CE62B99B73000B32B4E /* RealmSwift */; };
 		C1F35CE92B99B86000B32B4E /* MyLottoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F35CE82B99B86000B32B4E /* MyLottoTableViewCell.swift */; };
 		C1F35CEB2B99BBC200B32B4E /* FormatterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F35CEA2B99BBC200B32B4E /* FormatterManager.swift */; };
+		C1F35CED2B99EF3F00B32B4E /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F35CEC2B99EF3F00B32B4E /* APIManager.swift */; };
+		C1F35CEF2B99F0C500B32B4E /* Lotto.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F35CEE2B99F0C500B32B4E /* Lotto.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		C1F35CDB2B99B59800B32B4E /* NumberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberButton.swift; sourceTree = "<group>"; };
 		C1F35CE82B99B86000B32B4E /* MyLottoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLottoTableViewCell.swift; sourceTree = "<group>"; };
 		C1F35CEA2B99BBC200B32B4E /* FormatterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatterManager.swift; sourceTree = "<group>"; };
+		C1F35CEC2B99EF3F00B32B4E /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		C1F35CEE2B99F0C500B32B4E /* Lotto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lotto.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +118,7 @@
 		C18567CA2B999F5900864754 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C1F35CEE2B99F0C500B32B4E /* Lotto.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -129,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				C1F35CEA2B99BBC200B32B4E /* FormatterManager.swift */,
+				C1F35CEC2B99EF3F00B32B4E /* APIManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -265,6 +271,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1F35CED2B99EF3F00B32B4E /* APIManager.swift in Sources */,
+				C1F35CEF2B99F0C500B32B4E /* Lotto.swift in Sources */,
 				C1F35CD72B99A64000B32B4E /* MainViewController.swift in Sources */,
 				C18567B82B998DFD00864754 /* ViewController.swift in Sources */,
 				C18567B42B998DFD00864754 /* AppDelegate.swift in Sources */,

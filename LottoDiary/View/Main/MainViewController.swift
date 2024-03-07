@@ -16,6 +16,9 @@ class MainViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        APIManager.shared.lottoCallRequest(drwNumber: 1109) { lotto in
+            print(lotto)
+        }
         
     }
     
