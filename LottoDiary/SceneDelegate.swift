@@ -13,10 +13,32 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let scene = (scene as? UIWindowScene) else { return }
+        
+        window = UIWindow(windowScene: scene)
+        
+        let tabBarController = UITabBarController()
+        tabBarController.tabBar.backgroundColor = .white
+        
+        let vc1 = MainViewController()
+        let vc2 = DiaryViewController()
+        let vc3 = ChartViewController()
+        let vc4 = SettingViewController()
+        
+        vc1.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "sun.min"), selectedImage: UIImage(named: "sun.min.fill"))
+        vc1.tabBarItem.tag = 0
+        vc2.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "moon"), selectedImage: UIImage(named: "moon.fill"))
+        vc2.tabBarItem.tag = 1
+        vc3.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "moon.stars"), selectedImage: UIImage(named: "moon.stars.fill"))
+        vc3.tabBarItem.tag = 2
+        vc4.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "cloud"), selectedImage: UIImage(named: "cloudfill"))
+        vc4.tabBarItem.tag = 3
+        
+        
+        tabBarController.viewControllers = [vc1, vc2, vc3, vc4].map { UINavigationController(rootViewController: $0) }
+        
+        window?.rootViewController = tabBarController
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

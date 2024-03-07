@@ -14,6 +14,11 @@
 		C18567BD2B998DFF00864754 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C18567BC2B998DFF00864754 /* Assets.xcassets */; };
 		C18567C02B998DFF00864754 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C18567BE2B998DFF00864754 /* LaunchScreen.storyboard */; };
 		C18567C82B998E1F00864754 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = C18567C72B998E1F00864754 /* .gitignore */; };
+		C1F35CD12B99A62100B32B4E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F35CD02B99A62100B32B4E /* SettingViewController.swift */; };
+		C1F35CD32B99A63300B32B4E /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F35CD22B99A63300B32B4E /* ChartViewController.swift */; };
+		C1F35CD52B99A63900B32B4E /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F35CD42B99A63900B32B4E /* DiaryViewController.swift */; };
+		C1F35CD72B99A64000B32B4E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F35CD62B99A64000B32B4E /* MainViewController.swift */; };
+		C1F35CD92B99A6D100B32B4E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F35CD82B99A6D100B32B4E /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +31,11 @@
 		C18567BF2B998DFF00864754 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C18567C12B998DFF00864754 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C18567C72B998E1F00864754 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		C1F35CD02B99A62100B32B4E /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		C1F35CD22B99A63300B32B4E /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
+		C1F35CD42B99A63900B32B4E /* DiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
+		C1F35CD62B99A64000B32B4E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		C1F35CD82B99A6D100B32B4E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +68,10 @@
 		C18567B22B998DFD00864754 /* LottoDiary */ = {
 			isa = PBXGroup;
 			children = (
+				C18567CC2B999F6200864754 /* Manager */,
+				C18567CB2B999F5C00864754 /* ViewModel */,
+				C18567CA2B999F5900864754 /* Model */,
+				C18567C92B999F5200864754 /* View */,
 				C18567B32B998DFD00864754 /* AppDelegate.swift */,
 				C18567B52B998DFD00864754 /* SceneDelegate.swift */,
 				C18567B72B998DFD00864754 /* ViewController.swift */,
@@ -68,6 +82,79 @@
 				C18567C72B998E1F00864754 /* .gitignore */,
 			);
 			path = LottoDiary;
+			sourceTree = "<group>";
+		};
+		C18567C92B999F5200864754 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C1F35CCF2B99A61400B32B4E /* Setting */,
+				C1F35CCE2B99A60E00B32B4E /* Chart */,
+				C1F35CCD2B99A60700B32B4E /* Diary */,
+				C18567CE2B999F7500864754 /* Main */,
+				C18567CD2B999F7000864754 /* Base */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C18567CA2B999F5900864754 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C18567CB2B999F5C00864754 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C18567CC2B999F6200864754 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		C18567CD2B999F7000864754 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				C1F35CD82B99A6D100B32B4E /* BaseViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		C18567CE2B999F7500864754 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				C1F35CD62B99A64000B32B4E /* MainViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		C1F35CCD2B99A60700B32B4E /* Diary */ = {
+			isa = PBXGroup;
+			children = (
+				C1F35CD42B99A63900B32B4E /* DiaryViewController.swift */,
+			);
+			path = Diary;
+			sourceTree = "<group>";
+		};
+		C1F35CCE2B99A60E00B32B4E /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				C1F35CD22B99A63300B32B4E /* ChartViewController.swift */,
+			);
+			path = Chart;
+			sourceTree = "<group>";
+		};
+		C1F35CCF2B99A61400B32B4E /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				C1F35CD02B99A62100B32B4E /* SettingViewController.swift */,
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,9 +229,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1F35CD72B99A64000B32B4E /* MainViewController.swift in Sources */,
 				C18567B82B998DFD00864754 /* ViewController.swift in Sources */,
 				C18567B42B998DFD00864754 /* AppDelegate.swift in Sources */,
 				C18567B62B998DFD00864754 /* SceneDelegate.swift in Sources */,
+				C1F35CD12B99A62100B32B4E /* SettingViewController.swift in Sources */,
+				C1F35CD92B99A6D100B32B4E /* BaseViewController.swift in Sources */,
+				C1F35CD52B99A63900B32B4E /* DiaryViewController.swift in Sources */,
+				C1F35CD32B99A63300B32B4E /* ChartViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
