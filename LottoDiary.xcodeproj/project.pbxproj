@@ -19,6 +19,13 @@
 		C1F35CD52B99A63900B32B4E /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F35CD42B99A63900B32B4E /* DiaryViewController.swift */; };
 		C1F35CD72B99A64000B32B4E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F35CD62B99A64000B32B4E /* MainViewController.swift */; };
 		C1F35CD92B99A6D100B32B4E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F35CD82B99A6D100B32B4E /* BaseViewController.swift */; };
+		C1F35CDC2B99B59800B32B4E /* NumberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F35CDB2B99B59800B32B4E /* NumberButton.swift */; };
+		C1F35CDF2B99B6FE00B32B4E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C1F35CDE2B99B6FE00B32B4E /* SnapKit */; };
+		C1F35CE22B99B70800B32B4E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C1F35CE12B99B70800B32B4E /* Alamofire */; };
+		C1F35CE52B99B73000B32B4E /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = C1F35CE42B99B73000B32B4E /* Realm */; };
+		C1F35CE72B99B73000B32B4E /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C1F35CE62B99B73000B32B4E /* RealmSwift */; };
+		C1F35CE92B99B86000B32B4E /* MyLottoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F35CE82B99B86000B32B4E /* MyLottoTableViewCell.swift */; };
+		C1F35CEB2B99BBC200B32B4E /* FormatterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F35CEA2B99BBC200B32B4E /* FormatterManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +43,9 @@
 		C1F35CD42B99A63900B32B4E /* DiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
 		C1F35CD62B99A64000B32B4E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C1F35CD82B99A6D100B32B4E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		C1F35CDB2B99B59800B32B4E /* NumberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberButton.swift; sourceTree = "<group>"; };
+		C1F35CE82B99B86000B32B4E /* MyLottoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLottoTableViewCell.swift; sourceTree = "<group>"; };
+		C1F35CEA2B99BBC200B32B4E /* FormatterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatterManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +53,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1F35CE72B99B73000B32B4E /* RealmSwift in Frameworks */,
+				C1F35CE52B99B73000B32B4E /* Realm in Frameworks */,
+				C1F35CDF2B99B6FE00B32B4E /* SnapKit in Frameworks */,
+				C1F35CE22B99B70800B32B4E /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,6 +128,7 @@
 		C18567CC2B999F6200864754 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				C1F35CEA2B99BBC200B32B4E /* FormatterManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -130,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				C1F35CD62B99A64000B32B4E /* MainViewController.swift */,
+				C1F35CE82B99B86000B32B4E /* MyLottoTableViewCell.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -161,6 +177,7 @@
 		C1F35CDA2B99A9BD00B32B4E /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				C1F35CDB2B99B59800B32B4E /* NumberButton.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -181,6 +198,12 @@
 			dependencies = (
 			);
 			name = LottoDiary;
+			packageProductDependencies = (
+				C1F35CDE2B99B6FE00B32B4E /* SnapKit */,
+				C1F35CE12B99B70800B32B4E /* Alamofire */,
+				C1F35CE42B99B73000B32B4E /* Realm */,
+				C1F35CE62B99B73000B32B4E /* RealmSwift */,
+			);
 			productName = LottoDiary;
 			productReference = C18567B02B998DFD00864754 /* LottoDiary.app */;
 			productType = "com.apple.product-type.application";
@@ -209,6 +232,11 @@
 				Base,
 			);
 			mainGroup = C18567A72B998DFD00864754;
+			packageReferences = (
+				C1F35CDD2B99B6FE00B32B4E /* XCRemoteSwiftPackageReference "SnapKit" */,
+				C1F35CE02B99B70800B32B4E /* XCRemoteSwiftPackageReference "Alamofire" */,
+				C1F35CE32B99B73000B32B4E /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = C18567B12B998DFD00864754 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -242,7 +270,10 @@
 				C18567B42B998DFD00864754 /* AppDelegate.swift in Sources */,
 				C18567B62B998DFD00864754 /* SceneDelegate.swift in Sources */,
 				C1F35CD12B99A62100B32B4E /* SettingViewController.swift in Sources */,
+				C1F35CEB2B99BBC200B32B4E /* FormatterManager.swift in Sources */,
 				C1F35CD92B99A6D100B32B4E /* BaseViewController.swift in Sources */,
+				C1F35CE92B99B86000B32B4E /* MyLottoTableViewCell.swift in Sources */,
+				C1F35CDC2B99B59800B32B4E /* NumberButton.swift in Sources */,
 				C1F35CD52B99A63900B32B4E /* DiaryViewController.swift in Sources */,
 				C1F35CD32B99A63300B32B4E /* ChartViewController.swift in Sources */,
 			);
@@ -475,6 +506,56 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C1F35CDD2B99B6FE00B32B4E /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		C1F35CE02B99B70800B32B4E /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.0;
+			};
+		};
+		C1F35CE32B99B73000B32B4E /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C1F35CDE2B99B6FE00B32B4E /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C1F35CDD2B99B6FE00B32B4E /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		C1F35CE12B99B70800B32B4E /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C1F35CE02B99B70800B32B4E /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		C1F35CE42B99B73000B32B4E /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C1F35CE32B99B73000B32B4E /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		C1F35CE62B99B73000B32B4E /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C1F35CE32B99B73000B32B4E /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C18567A82B998DFD00864754 /* Project object */;
 }
