@@ -19,6 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let tabBarController = UITabBarController()
         tabBarController.tabBar.backgroundColor = .white
+        tabBarController.tabBar.tintColor = .point
+        tabBarController.tabBar.unselectedItemTintColor = .black
         
         let vc1 = MainViewController()
         let vc2 = DiaryViewController()

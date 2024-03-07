@@ -12,7 +12,7 @@ class ChartViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        configureNavigationBar(title: "나의 행운 통계", leftBarButton: nil, rightBarButton: nil)
     }
     
 

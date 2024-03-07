@@ -87,6 +87,7 @@
 		C18567C92B999F5200864754 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C1F35CDA2B99A9BD00B32B4E /* Component */,
 				C1F35CCF2B99A61400B32B4E /* Setting */,
 				C1F35CCE2B99A60E00B32B4E /* Chart */,
 				C1F35CCD2B99A60700B32B4E /* Diary */,
@@ -155,6 +156,13 @@
 				C1F35CD02B99A62100B32B4E /* SettingViewController.swift */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		C1F35CDA2B99A9BD00B32B4E /* Component */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Component;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

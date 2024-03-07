@@ -12,7 +12,7 @@ class SettingViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        configureNavigationBar(title: "설정", leftBarButton: nil, rightBarButton: nil)
     }
 
 }
