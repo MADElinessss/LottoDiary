@@ -30,11 +30,17 @@ class FormatterManager {
         return result ?? "0"
     }
     
-    func drawDateFormat() -> String {
-        //(2024.02.29)
-        dateFormatter.dateFormat = "YYYY.MM.dd"
-        let result = dateFormatter.string(from: Date())
+    func drawDateFormat(date: String) -> String {
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd"
+        let outputFormatter = DateFormatter()
+        outputFormatter.dateFormat = "yyyy.MM.dd"
         
-        return result
+        if let dateObj = inputFormatter.date(from: date) {
+            let result = outputFormatter.string(from: dateObj)
+            return result
+        } else {
+            return "Invalid date"
+        }
     }
 }

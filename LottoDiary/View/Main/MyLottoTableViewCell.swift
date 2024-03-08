@@ -14,12 +14,18 @@ class MyLottoTableViewCell: UITableViewCell {
     let dateLabel = UILabel()
     let stackView = UIStackView()
     
+    let viewModel = MainViewModel()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
         
         contentView.backgroundColor = .white
+        
         configureLayout()
-        configureView()
+        viewModel.outputLotto.bind { [weak self] lotto in
+            self?.configureView(with: lotto)
+        }
+        viewModel.apiRequest()
         
     }
     
@@ -29,14 +35,15 @@ class MyLottoTableViewCell: UITableViewCell {
         contentView.addSubview(stackView)
     }
     
-    func configureView() {
+    func configureView(with lotto: Lotto?) {
+        guard let draw = lotto else { return }
         
-        let drawNumber: Int = 1109
+        let drawNumber: Int = draw.drwNo
         titleLabel.text = "\(drawNumber)회 당첨 결과"
         titleLabel.textColor = .black
         titleLabel.font = .systemFont(ofSize: 16, weight: .semibold)
         
-        let drawDate = FormatterManager.shared.drawDateFormat()
+        let drawDate = FormatterManager.shared.drawDateFormat(date: draw.drwNoDate)
         dateLabel.text = "(\(drawDate))"
         dateLabel.textColor = .gray
         dateLabel.font = .systemFont(ofSize: 14, weight: .medium)
@@ -47,7 +54,7 @@ class MyLottoTableViewCell: UITableViewCell {
         }
         
         dateLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom)
+            make.top.equalTo(titleLabel.snp.bottom).offset(8)
             make.centerX.equalTo(contentView)
         }
         
@@ -55,19 +62,19 @@ class MyLottoTableViewCell: UITableViewCell {
         stackView.distribution = .fillEqually
         stackView.spacing = 10
         
-        for i in 1...7 {
-            // TODO: number: 당첨 번호로 수정
+        let drawNumbers = [draw.drwtNo1, draw.drwtNo2, draw.drwtNo3, draw.drwtNo4, draw.drwtNo5, draw.drwtNo6]
+        for i in drawNumbers {
             let button = NumberButton(backgroundColor: .blue, number: i)
             stackView.addArrangedSubview(button)
         }
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            stackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            stackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            stackView.heightAnchor.constraint(equalToConstant: 30),
-            stackView.widthAnchor.constraint(equalToConstant: 300)
-        ])
+        stackView.snp.makeConstraints { make in
+            make.top.equalTo(dateLabel.snp.bottom).offset(16)
+            make.centerX.equalTo(contentView)
+            make.height.equalTo(30)
+            make.width.equalTo((30 * drawNumbers.count) + (10 * (drawNumbers.count - 1)))
+        }
     }
     
     required init?(coder: NSCoder) {
