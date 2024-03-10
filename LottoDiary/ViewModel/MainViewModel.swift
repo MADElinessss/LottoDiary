@@ -9,7 +9,7 @@ import Foundation
 
 class MainViewModel {
     
-    var inputDrawNumber: Observable<Int> = Observable(1109)
+    var inputDrawNumber: Observable<Int> = Observable(1110)
     
     var outputLotto: Observable<Lotto?> = Observable(nil)
     

@@ -26,7 +26,7 @@ final class MenuCollectionViewCell: UICollectionViewCell {
         
         label.snp.makeConstraints { make in
             make.centerX.equalTo(contentView)
-            make.top.equalTo(contentView.safeAreaLayoutGuide).inset(8)
+            make.top.equalTo(contentView.safeAreaLayoutGuide).inset(16)
         }
         
         imageView.snp.makeConstraints { make in
@@ -40,6 +40,11 @@ final class MenuCollectionViewCell: UICollectionViewCell {
         label.font = .systemFont(ofSize: 18, weight: .medium)
         
         imageView.image = UIImage(systemName: "mic.circle")
+    }
+    
+    func configure(with title: String, imageName: String) {
+        label.text = title
+        imageView.image = UIImage(systemName: imageName)
     }
     
     required init?(coder: NSCoder) {

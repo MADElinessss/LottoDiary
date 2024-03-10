@@ -64,7 +64,8 @@ final class MyLottoTableViewCell: UITableViewCell {
         
         let drawNumbers = [draw.drwtNo1, draw.drwtNo2, draw.drwtNo3, draw.drwtNo4, draw.drwtNo5, draw.drwtNo6]
         for i in drawNumbers {
-            let button = NumberButton(backgroundColor: .blue, number: i)
+            let buttonColor = color(for: i)
+            let button = NumberButton(backgroundColor: buttonColor, number: i)
             stackView.addArrangedSubview(button)
         }
         
@@ -74,6 +75,23 @@ final class MyLottoTableViewCell: UITableViewCell {
             make.centerX.equalTo(contentView)
             make.height.equalTo(30)
             make.width.equalTo((30 * drawNumbers.count) + (10 * (drawNumbers.count - 1)))
+        }
+    }
+    
+    private func color(for drawNumber: Int) -> UIColor {
+        switch drawNumber {
+        case 1...10:
+            return UIColor(named: "lotteryYellow") ?? .yellow
+        case 11...20:
+            return UIColor(named: "lotteryBlue") ?? .blue
+        case 21...30:
+            return UIColor(named: "lotteryRed") ?? .red
+        case 31...40:
+            return UIColor(named: "lotteryGray") ?? .gray
+        case 41...45:
+            return UIColor(named: "lotteryGreen") ?? .green
+        default:
+            return .black // 기본값으로 검정색 사용
         }
     }
     
