@@ -8,7 +8,7 @@
 import SnapKit
 import UIKit
 
-class MenuTableViewCell: UITableViewCell {
+final class MenuTableViewCell: UITableViewCell {
     
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionLayout())
 
@@ -18,7 +18,7 @@ class MenuTableViewCell: UITableViewCell {
         configureView()
     }
     
-    func configureView() {
+    private func configureView() {
         contentView.addSubview(collectionView)
         
         collectionView.snp.makeConstraints { make in
@@ -47,6 +47,7 @@ class MenuTableViewCell: UITableViewCell {
     }
     
 }
+
 extension MenuTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 4

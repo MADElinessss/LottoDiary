@@ -29,13 +29,13 @@ final class MyLottoTableViewCell: UITableViewCell {
         
     }
     
-    func configureLayout() {
+    private func configureLayout() {
         contentView.addSubview(titleLabel)
         contentView.addSubview(dateLabel)
         contentView.addSubview(stackView)
     }
     
-    func configureView(with lotto: Lotto?) {
+    private func configureView(with lotto: Lotto?) {
         guard let draw = lotto else { return }
         
         let drawNumber: Int = draw.drwNo

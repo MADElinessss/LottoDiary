@@ -7,23 +7,102 @@
 
 import UIKit
 
-class DiaryViewController: BaseViewController {
+// identifiable -> id 꼭 써라!
+struct Diary: Hashable, Identifiable {
+    let content: String
+    let tag: String
+    let imageName: String?
+    let id = Date()
+}
 
+class DiaryViewController: BaseViewController {
+    
+    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
+    let floatingActionButton = UIButton()
+
+    var dataSource: UICollectionViewDiffableDataSource<Int, Diary>!
+    
+    var list = [
+        Diary(content: "오늘은 돼지꿈을 꿨따", tag: "맥북 m3", imageName: "example"),
+        Diary(content: "재수가 안좋은 날이었따. 나는 3가지 재수업는 일이 반복되면 로또를 산다.", tag: "캠핑카", imageName: nil)
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        configureNavigationBar(title: "로또 일기장", leftBarButton: nil, rightBarButton: nil)
+        let rightButton = createBarButtonItem(imageName: "line.3.horizontal.decrease", action: #selector(rightButtonTapped))
+        configureNavigationBar(title: "로또 일기장", leftBarButton: nil, rightBarButton: rightButton)
+        
+        setConstraints()
+        makeCellRegistration()
+        updateSnapshot()
+        setupFloatingActionButton()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func updateSnapshot() {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, Diary>()
+        snapshot.appendSections([1,2])
+        snapshot.appendItems(list, toSection: 1)
+        snapshot.appendItems([Diary(content: "재수가 안좋은 날이었따. 나는 3가지 재수업는 일이 반복되면 로또를 산다.", tag: "캠핑카", imageName: "example")], toSection: 2)
+        dataSource.apply(snapshot)
     }
-    */
+    
+    private func makeCellRegistration() {
+        collectionView.register(DiaryCollectionViewCell.self, forCellWithReuseIdentifier: "DiaryCell")
 
+        dataSource = UICollectionViewDiffableDataSource<Int, Diary>(collectionView: collectionView, cellProvider: { collectionView, indexPath, diary in
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DiaryCell", for: indexPath) as! DiaryCollectionViewCell
+            cell.configure(with: diary)
+            
+            return cell
+        })
+    }
+    
+    private func createLayout() -> UICollectionViewLayout {
+        var configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
+        configuration.backgroundColor = .white
+        configuration.showsSeparators = false
+        
+        let layout = UICollectionViewCompositionalLayout.list(using: configuration)
+        return layout
+    }
+    
+    private func setConstraints() {
+        view.addSubview(collectionView)
+        collectionView.snp.makeConstraints { make in
+            make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(44)
+        }
+        collectionView.backgroundColor = .background
+    }
+    
+    private func setupFloatingActionButton() {
+        let floatingActionButton = UIButton(frame: .zero)
+        floatingActionButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(floatingActionButton)
+        
+        let pencilImage = UIImage(systemName: "pencil", withConfiguration: UIImage.SymbolConfiguration(pointSize: 24, weight: .regular))
+        floatingActionButton.setImage(pencilImage, for: .normal)
+        
+        floatingActionButton.backgroundColor = .pointSymbol
+        floatingActionButton.tintColor = .white
+        floatingActionButton.layer.cornerRadius = 28
+        
+        NSLayoutConstraint.activate([
+            floatingActionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            floatingActionButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            floatingActionButton.widthAnchor.constraint(equalToConstant: 56),
+            floatingActionButton.heightAnchor.constraint(equalToConstant: 56)
+        ])
+        
+        floatingActionButton.addTarget(self, action: #selector(floatingActionButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc func floatingActionButtonTapped() {
+        print("✏️")
+    }
+    
+    @objc func rightButtonTapped() {
+        // TODO: 정렬
+    }
 }

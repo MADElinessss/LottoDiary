@@ -43,4 +43,9 @@ class FormatterManager {
             return "Invalid date"
         }
     }
+    
+    func formatDateToString(date: Date) -> String {
+        dateFormatter.dateFormat = "yyyy.MM.dd"
+        return dateFormatter.string(from: date)
+    }
 }

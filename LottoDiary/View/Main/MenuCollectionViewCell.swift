@@ -8,7 +8,7 @@
 import SnapKit
 import UIKit
 
-class MenuCollectionViewCell: UICollectionViewCell {
+final class MenuCollectionViewCell: UICollectionViewCell {
     
     let label = UILabel()
     let imageView = UIImageView()
@@ -20,7 +20,7 @@ class MenuCollectionViewCell: UICollectionViewCell {
         
     }
     
-    func configureView() {
+    private func configureView() {
         contentView.addSubview(label)
         contentView.addSubview(imageView)
         

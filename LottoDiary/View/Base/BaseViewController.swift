@@ -45,6 +45,7 @@ class BaseViewController: UIViewController {
     
     func createBarButtonItem(imageName: String, action: Selector) -> UIBarButtonItem {
         let barButtonItem = UIBarButtonItem(image: UIImage(systemName: imageName), style: .plain, target: self, action: action)
+        barButtonItem.tintColor = .pointSymbol
         return barButtonItem
     }
     

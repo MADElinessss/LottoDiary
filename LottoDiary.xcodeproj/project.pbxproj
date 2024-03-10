@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C17008402B9DE99A00008BE7 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C170083F2B9DE99A00008BE7 /* MenuTableViewCell.swift */; };
 		C17008422B9DEA2D00008BE7 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17008412B9DEA2D00008BE7 /* MenuCollectionViewCell.swift */; };
+		C17008442B9DFF6A00008BE7 /* DiaryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17008432B9DFF6A00008BE7 /* DiaryCollectionViewCell.swift */; };
 		C18567B42B998DFD00864754 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18567B32B998DFD00864754 /* AppDelegate.swift */; };
 		C18567B62B998DFD00864754 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18567B52B998DFD00864754 /* SceneDelegate.swift */; };
 		C18567B82B998DFD00864754 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18567B72B998DFD00864754 /* ViewController.swift */; };
@@ -37,6 +38,7 @@
 /* Begin PBXFileReference section */
 		C170083F2B9DE99A00008BE7 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		C17008412B9DEA2D00008BE7 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
+		C17008432B9DFF6A00008BE7 /* DiaryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryCollectionViewCell.swift; sourceTree = "<group>"; };
 		C18567B02B998DFD00864754 /* LottoDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LottoDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C18567B32B998DFD00864754 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C18567B52B998DFD00864754 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				C1F35CD42B99A63900B32B4E /* DiaryViewController.swift */,
+				C17008432B9DFF6A00008BE7 /* DiaryCollectionViewCell.swift */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				C1F35CE92B99B86000B32B4E /* MyLottoTableViewCell.swift in Sources */,
 				C1F35CDC2B99B59800B32B4E /* NumberButton.swift in Sources */,
 				C1F35CD52B99A63900B32B4E /* DiaryViewController.swift in Sources */,
+				C17008442B9DFF6A00008BE7 /* DiaryCollectionViewCell.swift in Sources */,
 				C1F35CD32B99A63300B32B4E /* ChartViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
