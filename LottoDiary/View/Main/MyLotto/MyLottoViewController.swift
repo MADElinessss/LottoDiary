@@ -1,24 +1,22 @@
 //
-//  MainViewController.swift
+//  MyLottoViewController.swift
 //  LottoDiary
 //
-//  Created by Madeline on 3/7/24.
+//  Created by Madeline on 3/11/24.
 //
 
 import SnapKit
 import UIKit
 
-final class MainViewController: BaseViewController {
+class MyLottoViewController: BaseViewController {
 
     let tableView = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        APIManager.shared.lottoCallRequest(drwNumber: 1110) { lotto in
-            print(lotto)
-        }
         
+
     }
     
     override func configureHierarchy() {
@@ -34,25 +32,27 @@ final class MainViewController: BaseViewController {
     }
     
     override func configureView() {
-        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = .background
         tableView.register(MyLottoTableViewCell.self, forCellReuseIdentifier: "MyLottoTableViewCell")
-        tableView.register(MenuTableViewCell.self, forCellReuseIdentifier: "MenuTableViewCell")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
         tableView.separatorStyle = .none
         
-        configureNavigationBar(title: "로또 일기", leftBarButton: nil, rightBarButton: nil)
+        configureNavigationBar(title: "나의 로또", leftBarButton: nil, rightBarButton: nil)
     }
 }
 
-extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+extension MyLottoViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 2
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        if section == 0 {
+            return 1
+        } else {
+            return 2
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -62,16 +62,18 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             cell.clipsToBounds = true
             cell.layer.cornerRadius = 15
             return cell
-        } else if indexPath.section == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as! MenuTableViewCell
-            
-            return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
-            cell.textLabel?.text = "복권 구매"
+            if indexPath.row == 0 {
+                cell.textLabel?.text = "QR 코드 인식"
+            } else {
+                cell.textLabel?.text = "번호 직접 입력"
+            }
+            
             cell.clipsToBounds = true
             cell.layer.cornerRadius = 15
             cell.selectionStyle = .none
+            
             return cell
         }
         
@@ -80,8 +82,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
             return 170
-        } else if indexPath.section == 1 {
-            return 350
         } else {
             return 60
         }
@@ -91,6 +91,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         
         if section == 1 {
             let headerLabel = UILabel()
+            headerLabel.text = "결과 확인하기"
             return headerLabel
         } else {
             return nil
@@ -100,16 +101,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 1 {
-            return 4
+            return 24
         } else {
             return 0
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 {
-            let vc = MyLottoViewController()
-            navigationController?.pushViewController(vc, animated: true)
         }
     }
 }

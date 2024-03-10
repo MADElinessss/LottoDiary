@@ -13,6 +13,7 @@ final class MyLottoTableViewCell: UITableViewCell {
     let titleLabel = UILabel()
     let dateLabel = UILabel()
     let stackView = UIStackView()
+    let prizeLabel = UILabel()
     
     let viewModel = MainViewModel()
     
@@ -33,6 +34,7 @@ final class MyLottoTableViewCell: UITableViewCell {
         contentView.addSubview(titleLabel)
         contentView.addSubview(dateLabel)
         contentView.addSubview(stackView)
+        contentView.addSubview(prizeLabel)
     }
     
     private func configureView(with lotto: Lotto?) {
@@ -58,6 +60,12 @@ final class MyLottoTableViewCell: UITableViewCell {
             make.centerX.equalTo(contentView)
         }
         
+        prizeLabel.snp.makeConstraints { make in
+            make.top.equalTo(stackView.snp.bottom).offset(16)
+            make.centerX.equalTo(contentView)
+        }
+        
+        
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.spacing = 10
@@ -76,6 +84,11 @@ final class MyLottoTableViewCell: UITableViewCell {
             make.height.equalTo(30)
             make.width.equalTo((30 * drawNumbers.count) + (10 * (drawNumbers.count - 1)))
         }
+
+        let winAmount = FormatterManager.shared.formatWinAmount(draw.firstWinamnt)
+        prizeLabel.text = "1등 당첨금: \(winAmount)"
+        prizeLabel.textColor = .black
+        prizeLabel.font = .systemFont(ofSize: 14, weight: .medium)
     }
     
     private func color(for drawNumber: Int) -> UIColor {

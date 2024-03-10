@@ -48,4 +48,24 @@ class FormatterManager {
         dateFormatter.dateFormat = "yyyy.MM.dd"
         return dateFormatter.string(from: date)
     }
+    
+    func formatWinAmount(_ amount: Int) -> String {
+        let billion = amount / 100000000
+        let million = (amount % 100000000) / 10000
+        let remainder = amount % 10000
+
+        var formattedString = ""
+
+        if billion > 0 {
+            formattedString += "\(billion)억 "
+        }
+        if million > 0 {
+            formattedString += "\(numberDecimal(Double(million)))만 "
+        }
+        if remainder > 0 {
+            formattedString += "\(numberDecimal(Double(remainder)))"
+        }
+
+        return formattedString.trimmingCharacters(in: .whitespaces) + " 원"
+    }
 }

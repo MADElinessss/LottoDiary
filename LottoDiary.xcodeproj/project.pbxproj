@@ -10,6 +10,7 @@
 		C17008402B9DE99A00008BE7 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C170083F2B9DE99A00008BE7 /* MenuTableViewCell.swift */; };
 		C17008422B9DEA2D00008BE7 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17008412B9DEA2D00008BE7 /* MenuCollectionViewCell.swift */; };
 		C17008442B9DFF6A00008BE7 /* DiaryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17008432B9DFF6A00008BE7 /* DiaryCollectionViewCell.swift */; };
+		C17008472B9E178700008BE7 /* MyLottoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17008462B9E178700008BE7 /* MyLottoViewController.swift */; };
 		C18567B42B998DFD00864754 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18567B32B998DFD00864754 /* AppDelegate.swift */; };
 		C18567B62B998DFD00864754 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18567B52B998DFD00864754 /* SceneDelegate.swift */; };
 		C18567B82B998DFD00864754 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18567B72B998DFD00864754 /* ViewController.swift */; };
@@ -39,6 +40,7 @@
 		C170083F2B9DE99A00008BE7 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		C17008412B9DEA2D00008BE7 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		C17008432B9DFF6A00008BE7 /* DiaryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryCollectionViewCell.swift; sourceTree = "<group>"; };
+		C17008462B9E178700008BE7 /* MyLottoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLottoViewController.swift; sourceTree = "<group>"; };
 		C18567B02B998DFD00864754 /* LottoDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LottoDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C18567B32B998DFD00864754 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C18567B52B998DFD00864754 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +79,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C17008452B9E177800008BE7 /* MyLotto */ = {
+			isa = PBXGroup;
+			children = (
+				C17008462B9E178700008BE7 /* MyLottoViewController.swift */,
+			);
+			path = MyLotto;
+			sourceTree = "<group>";
+		};
 		C18567A72B998DFD00864754 = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +172,7 @@
 		C18567CE2B999F7500864754 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				C17008452B9E177800008BE7 /* MyLotto */,
 				C1F35CD62B99A64000B32B4E /* MainViewController.swift */,
 				C1F35CE82B99B86000B32B4E /* MyLottoTableViewCell.swift */,
 				C170083F2B9DE99A00008BE7 /* MenuTableViewCell.swift */,
@@ -291,6 +302,7 @@
 				C1F35CEF2B99F0C500B32B4E /* Lotto.swift in Sources */,
 				C1F35CD72B99A64000B32B4E /* MainViewController.swift in Sources */,
 				C18567B82B998DFD00864754 /* ViewController.swift in Sources */,
+				C17008472B9E178700008BE7 /* MyLottoViewController.swift in Sources */,
 				C18567B42B998DFD00864754 /* AppDelegate.swift in Sources */,
 				C18567B62B998DFD00864754 /* SceneDelegate.swift in Sources */,
 				C1F35CD12B99A62100B32B4E /* SettingViewController.swift in Sources */,
