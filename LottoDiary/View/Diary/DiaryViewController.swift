@@ -5,6 +5,7 @@
 //  Created by Madeline on 3/7/24.
 //
 
+import SnapKit
 import UIKit
 
 // identifiable -> id 꼭 써라!
@@ -23,13 +24,12 @@ class DiaryViewController: BaseViewController {
     var dataSource: UICollectionViewDiffableDataSource<Int, Diary>!
     
     var list = [
-        Diary(content: "오늘은 돼지꿈을 꿨따", tag: "맥북 m3", imageName: "example"),
-        Diary(content: "재수가 안좋은 날이었따. 나는 3가지 재수업는 일이 반복되면 로또를 산다.", tag: "캠핑카", imageName: nil)
+        Diary(content: "오늘은 돼지꿈을 꿨따", tag: "#맥북 m3", imageName: "example")
     ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let rightButton = createBarButtonItem(imageName: "line.3.horizontal.decrease", action: #selector(rightButtonTapped))
         configureNavigationBar(title: "로또 일기장", leftBarButton: nil, rightBarButton: rightButton)
         
@@ -38,12 +38,12 @@ class DiaryViewController: BaseViewController {
         updateSnapshot()
         setupFloatingActionButton()
     }
-    
+
     func updateSnapshot() {
         var snapshot = NSDiffableDataSourceSnapshot<Int, Diary>()
         snapshot.appendSections([1,2])
         snapshot.appendItems(list, toSection: 1)
-        snapshot.appendItems([Diary(content: "재수가 안좋은 날이었따. 나는 3가지 재수업는 일이 반복되면 로또를 산다.", tag: "캠핑카", imageName: "example")], toSection: 2)
+        snapshot.appendItems([Diary(content: "재수가 안좋은 날이었따. 나는 3가지 재수업는 일이 반복되면 로또를 산다.", tag: "#캠핑카", imageName: "example")], toSection: 2)
         dataSource.apply(snapshot)
     }
     
@@ -53,29 +53,43 @@ class DiaryViewController: BaseViewController {
         dataSource = UICollectionViewDiffableDataSource<Int, Diary>(collectionView: collectionView, cellProvider: { collectionView, indexPath, diary in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DiaryCell", for: indexPath) as! DiaryCollectionViewCell
             cell.configure(with: diary)
-            
+            cell.clipsToBounds = true
+            cell.layer.cornerRadius = 20
             return cell
         })
     }
     
     private func createLayout() -> UICollectionViewLayout {
-        var configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
-        configuration.backgroundColor = .white
-        configuration.showsSeparators = false
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(350))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        let layout = UICollectionViewCompositionalLayout.list(using: configuration)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(350))
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 5
+        
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        
+        let configuration = UICollectionViewCompositionalLayoutConfiguration()
+        configuration.interSectionSpacing = 20
+        
+        layout.configuration = configuration
+        
         return layout
     }
     
     private func setConstraints() {
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
-            make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
             make.top.equalTo(view.safeAreaLayoutGuide).offset(44)
         }
         collectionView.backgroundColor = .background
     }
     
+    // MARK: 일기 추가 플로팅 버튼
     private func setupFloatingActionButton() {
         let floatingActionButton = UIButton(frame: .zero)
         floatingActionButton.translatesAutoresizingMaskIntoConstraints = false
@@ -99,6 +113,7 @@ class DiaryViewController: BaseViewController {
     }
     
     @objc func floatingActionButtonTapped() {
+        // TODO: 일기 추가 뷰로 전환
         print("✏️")
     }
     
