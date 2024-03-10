@@ -8,7 +8,7 @@
 import SnapKit
 import UIKit
 
-class MyLottoTableViewCell: UITableViewCell {
+final class MyLottoTableViewCell: UITableViewCell {
     
     let titleLabel = UILabel()
     let dateLabel = UILabel()
