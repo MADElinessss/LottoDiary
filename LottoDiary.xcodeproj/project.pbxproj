@@ -498,6 +498,8 @@
 				DEVELOPMENT_TEAM = MTUYFM4K8P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LottoDiary/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "로또일기에서 카메라를 사용하기 위해서는 카메라 허용 권한이 필요합니다.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "로또일기에 사진을 첨부하기 위해서는 앨범 허용 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -530,6 +532,8 @@
 				DEVELOPMENT_TEAM = MTUYFM4K8P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LottoDiary/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "로또일기에서 카메라를 사용하기 위해서는 카메라 허용 권한이 필요합니다.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "로또일기에 사진을 첨부하기 위해서는 앨범 허용 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
