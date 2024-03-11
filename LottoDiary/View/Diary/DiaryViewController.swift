@@ -113,8 +113,8 @@ class DiaryViewController: BaseViewController {
     }
     
     @objc func floatingActionButtonTapped() {
-        // TODO: 일기 추가 뷰로 전환
-        print("✏️")
+        let vc = AddDiaryViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func rightButtonTapped() {

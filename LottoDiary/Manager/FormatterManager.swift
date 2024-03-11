@@ -16,6 +16,7 @@ class FormatterManager {
     private let numberFormatter = NumberFormatter()
     private let dateFormatter = DateFormatter()
     
+    // MARK: Decimal(,처리)
     func numberDecimal(_ number: Double) -> String {
         numberFormatter.numberStyle = .decimal
         let result = numberFormatter.string(from: number as NSNumber)
@@ -23,6 +24,7 @@ class FormatterManager {
         return result ?? "0"
     }
     
+    // MARK: 소수점 2자리
     func numberTwoPoints(_ number: Double) -> String {
         numberFormatter.maximumFractionDigits = 2
         let result = numberFormatter.string(from: number as NSNumber)
@@ -30,6 +32,7 @@ class FormatterManager {
         return result ?? "0"
     }
     
+    // MARK: "yyyy.MM.dd" String -> String
     func drawDateFormat(date: String) -> String {
         let inputFormatter = DateFormatter()
         inputFormatter.dateFormat = "yyyy-MM-dd"
@@ -44,11 +47,21 @@ class FormatterManager {
         }
     }
     
+    // MARK: "yyyy.MM.dd" Date -> String
     func formatDateToString(date: Date) -> String {
         dateFormatter.dateFormat = "yyyy.MM.dd"
         return dateFormatter.string(from: date)
     }
     
+    // MARK: "yyyy.MM.dd 요일" Date -> String
+    func formatDateWithDayToString(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.dateFormat = "yyyy.MM.dd EEEE"
+        return dateFormatter.string(from: date)
+    }
+    
+    // MARK: 당첨금 숫자 한국어로 번역
     func formatWinAmount(_ amount: Int) -> String {
         let billion = amount / 100000000
         let million = (amount % 100000000) / 10000
