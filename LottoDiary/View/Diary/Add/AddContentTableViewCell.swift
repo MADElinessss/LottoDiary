@@ -15,6 +15,7 @@ class AddContentTableViewCell: UITableViewCell {
     let dateLabel = UILabel()
     let textView = UITextView()
     var diaryContent: String = ""
+    var onTextChanged: ((String) -> Void)?
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
@@ -90,7 +91,7 @@ extension AddContentTableViewCell: UITextViewDelegate {
     }
     
     func textViewDidChange(_ textView: UITextView) {
-        diaryContent = textView.text
+        onTextChanged?(textView.text)
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {

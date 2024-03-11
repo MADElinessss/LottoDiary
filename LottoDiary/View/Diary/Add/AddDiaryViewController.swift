@@ -14,16 +14,20 @@ class AddDiaryViewController: BaseViewController, PHPickerViewControllerDelegate
     
     let tableView = UITableView()
     let viewModel = DiaryViewModel()
-    
-    var selectedImage: UIImage? {
-        didSet {
-            tableView.reloadData()
-        }
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        viewModel.selectedImage.bind { [weak self] _ in
+            self?.tableView.reloadData()
+        }
+        
+        viewModel.outputDiary.bind { [weak self] _ in
+            self?.tableView.reloadData()
+        }
+        
+        viewModel.fetchDiaries()
+        
         print("## realm file dir -> \(Realm.Configuration.defaultConfiguration.fileURL!)")
     }
     
@@ -45,6 +49,8 @@ class AddDiaryViewController: BaseViewController, PHPickerViewControllerDelegate
         tableView.dataSource = self
         tableView.backgroundColor = .background
         tableView.separatorStyle = .none
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 100
         tableView.register(AddContentTableViewCell.self, forCellReuseIdentifier: "AddContentTableViewCell")
         tableView.register(AddImageTableViewCell.self, forCellReuseIdentifier: "AddImageTableViewCell")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "AddLottoTableViewCell")
@@ -86,7 +92,9 @@ class AddDiaryViewController: BaseViewController, PHPickerViewControllerDelegate
     
     @objc func rightButtonTapped() {
         // TODO: Realm Create
+        print("❣️1")
         viewModel.saveButtonTapped.value = ()
+        print("❣️3")
     }
     
     func saveImageToDocumentDirectory(image: UIImage) -> String? {
@@ -115,27 +123,35 @@ extension AddDiaryViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 1 {
+            return viewModel.outputDiary.value.count
+        }
         return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddContentTableViewCell", for: indexPath) as! AddContentTableViewCell
+            cell.onTextChanged = { [weak self] text in
+                self?.viewModel.diaryContent.value = text
+            }
             cell.clipsToBounds = true
             cell.layer.cornerRadius = 15
             return cell
         } else if indexPath.section == 1 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "AddImageTableViewCell", for: indexPath) as? AddImageTableViewCell else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "AddImageTableViewCell", for: indexPath)
-                cell.textLabel?.text = "이미지 첨부"
-                cell.textLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
-                cell.clipsToBounds = true
-                cell.layer.cornerRadius = 15
-                return cell
+                return UITableViewCell()
             }
+
+            let diary = viewModel.outputDiary.value[indexPath.row]
+            if let fileName = diary.imageName, let image = viewModel.loadImageFromDocumentDirectory(fileName: fileName) {
+                cell.configure(with: image, title: "이미지 첨부")
+            } else {
+                cell.configure(with: nil, title: "이미지 없음")
+            }
+
             cell.clipsToBounds = true
             cell.layer.cornerRadius = 15
-            cell.configure(with: selectedImage, title: "이미지 첨부")
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddLottoTableViewCell", for: indexPath)
@@ -152,7 +168,7 @@ extension AddDiaryViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 {
             return 380
         } else if indexPath.section == 1 {
-            return selectedImage == nil ? 60 : 270
+            return viewModel.selectedImage.value == nil ? 60 : 270
         } else {
             return 60
         }

@@ -24,7 +24,7 @@ class RealmRepository {
                 print("Diary added to Realm 🥟")
             }
         } catch {
-            print("Error", error)
+            print("🥟Error", error)
         }
     }
     

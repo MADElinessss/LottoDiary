@@ -26,49 +26,78 @@ class DiaryViewModel {
         }
         
         saveButtonTapped.bind { [weak self] _ in
-            guard let self = self, let image = self.selectedImage.value, let content = self.diaryContent.value else { return }
-            
-            if let imageName = self.saveImageToDocumentDirectory(image: image) {
-                let newDiary = Diary()
-                newDiary.content = content
-                newDiary.imageName = imageName
-                newDiary.date = Date()
-                self.repository.create(diary: newDiary)
+            print("❣️2")
+            guard let self = self, let content = self.diaryContent.value else { 
+                print("❣️2-1")
+                return }
+            print("❣️2-2")
+            if let image = self.selectedImage.value {
+                self.saveImageToDocumentDirectory(image: image) { [weak self] imageName in
+                    print("❣️2-3")
+                    guard let imageName = imageName else { return }
+                    print("❣️2-4")
+                    let newDiary = Diary()
+                    newDiary.content = content
+                    newDiary.imageName = imageName
+                    newDiary.date = Date()
+                    print("❣️2-5")
+                    self?.repository.create(diary: newDiary)
+                    print("❣️2-6")
+                }
             }
         }
-
     }
     
     func fetchDiaries() {
+        print("👿fetch")
         let diaries = repository.fetchDiary()
         self.outputDiary.value = diaries
     }
     
-    func saveDiary(image: UIImage?, content: String) {
-        if let image = image, let imageName = saveImageToDocumentDirectory(image: image) {
-            let newDiary = Diary()
-            newDiary.content = content
-            newDiary.imageName = imageName
-            newDiary.date = Date()
-            repository.create(diary: newDiary)
+    private func saveImageToDocumentDirectory(image: UIImage, completion: @escaping (String?) -> Void) {
+        print("👿save")
+        DispatchQueue.global(qos: .background).async {
+            guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+                completion(nil)
+                print("✏️가드에 걸림")
+                return
+            }
+
+            let fileName = UUID().uuidString + ".jpg"
+            let fileURL = documentDirectory.appendingPathComponent(fileName)
+
+            guard let imageData = image.jpegData(compressionQuality: 1.0) else {
+                completion(nil)
+                return
+            }
+
+            do {
+                try imageData.write(to: fileURL)
+                DispatchQueue.main.async {
+                    completion(fileName)
+                }
+            } catch {
+                print("Error saving image: \(error)")
+                DispatchQueue.main.async {
+                    completion(nil)
+                }
+            }
         }
     }
     
-    private func saveImageToDocumentDirectory(image: UIImage) -> String? {
-        guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
-        
-        let fileName = UUID().uuidString + ".jpg"
-        let fileURL = documentDirectory.appendingPathComponent(fileName)
-        
-        guard let imageData = image.jpegData(compressionQuality: 1.0) else { return nil }
-        
+    func loadImageFromDocumentDirectory(fileName: String) -> UIImage? {
+        let fileURL = self.getDocumentDirectory().appendingPathComponent(fileName)
         do {
-            try imageData.write(to: fileURL)
-            return fileName
+            let imageData = try Data(contentsOf: fileURL)
+            return UIImage(data: imageData)
         } catch {
-            print("Error saving image: \(error)")
+            print("Error loading image : \(error)")
             return nil
         }
     }
-    
+
+    private func getDocumentDirectory() -> URL {
+        FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    }
+
 }
