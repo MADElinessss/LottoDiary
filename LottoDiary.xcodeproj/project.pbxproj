@@ -14,6 +14,9 @@
 		C170084A2B9E91A900008BE7 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17008492B9E91A900008BE7 /* WebViewController.swift */; };
 		C170084F2B9ED4E900008BE7 /* AddDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C170084E2B9ED4E900008BE7 /* AddDiaryViewController.swift */; };
 		C17008522B9ED61200008BE7 /* AddContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17008512B9ED61200008BE7 /* AddContentTableViewCell.swift */; };
+		C17008542B9EE6A800008BE7 /* AddImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17008532B9EE6A800008BE7 /* AddImageTableViewCell.swift */; };
+		C17008562B9EEAFB00008BE7 /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17008552B9EEAFB00008BE7 /* RealmRepository.swift */; };
+		C17008592B9EEB3600008BE7 /* Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17008582B9EEB3600008BE7 /* Diary.swift */; };
 		C18567B42B998DFD00864754 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18567B32B998DFD00864754 /* AppDelegate.swift */; };
 		C18567B62B998DFD00864754 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18567B52B998DFD00864754 /* SceneDelegate.swift */; };
 		C18567B82B998DFD00864754 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18567B72B998DFD00864754 /* ViewController.swift */; };
@@ -47,6 +50,9 @@
 		C17008492B9E91A900008BE7 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		C170084E2B9ED4E900008BE7 /* AddDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDiaryViewController.swift; sourceTree = "<group>"; };
 		C17008512B9ED61200008BE7 /* AddContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContentTableViewCell.swift; sourceTree = "<group>"; };
+		C17008532B9EE6A800008BE7 /* AddImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageTableViewCell.swift; sourceTree = "<group>"; };
+		C17008552B9EEAFB00008BE7 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
+		C17008582B9EEB3600008BE7 /* Diary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diary.swift; sourceTree = "<group>"; };
 		C18567B02B998DFD00864754 /* LottoDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LottoDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C18567B32B998DFD00864754 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C18567B52B998DFD00864754 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,8 +112,17 @@
 			children = (
 				C170084E2B9ED4E900008BE7 /* AddDiaryViewController.swift */,
 				C17008512B9ED61200008BE7 /* AddContentTableViewCell.swift */,
+				C17008532B9EE6A800008BE7 /* AddImageTableViewCell.swift */,
 			);
 			path = Add;
+			sourceTree = "<group>";
+		};
+		C17008572B9EEB3000008BE7 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				C17008582B9EEB3600008BE7 /* Diary.swift */,
+			);
+			path = Realm;
 			sourceTree = "<group>";
 		};
 		C18567A72B998DFD00864754 = {
@@ -161,6 +176,7 @@
 		C18567CA2B999F5900864754 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C17008572B9EEB3000008BE7 /* Realm */,
 				C1F35CEE2B99F0C500B32B4E /* Lotto.swift */,
 			);
 			path = Model;
@@ -180,6 +196,7 @@
 			children = (
 				C1F35CEA2B99BBC200B32B4E /* FormatterManager.swift */,
 				C1F35CEC2B99EF3F00B32B4E /* APIManager.swift */,
+				C17008552B9EEAFB00008BE7 /* RealmRepository.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -324,6 +341,7 @@
 			files = (
 				C1F35CED2B99EF3F00B32B4E /* APIManager.swift in Sources */,
 				C17008522B9ED61200008BE7 /* AddContentTableViewCell.swift in Sources */,
+				C17008542B9EE6A800008BE7 /* AddImageTableViewCell.swift in Sources */,
 				C1F35CF32B99FB2100B32B4E /* Observable.swift in Sources */,
 				C1F35CEF2B99F0C500B32B4E /* Lotto.swift in Sources */,
 				C170084A2B9E91A900008BE7 /* WebViewController.swift in Sources */,
@@ -332,12 +350,14 @@
 				C17008472B9E178700008BE7 /* MyLottoViewController.swift in Sources */,
 				C18567B42B998DFD00864754 /* AppDelegate.swift in Sources */,
 				C18567B62B998DFD00864754 /* SceneDelegate.swift in Sources */,
+				C17008592B9EEB3600008BE7 /* Diary.swift in Sources */,
 				C1F35CD12B99A62100B32B4E /* SettingViewController.swift in Sources */,
 				C1F35CF12B99FA1700B32B4E /* MainViewModel.swift in Sources */,
 				C17008422B9DEA2D00008BE7 /* MenuCollectionViewCell.swift in Sources */,
 				C1F35CEB2B99BBC200B32B4E /* FormatterManager.swift in Sources */,
 				C17008402B9DE99A00008BE7 /* MenuTableViewCell.swift in Sources */,
 				C1F35CD92B99A6D100B32B4E /* BaseViewController.swift in Sources */,
+				C17008562B9EEAFB00008BE7 /* RealmRepository.swift in Sources */,
 				C1F35CE92B99B86000B32B4E /* MyLottoTableViewCell.swift in Sources */,
 				C170084F2B9ED4E900008BE7 /* AddDiaryViewController.swift in Sources */,
 				C1F35CDC2B99B59800B32B4E /* NumberButton.swift in Sources */,
@@ -505,6 +525,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -539,6 +560,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
