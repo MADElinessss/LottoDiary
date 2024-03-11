@@ -6,13 +6,13 @@
 //
 
 import Foundation
+import RealmSwift
 
-
-// identifiable -> id 꼭 써라!
-//struct Diary: Hashable, Identifiable {
-//    let content: String
-//    let tag: String
-//    let imageName: String?
-//    let colorString: String
-//    let id = Date()
-//}
+class Diary: Object {
+    @Persisted(primaryKey: true) var id: ObjectId
+    @Persisted var content: String
+    @Persisted var tag: String
+    @Persisted var imageName: String?
+    @Persisted var colorString: String
+    @Persisted var date: Date
+}

@@ -27,7 +27,7 @@ class DiaryCollectionViewCell: UICollectionViewCell {
     func configure(with diary: Diary) {
         tagLabel.text = diary.tag
         contentLabel.text = diary.content
-        dateLabel.text = FormatterManager.shared.formatDateToString(date: diary.id)
+        dateLabel.text = FormatterManager.shared.formatDateToString(date: diary.date)
         if let imageName = diary.imageName, let image = UIImage(named: imageName) {
             imageView.image = image
             imageView.isHidden = false

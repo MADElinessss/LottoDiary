@@ -7,22 +7,24 @@
 
 import PhotosUI
 import SnapKit
+import RealmSwift
 import UIKit
 
 class AddDiaryViewController: BaseViewController, PHPickerViewControllerDelegate {
     
-    
     let tableView = UITableView()
+    let viewModel = DiaryViewModel()
     
     var selectedImage: UIImage? {
-            didSet {
-                tableView.reloadData()
-            }
+        didSet {
+            tableView.reloadData()
         }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        print("## realm file dir -> \(Realm.Configuration.defaultConfiguration.fileURL!)")
     }
     
     override func configureHierarchy() {
@@ -56,8 +58,8 @@ class AddDiaryViewController: BaseViewController, PHPickerViewControllerDelegate
     
     func presentPhotoPicker() {
         var configuration = PHPickerConfiguration()
-        configuration.selectionLimit = 1  // 사진은 1개만 선택 가능
-        configuration.filter = .images    // 이미지만 선택 가능
+        configuration.selectionLimit = 1
+        configuration.filter = .images
         
         let picker = PHPickerViewController(configuration: configuration)
         picker.delegate = self
@@ -71,8 +73,8 @@ class AddDiaryViewController: BaseViewController, PHPickerViewControllerDelegate
         result.itemProvider.loadObject(ofClass: UIImage.self) { [weak self] (image, error) in
             DispatchQueue.main.async {
                 if let image = image as? UIImage {
-                    self?.selectedImage = image
-                    // 선택된 이미지를 저장하고 셀의 높이를 조정하는 로직
+                    // self?.selectedImage = image
+                    self?.viewModel.selectedImage.value = image
                 }
             }
         }
@@ -84,7 +86,24 @@ class AddDiaryViewController: BaseViewController, PHPickerViewControllerDelegate
     
     @objc func rightButtonTapped() {
         // TODO: Realm Create
-        print("🐢")
+        viewModel.saveButtonTapped.value = ()
+    }
+    
+    func saveImageToDocumentDirectory(image: UIImage) -> String? {
+        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+        let fileName = UUID().uuidString + ".jpg"
+        let fileURL = documentDirectory?.appendingPathComponent(fileName)
+        
+        if let imageData = image.jpegData(compressionQuality: 1.0), let url = fileURL {
+            do {
+                try imageData.write(to: url)
+                return fileName // 저장된 이미지의 파일 이름 반환
+            } catch {
+                print("Error saving image: \(error)")
+                return nil
+            }
+        }
+        return nil
     }
 
 }

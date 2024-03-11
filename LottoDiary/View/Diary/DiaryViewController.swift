@@ -5,31 +5,27 @@
 //  Created by Madeline on 3/7/24.
 //
 
+
 import SnapKit
 import UIKit
-
-// identifiable -> id 꼭 써라!
-struct Diary: Hashable, Identifiable {
-    let content: String
-    let tag: String
-    let imageName: String?
-    let colorString: String
-    let id = Date()
-}
 
 class DiaryViewController: BaseViewController {
     
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
     let floatingActionButton = UIButton()
+    
+    let viewModel = DiaryViewModel()
 
     var dataSource: UICollectionViewDiffableDataSource<Int, Diary>!
     
-    var list = [
-        Diary(content: "오늘은 돼지꿈을 꿨따", tag: "#맥북 m3", imageName: "example", colorString: "red")
-    ]
+//    var list = [
+//        Diary(content: "오늘은 돼지꿈을 꿨따", tag: "#맥북 m3", imageName: "example", colorString: "red")
+//    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewModel.inputViewWillAppearTrigger.value = ()
         
         let rightButton = createBarButtonItem(imageName: "line.3.horizontal.decrease", action: #selector(rightButtonTapped))
         configureNavigationBar(title: "로또 일기장", leftBarButton: nil, rightBarButton: rightButton)
@@ -43,8 +39,8 @@ class DiaryViewController: BaseViewController {
     func updateSnapshot() {
         var snapshot = NSDiffableDataSourceSnapshot<Int, Diary>()
         snapshot.appendSections([1,2])
-        snapshot.appendItems(list, toSection: 1)
-        snapshot.appendItems([Diary(content: "재수가 안좋은 날이었따. 나는 3가지 재수업는 일이 반복되면 로또를 산다.", tag: "#캠핑카", imageName: "example", colorString: "yellow")], toSection: 2)
+        snapshot.appendItems(viewModel.outputDiary.value, toSection: 1)
+//        snapshot.appendItems([Diary(content: "재수가 안좋은 날이었따. 나는 3가지 재수업는 일이 반복되면 로또를 산다.", tag: "#캠핑카", imageName: "example", colorString: "yellow")], toSection: 2)
         dataSource.apply(snapshot)
     }
     
@@ -120,5 +116,6 @@ class DiaryViewController: BaseViewController {
     
     @objc func rightButtonTapped() {
         // TODO: 정렬
+        
     }
 }

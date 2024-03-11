@@ -32,6 +32,14 @@ class FormatterManager {
         return result ?? "0"
     }
     
+    // MARK: yyyyMMddHHmmss Date -> String
+    func dateToString(from date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyyMMddHHmmss"
+        return formatter.string(from: date)
+    }
+
+    
     // MARK: "yyyy.MM.dd" String -> String
     func drawDateFormat(date: String) -> String {
         let inputFormatter = DateFormatter()

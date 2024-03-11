@@ -14,6 +14,7 @@ class AddContentTableViewCell: UITableViewCell {
     let remainCountLabel = UILabel()
     let dateLabel = UILabel()
     let textView = UITextView()
+    var diaryContent: String = ""
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
@@ -86,6 +87,10 @@ extension AddContentTableViewCell: UITextViewDelegate {
             textView.textColor = .lightGray
             updateCountLabel(characterCount: 0)
         }
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        diaryContent = textView.text
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
