@@ -86,12 +86,15 @@ class DiaryViewModel {
     }
     
     func loadImageFromDocumentDirectory(fileName: String) -> UIImage? {
+        print("⭐️1")
         let fileURL = self.getDocumentDirectory().appendingPathComponent(fileName)
         do {
+            print("⭐️2")
             let imageData = try Data(contentsOf: fileURL)
             return UIImage(data: imageData)
         } catch {
-            print("Error loading image : \(error)")
+            
+            print("⭐️Error loading image : \(error)")
             return nil
         }
     }

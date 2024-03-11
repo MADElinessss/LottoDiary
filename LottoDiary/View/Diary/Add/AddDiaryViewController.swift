@@ -60,6 +60,10 @@ class AddDiaryViewController: BaseViewController, PHPickerViewControllerDelegate
         rightButton.tintColor = .pointSymbol
         
         configureNavigationBar(title: "일기 작성", leftBarButton: leftButton, rightBarButton: rightButton)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
     }
     
     func presentPhotoPicker() {
@@ -97,6 +101,10 @@ class AddDiaryViewController: BaseViewController, PHPickerViewControllerDelegate
         print("❣️3")
     }
     
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     func saveImageToDocumentDirectory(image: UIImage) -> String? {
         let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
         let fileName = UUID().uuidString + ".jpg"
@@ -123,9 +131,6 @@ extension AddDiaryViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 1 {
-            return viewModel.outputDiary.value.count
-        }
         return 1
     }
     
@@ -139,17 +144,14 @@ extension AddDiaryViewController: UITableViewDelegate, UITableViewDataSource {
             cell.layer.cornerRadius = 15
             return cell
         } else if indexPath.section == 1 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "AddImageTableViewCell", for: indexPath) as? AddImageTableViewCell else {
-                return UITableViewCell()
-            }
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AddImageTableViewCell", for: indexPath) as! AddImageTableViewCell
 
-            let diary = viewModel.outputDiary.value[indexPath.row]
-            if let fileName = diary.imageName, let image = viewModel.loadImageFromDocumentDirectory(fileName: fileName) {
-                cell.configure(with: image, title: "이미지 첨부")
+            if let selectedImage = viewModel.selectedImage.value {
+                cell.configure(with: selectedImage, title: "")
             } else {
-                cell.configure(with: nil, title: "이미지 없음")
+                cell.configure(with: nil, title: "이미지 첨부")
             }
-
+            
             cell.clipsToBounds = true
             cell.layer.cornerRadius = 15
             return cell

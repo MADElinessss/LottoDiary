@@ -14,10 +14,12 @@ class DiaryCollectionViewCell: UICollectionViewCell {
     let contentLabel = UILabel()
     let dateLabel = UILabel()
     let imageView = UIImageView()
+    let viewModel = DiaryViewModel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureView()
+        imageView.contentMode = .scaleAspectFit
     }
     
     required init?(coder: NSCoder) {
@@ -28,13 +30,25 @@ class DiaryCollectionViewCell: UICollectionViewCell {
         tagLabel.text = diary.tag
         contentLabel.text = diary.content
         dateLabel.text = FormatterManager.shared.formatDateToString(date: diary.date)
-        if let imageName = diary.imageName, let image = UIImage(named: imageName) {
+        
+        if let imageName = diary.imageName {
+            loadImageFromDocumentDirectory(fileName: imageName)
+        } else {
+            imageView.isHidden = true
+        }
+    }
+    
+    private func loadImageFromDocumentDirectory(fileName: String) {
+        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+        let fileURL = documentDirectory?.appendingPathComponent(fileName)
+        if let imageData = try? Data(contentsOf: fileURL!), let image = UIImage(data: imageData) {
             imageView.image = image
             imageView.isHidden = false
         } else {
             imageView.isHidden = true
         }
     }
+
     
     private func configureView() {
         contentView.backgroundColor = .white
