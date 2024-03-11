@@ -110,6 +110,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 {
             let vc = MyLottoViewController()
             navigationController?.pushViewController(vc, animated: true)
+        } else if indexPath.section == 2 {
+            let vc = WebViewController()
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
 }
