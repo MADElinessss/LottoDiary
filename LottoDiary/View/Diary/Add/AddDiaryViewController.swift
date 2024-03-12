@@ -242,14 +242,15 @@ extension AddDiaryViewController: UITableViewDelegate, UITableViewDataSource {
             // TODO: 로또 번호 입력 화면으로 전환
         } else if indexPath.section == 3 {
             // TODO: 소원 태그 입력 화면
-            // present(AddWishTagViewController(), animated: true)
             let vc = AddWishTagViewController()
             vc.onTagAndColorSelected = { [weak self] tag, colorName in
                 self?.selectedTag = tag
                 self?.selectedColorName = colorName
                 self?.tableView.reloadData()
             }
-            navigationController?.pushViewController(vc, animated: true)
+            let navController = UINavigationController(rootViewController: vc)
+            navController.modalPresentationStyle = .automatic
+            present(navController, animated: true, completion: nil)
         }
     }
 

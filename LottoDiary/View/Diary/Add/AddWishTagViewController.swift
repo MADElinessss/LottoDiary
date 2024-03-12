@@ -114,13 +114,13 @@ class AddWishTagViewController: BaseViewController {
     }
     
     @objc func leftBarButtonTapped() {
-        navigationController?.popViewController(animated: true)
+        dismiss(animated: true)
     }
     
     @objc func rightBarButtonTapped() {
         guard let content = textField.text, !content.isEmpty, let selectedColorName = self.selectedColorName else { return }
         onTagAndColorSelected?(content, selectedColorName)
-        navigationController?.popViewController(animated: true)
+        dismiss(animated: true)
     }
     
     @objc func dismissKeyboard() {
