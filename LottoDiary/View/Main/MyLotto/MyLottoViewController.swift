@@ -37,7 +37,7 @@ class MyLottoViewController: BaseViewController {
         tableView.backgroundColor = .background
         tableView.register(MyLottoTableViewCell.self, forCellReuseIdentifier: "MyLottoTableViewCell")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
-        tableView.separatorStyle = .none
+        // tableView.separatorStyle = .none
         
         configureNavigationBar(title: "나의 로또", leftBarButton: nil, rightBarButton: nil)
     }
@@ -70,8 +70,8 @@ extension MyLottoViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.textLabel?.text = "번호 직접 입력"
             }
             
-            cell.clipsToBounds = true
-            cell.layer.cornerRadius = 15
+//            cell.clipsToBounds = true
+//            cell.layer.cornerRadius = 15
             cell.selectionStyle = .none
             
             return cell
@@ -92,6 +92,7 @@ extension MyLottoViewController: UITableViewDelegate, UITableViewDataSource {
         if section == 1 {
             let headerLabel = UILabel()
             headerLabel.text = "결과 확인하기"
+            headerLabel.font = .systemFont(ofSize: 14, weight: .regular)
             return headerLabel
         } else {
             return nil
@@ -104,6 +105,17 @@ extension MyLottoViewController: UITableViewDelegate, UITableViewDataSource {
             return 24
         } else {
             return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // "QR 코드 인식"
+        if indexPath.row == 0 {
+            let vc = QRCodeViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        } else {
+            // "번호 직접 입력"
+            
         }
     }
 }

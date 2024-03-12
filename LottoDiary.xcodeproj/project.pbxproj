@@ -18,6 +18,7 @@
 		C17008562B9EEAFB00008BE7 /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17008552B9EEAFB00008BE7 /* RealmRepository.swift */; };
 		C17008592B9EEB3600008BE7 /* Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17008582B9EEB3600008BE7 /* Diary.swift */; };
 		C170085B2B9EF0B900008BE7 /* DiaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C170085A2B9EF0B900008BE7 /* DiaryViewModel.swift */; };
+		C17008732BA00BF400008BE7 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17008722BA00BF400008BE7 /* QRCodeViewController.swift */; };
 		C18567B42B998DFD00864754 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18567B32B998DFD00864754 /* AppDelegate.swift */; };
 		C18567B62B998DFD00864754 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18567B52B998DFD00864754 /* SceneDelegate.swift */; };
 		C18567B82B998DFD00864754 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18567B72B998DFD00864754 /* ViewController.swift */; };
@@ -55,6 +56,7 @@
 		C17008552B9EEAFB00008BE7 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
 		C17008582B9EEB3600008BE7 /* Diary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diary.swift; sourceTree = "<group>"; };
 		C170085A2B9EF0B900008BE7 /* DiaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewModel.swift; sourceTree = "<group>"; };
+		C17008722BA00BF400008BE7 /* QRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
 		C18567B02B998DFD00864754 /* LottoDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LottoDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C18567B32B998DFD00864754 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C18567B52B998DFD00864754 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				C17008462B9E178700008BE7 /* MyLottoViewController.swift */,
+				C17008722BA00BF400008BE7 /* QRCodeViewController.swift */,
 			);
 			path = MyLotto;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				C170084F2B9ED4E900008BE7 /* AddDiaryViewController.swift in Sources */,
 				C1F35CDC2B99B59800B32B4E /* NumberButton.swift in Sources */,
 				C1F35CD52B99A63900B32B4E /* DiaryViewController.swift in Sources */,
+				C17008732BA00BF400008BE7 /* QRCodeViewController.swift in Sources */,
 				C17008442B9DFF6A00008BE7 /* DiaryCollectionViewCell.swift in Sources */,
 				C1F35CD32B99A63300B32B4E /* ChartViewController.swift in Sources */,
 			);

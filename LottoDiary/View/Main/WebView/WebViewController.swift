@@ -5,9 +5,9 @@
 //  Created by Madeline on 3/11/24.
 //
 
+import SnapKit
 import UIKit
 import WebKit
-import SnapKit
 
 class WebViewController: UIViewController, WKNavigationDelegate {
 
