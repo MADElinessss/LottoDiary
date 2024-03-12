@@ -11,6 +11,7 @@ import UIKit
 final class MenuTableViewCell: UITableViewCell {
     
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionLayout())
+    var onItemTapped: (() -> Void)?
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
@@ -65,5 +66,12 @@ extension MenuTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
         cell.backgroundColor = .white
         cell.layer.cornerRadius = 15
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.item == 3 {
+            // TODO: MapView로 연결!
+
+        }
     }
 }

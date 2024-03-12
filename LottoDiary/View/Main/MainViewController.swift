@@ -63,7 +63,13 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as! MenuTableViewCell
-            
+            cell.onItemTapped = {
+                     
+                let sb = UIStoryboard(name: "Main", bundle: nil)
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "StoreMapViewController") as! StoreMapViewController
+                print("--")
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)

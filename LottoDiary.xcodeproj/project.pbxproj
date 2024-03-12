@@ -19,6 +19,10 @@
 		C17008592B9EEB3600008BE7 /* Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17008582B9EEB3600008BE7 /* Diary.swift */; };
 		C170085B2B9EF0B900008BE7 /* DiaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C170085A2B9EF0B900008BE7 /* DiaryViewModel.swift */; };
 		C17008732BA00BF400008BE7 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17008722BA00BF400008BE7 /* QRCodeViewController.swift */; };
+		C17008762BA027A000008BE7 /* BaseMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17008752BA027A000008BE7 /* BaseMapViewController.swift */; };
+		C17008782BA028FD00008BE7 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17008772BA028FD00008BE7 /* APIKey.swift */; };
+		C170087B2BA029BC00008BE7 /* KakaoMapsSDK_SPM in Frameworks */ = {isa = PBXBuildFile; productRef = C170087A2BA029BC00008BE7 /* KakaoMapsSDK_SPM */; };
+		C170087D2BA033D200008BE7 /* StoreMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C170087C2BA033D200008BE7 /* StoreMapViewController.swift */; };
 		C18567B42B998DFD00864754 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18567B32B998DFD00864754 /* AppDelegate.swift */; };
 		C18567B62B998DFD00864754 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18567B52B998DFD00864754 /* SceneDelegate.swift */; };
 		C18567B82B998DFD00864754 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18567B72B998DFD00864754 /* ViewController.swift */; };
@@ -57,6 +61,9 @@
 		C17008582B9EEB3600008BE7 /* Diary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diary.swift; sourceTree = "<group>"; };
 		C170085A2B9EF0B900008BE7 /* DiaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewModel.swift; sourceTree = "<group>"; };
 		C17008722BA00BF400008BE7 /* QRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
+		C17008752BA027A000008BE7 /* BaseMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMapViewController.swift; sourceTree = "<group>"; };
+		C17008772BA028FD00008BE7 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		C170087C2BA033D200008BE7 /* StoreMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreMapViewController.swift; sourceTree = "<group>"; };
 		C18567B02B998DFD00864754 /* LottoDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LottoDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C18567B32B998DFD00864754 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C18567B52B998DFD00864754 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +94,7 @@
 			files = (
 				C1F35CE72B99B73000B32B4E /* RealmSwift in Frameworks */,
 				C1F35CE52B99B73000B32B4E /* Realm in Frameworks */,
+				C170087B2BA029BC00008BE7 /* KakaoMapsSDK_SPM in Frameworks */,
 				C1F35CDF2B99B6FE00B32B4E /* SnapKit in Frameworks */,
 				C1F35CE22B99B70800B32B4E /* Alamofire in Frameworks */,
 			);
@@ -104,12 +112,12 @@
 			path = MyLotto;
 			sourceTree = "<group>";
 		};
-		C17008482B9E919D00008BE7 /* WebView */ = {
+		C17008482B9E919D00008BE7 /* Purchase */ = {
 			isa = PBXGroup;
 			children = (
 				C17008492B9E91A900008BE7 /* WebViewController.swift */,
 			);
-			path = WebView;
+			path = Purchase;
 			sourceTree = "<group>";
 		};
 		C17008502B9ED5F900008BE7 /* Add */ = {
@@ -128,6 +136,15 @@
 				C17008582B9EEB3600008BE7 /* Diary.swift */,
 			);
 			path = Realm;
+			sourceTree = "<group>";
+		};
+		C17008742BA0278C00008BE7 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				C17008752BA027A000008BE7 /* BaseMapViewController.swift */,
+				C170087C2BA033D200008BE7 /* StoreMapViewController.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 		C18567A72B998DFD00864754 = {
@@ -183,6 +200,7 @@
 			children = (
 				C17008572B9EEB3000008BE7 /* Realm */,
 				C1F35CEE2B99F0C500B32B4E /* Lotto.swift */,
+				C17008772BA028FD00008BE7 /* APIKey.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -218,7 +236,8 @@
 		C18567CE2B999F7500864754 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				C17008482B9E919D00008BE7 /* WebView */,
+				C17008742BA0278C00008BE7 /* Map */,
+				C17008482B9E919D00008BE7 /* Purchase */,
 				C17008452B9E177800008BE7 /* MyLotto */,
 				C1F35CD62B99A64000B32B4E /* MainViewController.swift */,
 				C1F35CE82B99B86000B32B4E /* MyLottoTableViewCell.swift */,
@@ -283,6 +302,7 @@
 				C1F35CE12B99B70800B32B4E /* Alamofire */,
 				C1F35CE42B99B73000B32B4E /* Realm */,
 				C1F35CE62B99B73000B32B4E /* RealmSwift */,
+				C170087A2BA029BC00008BE7 /* KakaoMapsSDK_SPM */,
 			);
 			productName = LottoDiary;
 			productReference = C18567B02B998DFD00864754 /* LottoDiary.app */;
@@ -316,6 +336,7 @@
 				C1F35CDD2B99B6FE00B32B4E /* XCRemoteSwiftPackageReference "SnapKit" */,
 				C1F35CE02B99B70800B32B4E /* XCRemoteSwiftPackageReference "Alamofire" */,
 				C1F35CE32B99B73000B32B4E /* XCRemoteSwiftPackageReference "realm-swift" */,
+				C17008792BA029BC00008BE7 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */,
 			);
 			productRefGroup = C18567B12B998DFD00864754 /* Products */;
 			projectDirPath = "";
@@ -364,12 +385,15 @@
 				C1F35CEB2B99BBC200B32B4E /* FormatterManager.swift in Sources */,
 				C17008402B9DE99A00008BE7 /* MenuTableViewCell.swift in Sources */,
 				C1F35CD92B99A6D100B32B4E /* BaseViewController.swift in Sources */,
+				C17008782BA028FD00008BE7 /* APIKey.swift in Sources */,
 				C17008562B9EEAFB00008BE7 /* RealmRepository.swift in Sources */,
 				C1F35CE92B99B86000B32B4E /* MyLottoTableViewCell.swift in Sources */,
 				C170084F2B9ED4E900008BE7 /* AddDiaryViewController.swift in Sources */,
 				C1F35CDC2B99B59800B32B4E /* NumberButton.swift in Sources */,
 				C1F35CD52B99A63900B32B4E /* DiaryViewController.swift in Sources */,
 				C17008732BA00BF400008BE7 /* QRCodeViewController.swift in Sources */,
+				C17008762BA027A000008BE7 /* BaseMapViewController.swift in Sources */,
+				C170087D2BA033D200008BE7 /* StoreMapViewController.swift in Sources */,
 				C17008442B9DFF6A00008BE7 /* DiaryCollectionViewCell.swift in Sources */,
 				C1F35CD32B99A63300B32B4E /* ChartViewController.swift in Sources */,
 			);
@@ -610,6 +634,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		C17008792BA029BC00008BE7 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao-mapsSDK/KakaoMapsSDK-SPM.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.9.2;
+			};
+		};
 		C1F35CDD2B99B6FE00B32B4E /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -637,6 +669,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C170087A2BA029BC00008BE7 /* KakaoMapsSDK_SPM */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C17008792BA029BC00008BE7 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */;
+			productName = KakaoMapsSDK_SPM;
+		};
 		C1F35CDE2B99B6FE00B32B4E /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C1F35CDD2B99B6FE00B32B4E /* XCRemoteSwiftPackageReference "SnapKit" */;
