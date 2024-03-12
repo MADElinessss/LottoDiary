@@ -18,6 +18,15 @@ class DiaryViewController: BaseViewController {
 
     var dataSource: UICollectionViewDiffableDataSource<Int, Diary>!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
+        viewModel.inputViewWillAppearTrigger.value = ()
+        updateSnapshot()
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

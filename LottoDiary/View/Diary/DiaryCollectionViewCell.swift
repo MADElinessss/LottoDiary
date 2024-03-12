@@ -20,6 +20,7 @@ class DiaryCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         configureView()
         imageView.contentMode = .scaleAspectFit
+        setupTagLabel()
     }
     
     required init?(coder: NSCoder) {
@@ -27,7 +28,7 @@ class DiaryCollectionViewCell: UICollectionViewCell {
     }
     
     func configure(with diary: Diary) {
-        tagLabel.text = diary.tag
+        
         contentLabel.text = diary.content
         dateLabel.text = FormatterManager.shared.formatDateToString(date: diary.date)
         
@@ -35,6 +36,11 @@ class DiaryCollectionViewCell: UICollectionViewCell {
             loadImageFromDocumentDirectory(fileName: imageName)
         } else {
             imageView.isHidden = true
+        }
+        
+        if let tag = diary.tag, let colorName = diary.colorString {
+            tagLabel.text = "#\(tag)"
+            tagLabel.textColor = UIColor(named: colorName) ?? .black
         }
     }
     
@@ -48,7 +54,7 @@ class DiaryCollectionViewCell: UICollectionViewCell {
             imageView.isHidden = true
         }
     }
-
+    
     
     private func configureView() {
         contentView.backgroundColor = .white
@@ -93,5 +99,13 @@ class DiaryCollectionViewCell: UICollectionViewCell {
         contentLabel.font = .systemFont(ofSize: 16, weight: .regular)
         contentLabel.textColor = .black
         contentLabel.numberOfLines = 3
+    }
+    
+    private func setupTagLabel() {
+        
+        contentView.addSubview(tagLabel)
+        tagLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        tagLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
     }
 }
