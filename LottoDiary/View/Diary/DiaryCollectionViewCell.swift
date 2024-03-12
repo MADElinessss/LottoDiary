@@ -30,7 +30,11 @@ class DiaryCollectionViewCell: UICollectionViewCell {
     func configure(with diary: Diary) {
         
         contentLabel.text = diary.content
-        dateLabel.text = FormatterManager.shared.formatDateToString(date: diary.date)
+        contentLabel.font = .systemFont(ofSize: 16, weight: .regular)
+        let todayDateString = FormatterManager.shared.formatDateToString(date: Date())
+        let diaryDateString = FormatterManager.shared.formatDateToString(date: diary.date)
+        dateLabel.text = todayDateString == diaryDateString ? "TODAY" : diaryDateString
+        dateLabel.font = .systemFont(ofSize: 12, weight: .light)
         
         if let imageName = diary.imageName {
             loadImageFromDocumentDirectory(fileName: imageName)
@@ -40,6 +44,7 @@ class DiaryCollectionViewCell: UICollectionViewCell {
         
         if let tag = diary.tag, let colorName = diary.colorString {
             tagLabel.text = "#\(tag)"
+            tagLabel.font = .systemFont(ofSize: 18, weight: .semibold)
             tagLabel.textColor = UIColor(named: colorName) ?? .black
         }
     }
