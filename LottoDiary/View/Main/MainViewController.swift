@@ -118,6 +118,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         } else if indexPath.section == 2 {
             let vc = WebViewController()
             navigationController?.pushViewController(vc, animated: true)
+        } else {
+            
         }
     }
 }
