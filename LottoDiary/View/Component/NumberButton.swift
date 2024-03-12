@@ -9,10 +9,12 @@ import UIKit
 
 class NumberButton: UIButton {
 
-    init(backgroundColor: UIColor, number: Int) {
+    init(backgroundColor: UIColor, number: Int?) {
         super.init(frame: .zero)
         self.backgroundColor = backgroundColor
-        setTitle("\(number)", for: .normal)
+        if let number = number {
+            setTitle("\(number)", for: .normal)
+        }
         setTitleColor(.white, for: .normal)
         configureButton()
     }

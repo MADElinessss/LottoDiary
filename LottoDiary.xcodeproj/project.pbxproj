@@ -24,6 +24,7 @@
 		C170087B2BA029BC00008BE7 /* KakaoMapsSDK_SPM in Frameworks */ = {isa = PBXBuildFile; productRef = C170087A2BA029BC00008BE7 /* KakaoMapsSDK_SPM */; };
 		C170087D2BA033D200008BE7 /* StoreMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C170087C2BA033D200008BE7 /* StoreMapViewController.swift */; };
 		C17008802BA061B000008BE7 /* MyNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C170087F2BA061B000008BE7 /* MyNumberViewController.swift */; };
+		C17008822BA06A6C00008BE7 /* AddWishTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17008812BA06A6C00008BE7 /* AddWishTagViewController.swift */; };
 		C18567B42B998DFD00864754 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18567B32B998DFD00864754 /* AppDelegate.swift */; };
 		C18567B62B998DFD00864754 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18567B52B998DFD00864754 /* SceneDelegate.swift */; };
 		C18567B82B998DFD00864754 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18567B72B998DFD00864754 /* ViewController.swift */; };
@@ -66,6 +67,7 @@
 		C17008772BA028FD00008BE7 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		C170087C2BA033D200008BE7 /* StoreMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreMapViewController.swift; sourceTree = "<group>"; };
 		C170087F2BA061B000008BE7 /* MyNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNumberViewController.swift; sourceTree = "<group>"; };
+		C17008812BA06A6C00008BE7 /* AddWishTagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWishTagViewController.swift; sourceTree = "<group>"; };
 		C18567B02B998DFD00864754 /* LottoDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LottoDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C18567B32B998DFD00864754 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C18567B52B998DFD00864754 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				C170084E2B9ED4E900008BE7 /* AddDiaryViewController.swift */,
 				C17008512B9ED61200008BE7 /* AddContentTableViewCell.swift */,
 				C17008532B9EE6A800008BE7 /* AddImageTableViewCell.swift */,
+				C17008812BA06A6C00008BE7 /* AddWishTagViewController.swift */,
 			);
 			path = Add;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 				C17008562B9EEAFB00008BE7 /* RealmRepository.swift in Sources */,
 				C1F35CE92B99B86000B32B4E /* MyLottoTableViewCell.swift in Sources */,
 				C170084F2B9ED4E900008BE7 /* AddDiaryViewController.swift in Sources */,
+				C17008822BA06A6C00008BE7 /* AddWishTagViewController.swift in Sources */,
 				C1F35CDC2B99B59800B32B4E /* NumberButton.swift in Sources */,
 				C1F35CD52B99A63900B32B4E /* DiaryViewController.swift in Sources */,
 				C17008732BA00BF400008BE7 /* QRCodeViewController.swift in Sources */,

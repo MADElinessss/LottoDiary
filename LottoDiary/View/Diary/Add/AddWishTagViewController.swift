@@ -1,0 +1,146 @@
+//
+//  AddWishTagViewController.swift
+//  LottoDiary
+//
+//  Created by Madeline on 3/12/24.
+//
+
+import UIKit
+
+class AddWishTagViewController: BaseViewController {
+    
+    let headerLabel = UILabel()
+    let stackView = UIStackView()
+    let headerLabel2 = UILabel()
+    let textField = UITextField()
+    var selectedColorName: String?
+    
+    let colorNames = ["lotteryYellow", "lotteryBlue", "lotteryRed", "lotteryGray", "lotteryGreen"]
+    
+    var onTagAndColorSelected: ((String, String) -> Void)?
+    
+    let viewModel = DiaryViewModel()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
+    
+    override func configureHierarchy() {
+        view.addSubview(headerLabel)
+        view.addSubview(stackView)
+        view.addSubview(headerLabel2)
+        view.addSubview(textField)
+    }
+    
+    override func configureLayout() {
+        headerLabel.snp.makeConstraints { make in
+            make.leading.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(16)
+        }
+        
+        stackView.snp.makeConstraints { make in
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(24)
+            make.top.equalTo(headerLabel.snp.bottom).offset(16)
+            make.height.equalTo(30)
+            make.width.equalTo(300)
+        }
+        
+        headerLabel2.snp.makeConstraints { make in
+            make.leading.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.top.equalTo(stackView.snp.bottom).offset(16)
+        }
+        
+        textField.snp.makeConstraints { make in
+            make.top.equalTo(headerLabel2.snp.bottom).offset(16)
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.height.equalTo(44)
+        }
+    }
+    
+    override func configureView() {
+        
+        let leftBarButton = UIBarButtonItem(title: "취소", style: .done, target: self, action: #selector(leftBarButtonTapped))
+        let rightBarButton = UIBarButtonItem(title: "저장", style: .done, target: self, action: #selector(rightBarButtonTapped))
+        
+        configureNavigationBar(title: "소원 태그", leftBarButton: leftBarButton, rightBarButton: rightBarButton)
+        
+        headerLabel.text = "색 선택"
+        headerLabel.font = .systemFont(ofSize: 16, weight: .regular)
+        headerLabel.textColor = .black
+        
+        
+        stackView.backgroundColor = .white
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.spacing = 12
+        
+        for i in 0...5 {
+            let buttonColor = color(for: i)
+            let button = NumberButton(backgroundColor: buttonColor, number: nil)
+            button.tag = i // 각 버튼에 고유한 태그 할당
+            button.addTarget(self, action: #selector(colorButtonTapped(_:)), for: .touchUpInside)
+            stackView.addArrangedSubview(button)
+            stackView.addArrangedSubview(button)
+        }
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        headerLabel2.text = "소원 태그명"
+        headerLabel2.font = .systemFont(ofSize: 16, weight: .regular)
+        headerLabel2.textColor = .black
+        
+        textField.placeholder = "  로또에 당첨된다면? ex) 아파트, 저축"
+        textField.borderStyle = .none
+        textField.backgroundColor = .white
+        textField.layer.cornerRadius = 15
+        textField.clipsToBounds = true
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func colorButtonTapped(_ sender: UIButton) {
+        selectedColorName = colorNames[sender.tag] // 선택된 색상 이름을 저장
+        
+        // 선택된 버튼에 시각적 표시를 업데이트
+        stackView.arrangedSubviews.forEach { view in
+            if let btn = view as? UIButton {
+                btn.layer.borderWidth = (btn.tag == sender.tag) ? 2 : 0
+                btn.layer.borderColor = (btn.tag == sender.tag) ? UIColor.black.cgColor : nil
+            }
+        }
+    }
+    
+    @objc func leftBarButtonTapped() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func rightBarButtonTapped() {
+        guard let content = textField.text, !content.isEmpty, let selectedColorName = self.selectedColorName else { return }
+        onTagAndColorSelected?(content, selectedColorName)
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    private func color(for drawNumber: Int) -> UIColor {
+        switch drawNumber {
+        case 0:
+            return UIColor(named: "lotteryYellow") ?? .yellow
+        case 1:
+            return UIColor(named: "lotteryBlue") ?? .blue
+        case 2:
+            return UIColor(named: "lotteryRed") ?? .red
+        case 3:
+            return UIColor(named: "lotteryGray") ?? .gray
+        case 4:
+            return UIColor(named: "lotteryGreen") ?? .green
+        default:
+            return .gray // 기본값으로 검정색 사용
+        }
+    }
+}

@@ -43,12 +43,12 @@ final class MyLottoTableViewCell: UITableViewCell {
         let drawNumber: Int = draw.drwNo
         titleLabel.text = "\(drawNumber)회 당첨 결과"
         titleLabel.textColor = .black
-        titleLabel.font = .systemFont(ofSize: 16, weight: .semibold)
+        titleLabel.font = .systemFont(ofSize: 16, weight: .bold)
         
         let drawDate = FormatterManager.shared.drawDateFormat(date: draw.drwNoDate)
         dateLabel.text = "(\(drawDate))"
         dateLabel.textColor = .gray
-        dateLabel.font = .systemFont(ofSize: 14, weight: .medium)
+        dateLabel.font = .systemFont(ofSize: 14, weight: .semibold)
         
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(contentView.safeAreaLayoutGuide).inset(16)
@@ -88,7 +88,7 @@ final class MyLottoTableViewCell: UITableViewCell {
         let winAmount = FormatterManager.shared.formatWinAmount(draw.firstWinamnt)
         prizeLabel.text = "1등 당첨금: \(winAmount)"
         prizeLabel.textColor = .black
-        prizeLabel.font = .systemFont(ofSize: 14, weight: .medium)
+        prizeLabel.font = .systemFont(ofSize: 14, weight: .semibold)
     }
     
     private func color(for drawNumber: Int) -> UIColor {

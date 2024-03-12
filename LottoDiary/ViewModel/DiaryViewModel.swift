@@ -16,6 +16,7 @@ class DiaryViewModel {
     var selectedImage: Observable<UIImage?> = Observable(nil)
     
     var inputViewWillAppearTrigger: Observable<Void?> = Observable(nil)
+    var inputTagSavedTapped: Observable<Void?> = Observable(nil)
     var saveButtonTapped: Observable<Void?> = Observable(nil)
     
     var outputDiary: Observable<[Diary]> = Observable([])
@@ -26,40 +27,29 @@ class DiaryViewModel {
         }
         
         saveButtonTapped.bind { [weak self] _ in
-            print("❣️2")
-            guard let self = self, let content = self.diaryContent.value else { 
-                print("❣️2-1")
-                return }
-            print("❣️2-2")
+            guard let self = self, let content = self.diaryContent.value else { return }
             if let image = self.selectedImage.value {
                 self.saveImageToDocumentDirectory(image: image) { [weak self] imageName in
-                    print("❣️2-3")
                     guard let imageName = imageName else { return }
-                    print("❣️2-4")
                     let newDiary = Diary()
                     newDiary.content = content
                     newDiary.imageName = imageName
                     newDiary.date = Date()
-                    print("❣️2-5")
                     self?.repository.create(diary: newDiary)
-                    print("❣️2-6")
                 }
             }
         }
     }
     
     func fetchDiaries() {
-        print("👿fetch")
         let diaries = repository.fetchDiary()
         self.outputDiary.value = diaries
     }
     
     private func saveImageToDocumentDirectory(image: UIImage, completion: @escaping (String?) -> Void) {
-        print("👿save")
         DispatchQueue.global(qos: .background).async {
             guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
                 completion(nil)
-                print("✏️가드에 걸림")
                 return
             }
 
@@ -86,21 +76,21 @@ class DiaryViewModel {
     }
     
     func loadImageFromDocumentDirectory(fileName: String) -> UIImage? {
-        print("⭐️1")
         let fileURL = self.getDocumentDirectory().appendingPathComponent(fileName)
         do {
-            print("⭐️2")
             let imageData = try Data(contentsOf: fileURL)
             return UIImage(data: imageData)
         } catch {
-            
-            print("⭐️Error loading image : \(error)")
             return nil
         }
     }
 
     private func getDocumentDirectory() -> URL {
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    }
+    
+    func saveDiaryEntry(_ diaryEntry: Diary) {
+        repository.create(diary: diaryEntry)
     }
 
 }
