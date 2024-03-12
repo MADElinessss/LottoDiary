@@ -27,7 +27,7 @@
         <!--Store Map View Controller-->
         <scene sceneID="JYu-SW-xZ5">
             <objects>
-                <viewController id="IPS-bx-Vb1" customClass="StoreMapViewController" customModule="LottoDiary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StoreMapViewControllerID" id="IPS-bx-Vb1" customClass="StoreMapViewController" customModule="LottoDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xcx-6R-xRu" customClass="KMViewContainer">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

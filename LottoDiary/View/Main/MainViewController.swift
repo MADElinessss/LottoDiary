@@ -11,6 +11,7 @@ import UIKit
 final class MainViewController: BaseViewController {
 
     let tableView = UITableView()
+    let viewModel = MainViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +44,7 @@ final class MainViewController: BaseViewController {
         tableView.separatorStyle = .none
         
         configureNavigationBar(title: "로또 일기", leftBarButton: nil, rightBarButton: nil)
+    
     }
 }
 
@@ -63,12 +65,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as! MenuTableViewCell
-            cell.onItemTapped = {
-                     
-                let sb = UIStoryboard(name: "Main", bundle: nil)
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "StoreMapViewController") as! StoreMapViewController
-                print("--")
-                self.navigationController?.pushViewController(vc, animated: true)
+            cell.onItemTapped = { [weak self] itemIndex in
+                self?.navigateToViewController(for: itemIndex)
             }
             return cell
         } else {
@@ -120,6 +118,35 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(vc, animated: true)
         } else {
             
+        }
+    }
+    
+    func navigateToViewController(for index: Int) {
+        switch index {
+        case 0:
+            // 번호 생성기
+            print("number")
+            // let vc = NumberGeneratorViewController()
+            // navigationController?.pushViewController(vc, animated: true)
+        case 1:
+            // 나의 당첨내역
+            print("winning")
+            // let vc = WinningHistoryViewController()
+            // navigationController?.pushViewController(vc, animated: true)
+        case 2:
+            // 나의 번호 목록
+            let vc = MyNumberViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        case 3:
+            // 복권 판매점
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            if let storeMapVC = storyboard.instantiateViewController(withIdentifier: "StoreMapViewControllerID") as? StoreMapViewController {
+                navigationController?.pushViewController(storeMapVC, animated: true)
+            } else {
+                print("Failed to instantiate StoreMapViewController from storyboard")
+            }
+        default:
+            break
         }
     }
 }

@@ -16,12 +16,20 @@ class BaseMapViewController: UIViewController, MapControllerDelegate {
     var _auth: Bool
     var _appear: Bool
     
+    init() {
+        _observerAdded = false
+        _auth = false
+        _appear = false
+        super.init(nibName: nil, bundle: nil)
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         _observerAdded = false
         _auth = false
         _appear = false
         super.init(coder: aDecoder)
     }
+
     
     deinit {
         mapController?.stopRendering()
@@ -33,12 +41,19 @@ class BaseMapViewController: UIViewController, MapControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        mapContainer = self.view as? KMViewContainer
-        mapController = KMController(viewContainer: mapContainer!)
-        mapController!.delegate = self
-        mapController?.initEngine() // 엔진 초기화. 엔진 내부 객체 생성 및 초기화가 진행된다.
+        print("self.view is of type \(type(of: self.view))")
         
+        mapContainer = self.view as? KMViewContainer
+        if mapContainer != nil {
+            mapController = KMController(viewContainer: mapContainer!)
+            mapController!.delegate = self
+            mapController?.initEngine()
+        } else {
+            // 스토리보드 설정 문제로 mapContainer가 nil인 경우
+            print("KMViewContainer is not available. Please check the storyboard configuration.")
+        }
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         addObservers()

@@ -18,4 +18,6 @@ class MainViewModel {
             self.outputLotto.value = lotto
         }
     }
+    
+    
 }
