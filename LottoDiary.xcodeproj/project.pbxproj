@@ -159,9 +159,8 @@
 		C170087E2BA061A400008BE7 /* MyNumber */ = {
 			isa = PBXGroup;
 			children = (
+				C1E63AA82BA2E13A00707F53 /* NumberButtons */,
 				C170087F2BA061B000008BE7 /* MyNumberViewController.swift */,
-				C1E63AA42BA2BF1000707F53 /* NumberSelectionViewController.swift */,
-				C1E63AA62BA2BFBD00707F53 /* TextCell.swift */,
 			);
 			path = MyNumber;
 			sourceTree = "<group>";
@@ -265,6 +264,15 @@
 				C17008412B9DEA2D00008BE7 /* MenuCollectionViewCell.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		C1E63AA82BA2E13A00707F53 /* NumberButtons */ = {
+			isa = PBXGroup;
+			children = (
+				C1E63AA62BA2BFBD00707F53 /* TextCell.swift */,
+				C1E63AA42BA2BF1000707F53 /* NumberSelectionViewController.swift */,
+			);
+			path = NumberButtons;
 			sourceTree = "<group>";
 		};
 		C1F35CCD2B99A60700B32B4E /* Diary */ = {

@@ -27,14 +27,15 @@ class NumberSelectionViewController: UIViewController {
 extension NumberSelectionViewController {
     /// - Tag: Inset
     func createLayout() -> UICollectionViewLayout {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.125),
-                                              heightDimension: .fractionalHeight(1.0))
+        let itemWidth = (UIScreen.main.bounds.width) * 0.125
+        let itemSize = NSCollectionLayoutSize(widthDimension: .absolute(itemWidth),
+                                              heightDimension: .absolute(itemWidth))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 5, bottom: 10, trailing: 5)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
 
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                               heightDimension: .absolute(60))
+                                               heightDimension: .fractionalHeight(0.07))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
                                                          subitems: [item])
         
@@ -46,12 +47,14 @@ extension NumberSelectionViewController {
 }
 
 extension NumberSelectionViewController {
+    
     func configureHierarchy() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.backgroundColor = .systemBackground
         view.addSubview(collectionView)
     }
+    
     func configureDataSource() {
         let cellRegistration = UICollectionView.CellRegistration<TextCell, Int> { (cell, indexPath, identifier) in
             // Populate the cell with our item description.
@@ -61,7 +64,8 @@ extension NumberSelectionViewController {
             cell.contentView.backgroundColor = self.color(for: identifier)
             cell.label.textAlignment = .center
             cell.clipsToBounds = true
-            cell.layer.cornerRadius = 20
+            let itemWidth = (UIScreen.main.bounds.width) * 0.1
+            cell.layer.cornerRadius = itemWidth / 2
         }
         
         dataSource = UICollectionViewDiffableDataSource<Section, Int>(collectionView: collectionView) {

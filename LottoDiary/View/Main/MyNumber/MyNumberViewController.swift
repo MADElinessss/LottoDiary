@@ -11,16 +11,14 @@ import UIKit
 // TODO: UI 구현
 final class MyNumberViewController: BaseViewController {
     
-    let headerLabel = UILabel()
-    let stackView = UIStackView()
-    // let collectionView = UICollectionView()
+    let tableView = UITableView()
     
-    var no1: Int = 0
-    var no2: Int = 0
-    var no3: Int = 0
-    var no4: Int = 0
-    var no5: Int = 0
-    var no6: Int = 0
+//    var no1: Int = 0
+//    var no2: Int = 0
+//    var no3: Int = 0
+//    var no4: Int = 0
+//    var no5: Int = 0
+//    var no6: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,40 +26,28 @@ final class MyNumberViewController: BaseViewController {
     }
     
     override func configureHierarchy() {
-        view.addSubview(headerLabel)
-        view.addSubview(stackView)
+        view.addSubview(tableView)
     }
     
     override func configureLayout() {
-        headerLabel.snp.makeConstraints { make in
-            make.leading.equalTo(view.safeAreaLayoutGuide)
+        tableView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).inset(16)
-        }
-        stackView.snp.makeConstraints { make in
-            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
-            make.top.equalTo(view.safeAreaLayoutGuide).inset(44)
-            make.height.equalTo(30)
+            make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
     
     override func configureView() {
-        headerLabel.text = "번호 선택"
-        headerLabel.font = .systemFont(ofSize: 16, weight: .regular)
-        headerLabel.textColor = .black
+        let leftButton = createBarButtonItem(imageName: "chevron.left", action: #selector(leftButtonTapped))
+        let rightButton = createBarButtonItem(imageName: "ellipsis", action: #selector(rightButtonTapped))
+        configureNavigationBar(title: "Detail View", leftBarButton: leftButton, rightBarButton: rightButton)
+    }
+    
+    @objc func leftButtonTapped() {
         
-        stackView.distribution = .fillEqually
-        stackView.spacing = 12
+    }
+    
+    @objc func rightButtonTapped() {
         
-        
-        let drawNumbers = [no1, no2, no3, no4, no5, no6]
-        
-        for i in drawNumbers {
-            let buttonColor = color(for: i)
-            let button = NumberButton(backgroundColor: buttonColor, number: i)
-            stackView.addArrangedSubview(button)
-        }
-        
-        stackView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     private func color(for drawNumber: Int) -> UIColor {
