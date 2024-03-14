@@ -10,7 +10,7 @@ import SnapKit
 import RealmSwift
 import UIKit
 
-class AddDiaryViewController: BaseViewController, PHPickerViewControllerDelegate {
+final class AddDiaryViewController: BaseViewController, PHPickerViewControllerDelegate {
     
     let tableView = UITableView()
     let viewModel = DiaryViewModel()
@@ -98,16 +98,20 @@ class AddDiaryViewController: BaseViewController, PHPickerViewControllerDelegate
     }
     
     @objc func rightButtonTapped() {
-        guard let content = viewModel.diaryContent.value, let imageName = viewModel.selectedImage.value else {
+        guard let content = viewModel.diaryContent.value else {
             print("필수 항목이 누락되었습니다.")
             return
         }
         
-        let image = saveImageToDocumentDirectory(image: imageName) ?? ""
-        
         let newDiaryEntry = Diary()
         newDiaryEntry.content = content
-        newDiaryEntry.imageName = image
+        
+        // MARK: 이미지 있을 때
+        if let imageName = viewModel.selectedImage.value {
+            let image = saveImageToDocumentDirectory(image: imageName) ?? ""
+            newDiaryEntry.imageName = image
+        }
+
         newDiaryEntry.date = Date()
         
         if let tag = selectedTag {
@@ -127,7 +131,7 @@ class AddDiaryViewController: BaseViewController, PHPickerViewControllerDelegate
         view.endEditing(true)
     }
     
-    func saveImageToDocumentDirectory(image: UIImage) -> String? {
+    private func saveImageToDocumentDirectory(image: UIImage) -> String? {
         let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
         let fileName = UUID().uuidString + ".jpg"
         let fileURL = documentDirectory?.appendingPathComponent(fileName)

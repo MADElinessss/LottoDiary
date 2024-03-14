@@ -8,7 +8,7 @@
 import SnapKit
 import UIKit
 
-class AddImageTableViewCell: UITableViewCell {
+final class AddImageTableViewCell: UITableViewCell {
     
     let customImageView = UIImageView()
     let titleLabel = UILabel()

@@ -10,7 +10,7 @@ import UIKit
 import Vision
 import WebKit
 
-class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+final class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
@@ -71,7 +71,7 @@ extension QRCodeViewController {
     }
 }
 
-class QRCodeWebViewController: UIViewController, WKNavigationDelegate {
+final class QRCodeWebViewController: UIViewController, WKNavigationDelegate {
     var webView: WKWebView!
     var url: String = ""
     

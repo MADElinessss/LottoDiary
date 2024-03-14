@@ -104,7 +104,7 @@ final class MyLottoTableViewCell: UITableViewCell {
         case 41...45:
             return UIColor(named: "lotteryGreen") ?? .green
         default:
-            return .black // 기본값으로 검정색 사용
+            return .lightGray
         }
     }
     

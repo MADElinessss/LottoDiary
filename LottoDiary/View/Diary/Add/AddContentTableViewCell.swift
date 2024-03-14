@@ -8,7 +8,7 @@
 import SnapKit
 import UIKit
 
-class AddContentTableViewCell: UITableViewCell {
+final class AddContentTableViewCell: UITableViewCell {
     
     let textViewPlaceHolder = "오늘은 어떤 일이 있었나요?"
     let remainCountLabel = UILabel()
@@ -24,7 +24,7 @@ class AddContentTableViewCell: UITableViewCell {
         //textView.becomeFirstResponder()
     }
     
-    func configureView() {
+    private func configureView() {
         
         contentView.backgroundColor = .white
         

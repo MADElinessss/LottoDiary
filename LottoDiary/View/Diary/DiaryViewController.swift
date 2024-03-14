@@ -9,7 +9,7 @@
 import SnapKit
 import UIKit
 
-class DiaryViewController: BaseViewController {
+final class DiaryViewController: BaseViewController {
     
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
     let floatingActionButton = UIButton()
@@ -40,7 +40,7 @@ class DiaryViewController: BaseViewController {
         setupFloatingActionButton()
     }
 
-    func updateSnapshot() {
+    private func updateSnapshot() {
         var snapshot = NSDiffableDataSourceSnapshot<Int, Diary>()
         snapshot.appendSections([1,2])
         snapshot.appendItems(viewModel.outputDiary.value, toSection: 1)

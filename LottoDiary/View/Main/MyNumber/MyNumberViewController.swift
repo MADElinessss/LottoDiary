@@ -9,7 +9,7 @@ import SnapKit
 import UIKit
 
 // TODO: UI 구현
-class MyNumberViewController: BaseViewController {
+final class MyNumberViewController: BaseViewController {
     
     let headerLabel = UILabel()
     let stackView = UIStackView()

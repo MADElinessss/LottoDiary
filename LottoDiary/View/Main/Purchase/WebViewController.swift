@@ -9,7 +9,7 @@ import SnapKit
 import UIKit
 import WebKit
 
-class WebViewController: UIViewController, WKNavigationDelegate {
+final class WebViewController: UIViewController, WKNavigationDelegate {
 
     var webView: WKWebView!
     
@@ -20,7 +20,7 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         setupNavigationBar()
     }
     
-    func setupWebView() {
+    private func setupWebView() {
         webView = WKWebView()
         webView.navigationDelegate = self
         view.addSubview(webView)
@@ -30,13 +30,13 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         }
     }
     
-    func loadURL() {
+    private func loadURL() {
         guard let url = URL(string: "https://www.dhlottery.co.kr/") else { return }
         let request = URLRequest(url: url)
         webView.load(request)
     }
     
-    func setupNavigationBar() {
+    private func setupNavigationBar() {
         navigationItem.title = "로또 구매하기"
         
         let backButton = UIBarButtonItem(title: "뒤로", style: .plain, target: self, action: #selector(backTapped))

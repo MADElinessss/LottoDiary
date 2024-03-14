@@ -8,7 +8,7 @@
 import SnapKit
 import UIKit
 
-class DiaryCollectionViewCell: UICollectionViewCell {
+final class DiaryCollectionViewCell: UICollectionViewCell {
     
     let tagLabel = UILabel()
     let contentLabel = UILabel()

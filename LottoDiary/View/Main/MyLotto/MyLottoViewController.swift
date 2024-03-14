@@ -8,7 +8,7 @@
 import SnapKit
 import UIKit
 
-class MyLottoViewController: BaseViewController {
+final class MyLottoViewController: BaseViewController {
 
     let tableView = UITableView()
     

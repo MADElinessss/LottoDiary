@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddWishTagViewController: BaseViewController {
+final class AddWishTagViewController: BaseViewController {
     
     let headerLabel = UILabel()
     let stackView = UIStackView()
