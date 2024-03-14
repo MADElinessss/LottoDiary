@@ -35,6 +35,9 @@
 		C1E63AA52BA2BF1000707F53 /* NumberSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E63AA42BA2BF1000707F53 /* NumberSelectionView.swift */; };
 		C1E63AA72BA2BFBD00707F53 /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E63AA62BA2BFBD00707F53 /* TextCell.swift */; };
 		C1E63AAA2BA2EA0700707F53 /* MyNumberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E63AA92BA2EA0700707F53 /* MyNumberTableViewCell.swift */; };
+		C1E63AAD2BA2F77000707F53 /* RandomNumberMakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E63AAC2BA2F77000707F53 /* RandomNumberMakerViewController.swift */; };
+		C1E63AB02BA2F80F00707F53 /* CollectionViewPagingLayout in Frameworks */ = {isa = PBXBuildFile; productRef = C1E63AAF2BA2F80F00707F53 /* CollectionViewPagingLayout */; };
+		C1E63AB22BA2F82F00707F53 /* RandomNumberMakerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E63AB12BA2F82F00707F53 /* RandomNumberMakerCollectionViewCell.swift */; };
 		C1F35CD12B99A62100B32B4E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F35CD02B99A62100B32B4E /* SettingViewController.swift */; };
 		C1F35CD32B99A63300B32B4E /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F35CD22B99A63300B32B4E /* ChartViewController.swift */; };
 		C1F35CD52B99A63900B32B4E /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F35CD42B99A63900B32B4E /* DiaryViewController.swift */; };
@@ -83,6 +86,8 @@
 		C1E63AA42BA2BF1000707F53 /* NumberSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberSelectionView.swift; sourceTree = "<group>"; };
 		C1E63AA62BA2BFBD00707F53 /* TextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
 		C1E63AA92BA2EA0700707F53 /* MyNumberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNumberTableViewCell.swift; sourceTree = "<group>"; };
+		C1E63AAC2BA2F77000707F53 /* RandomNumberMakerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNumberMakerViewController.swift; sourceTree = "<group>"; };
+		C1E63AB12BA2F82F00707F53 /* RandomNumberMakerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNumberMakerCollectionViewCell.swift; sourceTree = "<group>"; };
 		C1F35CD02B99A62100B32B4E /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		C1F35CD22B99A63300B32B4E /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		C1F35CD42B99A63900B32B4E /* DiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +112,7 @@
 				C170087B2BA029BC00008BE7 /* KakaoMapsSDK_SPM in Frameworks */,
 				C1F35CDF2B99B6FE00B32B4E /* SnapKit in Frameworks */,
 				C1F35CE22B99B70800B32B4E /* Alamofire in Frameworks */,
+				C1E63AB02BA2F80F00707F53 /* CollectionViewPagingLayout in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,6 +263,7 @@
 		C18567CE2B999F7500864754 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				C1E63AAB2BA2F75200707F53 /* RandomNumberMaker */,
 				C170087E2BA061A400008BE7 /* MyNumber */,
 				C17008742BA0278C00008BE7 /* Map */,
 				C17008482B9E919D00008BE7 /* Purchase */,
@@ -276,6 +283,15 @@
 				C1E63AA42BA2BF1000707F53 /* NumberSelectionView.swift */,
 			);
 			path = NumberButtons;
+			sourceTree = "<group>";
+		};
+		C1E63AAB2BA2F75200707F53 /* RandomNumberMaker */ = {
+			isa = PBXGroup;
+			children = (
+				C1E63AAC2BA2F77000707F53 /* RandomNumberMakerViewController.swift */,
+				C1E63AB12BA2F82F00707F53 /* RandomNumberMakerCollectionViewCell.swift */,
+			);
+			path = RandomNumberMaker;
 			sourceTree = "<group>";
 		};
 		C1F35CCD2B99A60700B32B4E /* Diary */ = {
@@ -334,6 +350,7 @@
 				C1F35CE42B99B73000B32B4E /* Realm */,
 				C1F35CE62B99B73000B32B4E /* RealmSwift */,
 				C170087A2BA029BC00008BE7 /* KakaoMapsSDK_SPM */,
+				C1E63AAF2BA2F80F00707F53 /* CollectionViewPagingLayout */,
 			);
 			productName = LottoDiary;
 			productReference = C18567B02B998DFD00864754 /* LottoDiary.app */;
@@ -368,6 +385,7 @@
 				C1F35CE02B99B70800B32B4E /* XCRemoteSwiftPackageReference "Alamofire" */,
 				C1F35CE32B99B73000B32B4E /* XCRemoteSwiftPackageReference "realm-swift" */,
 				C17008792BA029BC00008BE7 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */,
+				C1E63AAE2BA2F80F00707F53 /* XCRemoteSwiftPackageReference "CollectionViewPagingLayout" */,
 			);
 			productRefGroup = C18567B12B998DFD00864754 /* Products */;
 			projectDirPath = "";
@@ -422,6 +440,8 @@
 				C17008782BA028FD00008BE7 /* APIKey.swift in Sources */,
 				C1E63AA52BA2BF1000707F53 /* NumberSelectionView.swift in Sources */,
 				C17008562B9EEAFB00008BE7 /* RealmRepository.swift in Sources */,
+				C1E63AAD2BA2F77000707F53 /* RandomNumberMakerViewController.swift in Sources */,
+				C1E63AB22BA2F82F00707F53 /* RandomNumberMakerCollectionViewCell.swift in Sources */,
 				C1F35CE92B99B86000B32B4E /* MyLottoTableViewCell.swift in Sources */,
 				C170084F2B9ED4E900008BE7 /* AddDiaryViewController.swift in Sources */,
 				C17008822BA06A6C00008BE7 /* AddWishTagViewController.swift in Sources */,
@@ -678,6 +698,14 @@
 				minimumVersion = 2.9.2;
 			};
 		};
+		C1E63AAE2BA2F80F00707F53 /* XCRemoteSwiftPackageReference "CollectionViewPagingLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/amirdew/CollectionViewPagingLayout.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
 		C1F35CDD2B99B6FE00B32B4E /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -709,6 +737,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C17008792BA029BC00008BE7 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */;
 			productName = KakaoMapsSDK_SPM;
+		};
+		C1E63AAF2BA2F80F00707F53 /* CollectionViewPagingLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C1E63AAE2BA2F80F00707F53 /* XCRemoteSwiftPackageReference "CollectionViewPagingLayout" */;
+			productName = CollectionViewPagingLayout;
 		};
 		C1F35CDE2B99B6FE00B32B4E /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;

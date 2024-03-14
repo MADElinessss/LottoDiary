@@ -125,9 +125,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         switch index {
         case 0:
             // 번호 생성기
-            print("number")
-            // let vc = NumberGeneratorViewController()
-            // navigationController?.pushViewController(vc, animated: true)
+             let vc = RandomNumberMakerViewController()
+             navigationController?.pushViewController(vc, animated: true)
         case 1:
             // 나의 당첨내역
             print("winning")

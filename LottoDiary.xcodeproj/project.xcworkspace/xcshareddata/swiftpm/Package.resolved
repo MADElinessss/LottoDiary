@@ -1,5 +1,5 @@
 {
-  "originHash" : "6a1512b33dca234d5c27cb623322369aec49314d9efcc1080e36e50e36abeb0b",
+  "originHash" : "2b8c58bb01791b2be9d7f53e2139d67ff58616f81ed7a622fbc44fff17cb13ce",
   "pins" : [
     {
       "identity" : "alamofire",
@@ -8,6 +8,15 @@
       "state" : {
         "revision" : "723fa5a6c65812aec4a0d7cc432ee198883b6e00",
         "version" : "5.9.0"
+      }
+    },
+    {
+      "identity" : "collectionviewpaginglayout",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/amirdew/CollectionViewPagingLayout.git",
+      "state" : {
+        "revision" : "4bdec327535470c8d9765d190625b13e99b87db5",
+        "version" : "1.1.0"
       }
     },
     {

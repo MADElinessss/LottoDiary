@@ -89,4 +89,29 @@ class FormatterManager {
 
         return formattedString.trimmingCharacters(in: .whitespaces) + " 원"
     }
+
+    // MARK: 로또 회차 계산
+    func findLottoDrawNumber(referenceDate: Date = Date(), referenceDrawNumber: Int = 1110, referenceDrawDate: String = "2024-03-09") -> Int? {
+        // referenceDate: 현재 날짜
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.timeZone = TimeZone(identifier: "Asia/Seoul")
+        
+        // referenceDrawDate: 1110회 기준 회차
+        guard let referenceDrawDate = dateFormatter.date(from: referenceDrawDate) else {
+            return nil
+        }
+        
+        let calendar = Calendar(identifier: .gregorian)
+        // components = 기준회차날짜와 현재날짜의 차이
+        let components = calendar.dateComponents([.weekOfYear], from: referenceDrawDate, to: referenceDate)
+        
+        guard let weeksBetween = components.weekOfYear else {
+            return nil
+        }
+        
+        let currentDrawNumber = referenceDrawNumber + weeksBetween
+        return currentDrawNumber
+    }
+
 }
