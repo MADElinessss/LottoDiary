@@ -84,7 +84,7 @@ final class DiaryViewController: BaseViewController {
         collectionView.snp.makeConstraints { make in
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
             make.bottom.equalTo(view.safeAreaLayoutGuide)
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(44)
+            make.top.equalTo(view.safeAreaLayoutGuide)
         }
         collectionView.backgroundColor = .background
     }

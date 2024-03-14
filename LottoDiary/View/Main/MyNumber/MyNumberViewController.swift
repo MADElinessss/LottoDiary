@@ -31,23 +31,27 @@ final class MyNumberViewController: BaseViewController {
     
     override func configureLayout() {
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.top.equalTo(view.safeAreaLayoutGuide)
             make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
     
     override func configureView() {
         let leftButton = createBarButtonItem(imageName: "chevron.left", action: #selector(leftButtonTapped))
-        let rightButton = createBarButtonItem(imageName: "ellipsis", action: #selector(rightButtonTapped))
-        configureNavigationBar(title: "Detail View", leftBarButton: leftButton, rightBarButton: rightButton)
+        let rightButton = UIBarButtonItem(title: "저장", style: .done, target: self, action: #selector(rightButtonTapped))
+        configureNavigationBar(title: "나의 번호 편집", leftBarButton: leftButton, rightBarButton: rightButton)
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(MyNumberTableViewCell.self, forCellReuseIdentifier: "MyNumberTableViewCell")
     }
     
     @objc func leftButtonTapped() {
-        
+        navigationController?.popViewController(animated: true)
     }
     
     @objc func rightButtonTapped() {
-        
+        // TODO: Realm 저장
     }
     
     private func color(for drawNumber: Int) -> UIColor {
@@ -66,4 +70,31 @@ final class MyNumberViewController: BaseViewController {
             return .gray // 기본값으로 검정색 사용
         }
     }
+}
+
+extension MyNumberViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 500
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        if indexPath.section == 0 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "MyNumberTableViewCell", for: indexPath) as! MyNumberTableViewCell
+//            
+//            return cell
+//        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MyNumberTableViewCell", for: indexPath) as! MyNumberTableViewCell
+        
+        return cell
+    }
+    
+    
 }

@@ -5,9 +5,10 @@
 //  Created by Madeline on 3/14/24.
 //
 
+import SnapKit
 import UIKit
 
-class NumberSelectionViewController: UIViewController {
+class NumberSelectionView: UIView {
     
     enum Section {
         case main
@@ -15,16 +16,21 @@ class NumberSelectionViewController: UIViewController {
     
     var dataSource: UICollectionViewDiffableDataSource<Section, Int>! = nil
     var collectionView: UICollectionView! = nil
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        backgroundColor = .orange
         configureHierarchy()
         configureDataSource()
     }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 
-extension NumberSelectionViewController {
+extension NumberSelectionView {
     /// - Tag: Inset
     func createLayout() -> UICollectionViewLayout {
         let itemWidth = (UIScreen.main.bounds.width) * 0.125
@@ -46,13 +52,13 @@ extension NumberSelectionViewController {
     }
 }
 
-extension NumberSelectionViewController {
+extension NumberSelectionView {
     
     func configureHierarchy() {
-        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
+        collectionView = UICollectionView(frame: bounds, collectionViewLayout: createLayout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.backgroundColor = .systemBackground
-        view.addSubview(collectionView)
+        addSubview(collectionView)
     }
     
     func configureDataSource() {
