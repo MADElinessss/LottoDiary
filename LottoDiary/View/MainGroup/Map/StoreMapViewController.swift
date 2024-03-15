@@ -9,23 +9,53 @@ import CoreLocation
 import KakaoMapsSDK
 import UIKit
 
-class StoreMapViewController: BaseMapViewController {
-
-    override func addViews() {
-        let defaultPosition: MapPoint = MapPoint(longitude: 127.2050543, latitude: 37.2911436)
-        let mapviewInfo: MapviewInfo = MapviewInfo(viewName: "mapview", viewInfoName: "map", defaultPosition: defaultPosition)
+class StoreMapViewController: BaseMapViewController, CLLocationManagerDelegate {
+    
+    var locationManager: CLLocationManager!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
         
-        mapController?.addView(mapviewInfo)
+        // 현위치 버튼 추가
+        addCurrentLocationButton()
     }
     
-    //addView 성공 이벤트 delegate. 추가적으로 수행할 작업을 진행한다.
-    override func addViewSucceeded(_ viewName: String, viewInfoName: String) {
-        print("OK") //추가 성공. 성공시 추가적으로 수행할 작업을 진행한다.
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            locationManager.startUpdatingLocation()
+        }
     }
-
-    //addView 실패 이벤트 delegate. 실패에 대한 오류 처리를 진행한다.
-    override func addViewFailed(_ viewName: String, viewInfoName: String) {
-        print("Failed")
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            let mapPoint = MapPoint(longitude: location.coordinate.longitude, latitude: location.coordinate.latitude)
+            if let mapView = self.mapController?.getView("mapview") as? KakaoMap {
+                let cameraUpdate = CameraUpdate.make(target: mapPoint, zoomLevel: mapView.zoomLevel, mapView: mapView)
+                mapView.moveCamera(cameraUpdate)
+            }
+        }
+    }
+    
+    func addCurrentLocationButton() {
+        let button = UIButton(frame: CGRect(x: 20, y: view.frame.size.height - 100, width: 50, height: 50))
+        button.setImage(UIImage(named: "your_location_button_image"), for: .normal) // 'your_location_button_image'를 현위치 버튼 이미지로 설정하세요.
+        button.addTarget(self, action: #selector(moveToCurrentLocation), for: .touchUpInside)
+        view.addSubview(button)
+    }
+    
+    @objc func moveToCurrentLocation() {
+        if let location = locationManager.location {
+            let mapPoint = MapPoint(longitude: location.coordinate.longitude, latitude: location.coordinate.latitude)
+            if let mapView = self.mapController?.getView("mapview") as? KakaoMap {
+                let cameraUpdate = CameraUpdate.make(target: mapPoint, zoomLevel: mapView.zoomLevel, mapView: mapView)
+                mapView.moveCamera(cameraUpdate)
+            }
+        }
     }
 }
