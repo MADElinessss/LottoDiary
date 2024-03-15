@@ -11,7 +11,7 @@ import UIKit
 class StoreMapViewController: BaseMapViewController {
 
     override func addViews() {
-        let defaultPosition: MapPoint = MapPoint(longitude: 126.978365, latitude: 37.566691)
+        let defaultPosition: MapPoint = MapPoint(longitude: 127.12481368747665, latitude: 37.54215842628883)
         let mapviewInfo: MapviewInfo = MapviewInfo(viewName: "mapview", viewInfoName: "map", defaultPosition: defaultPosition)
         
         mapController?.addView(mapviewInfo)

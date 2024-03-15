@@ -38,6 +38,7 @@
 		C1E63AAD2BA2F77000707F53 /* RandomNumberMakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E63AAC2BA2F77000707F53 /* RandomNumberMakerViewController.swift */; };
 		C1E63AB02BA2F80F00707F53 /* CollectionViewPagingLayout in Frameworks */ = {isa = PBXBuildFile; productRef = C1E63AAF2BA2F80F00707F53 /* CollectionViewPagingLayout */; };
 		C1E63AB22BA2F82F00707F53 /* RandomNumberMakerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E63AB12BA2F82F00707F53 /* RandomNumberMakerCollectionViewCell.swift */; };
+		C1E63AC82BA4434E00707F53 /* MainTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E63AC72BA4434E00707F53 /* MainTableView.swift */; };
 		C1F35CD12B99A62100B32B4E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F35CD02B99A62100B32B4E /* SettingViewController.swift */; };
 		C1F35CD32B99A63300B32B4E /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F35CD22B99A63300B32B4E /* ChartViewController.swift */; };
 		C1F35CD52B99A63900B32B4E /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F35CD42B99A63900B32B4E /* DiaryViewController.swift */; };
@@ -88,6 +89,7 @@
 		C1E63AA92BA2EA0700707F53 /* MyNumberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNumberTableViewCell.swift; sourceTree = "<group>"; };
 		C1E63AAC2BA2F77000707F53 /* RandomNumberMakerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNumberMakerViewController.swift; sourceTree = "<group>"; };
 		C1E63AB12BA2F82F00707F53 /* RandomNumberMakerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNumberMakerCollectionViewCell.swift; sourceTree = "<group>"; };
+		C1E63AC72BA4434E00707F53 /* MainTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainTableView.swift; path = ../../../../../Documents/MainTableView.swift; sourceTree = "<group>"; };
 		C1F35CD02B99A62100B32B4E /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		C1F35CD22B99A63300B32B4E /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		C1F35CD42B99A63900B32B4E /* DiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
@@ -216,7 +218,7 @@
 				C1F35CCF2B99A61400B32B4E /* Setting */,
 				C1F35CCE2B99A60E00B32B4E /* Chart */,
 				C1F35CCD2B99A60700B32B4E /* Diary */,
-				C18567CE2B999F7500864754 /* Main */,
+				C18567CE2B999F7500864754 /* MainGroup */,
 				C18567CD2B999F7000864754 /* Base */,
 			);
 			path = View;
@@ -260,20 +262,17 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		C18567CE2B999F7500864754 /* Main */ = {
+		C18567CE2B999F7500864754 /* MainGroup */ = {
 			isa = PBXGroup;
 			children = (
+				C1E63AC62BA4433C00707F53 /* Main */,
 				C1E63AAB2BA2F75200707F53 /* RandomNumberMaker */,
 				C170087E2BA061A400008BE7 /* MyNumber */,
 				C17008742BA0278C00008BE7 /* Map */,
 				C17008482B9E919D00008BE7 /* Purchase */,
 				C17008452B9E177800008BE7 /* MyLotto */,
-				C1F35CD62B99A64000B32B4E /* MainViewController.swift */,
-				C1F35CE82B99B86000B32B4E /* MyLottoTableViewCell.swift */,
-				C170083F2B9DE99A00008BE7 /* MenuTableViewCell.swift */,
-				C17008412B9DEA2D00008BE7 /* MenuCollectionViewCell.swift */,
 			);
-			path = Main;
+			path = MainGroup;
 			sourceTree = "<group>";
 		};
 		C1E63AA82BA2E13A00707F53 /* NumberButtons */ = {
@@ -292,6 +291,18 @@
 				C1E63AB12BA2F82F00707F53 /* RandomNumberMakerCollectionViewCell.swift */,
 			);
 			path = RandomNumberMaker;
+			sourceTree = "<group>";
+		};
+		C1E63AC62BA4433C00707F53 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				C1F35CD62B99A64000B32B4E /* MainViewController.swift */,
+				C1F35CE82B99B86000B32B4E /* MyLottoTableViewCell.swift */,
+				C170083F2B9DE99A00008BE7 /* MenuTableViewCell.swift */,
+				C17008412B9DEA2D00008BE7 /* MenuCollectionViewCell.swift */,
+				C1E63AC72BA4434E00707F53 /* MainTableView.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		C1F35CCD2B99A60700B32B4E /* Diary */ = {
@@ -415,6 +426,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1E63AC82BA4434E00707F53 /* MainTableView.swift in Sources */,
 				C170085B2B9EF0B900008BE7 /* DiaryViewModel.swift in Sources */,
 				C1F35CED2B99EF3F00B32B4E /* APIManager.swift in Sources */,
 				C1E63AA72BA2BFBD00707F53 /* TextCell.swift in Sources */,

@@ -10,8 +10,8 @@ import UIKit
 
 final class MainViewController: BaseViewController {
 
-    let tableView = UITableView()
-    let viewModel = MainViewModel()
+    private var tableView: MainTableView!
+    private let viewModel = MainViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +23,7 @@ final class MainViewController: BaseViewController {
     }
     
     override func configureHierarchy() {
+        tableView = MainTableView(frame: .zero, style: .plain)
         view.addSubview(tableView)
     }
     
@@ -37,11 +38,6 @@ final class MainViewController: BaseViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.backgroundColor = .background
-        tableView.register(MyLottoTableViewCell.self, forCellReuseIdentifier: "MyLottoTableViewCell")
-        tableView.register(MenuTableViewCell.self, forCellReuseIdentifier: "MenuTableViewCell")
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
-        tableView.separatorStyle = .none
         
         configureNavigationBar(title: "로또 일기", leftBarButton: nil, rightBarButton: nil)
     
