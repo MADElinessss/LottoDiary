@@ -38,7 +38,7 @@ class FormatterManager {
         formatter.dateFormat = "yyyyMMddHHmmss"
         return formatter.string(from: date)
     }
-
+    
     
     // MARK: "yyyy.MM.dd" String -> String
     func drawDateFormat(date: String) -> String {
@@ -74,9 +74,9 @@ class FormatterManager {
         let billion = amount / 100000000
         let million = (amount % 100000000) / 10000
         let remainder = amount % 10000
-
+        
         var formattedString = ""
-
+        
         if billion > 0 {
             formattedString += "\(billion)억 "
         }
@@ -86,32 +86,31 @@ class FormatterManager {
         if remainder > 0 {
             formattedString += "\(numberDecimal(Double(remainder)))"
         }
-
+        
         return formattedString.trimmingCharacters(in: .whitespaces) + " 원"
     }
-
+    
     // MARK: 로또 회차 계산
     func findLottoDrawNumber(referenceDate: Date = Date(), referenceDrawNumber: Int = 1110, referenceDrawDate: String = "2024-03-09") -> Int? {
-        // referenceDate: 현재 날짜
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
         dateFormatter.timeZone = TimeZone(identifier: "Asia/Seoul")
         
-        // referenceDrawDate: 1110회 기준 회차
-        guard let referenceDrawDate = dateFormatter.date(from: referenceDrawDate) else {
+        guard let referenceDrawDateTime = dateFormatter.date(from: "\(referenceDrawDate) 21:00") else {
             return nil
         }
         
         let calendar = Calendar(identifier: .gregorian)
-        // components = 기준회차날짜와 현재날짜의 차이
-        let components = calendar.dateComponents([.weekOfYear], from: referenceDrawDate, to: referenceDate)
+        let components = calendar.dateComponents([.day, .hour], from: referenceDrawDateTime, to: referenceDate)
         
-        guard let weeksBetween = components.weekOfYear else {
+        guard let daysBetween = components.day, let hoursBetween = components.hour else {
             return nil
         }
+        
+        let totalHours = daysBetween * 24 + hoursBetween
+        let weeksBetween = totalHours / 168
         
         let currentDrawNumber = referenceDrawNumber + weeksBetween
         return currentDrawNumber
     }
-
 }
