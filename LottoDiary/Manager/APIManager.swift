@@ -25,4 +25,28 @@ struct APIManager {
             }
         }
     }
+    
+    func kakaoMapCallRequest(areaX: Double, areaY: Double) {
+        let url = "https://dapi.kakao.com/v2/local/search/keyword.json"
+        
+        let headers : HTTPHeaders = [
+            "Authorization": "KakaoAK \(APIKey.kakaoReactAppKey)"
+        ]
+        
+        let parameters: Parameters = [
+            "query": "카카오프렌즈",
+            "y": areaY,
+            "x": areaX,
+            "radius": 20000
+        ]
+        
+        AF.request(url, method: .get, parameters: parameters, headers: headers).responseDecodable(of: SearchResult.self) { response in
+            switch response.result {
+            case .success(let success):
+                print("❣️", success)
+            case .failure(let failure):
+                print("❣️", failure)
+            }
+        }
+    }
 }
