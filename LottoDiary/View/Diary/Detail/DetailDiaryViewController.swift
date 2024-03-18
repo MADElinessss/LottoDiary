@@ -310,7 +310,7 @@ extension DetailDiaryViewController: UITableViewDelegate, UITableViewDataSource 
                     self?.viewModel.repository.delete(diaryId: diaryId)
                     self?.navigationController?.popViewController(animated: true)
                 } else {
-                    print("Error: Diary ID is unavailable.")
+                    print("ID Error")
                 }
             }))
             alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))

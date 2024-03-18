@@ -21,7 +21,7 @@ final class AddContentTableViewCell: UITableViewCell {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
         
         configureView()
-        //textView.becomeFirstResponder()
+        // textView.becomeFirstResponder()
     }
     
     private func configureView() {
@@ -56,9 +56,9 @@ final class AddContentTableViewCell: UITableViewCell {
         textView.textAlignment = .left
         textView.font = .systemFont(ofSize: 18, weight: .regular)
         textView.delegate = self
-        textView.textColor = .black
+        textView.textColor = .lightGray
         
-        remainCountLabel.textColor = .black
+        // remainCountLabel.textColor = .black
         remainCountLabel.text = "0/500"
         remainCountLabel.font = .systemFont(ofSize: 14)
         remainCountLabel.textColor = .lightGray
