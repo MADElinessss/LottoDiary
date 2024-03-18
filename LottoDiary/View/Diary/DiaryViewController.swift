@@ -48,6 +48,7 @@ final class DiaryViewController: BaseViewController {
     }
     
     private func makeCellRegistration() {
+        collectionView.delegate = self
         collectionView.register(DiaryCollectionViewCell.self, forCellWithReuseIdentifier: "DiaryCell")
 
         dataSource = UICollectionViewDiffableDataSource<Int, Diary>(collectionView: collectionView, cellProvider: { collectionView, indexPath, diary in
@@ -119,6 +120,20 @@ final class DiaryViewController: BaseViewController {
     
     @objc func rightButtonTapped() {
         // TODO: 정렬
+        
+    }
+}
+
+extension DiaryViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        print("🫥")
+        let vc = DetailDiaryViewController()
+        
+        // TODO: 선택한 일기에 대한 데이터 전달
+        
+        navigationController?.pushViewController(vc, animated: true)
+        
         
     }
 }

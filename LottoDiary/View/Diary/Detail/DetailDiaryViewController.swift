@@ -1,8 +1,8 @@
 //
-//  AddDiaryViewController.swift
+//  DetailDiaryViewController.swift
 //  LottoDiary
 //
-//  Created by Madeline on 3/11/24.
+//  Created by Madeline on 3/18/24.
 //
 
 import PhotosUI
@@ -10,17 +10,17 @@ import SnapKit
 import RealmSwift
 import UIKit
 
-final class AddDiaryViewController: BaseViewController {
+final class DetailDiaryViewController: BaseViewController {
     
     let tableView = UITableView()
     let viewModel = DiaryViewModel()
     
     var selectedTag: String?
     var selectedColorName: String?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         viewModel.selectedImage.bind { [weak self] _ in
             self?.tableView.reloadData()
         }
@@ -30,8 +30,6 @@ final class AddDiaryViewController: BaseViewController {
         }
         
         viewModel.fetchDiaries()
-        
-        print("## realm file dir -> \(Realm.Configuration.defaultConfiguration.fileURL!)")
     }
     
     override func configureHierarchy() {
@@ -44,7 +42,7 @@ final class AddDiaryViewController: BaseViewController {
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(8)
         }
     }
-        
+    
     override func configureView() {
         
         tableView.delegate = self
@@ -56,12 +54,13 @@ final class AddDiaryViewController: BaseViewController {
         tableView.register(AddContentTableViewCell.self, forCellReuseIdentifier: "AddContentTableViewCell")
         tableView.register(AddImageTableViewCell.self, forCellReuseIdentifier: "AddImageTableViewCell")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "AddLottoTableViewCell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DeleteLottoTableViewCell")
         
         let leftButton = createBarButtonItem(imageName: "chevron.left", action: #selector(leftButtonTapped))
         let rightButton = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(rightButtonTapped))
         rightButton.tintColor = .pointSymbol
         
-        configureNavigationBar(title: "일기 작성", leftBarButton: leftButton, rightBarButton: rightButton)
+        configureNavigationBar(title: "로또 일기 편집", leftBarButton: leftButton, rightBarButton: rightButton)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tapGesture.cancelsTouchesInView = false
@@ -124,7 +123,7 @@ final class AddDiaryViewController: BaseViewController {
         if let imageData = image.jpegData(compressionQuality: 1.0), let url = fileURL {
             do {
                 try imageData.write(to: url)
-                return fileName // 저장된 이미지의 파일 이름 반환
+                return fileName
             } catch {
                 print("Error saving image: \(error)")
                 return nil
@@ -132,11 +131,9 @@ final class AddDiaryViewController: BaseViewController {
         }
         return nil
     }
-
 }
 
-extension AddDiaryViewController: PHPickerViewControllerDelegate {
-    
+extension DetailDiaryViewController: PHPickerViewControllerDelegate {
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         dismiss(animated: true)
         guard let result = results.first else { return }
@@ -144,18 +141,17 @@ extension AddDiaryViewController: PHPickerViewControllerDelegate {
         result.itemProvider.loadObject(ofClass: UIImage.self) { [weak self] (image, error) in
             DispatchQueue.main.async {
                 if let image = image as? UIImage {
-                    // self?.selectedImage = image
                     self?.viewModel.selectedImage.value = image
                 }
             }
         }
     }
-    
 }
-extension AddDiaryViewController: UITableViewDelegate, UITableViewDataSource {
+
+extension DetailDiaryViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 5
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -193,17 +189,27 @@ extension AddDiaryViewController: UITableViewDelegate, UITableViewDataSource {
             cell.layer.cornerRadius = 15
             cell.selectionStyle = .none
             return cell
-        } else {
+        } else if indexPath.section == 3 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddLottoTableViewCell", for: indexPath)
             
+            cell.textLabel?.text = "소원 태그"
+            cell.textLabel?.textColor = .black
+            cell.textLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
+            
             if let tag = selectedTag, let colorName = selectedColorName {
-                cell.textLabel?.text = "#\(tag)"
-                cell.textLabel?.textColor = UIColor(named: colorName) ?? .black
-            } else {
-                cell.textLabel?.text = "소원 태그"
-                cell.textLabel?.textColor = .lightGray
+                cell.detailTextLabel?.text = "#\(tag)"
+                cell.detailTextLabel?.textColor = UIColor(named: colorName) ?? .black
             }
             
+            cell.clipsToBounds = true
+            cell.layer.cornerRadius = 15
+            cell.selectionStyle = .none
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DeleteLottoTableViewCell", for: indexPath)
+            
+            cell.textLabel?.text = "일기 삭제"
+            cell.textLabel?.textColor = .red
             cell.textLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
             cell.clipsToBounds = true
             cell.layer.cornerRadius = 15
@@ -214,7 +220,7 @@ extension AddDiaryViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 380
+            return 150
         } else if indexPath.section == 1 {
             return viewModel.selectedImage.value == nil ? 60 : 270
         } else {
@@ -257,7 +263,10 @@ extension AddDiaryViewController: UITableViewDelegate, UITableViewDataSource {
             let navController = UINavigationController(rootViewController: vc)
             navController.modalPresentationStyle = .automatic
             present(navController, animated: true, completion: nil)
+        } else if indexPath.section == 4 {
+            // TODO: Realm Delete 구현
         }
     }
 
 }
+
