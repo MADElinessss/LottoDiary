@@ -56,7 +56,7 @@ final class AddContentTableViewCell: UITableViewCell {
         textView.textAlignment = .left
         textView.font = .systemFont(ofSize: 18, weight: .regular)
         textView.delegate = self
-        textView.textColor = .lightGray
+        textView.textColor = .black
         
         remainCountLabel.textColor = .black
         remainCountLabel.text = "0/500"

@@ -127,11 +127,10 @@ final class DiaryViewController: BaseViewController {
 extension DiaryViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        print("🫥")
+        guard let diary = dataSource.itemIdentifier(for: indexPath) else { return }
         let vc = DetailDiaryViewController()
-        
         // TODO: 선택한 일기에 대한 데이터 전달
-        
+        vc.diary = diary
         navigationController?.pushViewController(vc, animated: true)
         
         

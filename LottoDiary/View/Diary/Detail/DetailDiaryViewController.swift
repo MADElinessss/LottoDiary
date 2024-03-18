@@ -15,12 +15,20 @@ final class DetailDiaryViewController: BaseViewController {
     let tableView = UITableView()
     let viewModel = DiaryViewModel()
     
+    var diary: Diary? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     var selectedTag: String?
     var selectedColorName: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // print(diary)
+        
         viewModel.selectedImage.bind { [weak self] _ in
             self?.tableView.reloadData()
         }
@@ -30,6 +38,8 @@ final class DetailDiaryViewController: BaseViewController {
         }
         
         viewModel.fetchDiaries()
+        
+        tableView.reloadData()
     }
     
     override func configureHierarchy() {
@@ -95,7 +105,7 @@ final class DetailDiaryViewController: BaseViewController {
             let image = saveImageToDocumentDirectory(image: imageName) ?? ""
             newDiaryEntry.imageName = image
         }
-
+        
         newDiaryEntry.date = Date()
         
         if let tag = selectedTag {
@@ -109,7 +119,7 @@ final class DetailDiaryViewController: BaseViewController {
         
         navigationController?.popViewController(animated: true)
     }
-
+    
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
@@ -159,8 +169,12 @@ extension DetailDiaryViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         if indexPath.section == 0 {
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddContentTableViewCell", for: indexPath) as! AddContentTableViewCell
+            cell.textView.text = diary?.content ?? ""
+            
             cell.onTextChanged = { [weak self] text in
                 self?.viewModel.diaryContent.value = text
             }
@@ -169,13 +183,21 @@ extension DetailDiaryViewController: UITableViewDelegate, UITableViewDataSource 
             cell.selectionStyle = .none
             return cell
         } else if indexPath.section == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AddImageTableViewCell", for: indexPath) as! AddImageTableViewCell
-
-            if let selectedImage = viewModel.selectedImage.value {
-                cell.configure(with: selectedImage, title: "")
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "AddImageTableViewCell", for: indexPath) as? AddImageTableViewCell else {
+                fatalError("Unable to dequeue AddImageTableViewCell")
+            }
+            
+            let title = "이미지"
+            if let imageName = diary?.imageName, !imageName.isEmpty {
+                if let image = viewModel.loadImageFromDocumentDirectory(fileName: imageName) {
+                    cell.configure(with: image, title: title)
+                } else {
+                    cell.configure(with: nil, title: title)
+                }
             } else {
                 cell.configure(with: nil, title: "이미지 첨부")
             }
+            
             
             cell.clipsToBounds = true
             cell.layer.cornerRadius = 15
@@ -183,22 +205,36 @@ extension DetailDiaryViewController: UITableViewDelegate, UITableViewDataSource 
             return cell
         } else if indexPath.section == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddLottoTableViewCell", for: indexPath)
+            // TODO: 로또 번호가 없다면
             cell.textLabel?.text = "로또 번호 입력"
             cell.textLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
+            
+            
+            // TODO: 로또 번호가 있다면
+            cell.textLabel?.text = "구매한 로또 번호"
+            cell.textLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
+            
+            
+            
             cell.clipsToBounds = true
             cell.layer.cornerRadius = 15
             cell.selectionStyle = .none
             return cell
         } else if indexPath.section == 3 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AddLottoTableViewCell", for: indexPath)
+            
+            let cell = UITableViewCell(style: .value1, reuseIdentifier: "TagCell")
             
             cell.textLabel?.text = "소원 태그"
             cell.textLabel?.textColor = .black
             cell.textLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
             
-            if let tag = selectedTag, let colorName = selectedColorName {
+            if let tag = diary?.tag, let colorName = diary?.colorString, let color = UIColor(named: colorName) {
                 cell.detailTextLabel?.text = "#\(tag)"
-                cell.detailTextLabel?.textColor = UIColor(named: colorName) ?? .black
+                cell.detailTextLabel?.textColor = color
+                cell.detailTextLabel?.font = .systemFont(ofSize: 16, weight: .bold)
+            } else {
+                cell.detailTextLabel?.text = "태그 없음"
+                cell.detailTextLabel?.textColor = .lightGray
             }
             
             cell.clipsToBounds = true
@@ -222,7 +258,11 @@ extension DetailDiaryViewController: UITableViewDelegate, UITableViewDataSource 
         if indexPath.section == 0 {
             return 150
         } else if indexPath.section == 1 {
-            return viewModel.selectedImage.value == nil ? 60 : 270
+            if let imageName = diary?.imageName, !imageName.isEmpty, viewModel.loadImageFromDocumentDirectory(fileName: imageName) != nil {
+                return 270
+            } else {
+                return 60
+            }
         } else {
             return 60
         }
@@ -267,6 +307,6 @@ extension DetailDiaryViewController: UITableViewDelegate, UITableViewDataSource 
             // TODO: Realm Delete 구현
         }
     }
-
+    
 }
 
