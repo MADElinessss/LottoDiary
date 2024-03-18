@@ -10,7 +10,7 @@ import UIKit
 
 final class MainViewController: BaseViewController {
 
-    let tableView = UITableView()
+    let tableView = MainTableView()
     let viewModel = MainViewModel()
     
     override func viewDidLoad() {
@@ -91,24 +91,14 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        if section == 1 {
-            let headerLabel = UILabel()
-            return headerLabel
-        } else {
-            return nil
-        }
-        
+        let headerView = UIView()
+        return headerView
     }
-    
+
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 1 {
-            return 4
-        } else {
-            return 0
-        }
+        return 0
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             let vc = MyLottoViewController()
