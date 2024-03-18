@@ -29,15 +29,19 @@ class RealmRepository {
     }
     
     // MARK: DELETE
-    func delete(id: String) {
-        guard let diary = realm.objects(Diary.self).filter("id == %@", id).first else { return }
+    func delete(diaryId: ObjectId) {
+        guard let diaryToDelete = realm.objects(Diary.self).filter("id == %@", diaryId).first else {
+            return
+        }
+
         do {
             try realm.write {
-                realm.delete(diary)
-                print("즐겨찾기 삭제됨 🗑️")
+                realm.delete(diaryToDelete)
+                print("🗑️ 삭제")
             }
         } catch {
-            print(error)
+            print("🗑️ 삭제에러: \(error)")
         }
     }
+
 }
