@@ -14,6 +14,7 @@ class StoreMapViewController: BaseMapViewController, CLLocationManagerDelegate {
     var locationManager: CLLocationManager!
     let _layerNames: [String] = ["korea", "seoul", "busan"]
     var _radius: Float = 50.0
+    var onSearchResultReceived: (([Document]) -> Void)?
     
     override func addViews() {
         print("🥐, addViews")
@@ -25,7 +26,7 @@ class StoreMapViewController: BaseMapViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.view.backgroundColor = .blue
         print("🥐, viewDidLoad")
         locationManager = CLLocationManager()
         locationManager.delegate = self
@@ -46,11 +47,10 @@ class StoreMapViewController: BaseMapViewController, CLLocationManagerDelegate {
     
     // API 호출 결과 처리 및 POI 추가
     func loadAndDisplayData() {
-        // API 호출해서 결과를 받아오는 부분
-        // 가정: fetchSearchResults 함수는 API 호출을 하고 결과를 받아오는 역할을 한다.
-        fetchSearchResults { searchResult in
+        fetchSearchResults { [weak self] searchResult in
             DispatchQueue.main.async {
-                self.addDataPois(searchResult: searchResult)
+                self?.addDataPois(searchResult: searchResult)
+                self?.onSearchResultReceived?(searchResult.documents ?? [])
             }
         }
     }
@@ -60,6 +60,7 @@ class StoreMapViewController: BaseMapViewController, CLLocationManagerDelegate {
         // 이 부분은 프로젝트에 따라 API 호출 구현에 맞게 작성해야 합니다.
         
         APIManager.shared.kakaoMapCallRequest(areaX: 127.06283102249932, areaY: 37.514322572335935)
+        
     }
     
     

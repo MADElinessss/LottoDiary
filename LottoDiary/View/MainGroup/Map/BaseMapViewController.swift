@@ -46,23 +46,28 @@ class BaseMapViewController: UIViewController, MapControllerDelegate {
         
         mapContainer = self.view as? KMViewContainer
         
-        //KMController 생성.
-        mapController = KMController(viewContainer: mapContainer!)
-        mapController!.delegate = self
+//        //KMController 생성.
+//        mapController = KMController(viewContainer: mapContainer!)
+//        mapController!.delegate = self
+//        
+//        mapController?.initEngine() //엔진 초기화. 엔진 내부 객체 생성 및 초기화가 진행된다.
         
-        mapController?.initEngine() //엔진 초기화. 엔진 내부 객체 생성 및 초기화가 진행된다.
+        let mapViewContainer = KMViewContainer(frame: self.view.bounds)
+        self.view = mapViewContainer
+        mapContainer = mapViewContainer
+        
+        setupMapController()
+    }
     
+    func setupMapController() {
+        guard let mapContainer = self.mapContainer else {
+            print("🥕 mapContainer is nil.")
+            return
+        }
 
-    
-//        if mapContainer != nil {
-//            mapController = KMController(viewContainer: mapContainer!)
-//            mapController!.delegate = self
-//            mapController?.initEngine()
-//        } else {
-//            // 스토리보드 설정 문제로 mapContainer가 nil인 경우
-//            print("KMViewContainer is not available. Please check the storyboard configuration.")
-//        }
-        
+        mapController = KMController(viewContainer: mapContainer)
+        mapController?.delegate = self
+        mapController?.initEngine()
 
     }
     

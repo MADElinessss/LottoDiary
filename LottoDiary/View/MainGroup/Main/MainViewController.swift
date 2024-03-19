@@ -126,12 +126,14 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(vc, animated: true)
         case 3:
             // 복권 판매점
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            if let storeMapVC = storyboard.instantiateViewController(withIdentifier: "StoreMapViewControllerID") as? StoreMapViewController {
-                navigationController?.pushViewController(storeMapVC, animated: true)
-            } else {
-                print("Failed to instantiate StoreMapViewController from storyboard")
-            }
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            if let storeMapVC = storyboard.instantiateViewController(withIdentifier: "StoreMapViewControllerID") as? StoreMapViewController {
+//                navigationController?.pushViewController(storeMapVC, animated: true)
+//            } else {
+//                print("Failed to instantiate StoreMapViewController from storyboard")
+//            }
+            let vc = KakaoMapViewController()
+            navigationController?.pushViewController(vc, animated: true)
         default:
             break
         }

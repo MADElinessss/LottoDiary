@@ -32,6 +32,7 @@
 		C18567BD2B998DFF00864754 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C18567BC2B998DFF00864754 /* Assets.xcassets */; };
 		C18567C02B998DFF00864754 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C18567BE2B998DFF00864754 /* LaunchScreen.storyboard */; };
 		C18567C82B998E1F00864754 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = C18567C72B998E1F00864754 /* .gitignore */; };
+		C1978EFF2BA99BEA008EEC9D /* StoreListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1978EFE2BA99BEA008EEC9D /* StoreListViewController.swift */; };
 		C1E63AA52BA2BF1000707F53 /* NumberSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E63AA42BA2BF1000707F53 /* NumberSelectionView.swift */; };
 		C1E63AA72BA2BFBD00707F53 /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E63AA62BA2BFBD00707F53 /* TextCell.swift */; };
 		C1E63AAA2BA2EA0700707F53 /* MyNumberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E63AA92BA2EA0700707F53 /* MyNumberTableViewCell.swift */; };
@@ -87,6 +88,7 @@
 		C18567BF2B998DFF00864754 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C18567C12B998DFF00864754 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C18567C72B998E1F00864754 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		C1978EFE2BA99BEA008EEC9D /* StoreListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreListViewController.swift; sourceTree = "<group>"; };
 		C1E63AA42BA2BF1000707F53 /* NumberSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberSelectionView.swift; sourceTree = "<group>"; };
 		C1E63AA62BA2BFBD00707F53 /* TextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
 		C1E63AA92BA2EA0700707F53 /* MyNumberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNumberTableViewCell.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				C17008752BA027A000008BE7 /* BaseMapViewController.swift */,
 				C170087C2BA033D200008BE7 /* StoreMapViewController.swift */,
 				C1E63ADC2BA95AA100707F53 /* KakaoMapViewController.swift */,
+				C1978EFE2BA99BEA008EEC9D /* StoreListViewController.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 				C17008782BA028FD00008BE7 /* APIKey.swift in Sources */,
 				C1E63AA52BA2BF1000707F53 /* NumberSelectionView.swift in Sources */,
 				C17008562B9EEAFB00008BE7 /* RealmRepository.swift in Sources */,
+				C1978EFF2BA99BEA008EEC9D /* StoreListViewController.swift in Sources */,
 				C1E63AAD2BA2F77000707F53 /* RandomNumberMakerViewController.swift in Sources */,
 				C1E63AB22BA2F82F00707F53 /* RandomNumberMakerCollectionViewCell.swift in Sources */,
 				C1F35CE92B99B86000B32B4E /* MyLottoTableViewCell.swift in Sources */,
