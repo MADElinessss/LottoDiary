@@ -22,6 +22,7 @@ final class AddContentTableViewCell: UITableViewCell {
         
         configureView()
         // textView.becomeFirstResponder()
+        updateCountLabel(characterCount: textView.text.count)
     }
     
     private func configureView() {
@@ -44,7 +45,7 @@ final class AddContentTableViewCell: UITableViewCell {
         }
         
         remainCountLabel.snp.makeConstraints { make in
-            make.bottom.equalTo(textView.snp.bottom).inset(16)
+            make.bottom.equalTo(textView.snp.bottom)
             make.trailing.equalTo(contentView.safeAreaLayoutGuide).inset(16)
         }
         

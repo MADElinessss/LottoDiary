@@ -12,9 +12,12 @@ import UIKit
 class StoreMapViewController: BaseMapViewController, CLLocationManagerDelegate {
     
     var locationManager: CLLocationManager!
+    // let segmentControl = UISegmentedControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        configureView()
         
         locationManager = CLLocationManager()
         locationManager.delegate = self
@@ -24,6 +27,13 @@ class StoreMapViewController: BaseMapViewController, CLLocationManagerDelegate {
         
         // 현위치 버튼 추가
         addCurrentLocationButton()
+    }
+    
+    func configureView() {
+        // view.addSubview(segmentControl)
+        
+        // segmentControl.selectedSegmentIndex = 0
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {

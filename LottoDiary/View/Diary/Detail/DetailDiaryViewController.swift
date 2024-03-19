@@ -27,8 +27,6 @@ final class DetailDiaryViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // print(diary)
-        
         viewModel.selectedImage.bind { [weak self] _ in
             self?.tableView.reloadData()
         }
@@ -159,7 +157,6 @@ extension DetailDiaryViewController: PHPickerViewControllerDelegate {
 }
 
 extension DetailDiaryViewController: UITableViewDelegate, UITableViewDataSource {
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 5
     }
@@ -256,7 +253,7 @@ extension DetailDiaryViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 150
+            return 200
         } else if indexPath.section == 1 {
             if let imageName = diary?.imageName, !imageName.isEmpty, viewModel.loadImageFromDocumentDirectory(fileName: imageName) != nil {
                 return 270

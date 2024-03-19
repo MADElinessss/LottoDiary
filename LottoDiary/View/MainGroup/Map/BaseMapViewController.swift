@@ -6,6 +6,7 @@
 //
 
 import KakaoMapsSDK
+import SnapKit
 import UIKit
 
 class BaseMapViewController: UIViewController, MapControllerDelegate {
@@ -52,8 +53,13 @@ class BaseMapViewController: UIViewController, MapControllerDelegate {
             // 스토리보드 설정 문제로 mapContainer가 nil인 경우
             print("KMViewContainer is not available. Please check the storyboard configuration.")
         }
+        
+//        mapContainer?.snp.makeConstraints { make in
+//            make.top.equalTo(view.safeAreaLayoutGuide).inset(44)
+//            make.horizontalEdges.equalTo(view)
+//            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(44)
+//        }
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         addObservers()
@@ -144,7 +150,7 @@ class BaseMapViewController: UIViewController, MapControllerDelegate {
     func containerDidResized(_ size: CGSize) {
         let mapView: KakaoMap? = mapController?.getView("mapview") as? KakaoMap
         mapView?.poiScale = .regular
-        mapView?.viewRect = CGRect(origin: CGPoint(x: 0.0, y: 0.0), size: size)   //지도뷰의 크기를 리사이즈된 크기로 지정한다.
+        mapView?.viewRect = CGRect(origin: CGPoint(x: 0.0, y: 88.0), size: size)   //지도뷰의 크기를 리사이즈된 크기로 지정한다.
     }
     
     func addObservers(){
