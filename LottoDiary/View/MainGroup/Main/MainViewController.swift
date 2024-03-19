@@ -19,8 +19,6 @@ final class MainViewController: BaseViewController {
         APIManager.shared.lottoCallRequest(drwNumber: 1110) { lotto in
             print(lotto)
         }
-        
-        APIManager.shared.kakaoMapCallRequest(areaX: 127.06283102249932, areaY: 37.514322572335935)
     }
     
     override func configureHierarchy() {

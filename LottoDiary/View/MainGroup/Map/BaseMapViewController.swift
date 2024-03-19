@@ -45,20 +45,29 @@ class BaseMapViewController: UIViewController, MapControllerDelegate {
         print("self.view is of type \(type(of: self.view))")
         
         mapContainer = self.view as? KMViewContainer
-        if mapContainer != nil {
-            mapController = KMController(viewContainer: mapContainer!)
-            mapController!.delegate = self
-            mapController?.initEngine()
-        } else {
-            // 스토리보드 설정 문제로 mapContainer가 nil인 경우
-            print("KMViewContainer is not available. Please check the storyboard configuration.")
-        }
         
-//        mapContainer?.snp.makeConstraints { make in
-//            make.top.equalTo(view.safeAreaLayoutGuide).inset(44)
-//            make.horizontalEdges.equalTo(view)
-//            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(44)
+        //KMController 생성.
+        mapController = KMController(viewContainer: mapContainer!)
+        mapController!.delegate = self
+        
+        mapController?.initEngine() //엔진 초기화. 엔진 내부 객체 생성 및 초기화가 진행된다.
+    
+
+    
+//        if mapContainer != nil {
+//            mapController = KMController(viewContainer: mapContainer!)
+//            mapController!.delegate = self
+//            mapController?.initEngine()
+//        } else {
+//            // 스토리보드 설정 문제로 mapContainer가 nil인 경우
+//            print("KMViewContainer is not available. Please check the storyboard configuration.")
 //        }
+        
+
+    }
+    
+    func viewInit(viewName: String) {
+        print("🥐, viewInit OK")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -138,7 +147,8 @@ class BaseMapViewController: UIViewController, MapControllerDelegate {
     
     //addView 성공 이벤트 delegate. 추가적으로 수행할 작업을 진행한다.
     func addViewSucceeded(_ viewName: String, viewInfoName: String) {
-        print("OK") //추가 성공. 성공시 추가적으로 수행할 작업을 진행한다.
+        print("🥐, addViewSucceeded")
+        viewInit(viewName: viewName)
     }
     
     //addView 실패 이벤트 delegate. 실패에 대한 오류 처리를 진행한다.
@@ -150,7 +160,7 @@ class BaseMapViewController: UIViewController, MapControllerDelegate {
     func containerDidResized(_ size: CGSize) {
         let mapView: KakaoMap? = mapController?.getView("mapview") as? KakaoMap
         mapView?.poiScale = .regular
-        mapView?.viewRect = CGRect(origin: CGPoint(x: 0.0, y: 88.0), size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.9))   //지도뷰의 크기를 리사이즈된 크기로 지정한다.
+        mapView?.viewRect = CGRect(origin: CGPoint(x: 0.0, y: 88.0), size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.6))
     }
     
     func addObservers(){
