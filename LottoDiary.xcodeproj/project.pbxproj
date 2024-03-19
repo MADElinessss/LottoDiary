@@ -41,6 +41,7 @@
 		C1E63AC82BA4434E00707F53 /* MainTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E63AC72BA4434E00707F53 /* MainTableView.swift */; };
 		C1E63ACA2BA5A60F00707F53 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E63AC92BA5A60F00707F53 /* SearchResult.swift */; };
 		C1E63AD02BA82EA200707F53 /* DetailDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E63ACF2BA82EA200707F53 /* DetailDiaryViewController.swift */; };
+		C1E63ADD2BA95AA100707F53 /* KakaoMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E63ADC2BA95AA100707F53 /* KakaoMapViewController.swift */; };
 		C1F35CD12B99A62100B32B4E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F35CD02B99A62100B32B4E /* SettingViewController.swift */; };
 		C1F35CD32B99A63300B32B4E /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F35CD22B99A63300B32B4E /* ChartViewController.swift */; };
 		C1F35CD52B99A63900B32B4E /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F35CD42B99A63900B32B4E /* DiaryViewController.swift */; };
@@ -94,6 +95,7 @@
 		C1E63AC72BA4434E00707F53 /* MainTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainTableView.swift; path = ../../../../../Documents/MainTableView.swift; sourceTree = "<group>"; };
 		C1E63AC92BA5A60F00707F53 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		C1E63ACF2BA82EA200707F53 /* DetailDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDiaryViewController.swift; sourceTree = "<group>"; };
+		C1E63ADC2BA95AA100707F53 /* KakaoMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoMapViewController.swift; sourceTree = "<group>"; };
 		C1F35CD02B99A62100B32B4E /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		C1F35CD22B99A63300B32B4E /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		C1F35CD42B99A63900B32B4E /* DiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 			children = (
 				C17008752BA027A000008BE7 /* BaseMapViewController.swift */,
 				C170087C2BA033D200008BE7 /* StoreMapViewController.swift */,
+				C1E63ADC2BA95AA100707F53 /* KakaoMapViewController.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				C1F35CDC2B99B59800B32B4E /* NumberButton.swift in Sources */,
 				C1F35CD52B99A63900B32B4E /* DiaryViewController.swift in Sources */,
 				C17008732BA00BF400008BE7 /* QRCodeViewController.swift in Sources */,
+				C1E63ADD2BA95AA100707F53 /* KakaoMapViewController.swift in Sources */,
 				C17008762BA027A000008BE7 /* BaseMapViewController.swift in Sources */,
 				C170087D2BA033D200008BE7 /* StoreMapViewController.swift in Sources */,
 				C17008442B9DFF6A00008BE7 /* DiaryCollectionViewCell.swift in Sources */,

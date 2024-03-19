@@ -150,7 +150,7 @@ class BaseMapViewController: UIViewController, MapControllerDelegate {
     func containerDidResized(_ size: CGSize) {
         let mapView: KakaoMap? = mapController?.getView("mapview") as? KakaoMap
         mapView?.poiScale = .regular
-        mapView?.viewRect = CGRect(origin: CGPoint(x: 0.0, y: 88.0), size: size)   //지도뷰의 크기를 리사이즈된 크기로 지정한다.
+        mapView?.viewRect = CGRect(origin: CGPoint(x: 0.0, y: 88.0), size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.9))   //지도뷰의 크기를 리사이즈된 크기로 지정한다.
     }
     
     func addObservers(){

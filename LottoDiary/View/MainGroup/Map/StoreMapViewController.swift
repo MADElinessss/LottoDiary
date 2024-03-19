@@ -12,12 +12,9 @@ import UIKit
 class StoreMapViewController: BaseMapViewController, CLLocationManagerDelegate {
     
     var locationManager: CLLocationManager!
-    // let segmentControl = UISegmentedControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        configureView()
         
         locationManager = CLLocationManager()
         locationManager.delegate = self
@@ -28,14 +25,7 @@ class StoreMapViewController: BaseMapViewController, CLLocationManagerDelegate {
         // 현위치 버튼 추가
         addCurrentLocationButton()
     }
-    
-    func configureView() {
-        // view.addSubview(segmentControl)
-        
-        // segmentControl.selectedSegmentIndex = 0
-        
-    }
-    
+
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
             locationManager.startUpdatingLocation()
@@ -53,8 +43,19 @@ class StoreMapViewController: BaseMapViewController, CLLocationManagerDelegate {
     }
     
     func addCurrentLocationButton() {
-        let button = UIButton(frame: CGRect(x: 20, y: view.frame.size.height - 100, width: 50, height: 50))
-        button.setImage(UIImage(named: "your_location_button_image"), for: .normal) // 'your_location_button_image'를 현위치 버튼 이미지로 설정하세요.
+        let button = UIButton()
+        view.addSubview(button)
+        button.snp.makeConstraints { make in
+            make.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.size.equalTo(50)
+        }
+        
+        button.setImage(UIImage(systemName: "location.circle"), for: .normal)
+        button.tintColor = .white
+        button.backgroundColor = .point
+        
+        button.layer.cornerRadius = 25
         button.addTarget(self, action: #selector(moveToCurrentLocation), for: .touchUpInside)
         view.addSubview(button)
     }
@@ -68,4 +69,5 @@ class StoreMapViewController: BaseMapViewController, CLLocationManagerDelegate {
             }
         }
     }
+    
 }
