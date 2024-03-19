@@ -301,13 +301,14 @@ extension DetailDiaryViewController: UITableViewDelegate, UITableViewDataSource 
             navController.modalPresentationStyle = .automatic
             present(navController, animated: true, completion: nil)
         } else if indexPath.section == 4 {
+            
             let alert = UIAlertController(title: "일기 삭제", message: "이 일기를 삭제하시겠습니까?", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "삭제", style: .destructive, handler: { [weak self] _ in
                 if let diaryId = self?.diary?.id {
                     self?.viewModel.repository.delete(diaryId: diaryId)
                     self?.navigationController?.popViewController(animated: true)
                 } else {
-                    print("ID Error")
+                    print("Error: Diary ID is unavailable.")
                 }
             }))
             alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))

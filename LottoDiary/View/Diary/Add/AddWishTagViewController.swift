@@ -75,7 +75,7 @@ final class AddWishTagViewController: BaseViewController {
         stackView.distribution = .fillEqually
         stackView.spacing = 12
         
-        for i in 0...5 {
+        for i in 0...4 {
             let buttonColor = color(for: i)
             let button = NumberButton(backgroundColor: buttonColor, number: nil)
             button.tag = i // 각 버튼에 고유한 태그 할당
