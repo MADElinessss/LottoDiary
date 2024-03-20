@@ -9,15 +9,43 @@ import SnapKit
 import UIKit
 
 final class MainViewController: BaseViewController {
-
+    
     let tableView = MainTableView()
     let viewModel = MainViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        APIManager.shared.lottoCallRequest(drwNumber: 1110) { lotto in
+        setupBindings()
+        viewModel.apiRequest(on: self)
+    }
+    
+    func setupBindings() {
+        viewModel.outputLotto.bind { [weak self] lotto in
+            guard let lotto = lotto else { return }
+            // Lotto 데이터에 따른 UI 업데이트 로직
             print(lotto)
+        }
+        
+        viewModel.errorMessage.bind { [weak self] errorMessage in
+            guard let message = errorMessage, !message.isEmpty else { return }
+            // 에러 메시지가 있을 경우, Alert 표시
+            DispatchQueue.main.async {
+                AlertManager.shared.showAlert(on: self!, title: "오류", message: message)
+            }
+        }
+        
+        viewModel.errorMessage.bind { [weak self] errorMessage in
+            if let message = errorMessage {
+                self?.showErrorAlert(message: message)
+            }
+        }
+    }
+    private func showErrorAlert(message: String) {
+        let alert = UIAlertController(title: "오류", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default))
+        DispatchQueue.main.async {
+            self.present(alert, animated: true)
         }
     }
     
@@ -92,11 +120,11 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         let headerView = UIView()
         return headerView
     }
-
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             let vc = MyLottoViewController()
@@ -113,8 +141,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         switch index {
         case 0:
             // 번호 생성기
-             let vc = RandomNumberMakerViewController()
-             navigationController?.pushViewController(vc, animated: true)
+            let vc = RandomNumberMakerViewController()
+            navigationController?.pushViewController(vc, animated: true)
         case 1:
             // 나의 당첨내역
             print("winning")

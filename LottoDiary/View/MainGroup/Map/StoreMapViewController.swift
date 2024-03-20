@@ -8,6 +8,7 @@
 import CoreLocation
 import KakaoMapsSDK
 import UIKit
+import Alamofire
 
 class StoreMapViewController: BaseMapViewController, CLLocationManagerDelegate {
     
@@ -26,7 +27,7 @@ class StoreMapViewController: BaseMapViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .blue
+        
         print("🥐, viewDidLoad")
         locationManager = CLLocationManager()
         locationManager.delegate = self
@@ -45,25 +46,41 @@ class StoreMapViewController: BaseMapViewController, CLLocationManagerDelegate {
         configurePoi()
     }
     
-    // API 호출 결과 처리 및 POI 추가
     func loadAndDisplayData() {
-        fetchSearchResults { [weak self] searchResult in
-            DispatchQueue.main.async {
-                self?.addDataPois(searchResult: searchResult)
-                self?.onSearchResultReceived?(searchResult.documents ?? [])
+        
+        fetchSearchResults()
+    }
+    
+    func fetchSearchResults() {
+        
+        APIManager.shared.kakaoMapCallRequest(areaX: 127.06283102249932, areaY: 37.514322572335935, on: self) { [weak self] result in
+            switch result {
+            case .success(let searchResult):
+                DispatchQueue.main.async {
+                    
+                    self?.addDataPois(searchResult: searchResult)
+                    self?.onSearchResultReceived?(searchResult.documents ?? [])
+                }
+            case .failure(let error):
+                self?.handleError(error)
             }
         }
     }
-    
-    // StoreMapViewController.swift 내 fetchSearchResults 함수 수정
-    func fetchSearchResults(completion: @escaping (SearchResult) -> Void) {
-        // API 호출을 통해 SearchResult를 로드하고, 결과를 completion 콜백으로 전달합니다.
-        APIManager.shared.kakaoMapCallRequest(areaX: 127.06283102249932, areaY: 37.514322572335935) { result in
-            switch result {
-            case .success(let searchResult):
-                completion(searchResult)
-            case .failure(let error):
-                print(error) // 오류 처리
+
+    private func handleError(_ error: AFError) {
+        var message = "알 수 없는 오류가 발생했습니다."
+        
+        if let urlError = error.underlyingError as? URLError, urlError.code == .notConnectedToInternet {
+            message = "네트워크 연결이 단절되었습니다.\n잠시 후 다시 시도해주세요."
+        } else if error.isResponseSerializationError {
+            message = "데이터 처리 중 오류가 발생했습니다."
+        } else if error.isResponseValidationError {
+            message = "서버로부터 유효하지 않은 응답이 왔습니다."
+        }
+        
+        DispatchQueue.main.async {
+            if let viewController = self.navigationController?.topViewController {
+                AlertManager.shared.showAlert(on: viewController, title: "오류 발생", message: message)
             }
         }
     }
@@ -71,28 +88,20 @@ class StoreMapViewController: BaseMapViewController, CLLocationManagerDelegate {
     func addDataPois(searchResult: SearchResult) {
         guard let documents = searchResult.documents else { return }
         
-        // 기존의 SF Symbols 아이콘 사용과 iconStyle, poiStyle 설정 부분은 유지합니다.
         let view = self.mapController?.getView("mapview") as! KakaoMap
         let manager = view.getLabelManager()
 
-        // 커스텀 스타일을 생성하고, POI에 적용합니다. (이 부분은 이전 설정을 유지)
-        // 예를 들어, SF Symbols에서 'star.fill' 아이콘을 사용하여 아이콘을 생성합니다.
-        let originalIcon = UIImage(systemName: "star.fill")!.withTintColor(.yellow, renderingMode: .alwaysOriginal) // 색상 변경을 위해 withTintColor 사용
-        let iconStyle = PoiIconStyle(symbol: originalIcon, anchorPoint: CGPoint(x: 0.5, y: 1.0)) // anchorPoint 조정
+        let originalIcon = UIImage(systemName: "star.fill")!.withTintColor(.yellow, renderingMode: .alwaysOriginal)
+        let iconStyle = PoiIconStyle(symbol: originalIcon, anchorPoint: CGPoint(x: 0.5, y: 1.0))
         let poiStyle = PoiStyle(styleID: "customStyle", styles: [PerLevelPoiStyle(iconStyle: iconStyle, padding: -2.0, level: 0)])
         manager.addPoiStyle(poiStyle)
 
         documents.forEach { document in
             if let x = Double(document.x), let y = Double(document.y) {
-                // MapPoint 생성 시 from 대신 geoCoord 사용
                 let mapPoint = MapPoint(from: .init(longitude: x, latitude: y))
 
-                // PoiOptions를 생성하여, 각 문서(장소) 정보를 지도에 추가합니다.
                 let poiOptions = PoiOptions(styleID: "customStyle")
-                poiOptions.addText(PoiText(text: document.placeName, styleIndex: 0)) // 장소 이름을 텍스트로 추가
-
-                // manager.addPoi(poiOptions, at: mapPoint)
-                // 현재 예제에서는 POI 스타일만 설정하고, 실제 POI 추가는 SDK 문서를 참조해야 함.
+                poiOptions.addText(PoiText(text: document.placeName, styleIndex: 0))
             }
         }
     }
