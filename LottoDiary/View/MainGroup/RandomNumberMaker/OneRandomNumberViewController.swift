@@ -22,9 +22,10 @@ public struct OneRandomNumberView: View {
     public init() {}
     public var body: some View {
         VStack {
-            Text("원하는 것을 드래그해서 넣어보세요.")
+            Text("소원을 빌고, 원하는 것을 드래그해서 넣어보세요.")
                 .fontWeight(.medium)
                 .padding(.bottom, 10)
+            Spacer()
             Text(basket)
                 .font(.largeTitle)
                 .frame(maxWidth: 300)

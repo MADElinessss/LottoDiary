@@ -41,7 +41,6 @@ class RandomNumberMakerViewController: UIViewController, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.item == 1 {
-            print("😘")
             let hostingController = UIHostingController(rootView: OneRandomNumberView())
             navigationController?.pushViewController(hostingController, animated: true)
         }

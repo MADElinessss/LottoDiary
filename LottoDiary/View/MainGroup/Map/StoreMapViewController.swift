@@ -55,14 +55,18 @@ class StoreMapViewController: BaseMapViewController, CLLocationManagerDelegate {
         }
     }
     
+    // StoreMapViewController.swift 내 fetchSearchResults 함수 수정
     func fetchSearchResults(completion: @escaping (SearchResult) -> Void) {
         // API 호출을 통해 SearchResult를 로드하고, 결과를 completion 콜백으로 전달합니다.
-        // 이 부분은 프로젝트에 따라 API 호출 구현에 맞게 작성해야 합니다.
-        
-        APIManager.shared.kakaoMapCallRequest(areaX: 127.06283102249932, areaY: 37.514322572335935)
-        
+        APIManager.shared.kakaoMapCallRequest(areaX: 127.06283102249932, areaY: 37.514322572335935) { result in
+            switch result {
+            case .success(let searchResult):
+                completion(searchResult)
+            case .failure(let error):
+                print(error) // 오류 처리
+            }
+        }
     }
-    
     
     func addDataPois(searchResult: SearchResult) {
         guard let documents = searchResult.documents else { return }

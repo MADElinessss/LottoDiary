@@ -16,7 +16,11 @@ class StoreListViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("🌽 setDocuments 호출 전 documents: \(documents)")
-        setDocuments(documents)
+        DispatchQueue.main.async {
+            self.setDocuments(self.documents)
+        }
+
+        // setDocuments(documents)
         print("🌽 setDocuments 호출 후 documents: \(documents)")
     }
 
@@ -46,6 +50,7 @@ class StoreListViewController: UIViewController, UITableViewDataSource, UITableV
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.text = "Place: \(document.placeName)\nAddress: \(document.addressName)\nPhone: \(document.phone)"
         cell.textLabel?.textColor = .black
+        cell.selectionStyle = .none
         return cell
     }
 

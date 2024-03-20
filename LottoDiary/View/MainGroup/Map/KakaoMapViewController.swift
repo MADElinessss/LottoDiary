@@ -23,7 +23,6 @@ class KakaoMapViewController: UIViewController {
         
     }
     
-    
     private func configureSegmentControl() {
         view.addSubview(segmentControl)
         segmentControl.snp.makeConstraints { make in
@@ -61,6 +60,8 @@ class KakaoMapViewController: UIViewController {
             make.top.equalTo(segmentControl.snp.bottom).offset(8)
             make.left.right.bottom.equalTo(view)
         }
+        
+        tableViewController.view.isHidden = true
     }
     
     private func setupDataPassingBetweenControllers() {
@@ -79,6 +80,7 @@ class KakaoMapViewController: UIViewController {
         case 1:
             storeMapViewController.view.isHidden = true
             tableViewController.view.isHidden = false
+            tableViewController.tableView.reloadData()
         default:
             break
         }
