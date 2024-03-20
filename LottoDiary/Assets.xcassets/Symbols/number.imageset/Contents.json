@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "1024.png",
+      "filename" : "crystal-ball.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "1024 1.png",
+      "filename" : "crystal-ball 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "1024 2.png",
+      "filename" : "crystal-ball 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

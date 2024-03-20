@@ -27,13 +27,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let vc3 = ChartViewController()
         let vc4 = SettingViewController()
         
-        vc1.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "sun.min"), selectedImage: UIImage(named: "sun.min.fill"))
+        vc1.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "clover"), selectedImage: UIImage(named: "clover"))
         vc1.tabBarItem.tag = 0
-        vc2.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "moon"), selectedImage: UIImage(named: "moon.fill"))
+        vc2.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "edit"), selectedImage: UIImage(named: "edit"))
         vc2.tabBarItem.tag = 1
-        vc3.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "moon.stars"), selectedImage: UIImage(named: "moon.stars.fill"))
+        vc3.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "stats"), selectedImage: UIImage(named: "stats"))
         vc3.tabBarItem.tag = 2
-        vc4.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "cloud"), selectedImage: UIImage(named: "cloudfill"))
+        vc4.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "user"), selectedImage: UIImage(named: "user"))
         vc4.tabBarItem.tag = 3
         
         

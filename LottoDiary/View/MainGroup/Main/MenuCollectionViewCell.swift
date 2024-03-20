@@ -26,25 +26,27 @@ final class MenuCollectionViewCell: UICollectionViewCell {
         
         label.snp.makeConstraints { make in
             make.centerX.equalTo(contentView)
-            make.top.equalTo(contentView.safeAreaLayoutGuide).inset(16)
+            make.top.equalTo(contentView.safeAreaLayoutGuide).inset(24)
         }
         
         imageView.snp.makeConstraints { make in
             make.centerX.equalTo(contentView)
             make.top.equalTo(label.snp.bottom).offset(16)
-            make.size.equalTo(50)
+            make.size.equalTo(40)
         }
         
         label.text = "번호 생성기"
         label.textColor = .black
-        label.font = .systemFont(ofSize: 18, weight: .medium)
+        label.font = .systemFont(ofSize: 16, weight: .medium)
         
         imageView.image = UIImage(systemName: "mic.circle")
+        imageView.tintColor = .point
+        imageView.contentMode = .scaleAspectFit
     }
     
     func configure(with title: String, imageName: String) {
         label.text = title
-        imageView.image = UIImage(systemName: imageName)
+        imageView.image = UIImage(named: imageName)
     }
     
     required init?(coder: NSCoder) {

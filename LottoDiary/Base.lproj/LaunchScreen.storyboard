@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,19 +16,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Launchscreen" translatesAutoresizingMaskIntoConstraints="NO" id="tKX-XV-guU">
-                                <rect key="frame" x="146.66666666666666" y="376" width="100" height="100"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appstore" translatesAutoresizingMaskIntoConstraints="NO" id="ciB-Xv-fK2">
+                                <rect key="frame" x="46.666666666666657" y="336" width="300" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="iHW-HB-bJu"/>
-                                    <constraint firstAttribute="height" constant="100" id="mQ9-LZ-dB1"/>
+                                    <constraint firstAttribute="width" constant="300" id="HcC-xY-wFa"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="행운을 기록해요," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swR-06-PKc">
+                                <rect key="frame" x="140.66666666666666" y="371" width="112" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="로또일기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VbE-jF-tPL">
+                                <rect key="frame" x="144.66666666666666" y="400" width="104" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="tKX-XV-guU" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="cLo-oo-fjd"/>
-                            <constraint firstItem="tKX-XV-guU" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="mKc-Dd-7Z1"/>
+                            <constraint firstItem="ciB-Xv-fK2" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="E1r-lP-ocv"/>
+                            <constraint firstItem="VbE-jF-tPL" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Eg3-CM-kTy"/>
+                            <constraint firstItem="VbE-jF-tPL" firstAttribute="top" secondItem="swR-06-PKc" secondAttribute="bottom" constant="8" symbolic="YES" id="JGQ-1Q-Q25"/>
+                            <constraint firstItem="ciB-Xv-fK2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="277" id="PlI-ET-uev"/>
+                            <constraint firstItem="swR-06-PKc" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Xxk-9N-Jua"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ciB-Xv-fK2" secondAttribute="bottom" constant="354" id="eQ7-Yd-Nwt"/>
+                            <constraint firstItem="swR-06-PKc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="312" id="nhy-hH-PF9"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -38,9 +55,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Launchscreen" width="341.33334350585938" height="341.33334350585938"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="appstore" width="1024" height="1024"/>
     </resources>
 </document>
