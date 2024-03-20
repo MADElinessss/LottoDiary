@@ -32,6 +32,7 @@ final class EditMyNumberViewController: BaseViewController {
         tableView.register(EditMyNumberTableViewCell.self, forCellReuseIdentifier: "EditMyNumberTableViewCell")
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
+        tableView.backgroundColor = .background
         
     }
     
@@ -42,9 +43,10 @@ final class EditMyNumberViewController: BaseViewController {
         let rightButton = UIBarButtonItem(title: "저장", style: .done, target: self, action: #selector(rightButtonTapped))
         configureNavigationBar(title: "나의 번호 편집", leftBarButton: leftButton, rightBarButton: rightButton)
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
     }
-    
-    
     
     @objc func leftButtonTapped() {
         navigationController?.popViewController(animated: true)
@@ -52,6 +54,10 @@ final class EditMyNumberViewController: BaseViewController {
     
     @objc func rightButtonTapped() {
         // TODO: Realm 저장
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
 
@@ -66,9 +72,10 @@ extension EditMyNumberViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 300
+            let height = UIScreen.main.bounds.width
+            return height
         } else {
-            return 100
+            return 44
         }
     }
     
@@ -83,12 +90,14 @@ extension EditMyNumberViewController: UITableViewDelegate, UITableViewDataSource
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             cell.selectionStyle = .none
-            
+            cell.backgroundColor = .white
+            cell.layer.cornerRadius = 15
             // 번호 메모 섹션
             setupMemoTextField()
             cell.contentView.addSubview(memoTextField)
             memoTextField.snp.makeConstraints { make in
-                make.edges.equalToSuperview().inset(16)
+                make.horizontalEdges.equalTo(cell.contentView.safeAreaLayoutGuide).inset(16)
+                make.height.equalTo(44)
             }
             
             return cell
@@ -101,7 +110,8 @@ extension EditMyNumberViewController: UITableViewDelegate, UITableViewDataSource
     
     private func setupMemoTextField() {
         let number: Int = 1
-        memoTextField.placeholder = "나의 번호(\(number)"
-        memoTextField.borderStyle = .roundedRect
+        memoTextField.placeholder = "나의 번호(\(number))"
+        memoTextField.borderStyle = .none
+        memoTextField.textColor = .black
     }
 }

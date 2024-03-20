@@ -24,11 +24,13 @@ class EditMyNumberTableViewCell: UITableViewCell {
     
     func configure() {
         
-        setupNumberSelectionView()
-        contentView.addSubview(numberSelectionView)
+        contentView.backgroundColor = .background
         contentView.addSubview(stackView)
+        contentView.addSubview(numberSelectionView)
+        setupNumberSelectionView()
         numberSelectionView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalTo(contentView.safeAreaLayoutGuide).inset(70)
+            make.horizontalEdges.bottom.equalToSuperview()
         }
         
         setupStackView()
@@ -51,14 +53,13 @@ class EditMyNumberTableViewCell: UITableViewCell {
     }
     
     private func setupStackView() {
+        
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.spacing = 10
-        stackView.backgroundColor = .orange
-        
-        
-        contentView.addSubview(stackView)
-        
+        stackView.backgroundColor = .background
+        stackView.layer.cornerRadius = 15
+
         for _ in 0..<6 {
             let button = UIButton()
             button.backgroundColor = .lightGray
@@ -77,18 +78,12 @@ class EditMyNumberTableViewCell: UITableViewCell {
     
     private func setupConstraints() {
         stackView.snp.makeConstraints { make in
-            make.top.equalTo(contentView.safeAreaLayoutGuide).inset(18)
-            make.horizontalEdges.equalTo(contentView.safeAreaLayoutGuide).inset(8)
+            make.top.equalTo(contentView.safeAreaLayoutGuide)
+            make.horizontalEdges.equalTo(contentView.safeAreaLayoutGuide).inset(16)
             make.centerX.equalTo(contentView)
             //make.height.equalTo(50)
         }
-        // numberSelectionView.backgroundColor = .green
-        numberSelectionView.snp.makeConstraints { make in
-            make.top.equalTo(contentView.safeAreaLayoutGuide).inset(44)
-            make.horizontalEdges.equalTo(contentView.safeAreaLayoutGuide)
-            make.centerX.equalTo(contentView)
-        }
-        
+
         selectedButtons.forEach { button in
             button.snp.makeConstraints { make in
                 make.width.equalTo(button.snp.height)

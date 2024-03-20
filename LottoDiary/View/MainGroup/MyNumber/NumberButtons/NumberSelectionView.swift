@@ -96,18 +96,10 @@ extension NumberSelectionView {
     
     func configureHierarchy() {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
-        // collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        collectionView.backgroundColor = .systemBackground
+        collectionView.backgroundColor = .background
+        
         collectionView.delegate = self
         addSubview(collectionView)
-        
-//        collectionView.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            collectionView.topAnchor.constraint(equalTo: self.topAnchor),
-//            collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-//            collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-//            collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
-//        ])
         
         collectionView.snp.makeConstraints { make in
             make.edges.equalTo(self.safeAreaLayoutGuide)
