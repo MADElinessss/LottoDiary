@@ -122,7 +122,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             // navigationController?.pushViewController(vc, animated: true)
         case 2:
             // 나의 번호 목록
-            let vc = MyNumberViewController()
+            let vc = ListMyNumberViewController()
             navigationController?.pushViewController(vc, animated: true)
         case 3:
             // 복권 판매점

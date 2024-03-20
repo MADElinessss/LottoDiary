@@ -8,7 +8,8 @@
 import SnapKit
 import UIKit
 
-final class MyNumberViewController: BaseViewController {
+// MARK: 로또 편집 뷰로 옮겨야됨
+final class EditMyNumberViewController: BaseViewController {
     
     private let tableView = UITableView()
     private let stackView = UIStackView()
@@ -84,7 +85,7 @@ final class MyNumberViewController: BaseViewController {
         for _ in 0..<6 {
             let button = UIButton()
             button.backgroundColor = .lightGray
-            button.setTitleColor(.black, for: .normal)
+            button.setTitleColor(.white, for: .normal)
             button.layer.cornerRadius = 25
             selectedButtons.append(button)
             stackView.addArrangedSubview(button)
@@ -150,7 +151,7 @@ final class MyNumberViewController: BaseViewController {
     }
 }
 
-extension MyNumberViewController: UITableViewDelegate, UITableViewDataSource {
+extension EditMyNumberViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }

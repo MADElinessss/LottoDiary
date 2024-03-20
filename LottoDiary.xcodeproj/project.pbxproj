@@ -23,7 +23,7 @@
 		C17008782BA028FD00008BE7 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17008772BA028FD00008BE7 /* APIKey.swift */; };
 		C170087B2BA029BC00008BE7 /* KakaoMapsSDK_SPM in Frameworks */ = {isa = PBXBuildFile; productRef = C170087A2BA029BC00008BE7 /* KakaoMapsSDK_SPM */; };
 		C170087D2BA033D200008BE7 /* StoreMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C170087C2BA033D200008BE7 /* StoreMapViewController.swift */; };
-		C17008802BA061B000008BE7 /* MyNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C170087F2BA061B000008BE7 /* MyNumberViewController.swift */; };
+		C17008802BA061B000008BE7 /* EditMyNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C170087F2BA061B000008BE7 /* EditMyNumberViewController.swift */; };
 		C17008822BA06A6C00008BE7 /* AddWishTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17008812BA06A6C00008BE7 /* AddWishTagViewController.swift */; };
 		C18567B42B998DFD00864754 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18567B32B998DFD00864754 /* AppDelegate.swift */; };
 		C18567B62B998DFD00864754 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18567B52B998DFD00864754 /* SceneDelegate.swift */; };
@@ -33,6 +33,8 @@
 		C18567C02B998DFF00864754 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C18567BE2B998DFF00864754 /* LaunchScreen.storyboard */; };
 		C18567C82B998E1F00864754 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = C18567C72B998E1F00864754 /* .gitignore */; };
 		C1978EFF2BA99BEA008EEC9D /* StoreListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1978EFE2BA99BEA008EEC9D /* StoreListViewController.swift */; };
+		C1978F022BAAADB3008EEC9D /* ListMyNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1978F012BAAADB3008EEC9D /* ListMyNumberViewController.swift */; };
+		C1978F052BAAAE68008EEC9D /* ListMyNumberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1978F042BAAAE68008EEC9D /* ListMyNumberTableViewCell.swift */; };
 		C1E63AA52BA2BF1000707F53 /* NumberSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E63AA42BA2BF1000707F53 /* NumberSelectionView.swift */; };
 		C1E63AA72BA2BFBD00707F53 /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E63AA62BA2BFBD00707F53 /* TextCell.swift */; };
 		C1E63AAA2BA2EA0700707F53 /* MyNumberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E63AA92BA2EA0700707F53 /* MyNumberTableViewCell.swift */; };
@@ -77,7 +79,7 @@
 		C17008752BA027A000008BE7 /* BaseMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMapViewController.swift; sourceTree = "<group>"; };
 		C17008772BA028FD00008BE7 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		C170087C2BA033D200008BE7 /* StoreMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreMapViewController.swift; sourceTree = "<group>"; };
-		C170087F2BA061B000008BE7 /* MyNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNumberViewController.swift; sourceTree = "<group>"; };
+		C170087F2BA061B000008BE7 /* EditMyNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMyNumberViewController.swift; sourceTree = "<group>"; };
 		C17008812BA06A6C00008BE7 /* AddWishTagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWishTagViewController.swift; sourceTree = "<group>"; };
 		C18567B02B998DFD00864754 /* LottoDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LottoDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C18567B32B998DFD00864754 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +91,8 @@
 		C18567C12B998DFF00864754 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C18567C72B998E1F00864754 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		C1978EFE2BA99BEA008EEC9D /* StoreListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreListViewController.swift; sourceTree = "<group>"; };
+		C1978F012BAAADB3008EEC9D /* ListMyNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListMyNumberViewController.swift; sourceTree = "<group>"; };
+		C1978F042BAAAE68008EEC9D /* ListMyNumberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListMyNumberTableViewCell.swift; sourceTree = "<group>"; };
 		C1E63AA42BA2BF1000707F53 /* NumberSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberSelectionView.swift; sourceTree = "<group>"; };
 		C1E63AA62BA2BFBD00707F53 /* TextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
 		C1E63AA92BA2EA0700707F53 /* MyNumberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNumberTableViewCell.swift; sourceTree = "<group>"; };
@@ -179,8 +183,9 @@
 		C170087E2BA061A400008BE7 /* MyNumber */ = {
 			isa = PBXGroup;
 			children = (
+				C1978F032BAAAE5A008EEC9D /* List */,
 				C1E63AA82BA2E13A00707F53 /* NumberButtons */,
-				C170087F2BA061B000008BE7 /* MyNumberViewController.swift */,
+				C170087F2BA061B000008BE7 /* EditMyNumberViewController.swift */,
 				C1E63AA92BA2EA0700707F53 /* MyNumberTableViewCell.swift */,
 			);
 			path = MyNumber;
@@ -284,6 +289,15 @@
 				C17008452B9E177800008BE7 /* MyLotto */,
 			);
 			path = MainGroup;
+			sourceTree = "<group>";
+		};
+		C1978F032BAAAE5A008EEC9D /* List */ = {
+			isa = PBXGroup;
+			children = (
+				C1978F012BAAADB3008EEC9D /* ListMyNumberViewController.swift */,
+				C1978F042BAAAE68008EEC9D /* ListMyNumberTableViewCell.swift */,
+			);
+			path = List;
 			sourceTree = "<group>";
 		};
 		C1E63AA82BA2E13A00707F53 /* NumberButtons */ = {
@@ -446,12 +460,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1978F052BAAAE68008EEC9D /* ListMyNumberTableViewCell.swift in Sources */,
 				C1E63AC82BA4434E00707F53 /* MainTableView.swift in Sources */,
 				C170085B2B9EF0B900008BE7 /* DiaryViewModel.swift in Sources */,
 				C1F35CED2B99EF3F00B32B4E /* APIManager.swift in Sources */,
 				C1E63AA72BA2BFBD00707F53 /* TextCell.swift in Sources */,
 				C17008522B9ED61200008BE7 /* AddContentTableViewCell.swift in Sources */,
-				C17008802BA061B000008BE7 /* MyNumberViewController.swift in Sources */,
+				C17008802BA061B000008BE7 /* EditMyNumberViewController.swift in Sources */,
 				C17008542B9EE6A800008BE7 /* AddImageTableViewCell.swift in Sources */,
 				C1E63ACA2BA5A60F00707F53 /* SearchResult.swift in Sources */,
 				C1F35CF32B99FB2100B32B4E /* Observable.swift in Sources */,
@@ -471,6 +486,7 @@
 				C1F35CEB2B99BBC200B32B4E /* FormatterManager.swift in Sources */,
 				C17008402B9DE99A00008BE7 /* MenuTableViewCell.swift in Sources */,
 				C1F35CD92B99A6D100B32B4E /* BaseViewController.swift in Sources */,
+				C1978F022BAAADB3008EEC9D /* ListMyNumberViewController.swift in Sources */,
 				C17008782BA028FD00008BE7 /* APIKey.swift in Sources */,
 				C1E63AA52BA2BF1000707F53 /* NumberSelectionView.swift in Sources */,
 				C17008562B9EEAFB00008BE7 /* RealmRepository.swift in Sources */,
