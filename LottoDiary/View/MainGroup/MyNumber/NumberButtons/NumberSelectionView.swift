@@ -20,7 +20,6 @@ class NumberSelectionView: UIView {
     // 이전에 선택한 번호를 관리
     var selectedNumbers: [Int] = []
     
-    
     var dataSource: UICollectionViewDiffableDataSource<Section, Int>! = nil
     var collectionView: UICollectionView! = nil
     
@@ -65,8 +64,6 @@ extension NumberSelectionView: UICollectionViewDelegate {
     }
 }
 
-
-
 extension NumberSelectionView {
     /// - Tag: Inset
     func createLayout() -> UICollectionViewLayout {
@@ -78,13 +75,11 @@ extension NumberSelectionView {
         item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
         
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                               heightDimension: .fractionalHeight(0.07))
+                                               heightDimension: .fractionalHeight(0.15))//1.0
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
                                                        subitems: [item])
-        
         let section = NSCollectionLayoutSection(group: group)
         let layout = UICollectionViewCompositionalLayout(section: section)
-        
         return layout
     }
     
@@ -99,28 +94,24 @@ extension NumberSelectionView {
 
 extension NumberSelectionView {
     
-//    func configureHierarchy() {
-//        collectionView = UICollectionView(frame: bounds, collectionViewLayout: createLayout())
-//        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//        collectionView.backgroundColor = .systemBackground
-//        collectionView.delegate = self
-//        addSubview(collectionView)
-//    }
-    
     func configureHierarchy() {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
-        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        // collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.backgroundColor = .systemBackground
         collectionView.delegate = self
         addSubview(collectionView)
         
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: self.topAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
-        ])
+//        collectionView.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//            collectionView.topAnchor.constraint(equalTo: self.topAnchor),
+//            collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+//            collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+//            collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+//        ])
+        
+        collectionView.snp.makeConstraints { make in
+            make.edges.equalTo(self.safeAreaLayoutGuide)
+        }
     }
 
     
@@ -167,3 +158,6 @@ extension NumberSelectionView {
     }
 }
 
+#Preview {
+    NumberSelectionView()
+}
