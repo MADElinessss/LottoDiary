@@ -11,12 +11,27 @@ import UIKit
 final class MyLottoViewController: BaseViewController {
 
     let tableView = UITableView()
+    let viewModel = MainViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
 
+        setupBindings()
+        viewModel.apiRequest(on: self)
+        
+    }
+    
+    func setupBindings() {
+        viewModel.outputLotto.bind { [weak self] lotto in
+            guard let lotto = lotto else { return }
+        }
+        
+        viewModel.errorMessage.bind { [weak self] errorMessage in
+            guard let message = errorMessage, !message.isEmpty else { return }
+            DispatchQueue.main.async {
+                AlertManager.shared.showAlert(on: self!, title: "오류", message: message)
+            }
+        }
     }
     
     override func configureHierarchy() {
@@ -37,7 +52,7 @@ final class MyLottoViewController: BaseViewController {
         tableView.backgroundColor = .background
         tableView.register(MyLottoTableViewCell.self, forCellReuseIdentifier: "MyLottoTableViewCell")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
-        // tableView.separatorStyle = .none
+        tableView.separatorStyle = .none
         
         configureNavigationBar(title: "나의 로또", leftBarButton: nil, rightBarButton: nil)
     }
@@ -59,6 +74,11 @@ extension MyLottoViewController: UITableViewDelegate, UITableViewDataSource {
         
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MyLottoTableViewCell", for: indexPath) as! MyLottoTableViewCell
+            viewModel.outputLotto.bind { [weak self] lotto in
+                guard let lotto = lotto else { return }
+                print("🥔🥔", lotto)
+                cell.configureView(with: lotto)
+            }
             cell.chevronImage.isHidden = true
             cell.clipsToBounds = true
             cell.layer.cornerRadius = 15
@@ -71,8 +91,8 @@ extension MyLottoViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.textLabel?.text = "번호 직접 입력"
             }
             
-//            cell.clipsToBounds = true
-//            cell.layer.cornerRadius = 15
+            cell.clipsToBounds = true
+            cell.layer.cornerRadius = 15
             cell.selectionStyle = .none
             
             return cell

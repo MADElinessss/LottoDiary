@@ -48,7 +48,8 @@ final class DiaryViewController: BaseViewController {
         var snapshot = NSDiffableDataSourceSnapshot<Int, Diary>()
         snapshot.appendSections([1,2])
         snapshot.appendItems(viewModel.outputDiary.value, toSection: 1)
-        dataSource.apply(snapshot)
+        // dataSource.apply(snapshot)
+        dataSource.applySnapshotUsingReloadData(snapshot)
     }
     
     private func makeCellRegistration() {

@@ -51,12 +51,13 @@ final class MainViewController: BaseViewController {
     
     override func configureLayout() {
         logoImage.snp.makeConstraints { make in
-            make.center.equalTo(titleView)
-            make.size.equalTo(30)
+            make.top.equalTo(titleView)
+            make.centerX.equalTo(titleView)
+            make.size.equalTo(40)
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleView).inset(16)
+            make.top.equalTo(titleView)
             make.centerX.equalTo(titleView)
         }
 
