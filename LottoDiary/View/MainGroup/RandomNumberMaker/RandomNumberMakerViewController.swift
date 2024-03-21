@@ -43,8 +43,9 @@ class RandomNumberMakerViewController: BaseViewController, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! RandomNumberMakerCollectionViewCell
         let title = ["랜덤 로또 번호", "랜덤 번호 추천"]
+        let image = ["numbers", "anumber"]
         cell.titleLabel.text = title[indexPath.item]
-        
+        cell.imageView.image = UIImage(named: image[indexPath.item])
         return cell
     }
     

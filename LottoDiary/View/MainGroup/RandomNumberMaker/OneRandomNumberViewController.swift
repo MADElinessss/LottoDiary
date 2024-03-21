@@ -24,6 +24,7 @@ public struct OneRandomNumberView: View {
         VStack {
             Text("소원을 빌고, 원하는 것을 드래그해서 넣어보세요.")
                 .fontWeight(.medium)
+                .font(.system(size: 14))
                 .padding(.bottom, 10)
             Spacer()
             Text(basket)
@@ -31,11 +32,18 @@ public struct OneRandomNumberView: View {
                 .frame(maxWidth: 300)
             HStack {
                 VStack(spacing: 10) {
-                    Text(coin.randomElement() ?? "🍀")
-                        .scaleEffect(2)
-                        .onDrag { NSItemProvider(object: self.basket as NSString) }
-                        .frame(width: 200, height: 200)
-                    Text("DRAG")
+                    ZStack {
+                        Color.clear // Invisible layer to increase the draggable area
+                        Text(coin.randomElement() ?? "🍀")
+                            .scaleEffect(2)
+                    }
+                    .frame(width: 200, height: 200) // Increased frame size for easier dragging
+                    .onDrag { NSItemProvider(object: String(self.coin.randomElement() ?? "🍀") as NSString) }
+                    .onLongPressGesture(minimumDuration: 0.5) {
+                        // Trigger the weakest haptic feedback on long press
+                        let generator = UIImpactFeedbackGenerator(style: .light)
+                        generator.impactOccurred()
+                    }
                 }
                 VStack(spacing: 10) {
                     Circle()
@@ -43,7 +51,6 @@ public struct OneRandomNumberView: View {
                         .opacity(0.3)
                         .frame(width: 200, height: 200)
                         .onDrop(of: [.text], delegate: FoodDropDelegate(basket: $basket))
-                    Text("DROP")
                 }
             }
             .animation(.spring(), value: basket)
@@ -56,10 +63,15 @@ fileprivate
 struct FoodDropDelegate: DropDelegate {
     
     @Binding var basket: String
-
+    
     func performDrop(info: DropInfo) -> Bool {
         let number = Int.random(in: 1...45)
         self.basket = "\(number)"
+        
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
+        
+        
         return true
     }
 }

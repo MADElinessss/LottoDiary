@@ -12,6 +12,7 @@ class RandomNumberMakerCollectionViewCell: UICollectionViewCell {
     // The card view that we apply transforms on
     var card: UIView!
     let titleLabel = UILabel()
+    let imageView = UIImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,14 +39,24 @@ class RandomNumberMakerCollectionViewCell: UICollectionViewCell {
         
         contentView.addSubview(card)
         card.addSubview(titleLabel)
+        card.addSubview(imageView)
         
         titleLabel.text = "오늘의 행운은?"
         titleLabel.font = .systemFont(ofSize: 16, weight: .bold)
         titleLabel.textColor = .pointSymbol
+        imageView.image = UIImage(named: "anumber")
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 50
         
         titleLabel.snp.makeConstraints { make in
             make.centerX.equalTo(card)
             make.top.equalTo(card).inset(44)
+        }
+        
+        imageView.snp.makeConstraints { make in
+            make.centerX.equalTo(card)
+            make.top.equalTo(titleLabel.snp.bottom).offset(44)
+            make.size.equalTo(100)
         }
     }
 }
