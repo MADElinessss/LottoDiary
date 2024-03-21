@@ -39,9 +39,10 @@ final class MenuCollectionViewCell: UICollectionViewCell {
         label.textColor = .black
         label.font = .systemFont(ofSize: 16, weight: .medium)
         
-        imageView.image = UIImage(systemName: "mic.circle")
+        imageView.image = UIImage(systemName: "mic.circle")?.withRenderingMode(.automatic)
         imageView.tintColor = .point
         imageView.contentMode = .scaleAspectFit
+        
     }
     
     func configure(with title: String, imageName: String) {

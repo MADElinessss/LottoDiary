@@ -9,9 +9,9 @@
 import SnapKit
 import UIKit
 
-extension Notification.Name {
-    static let diaryDidDelete = Notification.Name("diaryDidDelete")
-}
+//extension Notification.Name {
+//    static let diaryDidDelete = Notification.Name("diaryDidDelete")
+//}
 
 
 final class DiaryViewController: BaseViewController {
@@ -34,7 +34,7 @@ final class DiaryViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(updateDiaryData), name: .diaryDidDelete, object: nil)
+        // NotificationCenter.default.addObserver(self, selector: #selector(updateDiaryData), name: .diaryDidDelete, object: nil)
             
         
         viewModel.inputViewWillAppearTrigger.value = ()
@@ -47,9 +47,9 @@ final class DiaryViewController: BaseViewController {
         updateSnapshot()
         setupFloatingActionButton()
     }
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
+//    deinit {
+//        NotificationCenter.default.removeObserver(self)
+//    }
     
     @objc func updateDiaryData() {
         viewModel.fetchDiaries()
@@ -60,7 +60,8 @@ final class DiaryViewController: BaseViewController {
         var snapshot = NSDiffableDataSourceSnapshot<Int, Diary>()
         snapshot.appendSections([1,2])
         snapshot.appendItems(viewModel.outputDiary.value, toSection: 1)
-        dataSource.apply(snapshot)
+        
+        dataSource.applySnapshotUsingReloadData(snapshot)
     }
     
     private func makeCellRegistration() {

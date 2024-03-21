@@ -24,20 +24,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let vc1 = MainViewController()
         let vc2 = DiaryViewController()
-        let vc3 = ChartViewController()
-        let vc4 = SettingViewController()
-        
+//        let vc3 = ChartViewController()
+//        let vc4 = SettingViewController()
+       
         vc1.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "clover"), selectedImage: UIImage(named: "clover"))
         vc1.tabBarItem.tag = 0
         vc2.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "edit"), selectedImage: UIImage(named: "edit"))
         vc2.tabBarItem.tag = 1
-        vc3.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "stats"), selectedImage: UIImage(named: "stats"))
-        vc3.tabBarItem.tag = 2
-        vc4.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "user"), selectedImage: UIImage(named: "user"))
-        vc4.tabBarItem.tag = 3
+//        vc3.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "stats"), selectedImage: UIImage(named: "stats"))
+//        vc3.tabBarItem.tag = 2
+//        vc4.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "user"), selectedImage: UIImage(named: "user"))
+//        vc4.tabBarItem.tag = 3
         
         
-        tabBarController.viewControllers = [vc1, vc2, vc3, vc4].map { UINavigationController(rootViewController: $0) }
+        // tabBarController.viewControllers = [vc1, vc2, vc3, vc4].map { UINavigationController(rootViewController: $0) }
+        tabBarController.viewControllers = [vc1, vc2].map { UINavigationController(rootViewController: $0) }
         
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()

@@ -111,7 +111,7 @@ extension NumberSelectionView {
         let cellRegistration = UICollectionView.CellRegistration<TextCell, Int> { (cell, indexPath, identifier) in
             
             cell.label.text = "\(identifier)"
-            cell.label.font = .systemFont(ofSize: 14, weight: .semibold)
+            cell.label.font = .systemFont(ofSize: 12, weight: .semibold)
             cell.label.textColor = .white
             cell.contentView.backgroundColor = self.color(for: identifier)
             cell.label.textAlignment = .center
@@ -150,6 +150,3 @@ extension NumberSelectionView {
     }
 }
 
-#Preview {
-    NumberSelectionView()
-}

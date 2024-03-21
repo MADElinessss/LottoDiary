@@ -310,7 +310,7 @@ extension DetailDiaryViewController: UITableViewDelegate, UITableViewDataSource 
                 
                 if let diaryId = self?.diary?.id {
                         self?.viewModel.repository.delete(diaryId: diaryId)
-                        NotificationCenter.default.post(name: .diaryDidDelete, object: nil)
+                        // NotificationCenter.default.post(name: .diaryDidDelete, object: nil)
                         self?.navigationController?.popViewController(animated: true)
                     } else {
                         print("Error: Diary ID is unavailable.")
