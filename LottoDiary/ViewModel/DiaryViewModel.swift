@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import RealmSwift
 
 class DiaryViewModel {
     
@@ -20,8 +21,20 @@ class DiaryViewModel {
     var saveButtonTapped: Observable<Void?> = Observable(nil)
     
     var outputDiary: Observable<[Diary]> = Observable([])
+    private var notificationToken: NotificationToken? // 변화를 관찰하기 위한 NotificationToken을 저장합니다.
     
     init() {
+        
+        let results = repository.fetchDiary() // fetchDiaryResults()는 Results<Diary>를 반환해야 합니다.
+        
+        notificationToken = results.observe { [weak self] (changes: RealmCollectionChange) in
+            switch changes {
+            case .initial, .update:
+                self?.fetchDiaries() // 변화가 감지될 때마다 fetchDiaries()를 호출하여 outputDiary를 업데이트합니다.
+            case .error(let error):
+                print("Realm Error: \(error)")
+            }
+        }
         inputViewWillAppearTrigger.bind { [weak self] _ in
             self?.fetchDiaries()
         }
@@ -41,10 +54,20 @@ class DiaryViewModel {
         }
     }
     
-    func fetchDiaries() {
-        let diaries = repository.fetchDiary()
-        self.outputDiary.value = diaries
+    deinit {
+        notificationToken?.invalidate() // 더 이상 필요하지 않을 때 NotificationToken을 해제합니다.
     }
+    
+//    func fetchDiaries() {
+//        let diaries = repository.fetchDiary() // fetchDiary()는 [Diary]를 반환합니다.
+//        self.outputDiary.value = diaries
+//    }
+    func fetchDiaries() {
+        let diariesResults = repository.fetchDiary() // Results<Diary> 타입을 반환
+        let diariesArray = Array(diariesResults) // Results<Diary>를 [Diary]로 변환
+        self.outputDiary.value = diariesArray // 변환된 배열을 outputDiary에 할당
+    }
+
     
     private func saveImageToDocumentDirectory(image: UIImage, completion: @escaping (String?) -> Void) {
         DispatchQueue.global(qos: .background).async {
@@ -52,15 +75,15 @@ class DiaryViewModel {
                 completion(nil)
                 return
             }
-
+            
             let fileName = UUID().uuidString + ".jpg"
             let fileURL = documentDirectory.appendingPathComponent(fileName)
-
+            
             guard let imageData = image.jpegData(compressionQuality: 1.0) else {
                 completion(nil)
                 return
             }
-
+            
             do {
                 try imageData.write(to: fileURL)
                 DispatchQueue.main.async {
@@ -84,7 +107,7 @@ class DiaryViewModel {
             return nil
         }
     }
-
+    
     private func getDocumentDirectory() -> URL {
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     }
@@ -92,5 +115,5 @@ class DiaryViewModel {
     func saveDiaryEntry(_ diaryEntry: Diary) {
         repository.create(diary: diaryEntry)
     }
-
+    
 }

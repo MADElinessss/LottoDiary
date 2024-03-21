@@ -12,10 +12,15 @@ class RealmRepository {
     private let realm = try! Realm()
     
     // MARK: READ
-    func fetchDiary() -> [Diary] {
-        let result = realm.objects(Diary.self)
-        return Array(result)
+//    func fetchDiary() -> [Diary] {
+//        let result = realm.objects(Diary.self)
+//        return Array(result)
+//    }
+    
+    func fetchDiary() -> Results<Diary> {
+        return realm.objects(Diary.self).filter("isDeleted == false")
     }
+
     // MARK: CREATE
     func create(diary: Diary) {
         do {
@@ -41,6 +46,14 @@ class RealmRepository {
             }
         } catch {
             print("🗑️ 삭제에러: \(error)")
+        }
+    }
+
+    func markAsDeleted(diaryId: ObjectId) {
+        if let diaryToDelete = realm.object(ofType: Diary.self, forPrimaryKey: diaryId) {
+            try? realm.write {
+                diaryToDelete.isDeleted = true
+            }
         }
     }
 

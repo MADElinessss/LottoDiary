@@ -9,6 +9,11 @@
 import SnapKit
 import UIKit
 
+extension Notification.Name {
+    static let diaryDidDelete = Notification.Name("diaryDidDelete")
+}
+
+
 final class DiaryViewController: BaseViewController {
     
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
@@ -21,13 +26,16 @@ final class DiaryViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        viewModel.inputViewWillAppearTrigger.value = ()
+        viewModel.fetchDiaries()
         updateSnapshot()
     }
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateDiaryData), name: .diaryDidDelete, object: nil)
+            
         
         viewModel.inputViewWillAppearTrigger.value = ()
         
@@ -38,6 +46,14 @@ final class DiaryViewController: BaseViewController {
         makeCellRegistration()
         updateSnapshot()
         setupFloatingActionButton()
+    }
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func updateDiaryData() {
+        viewModel.fetchDiaries()
+        updateSnapshot()
     }
 
     private func updateSnapshot() {

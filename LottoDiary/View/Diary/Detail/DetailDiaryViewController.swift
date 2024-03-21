@@ -27,6 +27,8 @@ final class DetailDiaryViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // print(diary)
+        
         viewModel.selectedImage.bind { [weak self] _ in
             self?.tableView.reloadData()
         }
@@ -113,6 +115,7 @@ final class DetailDiaryViewController: BaseViewController {
             newDiaryEntry.colorString = colorName
         }
         
+        
         viewModel.saveDiaryEntry(newDiaryEntry)
         
         navigationController?.popViewController(animated: true)
@@ -157,6 +160,7 @@ extension DetailDiaryViewController: PHPickerViewControllerDelegate {
 }
 
 extension DetailDiaryViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 5
     }
@@ -253,7 +257,7 @@ extension DetailDiaryViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 200
+            return 150
         } else if indexPath.section == 1 {
             if let imageName = diary?.imageName, !imageName.isEmpty, viewModel.loadImageFromDocumentDirectory(fileName: imageName) != nil {
                 return 270
@@ -301,15 +305,23 @@ extension DetailDiaryViewController: UITableViewDelegate, UITableViewDataSource 
             navController.modalPresentationStyle = .automatic
             present(navController, animated: true, completion: nil)
         } else if indexPath.section == 4 {
-            
             let alert = UIAlertController(title: "일기 삭제", message: "이 일기를 삭제하시겠습니까?", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "삭제", style: .destructive, handler: { [weak self] _ in
+                
                 if let diaryId = self?.diary?.id {
-                    self?.viewModel.repository.delete(diaryId: diaryId)
-                    self?.navigationController?.popViewController(animated: true)
-                } else {
-                    print("Error: Diary ID is unavailable.")
-                }
+                        self?.viewModel.repository.delete(diaryId: diaryId)
+                        NotificationCenter.default.post(name: .diaryDidDelete, object: nil)
+                        self?.navigationController?.popViewController(animated: true)
+                    } else {
+                        print("Error: Diary ID is unavailable.")
+                    }
+                
+//                if let diaryId = self?.diary?.id {
+//                    self?.viewModel.repository.delete(diaryId: diaryId)
+//                    self?.navigationController?.popViewController(animated: true)
+//                } else {
+//                    print("Error: Diary ID is unavailable.")
+//                }
             }))
             alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
             present(alert, animated: true)
@@ -317,4 +329,3 @@ extension DetailDiaryViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
 }
-
