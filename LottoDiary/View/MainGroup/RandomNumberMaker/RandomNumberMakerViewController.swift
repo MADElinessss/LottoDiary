@@ -9,15 +9,23 @@ import CollectionViewPagingLayout
 import UIKit
 import SwiftUI
 
-class RandomNumberMakerViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class RandomNumberMakerViewController: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
+        
+        let leftButton = createBarButtonItem(imageName: "chevron.left", action: #selector(leftButtonTapped))
+        
+        configureNavigationBar(title: "번호 생성기", leftBarButton: leftButton, rightBarButton: nil)
     }
     
+    @objc func leftButtonTapped() {
+        navigationController?.popViewController(animated: true)
+    }
+
     private func setupCollectionView() {
         let layout = CollectionViewPagingLayout()
         collectionView = UICollectionView(frame: view.frame, collectionViewLayout: layout)
@@ -36,6 +44,7 @@ class RandomNumberMakerViewController: UIViewController, UICollectionViewDataSou
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! RandomNumberMakerCollectionViewCell
         let title = ["랜덤 로또 번호", "랜덤 번호 추천"]
         cell.titleLabel.text = title[indexPath.item]
+        
         return cell
     }
     
@@ -43,6 +52,9 @@ class RandomNumberMakerViewController: UIViewController, UICollectionViewDataSou
         if indexPath.item == 1 {
             let hostingController = UIHostingController(rootView: OneRandomNumberView())
             navigationController?.pushViewController(hostingController, animated: true)
+        } else {
+            let vc = SixRandomNumbersViewController()
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
 

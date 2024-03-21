@@ -33,7 +33,8 @@ class RandomNumberMakerCollectionViewCell: UICollectionViewCell {
             height: frame.height*0.7
         )
         card = UIView(frame: cardFrame)
-        card.backgroundColor = .orange
+        card.backgroundColor = .card
+        card.layer.cornerRadius = 20
         
         contentView.addSubview(card)
         card.addSubview(titleLabel)

@@ -72,6 +72,7 @@ final class MainViewController: BaseViewController {
         logoImage.contentMode = .scaleAspectFit
         titleLabel.text = "로또 일기"
         titleLabel.font = .systemFont(ofSize: 16, weight: .bold)
+
         
         self.navigationItem.titleView = titleView
         
