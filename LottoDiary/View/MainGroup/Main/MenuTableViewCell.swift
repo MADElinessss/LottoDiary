@@ -30,6 +30,7 @@ final class MenuTableViewCell: UITableViewCell {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(MenuCollectionViewCell.self, forCellWithReuseIdentifier: "MenuCollectionViewCell")
+        collectionView.isScrollEnabled = false
     }
     
     static func configureCollectionLayout() -> UICollectionViewLayout {

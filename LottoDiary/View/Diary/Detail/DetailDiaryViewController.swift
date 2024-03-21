@@ -27,13 +27,7 @@ final class DetailDiaryViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // print(diary)
-        
         viewModel.selectedImage.bind { [weak self] _ in
-            self?.tableView.reloadData()
-        }
-        
-        viewModel.outputDiary.bind { [weak self] _ in
             self?.tableView.reloadData()
         }
         
@@ -310,18 +304,11 @@ extension DetailDiaryViewController: UITableViewDelegate, UITableViewDataSource 
                 
                 if let diaryId = self?.diary?.id {
                         self?.viewModel.repository.delete(diaryId: diaryId)
-                        // NotificationCenter.default.post(name: .diaryDidDelete, object: nil)
                         self?.navigationController?.popViewController(animated: true)
                     } else {
                         print("Error: Diary ID is unavailable.")
                     }
-                
-//                if let diaryId = self?.diary?.id {
-//                    self?.viewModel.repository.delete(diaryId: diaryId)
-//                    self?.navigationController?.popViewController(animated: true)
-//                } else {
-//                    print("Error: Diary ID is unavailable.")
-//                }
+
             }))
             alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
             present(alert, animated: true)

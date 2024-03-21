@@ -59,6 +59,7 @@ extension MyLottoViewController: UITableViewDelegate, UITableViewDataSource {
         
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MyLottoTableViewCell", for: indexPath) as! MyLottoTableViewCell
+            cell.chevronImage.isHidden = true
             cell.clipsToBounds = true
             cell.layer.cornerRadius = 15
             return cell

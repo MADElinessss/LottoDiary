@@ -9,7 +9,9 @@ import SnapKit
 import UIKit
 
 final class MainViewController: BaseViewController {
-    
+    let logoImage = UIImageView()
+    let titleView = UIView()
+    let titleLabel = UILabel()
     let tableView = MainTableView()
     let viewModel = MainViewModel()
     
@@ -23,24 +25,16 @@ final class MainViewController: BaseViewController {
     func setupBindings() {
         viewModel.outputLotto.bind { [weak self] lotto in
             guard let lotto = lotto else { return }
-            // Lotto 데이터에 따른 UI 업데이트 로직
-            print(lotto)
         }
         
         viewModel.errorMessage.bind { [weak self] errorMessage in
             guard let message = errorMessage, !message.isEmpty else { return }
-            // 에러 메시지가 있을 경우, Alert 표시
             DispatchQueue.main.async {
                 AlertManager.shared.showAlert(on: self!, title: "오류", message: message)
             }
         }
-        
-        viewModel.errorMessage.bind { [weak self] errorMessage in
-            if let message = errorMessage {
-                self?.showErrorAlert(message: message)
-            }
-        }
     }
+    
     private func showErrorAlert(message: String) {
         let alert = UIAlertController(title: "오류", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "확인", style: .default))
@@ -50,17 +44,35 @@ final class MainViewController: BaseViewController {
     }
     
     override func configureHierarchy() {
+        titleView.addSubview(logoImage)
+        titleView.addSubview(titleLabel)
         view.addSubview(tableView)
     }
     
     override func configureLayout() {
+        logoImage.snp.makeConstraints { make in
+            make.center.equalTo(titleView)
+            make.size.equalTo(30)
+        }
+        
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleView).inset(16)
+            make.centerX.equalTo(titleView)
+        }
+
         tableView.snp.makeConstraints { make in
-            make.verticalEdges.equalTo(view)
-            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(8)
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide).inset(8)
         }
     }
     
     override func configureView() {
+        logoImage.image = UIImage(named: "appstore")
+        logoImage.contentMode = .scaleAspectFit
+        titleLabel.text = "로또 일기"
+        titleLabel.font = .systemFont(ofSize: 16, weight: .bold)
+        
+        self.navigationItem.titleView = titleView
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -69,8 +81,6 @@ final class MainViewController: BaseViewController {
         tableView.register(MenuTableViewCell.self, forCellReuseIdentifier: "MenuTableViewCell")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
         tableView.separatorStyle = .none
-        
-        configureNavigationBar(title: "로또 일기", leftBarButton: nil, rightBarButton: nil)
     }
 }
 
@@ -88,6 +98,11 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MyLottoTableViewCell", for: indexPath) as! MyLottoTableViewCell
             cell.clipsToBounds = true
             cell.layer.cornerRadius = 15
+            viewModel.outputLotto.bind { [weak self] lotto in
+                guard let lotto = lotto else { return }
+                print("🥔🥔", lotto)
+                cell.configureView(with: lotto)
+            }
             return cell
         } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as! MenuTableViewCell
@@ -132,8 +147,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         } else if indexPath.section == 2 {
             let vc = WebViewController()
             navigationController?.pushViewController(vc, animated: true)
-        } else {
-            
         }
     }
     

@@ -60,7 +60,6 @@ final class DiaryCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    
     private func configureView() {
         contentView.backgroundColor = .white
         contentView.addSubview(tagLabel)

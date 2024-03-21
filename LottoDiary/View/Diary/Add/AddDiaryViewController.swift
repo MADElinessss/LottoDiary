@@ -25,10 +25,6 @@ final class AddDiaryViewController: BaseViewController {
             self?.tableView.reloadData()
         }
         
-        viewModel.outputDiary.bind { [weak self] _ in
-            self?.tableView.reloadData()
-        }
-        
         viewModel.fetchDiaries()
         
         print("## realm file dir -> \(Realm.Configuration.defaultConfiguration.fileURL!)")

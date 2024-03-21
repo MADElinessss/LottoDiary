@@ -5,14 +5,8 @@
 //  Created by Madeline on 3/7/24.
 //
 
-
 import SnapKit
 import UIKit
-
-//extension Notification.Name {
-//    static let diaryDidDelete = Notification.Name("diaryDidDelete")
-//}
-
 
 final class DiaryViewController: BaseViewController {
     
@@ -34,9 +28,6 @@ final class DiaryViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // NotificationCenter.default.addObserver(self, selector: #selector(updateDiaryData), name: .diaryDidDelete, object: nil)
-            
-        
         viewModel.inputViewWillAppearTrigger.value = ()
         
         let rightButton = createBarButtonItem(imageName: "line.3.horizontal.decrease", action: #selector(rightButtonTapped))
@@ -47,9 +38,6 @@ final class DiaryViewController: BaseViewController {
         updateSnapshot()
         setupFloatingActionButton()
     }
-//    deinit {
-//        NotificationCenter.default.removeObserver(self)
-//    }
     
     @objc func updateDiaryData() {
         viewModel.fetchDiaries()
@@ -60,8 +48,7 @@ final class DiaryViewController: BaseViewController {
         var snapshot = NSDiffableDataSourceSnapshot<Int, Diary>()
         snapshot.appendSections([1,2])
         snapshot.appendItems(viewModel.outputDiary.value, toSection: 1)
-        
-        dataSource.applySnapshotUsingReloadData(snapshot)
+        dataSource.apply(snapshot)
     }
     
     private func makeCellRegistration() {
@@ -146,10 +133,7 @@ extension DiaryViewController: UICollectionViewDelegate {
         
         guard let diary = dataSource.itemIdentifier(for: indexPath) else { return }
         let vc = DetailDiaryViewController()
-        // TODO: 선택한 일기에 대한 데이터 전달
         vc.diary = diary
         navigationController?.pushViewController(vc, animated: true)
-        
-        
     }
 }

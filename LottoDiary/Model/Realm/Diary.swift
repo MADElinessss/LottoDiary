@@ -15,5 +15,4 @@ class Diary: Object {
     @Persisted var imageName: String?
     @Persisted var colorString: String?
     @Persisted var date: Date
-    @Persisted var isDeleted: Bool = false
 }

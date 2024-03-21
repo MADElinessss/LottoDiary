@@ -12,6 +12,7 @@ final class MyLottoTableViewCell: UITableViewCell {
     
     let titleLabel = UILabel()
     let dateLabel = UILabel()
+    let chevronImage = UIImageView()
     let stackView = UIStackView()
     let prizeLabel = UILabel()
     
@@ -23,23 +24,20 @@ final class MyLottoTableViewCell: UITableViewCell {
         contentView.backgroundColor = .white
         
         configureLayout()
-        viewModel.outputLotto.bind { [weak self] lotto in
-            self?.configureView(with: lotto)
-        }
-        viewModel.apiRequest()
         
     }
     
     private func configureLayout() {
         contentView.addSubview(titleLabel)
         contentView.addSubview(dateLabel)
+        contentView.addSubview(chevronImage)
         contentView.addSubview(stackView)
         contentView.addSubview(prizeLabel)
     }
     
-    private func configureView(with lotto: Lotto?) {
+    func configureView(with lotto: Lotto?) {
         guard let draw = lotto else { return }
-        
+        print("🥔🥔🥔", draw)
         let drawNumber: Int = draw.drwNo
         titleLabel.text = "\(drawNumber)회 당첨 결과"
         titleLabel.textColor = .black
@@ -50,9 +48,19 @@ final class MyLottoTableViewCell: UITableViewCell {
         dateLabel.textColor = .gray
         dateLabel.font = .systemFont(ofSize: 14, weight: .semibold)
         
+        chevronImage.image = UIImage(systemName: "chevron.right")
+        chevronImage.tintColor = .black
+        
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(contentView.safeAreaLayoutGuide).inset(16)
             make.centerX.equalTo(contentView)
+        }
+        
+        chevronImage.snp.makeConstraints { make in
+            make.top.equalTo(contentView.safeAreaLayoutGuide).inset(16)
+            make.trailing.equalTo(contentView.safeAreaLayoutGuide).inset(16)
+            make.width.equalTo(16)
+            make.height.equalTo(20)
         }
         
         dateLabel.snp.makeConstraints { make in
@@ -64,7 +72,6 @@ final class MyLottoTableViewCell: UITableViewCell {
             make.top.equalTo(stackView.snp.bottom).offset(16)
             make.centerX.equalTo(contentView)
         }
-        
         
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
