@@ -42,7 +42,7 @@ final class AddWishTagViewController: BaseViewController {
         stackView.snp.makeConstraints { make in
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(24)
             make.top.equalTo(headerLabel.snp.bottom).offset(16)
-            make.height.equalTo(30)
+            make.height.equalTo(44)
             make.width.equalTo(300)
         }
         
@@ -70,7 +70,7 @@ final class AddWishTagViewController: BaseViewController {
         headerLabel.textColor = .black
         
         
-        stackView.backgroundColor = .white
+        stackView.backgroundColor = .background
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.spacing = 12
@@ -79,6 +79,11 @@ final class AddWishTagViewController: BaseViewController {
             let buttonColor = color(for: i)
             let button = NumberButton(backgroundColor: buttonColor, number: nil)
             button.tag = i // 각 버튼에 고유한 태그 할당
+            button.snp.makeConstraints { make in
+                make.size.equalTo(30)
+            }
+            button.clipsToBounds = true
+            button.layer.cornerRadius = 20
             button.addTarget(self, action: #selector(colorButtonTapped(_:)), for: .touchUpInside)
             stackView.addArrangedSubview(button)
             stackView.addArrangedSubview(button)
@@ -106,9 +111,9 @@ final class AddWishTagViewController: BaseViewController {
         
         // 선택된 버튼에 시각적 표시를 업데이트
         stackView.arrangedSubviews.forEach { view in
-            if let btn = view as? UIButton {
-                btn.layer.borderWidth = (btn.tag == sender.tag) ? 2 : 0
-                btn.layer.borderColor = (btn.tag == sender.tag) ? UIColor.black.cgColor : nil
+            if let button = view as? UIButton {
+                button.layer.borderWidth = (button.tag == sender.tag) ? 2 : 0
+                button.layer.borderColor = (button.tag == sender.tag) ? UIColor.point.cgColor : nil
             }
         }
     }

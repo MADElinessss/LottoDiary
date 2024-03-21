@@ -197,7 +197,7 @@ extension AddDiaryViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.textLabel?.textColor = UIColor(named: colorName) ?? .black
             } else {
                 cell.textLabel?.text = "소원 태그"
-                cell.textLabel?.textColor = .lightGray
+                cell.textLabel?.textColor = .black
             }
             
             cell.textLabel?.font = .systemFont(ofSize: 18, weight: .semibold)

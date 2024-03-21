@@ -193,7 +193,6 @@ extension DetailDiaryViewController: UITableViewDelegate, UITableViewDataSource 
                 cell.configure(with: nil, title: "이미지 첨부")
             }
             
-            
             cell.clipsToBounds = true
             cell.layer.cornerRadius = 15
             cell.selectionStyle = .none
@@ -203,13 +202,10 @@ extension DetailDiaryViewController: UITableViewDelegate, UITableViewDataSource 
             // TODO: 로또 번호가 없다면
             cell.textLabel?.text = "로또 번호 입력"
             cell.textLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
-            
-            
+            cell.textLabel?.textColor = .black
             // TODO: 로또 번호가 있다면
             cell.textLabel?.text = "구매한 로또 번호"
             cell.textLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
-            
-            
             
             cell.clipsToBounds = true
             cell.layer.cornerRadius = 15
@@ -229,7 +225,7 @@ extension DetailDiaryViewController: UITableViewDelegate, UITableViewDataSource 
                 cell.detailTextLabel?.font = .systemFont(ofSize: 16, weight: .bold)
             } else {
                 cell.detailTextLabel?.text = "태그 없음"
-                cell.detailTextLabel?.textColor = .lightGray
+                cell.detailTextLabel?.textColor = .black
             }
             
             cell.clipsToBounds = true
