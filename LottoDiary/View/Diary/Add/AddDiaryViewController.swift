@@ -14,6 +14,7 @@ final class AddDiaryViewController: BaseViewController {
     
     let tableView = UITableView()
     let viewModel = DiaryViewModel()
+    var rightButton = UIBarButtonItem()
     
     var selectedTag: String?
     var selectedColorName: String?
@@ -54,8 +55,10 @@ final class AddDiaryViewController: BaseViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "AddLottoTableViewCell")
         
         let leftButton = createBarButtonItem(imageName: "chevron.left", action: #selector(leftButtonTapped))
-        let rightButton = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(rightButtonTapped))
-        rightButton.tintColor = .pointSymbol
+        rightButton = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(rightButtonTapped))
+        // rightButton.tintColor = .pointSymbol
+        rightButton.tintColor = .lightGray
+        rightButton.isEnabled = false
         
         configureNavigationBar(title: "일기 작성", leftBarButton: leftButton, rightBarButton: rightButton)
         
@@ -78,6 +81,7 @@ final class AddDiaryViewController: BaseViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    // MARK: 저장 버튼 액션
     @objc func rightButtonTapped() {
         guard let content = viewModel.diaryContent.value else {
             print("필수 항목이 누락되었습니다.")
@@ -163,6 +167,8 @@ extension AddDiaryViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddContentTableViewCell", for: indexPath) as! AddContentTableViewCell
             cell.onTextChanged = { [weak self] text in
                 self?.viewModel.diaryContent.value = text
+                self?.rightButton.tintColor = .point
+                self?.rightButton.isEnabled = true
             }
             cell.clipsToBounds = true
             cell.layer.cornerRadius = 15

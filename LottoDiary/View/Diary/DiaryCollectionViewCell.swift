@@ -91,7 +91,7 @@ final class DiaryCollectionViewCell: UICollectionViewCell {
             make.bottom.equalTo(contentView.safeAreaLayoutGuide).inset(16)
         }
         
-        tagLabel.text = "#캠핑카"
+        tagLabel.text = ""
         tagLabel.font = .systemFont(ofSize: 18, weight: .semibold)
         tagLabel.textColor = .red
         
