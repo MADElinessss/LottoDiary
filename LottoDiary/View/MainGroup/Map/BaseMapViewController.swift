@@ -49,7 +49,7 @@ class BaseMapViewController: UIViewController, MapControllerDelegate {
 //        //KMController 생성.
 //        mapController = KMController(viewContainer: mapContainer!)
 //        mapController!.delegate = self
-//        
+//
 //        mapController?.initEngine() //엔진 초기화. 엔진 내부 객체 생성 및 초기화가 진행된다.
         
         let mapViewContainer = KMViewContainer(frame: self.view.bounds)

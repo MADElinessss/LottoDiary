@@ -47,22 +47,23 @@ class StoreMapViewController: BaseMapViewController, CLLocationManagerDelegate {
     }
     
     func loadAndDisplayData() {
-        
-        fetchSearchResults()
+        fetchSearchResults { [weak self] searchResult in
+            DispatchQueue.main.async {
+                self?.addDataPois(searchResult: searchResult)
+                self?.onSearchResultReceived?(searchResult.documents ?? [])
+            }
+        }
     }
     
-    func fetchSearchResults() {
-        
-        APIManager.shared.kakaoMapCallRequest(areaX: 127.06283102249932, areaY: 37.514322572335935, on: self) { [weak self] result in
+    
+    func fetchSearchResults(completion: @escaping (SearchResult) -> Void) {
+        // API 호출을 통해 SearchResult를 로드하고, 결과를 completion 콜백으로 전달합니다.
+        APIManager.shared.kakaoMapCallRequest(areaX: 127.06283102249932, areaY: 37.514322572335935) { result in
             switch result {
             case .success(let searchResult):
-                DispatchQueue.main.async {
-                    
-                    self?.addDataPois(searchResult: searchResult)
-                    self?.onSearchResultReceived?(searchResult.documents ?? [])
-                }
+                completion(searchResult)
             case .failure(let error):
-                self?.handleError(error)
+                print(error) // 오류 처리
             }
         }
     }
