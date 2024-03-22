@@ -55,6 +55,7 @@ final class DiaryCollectionViewCell: UICollectionViewCell {
         if let imageData = try? Data(contentsOf: fileURL!), let image = UIImage(data: imageData) {
             imageView.image = image
             imageView.isHidden = false
+            
         } else {
             imageView.isHidden = true
         }
@@ -69,13 +70,7 @@ final class DiaryCollectionViewCell: UICollectionViewCell {
         
         tagLabel.snp.makeConstraints { make in
             make.top.equalTo(contentView.safeAreaLayoutGuide).inset(16)
-            make.leading.equalTo(contentView.safeAreaLayoutGuide).offset(16)
-            make.height.equalTo(24)
-        }
-        
-        dateLabel.snp.makeConstraints { make in
-            make.top.equalTo(contentView.safeAreaLayoutGuide).inset(16)
-            make.trailing.equalTo(contentView.safeAreaLayoutGuide).inset(16)
+            make.leading.equalTo(contentView.safeAreaLayoutGuide).offset(18)
             make.height.equalTo(24)
         }
         
@@ -83,6 +78,12 @@ final class DiaryCollectionViewCell: UICollectionViewCell {
             make.top.equalTo(tagLabel.snp.bottom).offset(8)
             make.horizontalEdges.equalTo(contentView.safeAreaLayoutGuide).inset(16)
             make.height.equalTo(200)
+        }
+        
+        dateLabel.snp.makeConstraints { make in
+            make.top.equalTo(contentView.safeAreaLayoutGuide).inset(16)
+            make.trailing.equalTo(contentView.safeAreaLayoutGuide).inset(16)
+            make.height.equalTo(24)
         }
         
         contentLabel.snp.makeConstraints { make in

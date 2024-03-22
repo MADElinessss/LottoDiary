@@ -34,6 +34,7 @@ final class AddContentTableViewCell: UITableViewCell {
         configureView()
         
         updateCountLabel(characterCount: textView.text.count)
+        print("🥐", textView.text.count)
     }
     
     private func configureView() {
@@ -73,7 +74,13 @@ final class AddContentTableViewCell: UITableViewCell {
     }
     
     private func updateCountLabel(characterCount: Int) {
-        remainCountLabel.text = "\(characterCount)/500"
+        print("🥐updateCountLabel", textView.text.count)
+        // remainCountLabel.text = "\(characterCount)/500"
+        if textView.textColor == .lightGray {
+            remainCountLabel.text = "0/500"
+        } else {
+            remainCountLabel.text = "\(characterCount)/500"
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -84,6 +91,7 @@ final class AddContentTableViewCell: UITableViewCell {
 extension AddContentTableViewCell: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == .lightGray {
+            print("🥐textViewDidBeginEditing - gray")
             textView.text = nil
             textView.textColor = .black
         }
@@ -91,8 +99,10 @@ extension AddContentTableViewCell: UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
+            print("🥐textViewDidEndEditing - empty")
             textView.text = textViewPlaceHolder
             textView.textColor = .lightGray
+            remainCountLabel.text = "0/500"
         }
     }
     

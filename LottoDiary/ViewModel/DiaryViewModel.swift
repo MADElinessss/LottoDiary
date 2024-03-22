@@ -44,7 +44,6 @@ class DiaryViewModel {
 
     func fetchDiaries() {
         let diariesResults = repository.fetchDiary()
-        // let diariesArray = diariesResults
         self.outputDiary.value = diariesResults
     }
 

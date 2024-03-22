@@ -191,6 +191,7 @@ extension AddDiaryViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddLottoTableViewCell", for: indexPath)
             cell.textLabel?.text = "로또 번호 입력"
             cell.textLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
+            cell.textLabel?.textColor = .lightGray
             cell.clipsToBounds = true
             cell.layer.cornerRadius = 15
             cell.selectionStyle = .none

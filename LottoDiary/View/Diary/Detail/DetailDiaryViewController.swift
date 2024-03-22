@@ -26,6 +26,7 @@ final class DetailDiaryViewController: BaseViewController {
             tableView.reloadData()
         }
     }
+    
     var selectedColorName: String?
     
     var imageName: String? {
@@ -186,6 +187,8 @@ extension DetailDiaryViewController: UITableViewDelegate, UITableViewDataSource 
             
             if let content = diary?.content {
                 cell.textView.textColor = .black
+                let count = cell.textView.text.count
+                cell.remainCountLabel.text = "\(count)/500"
             } else {
                 cell.textView.textColor = .lightGray
             }
@@ -203,20 +206,16 @@ extension DetailDiaryViewController: UITableViewDelegate, UITableViewDataSource 
             }
             
             let title = "이미지"
-            if let imageName = diary?.imageName, !imageName.isEmpty {
-                if let image = viewModel.loadImageFromDocumentDirectory(fileName: imageName) {
-                    cell.configure(with: image, title: title)
-                    print("🐲 1")
-                }
-            }
             if let image = viewModel.selectedImage.value {
                 cell.configure(with: image, title: title)
-                print("🐲 222")
+            } else if let imageName = diary?.imageName, !imageName.isEmpty {
+                if let image = viewModel.loadImageFromDocumentDirectory(fileName: imageName) {
+                    cell.configure(with: image, title: title)
+                }
             } else {
-                print("🐲 2")
                 cell.configure(with: nil, title: "이미지 첨부")
             }
-        
+            
             cell.clipsToBounds = true
             cell.layer.cornerRadius = 15
             cell.selectionStyle = .none
