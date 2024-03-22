@@ -11,9 +11,20 @@ import UIKit
 final class AddContentTableViewCell: UITableViewCell {
     
     let textViewPlaceHolder = "오늘은 어떤 일이 있었나요?"
+    
+    lazy var textView: UITextView = {
+        let view = UITextView()
+        view.font = .systemFont(ofSize: 18)
+        view.text = textViewPlaceHolder
+        view.textColor = .lightGray
+        view.delegate = self
+
+        return view
+    }()
+    
     let remainCountLabel = UILabel()
     let dateLabel = UILabel()
-    let textView = UITextView()
+    
     var diaryContent: String = ""
     var onTextChanged: ((String) -> Void)?
 
@@ -21,7 +32,7 @@ final class AddContentTableViewCell: UITableViewCell {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
         
         configureView()
-        // textView.becomeFirstResponder()
+        
         updateCountLabel(characterCount: textView.text.count)
     }
     
@@ -53,13 +64,8 @@ final class AddContentTableViewCell: UITableViewCell {
         dateLabel.text = FormatterManager.shared.formatDateWithDayToString(date: Date())
         dateLabel.textColor = .black
         
-        textView.text = textViewPlaceHolder
-        textView.textAlignment = .left
-        textView.font = .systemFont(ofSize: 18, weight: .regular)
         textView.delegate = self
-        textView.textColor = .lightGray
-        
-        // remainCountLabel.textColor = .black
+       
         remainCountLabel.text = "0/500"
         remainCountLabel.font = .systemFont(ofSize: 14)
         remainCountLabel.textColor = .lightGray
@@ -77,17 +83,16 @@ final class AddContentTableViewCell: UITableViewCell {
 
 extension AddContentTableViewCell: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.text == textViewPlaceHolder {
+        if textView.textColor == .lightGray {
             textView.text = nil
             textView.textColor = .black
         }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+        if textView.text.isEmpty {
             textView.text = textViewPlaceHolder
             textView.textColor = .lightGray
-            updateCountLabel(characterCount: 0)
         }
     }
     

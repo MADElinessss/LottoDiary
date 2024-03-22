@@ -168,8 +168,15 @@ extension DetailDiaryViewController: UITableViewDelegate, UITableViewDataSource 
         if indexPath.section == 0 {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddContentTableViewCell", for: indexPath) as! AddContentTableViewCell
+            
             cell.textView.text = diary?.content ?? ""
             
+            if let content = diary?.content {
+                cell.textView.textColor = .black
+            } else {
+                cell.textView.textColor = .lightGray
+            }
+
             cell.onTextChanged = { [weak self] text in
                 self?.viewModel.diaryContent.value = text
             }
@@ -202,10 +209,11 @@ extension DetailDiaryViewController: UITableViewDelegate, UITableViewDataSource 
             // TODO: 로또 번호가 없다면
             cell.textLabel?.text = "로또 번호 입력"
             cell.textLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
-            cell.textLabel?.textColor = .black
+            cell.textLabel?.textColor = .lightGray
             // TODO: 로또 번호가 있다면
             cell.textLabel?.text = "구매한 로또 번호"
             cell.textLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
+            cell.textLabel?.textColor = .lightGray
             
             cell.clipsToBounds = true
             cell.layer.cornerRadius = 15
