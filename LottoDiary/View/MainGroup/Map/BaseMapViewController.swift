@@ -61,7 +61,6 @@ class BaseMapViewController: UIViewController, MapControllerDelegate {
     
     func setupMapController() {
         guard let mapContainer = self.mapContainer else {
-            print("🥕 mapContainer is nil.")
             return
         }
 
@@ -72,7 +71,6 @@ class BaseMapViewController: UIViewController, MapControllerDelegate {
     }
     
     func viewInit(viewName: String) {
-        print("🥐, viewInit OK")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -152,7 +150,6 @@ class BaseMapViewController: UIViewController, MapControllerDelegate {
     
     //addView 성공 이벤트 delegate. 추가적으로 수행할 작업을 진행한다.
     func addViewSucceeded(_ viewName: String, viewInfoName: String) {
-        print("🥐, addViewSucceeded")
         viewInit(viewName: viewName)
     }
     

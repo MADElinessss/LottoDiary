@@ -28,10 +28,9 @@ struct APIManager {
         ]
         
         let parameters: Parameters = [
-            "query": "카카오프렌즈",
+            "query": "로또",
             "y": areaY,
-            "x": areaX,
-            "radius": 20000
+            "x": areaX
         ]
         
         AF.request(url, method: .get, parameters: parameters, headers: headers).responseDecodable(of: SearchResult.self) { response in

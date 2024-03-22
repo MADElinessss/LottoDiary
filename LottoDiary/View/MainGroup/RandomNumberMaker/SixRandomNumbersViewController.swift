@@ -80,7 +80,7 @@ class SixRandomNumbersViewController: BaseViewController {
         numberMakerButton.layer.shadowOffset = CGSize(width: 0, height: 4)
         numberMakerButton.layer.shadowColor = UIColor.black.cgColor
         
-        descriptionLabel.text = "아래 번호는 랜덤으로 뽑힙니다."
+        descriptionLabel.text = "아래 번호는 랜덤으로 생성됩니다."
         descriptionLabel.font = .systemFont(ofSize: 12, weight: .medium)
     }
     

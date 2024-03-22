@@ -169,7 +169,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(vc, animated: true)
         case 3:
             // 복권 판매점
-            let vc = KakaoMapViewController()
+            let vc = MapViewController()
             navigationController?.pushViewController(vc, animated: true)
         default:
             break

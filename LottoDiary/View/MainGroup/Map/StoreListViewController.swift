@@ -15,13 +15,9 @@ class StoreListViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("🌽 setDocuments 호출 전 documents: \(documents)")
         DispatchQueue.main.async {
             self.setDocuments(self.documents)
         }
-
-        // setDocuments(documents)
-        print("🌽 setDocuments 호출 후 documents: \(documents)")
     }
 
     
@@ -37,7 +33,6 @@ class StoreListViewController: UIViewController, UITableViewDataSource, UITableV
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-    
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

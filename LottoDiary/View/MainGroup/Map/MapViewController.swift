@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class KakaoMapViewController: UIViewController {
+class MapViewController: UIViewController {
     
     private let segmentControl = UISegmentedControl(items: ["복권 판매점 지도", "주변 복권 판매점"])
     private var storeMapViewController: StoreMapViewController!

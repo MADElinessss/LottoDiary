@@ -18,7 +18,6 @@ class StoreMapViewController: BaseMapViewController, CLLocationManagerDelegate {
     var onSearchResultReceived: (([Document]) -> Void)?
     
     override func addViews() {
-        print("🥐, addViews")
         let defaultPosition: MapPoint = MapPoint(longitude: 127.108678, latitude: 37.402001)
         let mapviewInfo: MapviewInfo = MapviewInfo(viewName: "mapview", viewInfoName: "map", defaultPosition: defaultPosition, defaultLevel: 15)
         
@@ -28,7 +27,6 @@ class StoreMapViewController: BaseMapViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("🥐, viewDidLoad")
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -42,7 +40,6 @@ class StoreMapViewController: BaseMapViewController, CLLocationManagerDelegate {
     }
     
     override func viewInit(viewName: String) {
-        print("🥐, viewInit")
         configurePoi()
     }
     
@@ -58,14 +55,28 @@ class StoreMapViewController: BaseMapViewController, CLLocationManagerDelegate {
     
     func fetchSearchResults(completion: @escaping (SearchResult) -> Void) {
         // API 호출을 통해 SearchResult를 로드하고, 결과를 completion 콜백으로 전달합니다.
-        APIManager.shared.kakaoMapCallRequest(areaX: 127.06283102249932, areaY: 37.514322572335935) { result in
-            switch result {
-            case .success(let searchResult):
-                completion(searchResult)
-            case .failure(let error):
-                print(error) // 오류 처리
+        // longitude: location.coordinate.longitude, latitude: location.coordinate.latitude)
+        if let location = locationManager.location {
+            print("🍀", location)
+            APIManager.shared.kakaoMapCallRequest(areaX: location.coordinate.latitude, areaY: location.coordinate.longitude) { result in
+                switch result {
+                case .success(let searchResult):
+                    completion(searchResult)
+                case .failure(let error):
+                    print(error) // 오류 처리
+                }
+            }
+        } else {
+            APIManager.shared.kakaoMapCallRequest(areaX: 127.06283102249932, areaY: 37.514322572335935) { result in
+                switch result {
+                case .success(let searchResult):
+                    completion(searchResult)
+                case .failure(let error):
+                    print(error) // 오류 처리
+                }
             }
         }
+        
     }
 
     private func handleError(_ error: AFError) {
@@ -109,7 +120,6 @@ class StoreMapViewController: BaseMapViewController, CLLocationManagerDelegate {
 
     func configurePoi() {
         // CreatePoiStyle
-        print("🥐, CreatePoiStyle")
         let view = mapController?.getView("mapview") as! KakaoMap
         let manager = view.getLabelManager()
         let symbol = UIImage(systemName: "mappin.and.ellipse.circle.fill")
@@ -131,7 +141,6 @@ class StoreMapViewController: BaseMapViewController, CLLocationManagerDelegate {
         
         
         // CreateLodPois
-        print("🥐, CreateLodPois")
         
         
         for index in 0 ... 2 {
