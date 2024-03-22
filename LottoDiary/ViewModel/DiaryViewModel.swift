@@ -23,9 +23,6 @@ class DiaryViewModel {
     var outputDiary: Observable<[Diary]> = Observable([])
     
     init() {
-        
-        let results = repository.fetchDiary()
-
         inputViewWillAppearTrigger.bind { [weak self] _ in
             self?.fetchDiaries()
         }
@@ -47,8 +44,8 @@ class DiaryViewModel {
 
     func fetchDiaries() {
         let diariesResults = repository.fetchDiary()
-        let diariesArray = Array(diariesResults)
-        self.outputDiary.value = diariesArray
+        // let diariesArray = diariesResults
+        self.outputDiary.value = diariesResults
     }
 
     private func saveImageToDocumentDirectory(image: UIImage, completion: @escaping (String?) -> Void) {
@@ -96,5 +93,9 @@ class DiaryViewModel {
     
     func saveDiaryEntry(_ diaryEntry: Diary) {
         repository.create(diary: diaryEntry)
+    }
+    
+    func updateDiary(diary: Diary) {
+        repository.updateItem(value: diary)
     }
 }

@@ -125,6 +125,7 @@ final class AddWishTagViewController: BaseViewController {
     @objc func rightBarButtonTapped() {
         guard let content = textField.text, !content.isEmpty, let selectedColorName = self.selectedColorName else { return }
         onTagAndColorSelected?(content, selectedColorName)
+        print("🐲 onTagAndColorSelected", content, selectedColorName)
         dismiss(animated: true)
     }
     

@@ -21,8 +21,18 @@ final class DetailDiaryViewController: BaseViewController {
         }
     }
     
-    var selectedTag: String?
+    var selectedTag: String? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     var selectedColorName: String?
+    
+    var imageName: String? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,9 +95,9 @@ final class DetailDiaryViewController: BaseViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    // MARK: Update
     @objc func rightButtonTapped() {
-        guard let content = viewModel.diaryContent.value else {
-            print("필수 항목이 누락되었습니다.")
+        guard let content = diary?.content else {
             return
         }
         
@@ -97,21 +107,23 @@ final class DetailDiaryViewController: BaseViewController {
         // MARK: 이미지 있을 때
         if let imageName = viewModel.selectedImage.value {
             let image = saveImageToDocumentDirectory(image: imageName) ?? ""
+            print("🐲 이미지 들어옴")
             newDiaryEntry.imageName = image
         }
-        
-        newDiaryEntry.date = Date()
+
+        newDiaryEntry.date = diary?.date ?? Date()
         
         if let tag = selectedTag {
+            print("🐲tag", tag)
             newDiaryEntry.tag = tag
         }
         if let colorName = selectedColorName {
+            print("🐲color", colorName)
             newDiaryEntry.colorString = colorName
         }
         
-        
-        viewModel.saveDiaryEntry(newDiaryEntry)
-        
+        viewModel.updateDiary(diary: newDiaryEntry)
+        self.viewModel.repository.delete(diaryId: diary?.id ?? ObjectId())
         navigationController?.popViewController(animated: true)
     }
     
@@ -147,6 +159,7 @@ extension DetailDiaryViewController: PHPickerViewControllerDelegate {
             DispatchQueue.main.async {
                 if let image = image as? UIImage {
                     self?.viewModel.selectedImage.value = image
+                    self?.imageName = self?.saveImageToDocumentDirectory(image: image)
                 }
             }
         }
@@ -193,13 +206,17 @@ extension DetailDiaryViewController: UITableViewDelegate, UITableViewDataSource 
             if let imageName = diary?.imageName, !imageName.isEmpty {
                 if let image = viewModel.loadImageFromDocumentDirectory(fileName: imageName) {
                     cell.configure(with: image, title: title)
-                } else {
-                    cell.configure(with: nil, title: title)
+                    print("🐲 1")
                 }
+            }
+            if let image = viewModel.selectedImage.value {
+                cell.configure(with: image, title: title)
+                print("🐲 222")
             } else {
+                print("🐲 2")
                 cell.configure(with: nil, title: "이미지 첨부")
             }
-            
+        
             cell.clipsToBounds = true
             cell.layer.cornerRadius = 15
             cell.selectionStyle = .none
@@ -231,6 +248,10 @@ extension DetailDiaryViewController: UITableViewDelegate, UITableViewDataSource 
                 cell.detailTextLabel?.text = "#\(tag)"
                 cell.detailTextLabel?.textColor = color
                 cell.detailTextLabel?.font = .systemFont(ofSize: 16, weight: .bold)
+            } else if let tag = selectedTag, let colorName = selectedColorName, let color = UIColor(named: colorName) {
+                cell.detailTextLabel?.text = "#\(tag)"
+                cell.detailTextLabel?.textColor = color
+                cell.detailTextLabel?.font = .systemFont(ofSize: 16, weight: .bold)
             } else {
                 cell.detailTextLabel?.text = "태그 없음"
                 cell.detailTextLabel?.textColor = .black
@@ -259,7 +280,11 @@ extension DetailDiaryViewController: UITableViewDelegate, UITableViewDataSource 
         } else if indexPath.section == 1 {
             if let imageName = diary?.imageName, !imageName.isEmpty, viewModel.loadImageFromDocumentDirectory(fileName: imageName) != nil {
                 return 270
-            } else {
+            } 
+            if let image = viewModel.selectedImage.value {
+                return 270
+            }
+            else {
                 return 60
             }
         } else {
@@ -297,6 +322,7 @@ extension DetailDiaryViewController: UITableViewDelegate, UITableViewDataSource 
             vc.onTagAndColorSelected = { [weak self] tag, colorName in
                 self?.selectedTag = tag
                 self?.selectedColorName = colorName
+                print("🐲 didSelectRowAt", tag, colorName)
                 self?.tableView.reloadData()
             }
             let navController = UINavigationController(rootViewController: vc)

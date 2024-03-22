@@ -11,12 +11,6 @@ import RealmSwift
 class RealmRepository {
     private let realm = try! Realm()
     
-    // MARK: READ
-    func fetchDiary() -> [Diary] {
-        let result = realm.objects(Diary.self)
-        return Array(result)
-    }
-
     // MARK: CREATE
     func create(diary: Diary) {
         do {
@@ -26,6 +20,23 @@ class RealmRepository {
             }
         } catch {
             print("🥟Error", error)
+        }
+    }
+    
+    // MARK: READ
+    func fetchDiary() -> [Diary] {
+        let result = realm.objects(Diary.self)
+        return Array(result)
+    }
+
+    // MARK: Update
+    func updateItem(value: Diary) {
+        do {
+            try realm.write {
+                realm.create(Diary.self, value: value, update: .modified)
+            }
+        } catch {
+            // TODO: error 처리
         }
     }
     

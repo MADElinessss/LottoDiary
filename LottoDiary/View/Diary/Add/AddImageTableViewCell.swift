@@ -26,6 +26,7 @@ final class AddImageTableViewCell: UITableViewCell {
         addSubview(customImageView)
         addSubview(titleLabel)
         
+        titleLabel.text = "이미지"
         titleLabel.font = .systemFont(ofSize: 18, weight: .semibold)
         titleLabel.textColor = .black
         
@@ -47,5 +48,7 @@ final class AddImageTableViewCell: UITableViewCell {
     func configure(with image: UIImage?, title: String) {
         customImageView.image = image
         titleLabel.text = title
+        titleLabel.font = .systemFont(ofSize: 18, weight: .semibold)
+        titleLabel.textColor = .black
     }
 }
