@@ -18,6 +18,10 @@
 		C12873422BAC45D000176AD3 /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = C12873392BAC45D000176AD3 /* Pretendard-Light.otf */; };
 		C12873432BAC45D000176AD3 /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = C128733A2BAC45D000176AD3 /* Pretendard-Black.otf */; };
 		C12873462BAC46A700176AD3 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12873452BAC46A700176AD3 /* Fonts.swift */; };
+		C1314E442BAEC5D8005CF266 /* Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1314E432BAEC5D8005CF266 /* Number.swift */; };
+		C1314E462BAEC642005CF266 /* NumberRealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1314E452BAEC642005CF266 /* NumberRealmRepository.swift */; };
+		C1314E492BAEC979005CF266 /* AddMyNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1314E482BAEC979005CF266 /* AddMyNumberViewController.swift */; };
+		C1314E4B2BAECA9B005CF266 /* NumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1314E4A2BAECA9B005CF266 /* NumberViewModel.swift */; };
 		C17008402B9DE99A00008BE7 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C170083F2B9DE99A00008BE7 /* MenuTableViewCell.swift */; };
 		C17008422B9DEA2D00008BE7 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17008412B9DEA2D00008BE7 /* MenuCollectionViewCell.swift */; };
 		C17008442B9DFF6A00008BE7 /* DiaryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17008432B9DFF6A00008BE7 /* DiaryCollectionViewCell.swift */; };
@@ -89,6 +93,10 @@
 		C12873392BAC45D000176AD3 /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
 		C128733A2BAC45D000176AD3 /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
 		C12873452BAC46A700176AD3 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		C1314E432BAEC5D8005CF266 /* Number.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Number.swift; sourceTree = "<group>"; };
+		C1314E452BAEC642005CF266 /* NumberRealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberRealmRepository.swift; sourceTree = "<group>"; };
+		C1314E482BAEC979005CF266 /* AddMyNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMyNumberViewController.swift; sourceTree = "<group>"; };
+		C1314E4A2BAECA9B005CF266 /* NumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberViewModel.swift; sourceTree = "<group>"; };
 		C170083F2B9DE99A00008BE7 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		C17008412B9DEA2D00008BE7 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		C17008432B9DFF6A00008BE7 /* DiaryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -192,6 +200,14 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		C1314E472BAEC96D005CF266 /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				C1314E482BAEC979005CF266 /* AddMyNumberViewController.swift */,
+			);
+			path = Add;
+			sourceTree = "<group>";
+		};
 		C17008452B9E177800008BE7 /* MyLotto */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				C17008582B9EEB3600008BE7 /* Diary.swift */,
+				C1314E432BAEC5D8005CF266 /* Number.swift */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -242,6 +259,7 @@
 		C170087E2BA061A400008BE7 /* MyNumber */ = {
 			isa = PBXGroup;
 			children = (
+				C1314E472BAEC96D005CF266 /* Add */,
 				C1978F062BAABCF7008EEC9D /* Edit */,
 				C1978F032BAAAE5A008EEC9D /* List */,
 				C1E63AA82BA2E13A00707F53 /* NumberButtons */,
@@ -317,6 +335,7 @@
 				C1F35CF02B99FA1700B32B4E /* MainViewModel.swift */,
 				C1F35CF22B99FB2100B32B4E /* Observable.swift */,
 				C170085A2B9EF0B900008BE7 /* DiaryViewModel.swift */,
+				C1314E4A2BAECA9B005CF266 /* NumberViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -328,6 +347,7 @@
 				C1F35CEC2B99EF3F00B32B4E /* APIManager.swift */,
 				C17008552B9EEAFB00008BE7 /* RealmRepository.swift */,
 				C1978F0B2BAB0666008EEC9D /* AlertManager.swift */,
+				C1314E452BAEC642005CF266 /* NumberRealmRepository.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -560,8 +580,10 @@
 				C18567B82B998DFD00864754 /* ViewController.swift in Sources */,
 				C1E63AD02BA82EA200707F53 /* DetailDiaryViewController.swift in Sources */,
 				C17008472B9E178700008BE7 /* MyLottoViewController.swift in Sources */,
+				C1314E492BAEC979005CF266 /* AddMyNumberViewController.swift in Sources */,
 				C18567B42B998DFD00864754 /* AppDelegate.swift in Sources */,
 				C1E63AAA2BA2EA0700707F53 /* MyNumberTableViewCell.swift in Sources */,
+				C1314E462BAEC642005CF266 /* NumberRealmRepository.swift in Sources */,
 				C1978F082BAABD08008EEC9D /* EditMyNumberTableViewCell.swift in Sources */,
 				C18567B62B998DFD00864754 /* SceneDelegate.swift in Sources */,
 				C17008592B9EEB3600008BE7 /* Diary.swift in Sources */,
@@ -573,6 +595,7 @@
 				C1F35CD92B99A6D100B32B4E /* BaseViewController.swift in Sources */,
 				C12873462BAC46A700176AD3 /* Fonts.swift in Sources */,
 				C1978F0A2BAAD574008EEC9D /* OneRandomNumberViewController.swift in Sources */,
+				C1314E442BAEC5D8005CF266 /* Number.swift in Sources */,
 				C1978F022BAAADB3008EEC9D /* ListMyNumberViewController.swift in Sources */,
 				C17008782BA028FD00008BE7 /* APIKey.swift in Sources */,
 				C12872AA2BAC3AFC00176AD3 /* SixRandomNumbersViewController.swift in Sources */,
@@ -582,6 +605,7 @@
 				C1E63AAD2BA2F77000707F53 /* RandomNumberMakerViewController.swift in Sources */,
 				C1E63AB22BA2F82F00707F53 /* RandomNumberMakerCollectionViewCell.swift in Sources */,
 				C1F35CE92B99B86000B32B4E /* MyLottoTableViewCell.swift in Sources */,
+				C1314E4B2BAECA9B005CF266 /* NumberViewModel.swift in Sources */,
 				C170084F2B9ED4E900008BE7 /* AddDiaryViewController.swift in Sources */,
 				C17008822BA06A6C00008BE7 /* AddWishTagViewController.swift in Sources */,
 				C1F35CDC2B99B59800B32B4E /* NumberButton.swift in Sources */,

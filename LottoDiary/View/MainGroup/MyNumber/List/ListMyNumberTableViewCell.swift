@@ -9,19 +9,18 @@ import UIKit
 
 class ListMyNumberTableViewCell: UITableViewCell {
     
-    var index: Int = 1
     let titleLabel = UILabel()
     private let stackView = UIStackView()
+    private var buttons: [UIButton] = []
+    let viewModel = NumberViewModel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        configure()
+        configureView()
         
     }
-    
-    private func configure() {
-        
+    private func configureView() {
         contentView.addSubview(stackView)
         contentView.addSubview(titleLabel)
         
@@ -37,7 +36,7 @@ class ListMyNumberTableViewCell: UITableViewCell {
         
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(contentView.safeAreaLayoutGuide).inset(16)
-            make.centerX.equalTo(contentView)
+            make.leading.equalTo(contentView.safeAreaLayoutGuide).offset(16)
         }
         stackView.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(16)
@@ -49,8 +48,41 @@ class ListMyNumberTableViewCell: UITableViewCell {
             let button = UIButton()
             button.backgroundColor = .lightGray
             button.setTitleColor(.white, for: .normal)
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
             button.layer.cornerRadius = 15
             stackView.addArrangedSubview(button)
+            buttons.append(button)
+        }
+    }
+    
+    func configure(with numberSet: Number) {
+        titleLabel.text = numberSet.title.isEmpty ? viewModel.repository.findNextDefaultTitle() : numberSet.title
+
+
+        let numbers = [numberSet.number1, numberSet.number2, numberSet.number3, numberSet.number4, numberSet.number5, numberSet.number6]
+        for (index, num) in numbers.enumerated() {
+            if index < buttons.count {
+                let button = buttons[index]
+                button.setTitle("\(num)", for: .normal)
+                button.backgroundColor = color(for: num)
+            }
+        }
+    }
+
+    private func color(for drawNumber: Int) -> UIColor {
+        switch drawNumber {
+        case 1...10:
+            return UIColor(named: "lotteryYellow") ?? .yellow
+        case 11...20:
+            return UIColor(named: "lotteryBlue") ?? .blue
+        case 21...30:
+            return UIColor(named: "lotteryRed") ?? .red
+        case 31...40:
+            return UIColor(named: "lotteryGray") ?? .gray
+        case 41...45:
+            return UIColor(named: "lotteryGreen") ?? .green
+        default:
+            return .lightGray
         }
     }
     

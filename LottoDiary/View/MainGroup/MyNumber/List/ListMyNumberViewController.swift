@@ -11,10 +11,21 @@ import UIKit
 class ListMyNumberViewController: BaseViewController {
 
     let tableView = UITableView()
+    var numbers: [Number] = []
+    let repository = NumberRealmRepository()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchNumbers()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+    }
+    
+    func fetchNumbers() {
+        numbers = repository.fetchNumber()
+        tableView.reloadData()
     }
     
     override func configureHierarchy() {
@@ -46,7 +57,10 @@ class ListMyNumberViewController: BaseViewController {
     }
     
     @objc func rightButtonTapped() {
-        
+        let vc = AddMyNumberViewController()
+        let navController = UINavigationController(rootViewController: vc)
+        navController.modalPresentationStyle = .automatic
+        present(navController, animated: true, completion: nil)
     }
 }
 
@@ -59,7 +73,7 @@ extension ListMyNumberViewController: UITableViewDelegate, UITableViewDataSource
     
     // TODO: Realm 번호 목록
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return numbers.count
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -68,7 +82,8 @@ extension ListMyNumberViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListMyNumberTableViewCell", for: indexPath) as! ListMyNumberTableViewCell
-        
+        let number = numbers[indexPath.section]
+        cell.configure(with: number)
         cell.selectionStyle = .none
         cell.layer.cornerRadius = 15
         return cell

@@ -7,6 +7,7 @@
 
 import SnapKit
 import UIKit
+import RealmSwift
 
 final class MainViewController: BaseViewController {
     let logoImage = UIImageView()
@@ -17,7 +18,11 @@ final class MainViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // Realm 데이터베이스 파일 위치 출력
+        if let url = Realm.Configuration.defaultConfiguration.fileURL {
+            print("Realm Database File URL: \(url)")
+        }
+
         setupBindings()
         viewModel.apiRequest(on: self)
     }
@@ -155,17 +160,19 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func navigateToViewController(for index: Int) {
         switch index {
         case 0:
-            // 번호 생성기
-            let vc = RandomNumberMakerViewController()
+            
+            // 나의 번호 목록
+            let vc = ListMyNumberViewController()
             navigationController?.pushViewController(vc, animated: true)
+            
         case 1:
             // 나의 당첨내역
             print("winning")
             // let vc = WinningHistoryViewController()
             // navigationController?.pushViewController(vc, animated: true)
         case 2:
-            // 나의 번호 목록
-            let vc = ListMyNumberViewController()
+            // 번호 생성기
+            let vc = RandomNumberMakerViewController()
             navigationController?.pushViewController(vc, animated: true)
         case 3:
             // 복권 판매점

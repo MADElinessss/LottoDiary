@@ -12,6 +12,7 @@ class EditMyNumberTableViewCell: UITableViewCell {
     private let stackView = UIStackView()
     private var selectedButtons: [UIButton] = []
     private let numberSelectionView = NumberSelectionView()
+    var onNumbersSelected: (([Int]) -> Void)?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -104,6 +105,8 @@ class EditMyNumberTableViewCell: UITableViewCell {
                 button.backgroundColor = color(for: number)
             }
         }
+        
+        onNumbersSelected?(numbers)
     }
     
     private func color(for drawNumber: Int) -> UIColor {

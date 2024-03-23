@@ -22,12 +22,7 @@ class RealmRepository {
             print("🥟Error", error)
         }
     }
-    
-    // MARK: READ
-//    func fetchDiary() -> [Diary] {
-//        let result = realm.objects(Diary.self)
-//        return Array(result)
-//    }
+
     // MARK: READ
     func fetchDiary() -> [Diary] {
         let result = realm.objects(Diary.self).sorted(byKeyPath: "date", ascending: false)
@@ -54,7 +49,7 @@ class RealmRepository {
         do {
             try realm.write {
                 realm.delete(diaryToDelete)
-                print("🗑️ 삭제")
+                print("🗑️ diary 삭제")
             }
         } catch {
             print("🗑️ 삭제에러: \(error)")

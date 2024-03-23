@@ -69,7 +69,6 @@ final class AddWishTagViewController: BaseViewController {
         headerLabel.font = .systemFont(ofSize: 16, weight: .regular)
         headerLabel.textColor = .black
         
-        
         stackView.backgroundColor = .background
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
