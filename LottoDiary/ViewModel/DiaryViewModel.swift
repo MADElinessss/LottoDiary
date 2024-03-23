@@ -41,12 +41,12 @@ class DiaryViewModel {
             }
         }
     }
-
+    
     func fetchDiaries() {
         let diariesResults = repository.fetchDiary()
         self.outputDiary.value = diariesResults
     }
-
+    
     private func saveImageToDocumentDirectory(image: UIImage, completion: @escaping (String?) -> Void) {
         DispatchQueue.global(qos: .background).async {
             guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {

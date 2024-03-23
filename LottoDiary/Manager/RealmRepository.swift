@@ -24,8 +24,13 @@ class RealmRepository {
     }
     
     // MARK: READ
+//    func fetchDiary() -> [Diary] {
+//        let result = realm.objects(Diary.self)
+//        return Array(result)
+//    }
+    // MARK: READ
     func fetchDiary() -> [Diary] {
-        let result = realm.objects(Diary.self)
+        let result = realm.objects(Diary.self).sorted(byKeyPath: "date", ascending: false)
         return Array(result)
     }
 

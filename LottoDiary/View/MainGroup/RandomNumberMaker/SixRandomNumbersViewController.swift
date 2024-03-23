@@ -45,7 +45,7 @@ class SixRandomNumbersViewController: BaseViewController {
     override func configureLayout() {
         numberMakerButton.snp.makeConstraints { make in
             make.centerX.equalTo(view)
-            make.top.equalTo(view.safeAreaLayoutGuide).inset(44)
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(80)
             make.size.equalTo(44)
         }
         
@@ -81,7 +81,7 @@ class SixRandomNumbersViewController: BaseViewController {
         numberMakerButton.layer.shadowColor = UIColor.black.cgColor
         
         descriptionLabel.text = "아래 번호는 랜덤으로 생성됩니다."
-        descriptionLabel.font = .systemFont(ofSize: 12, weight: .medium)
+        descriptionLabel.font = .systemFont(ofSize: 16, weight: .medium)
     }
     
     @objc func buttonTapped() {

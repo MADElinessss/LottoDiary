@@ -8,54 +8,90 @@
 import SwiftUI
 import UIKit
 
-//class OneRandomNumberViewController: UIViewController {
-//    let swiftUIView = OneRandomNumberView()
-//    let hostingView = UIHostingController(rootView: swiftUIView)
-//    func window.rootViewController = UINavigationController(rootViewController: hostingView)
-//}
-
 public struct OneRandomNumberView: View {
     
     @State private var basket: String = ""
-    let coin = ["🪙", "💳", "🍔", "🐰", "🐖", "🐲","🍀"]
+    let coin1 = ["🏆", "💳", "🍔", "🐰", "🐖", "☃️","🍀"]
+    let coin2 = ["🐲", "💛", "🐹", "🦄", "🌞", "🌧️","🍀"]
+    let coin3 = ["🐖", "🐔", "🦁", "🐳", "🌝", "☀️","🍀"]
+    let coin4 = ["🥟", "🐶", "🐯", "🎄", "🌸", "🍎","🍀"]
     
     public init() {}
+    
     public var body: some View {
         VStack {
             Text("소원을 빌고, 원하는 것을 드래그해서 넣어보세요.")
                 .fontWeight(.medium)
-                .font(.system(size: 14))
-                .padding(.bottom, 10)
-            Spacer()
-            Text(basket)
-                .font(.largeTitle)
-                .frame(maxWidth: 300)
-            HStack {
-                VStack(spacing: 10) {
-                    ZStack {
-                        Color.clear // Invisible layer to increase the draggable area
-                        Text(coin.randomElement() ?? "🍀")
-                            .scaleEffect(2)
-                    }
-                    .frame(width: 200, height: 200) // Increased frame size for easier dragging
-                    .onDrag { NSItemProvider(object: String(self.coin.randomElement() ?? "🍀") as NSString) }
-                    .onLongPressGesture(minimumDuration: 0.5) {
-                        // Trigger the weakest haptic feedback on long press
-                        let generator = UIImpactFeedbackGenerator(style: .light)
-                        generator.impactOccurred()
-                    }
-                }
-                VStack(spacing: 10) {
-                    Circle()
-                        .frame(width: 150, height: 150)
-                        .opacity(0.3)
-                        .frame(width: 200, height: 200)
-                        .onDrop(of: [.text], delegate: FoodDropDelegate(basket: $basket))
-                }
+                .font(.system(size: 16))
+                .padding(.top, 24)
+                .padding(.bottom, 50)
+            
+            if let drawNumber = Int(basket) {
+                Text(basket)
+                    .font(.largeTitle)
+                    .frame(width: 60, height: 60)
+                    .background(Circle().fill(color(for: drawNumber)))
+                    .foregroundColor(.white)
+            } else {
+                Text(basket)
+                    .font(.largeTitle)
             }
-            .animation(.spring(), value: basket)
+            
+            Spacer()
+            
+            ZStack {
+                Circle()
+                    .frame(width: 150, height: 150)
+                    .opacity(0.3)
+                    .foregroundColor(Color.green)
+                    .onDrop(of: [.text], delegate: FoodDropDelegate(basket: $basket))
+                
+                EmojiButtonView(emoji: coin1.randomElement() ?? "🍀", basket: $basket)
+                    .offset(x: 0, y: -100) // Top
+                EmojiButtonView(emoji: coin2.randomElement() ?? "🍀", basket: $basket)
+                    .offset(x: 100, y: 0) // Right
+                EmojiButtonView(emoji: coin3.randomElement() ?? "🍀", basket: $basket)
+                    .offset(x: 0, y: 100) // Bottom
+                EmojiButtonView(emoji: coin4.randomElement() ?? "🍀", basket: $basket)
+                    .offset(x: -100, y: 0) // Left
+            }
+            
+            Spacer()
         }
-        .frame(maxWidth: 400, maxHeight: 400)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .animation(.spring(), value: basket)
+    }
+    
+    private func color(for drawNumber: Int) -> Color {
+        switch drawNumber {
+        case 1...10:
+            return Color("lotteryYellow")
+        case 11...20:
+            return Color("lotteryBlue")
+        case 21...30:
+            return Color("lotteryRed")
+        case 31...40:
+            return Color("lotteryGray")
+        case 41...45:
+            return Color("lotteryGreen")
+        default:
+            return Color.gray
+        }
+    }
+}
+
+// 이모지 버튼 뷰
+struct EmojiButtonView: View {
+    
+    let emoji: String
+    @Binding var basket: String
+    
+    var body: some View {
+        Text(emoji)
+            .scaleEffect(2)
+            .onDrag {
+                NSItemProvider(object: emoji as NSString)
+            }
     }
 }
 
@@ -70,7 +106,6 @@ struct FoodDropDelegate: DropDelegate {
         
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
-        
         
         return true
     }
