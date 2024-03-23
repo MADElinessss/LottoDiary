@@ -25,6 +25,7 @@ final class MainViewController: BaseViewController {
 
         setupBindings()
         viewModel.apiRequest(on: self)
+        configureNavigationBar(title: "로또 일기")
     }
     
     func setupBindings() {
@@ -49,23 +50,35 @@ final class MainViewController: BaseViewController {
     }
     
     override func configureHierarchy() {
-        titleView.addSubview(logoImage)
-        titleView.addSubview(titleLabel)
         view.addSubview(tableView)
     }
     
-    override func configureLayout() {
-        logoImage.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(0)
+    func configureNavigationBar(title: String) {
+        let logoImageView = UIImageView(image: UIImage(named: "appstore"))
+        logoImageView.contentMode = .scaleAspectFit
+        titleView.addSubview(logoImageView)
+
+        let titleLabel = UILabel()
+        titleLabel.text = title
+        titleLabel.font = .systemFont(ofSize: 16, weight: .bold)
+        titleView.addSubview(titleLabel)
+
+        logoImageView.snp.makeConstraints { make in
+            make.left.equalToSuperview()
             make.centerY.equalToSuperview()
-            make.size.equalTo(CGSize(width: 40, height: 40))
+            make.width.height.equalTo(40)
         }
-        
+
         titleLabel.snp.makeConstraints { make in
-            make.left.equalTo(logoImage.snp.right).offset(8)
+            make.left.equalTo(logoImageView.snp.right).offset(8)
             make.centerY.equalToSuperview()
+            make.right.lessThanOrEqualToSuperview()
         }
-        
+
+        self.navigationItem.titleView = titleView
+    }
+
+    override func configureLayout() {
         tableView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide).inset(8)
@@ -73,11 +86,6 @@ final class MainViewController: BaseViewController {
     }
     
     override func configureView() {
-        logoImage.image = UIImage(named: "appstore")
-        logoImage.contentMode = .scaleAspectFit
-        titleLabel.text = "로또 일기"
-        titleLabel.font = .systemFont(ofSize: 16, weight: .bold)
-
         self.navigationItem.titleView = titleView
         
         tableView.delegate = self
