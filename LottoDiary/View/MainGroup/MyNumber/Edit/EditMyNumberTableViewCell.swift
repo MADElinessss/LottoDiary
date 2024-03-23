@@ -38,6 +38,27 @@ class EditMyNumberTableViewCell: UITableViewCell {
         setupNumberSelectionView()
     }
     
+    func setSelectedNumbers(_ numbers: [Int]) {
+        for (index, button) in selectedButtons.enumerated() {
+            if index < numbers.count {
+                let number = numbers[index]
+                button.setTitle("\(number)", for: .normal)
+                // 선택된 상태 표시를 위한 스타일 적용
+                button.layer.borderWidth = 2
+                button.layer.borderColor = UIColor.black.cgColor
+                button.backgroundColor = color(for: number)
+            } else {
+                button.setTitle("", for: .normal)
+                button.layer.borderWidth = 0
+                button.backgroundColor = .lightGray
+            }
+        }
+    }
+    
+    func getSelectedNumbers() -> [Int] {
+        return numberSelectionView.selectedNumbers
+    }
+    
     private func setupButtonActions() {
         for (index, button) in selectedButtons.enumerated() {
             button.tag = index

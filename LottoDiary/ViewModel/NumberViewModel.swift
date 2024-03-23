@@ -34,4 +34,8 @@ class NumberViewModel {
             print("선택된 숫자가 6개 미만입니다.")
         }
     }
+    
+    func updateNumber(_ number: Number) {
+        repository.updateNumber(number: number)
+    }
 }

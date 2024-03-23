@@ -58,7 +58,7 @@ extension MenuTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuCollectionViewCell", for: indexPath) as! MenuCollectionViewCell
         let titles = ["나의 번호 목록","나의 당첨내역", "번호 생성기", "복권 판매점"]
-        let imageNames = ["number", "win", "list", "map"]
+        let imageNames = ["list", "win", "number", "map"]
         
         if indexPath.row < titles.count && indexPath.row < imageNames.count {
             cell.configure(with: titles[indexPath.row], imageName: imageNames[indexPath.row])

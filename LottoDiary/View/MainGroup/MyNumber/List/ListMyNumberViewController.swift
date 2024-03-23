@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: 나의 번호 목록
 class ListMyNumberViewController: BaseViewController {
-
+    
     let tableView = UITableView()
     var numbers: [Number] = []
     let repository = NumberRealmRepository()
@@ -75,7 +75,7 @@ extension ListMyNumberViewController: UITableViewDelegate, UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
         return numbers.count
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
@@ -91,6 +91,7 @@ extension ListMyNumberViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = EditMyNumberViewController()
+        vc.number = numbers[indexPath.section]
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -98,8 +99,25 @@ extension ListMyNumberViewController: UITableViewDelegate, UITableViewDataSource
         let headerView = UIView()
         return headerView
     }
-
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0
+    }
+}
+
+extension ListMyNumberViewController {
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let numberToDelete = numbers[indexPath.section]
+            repository.deleteNumber(numberId: numberToDelete.id)
+            
+            numbers.remove(at: indexPath.section)
+            tableView.deleteSections(IndexSet(integer: indexPath.section), with: .automatic)
+        }
     }
 }

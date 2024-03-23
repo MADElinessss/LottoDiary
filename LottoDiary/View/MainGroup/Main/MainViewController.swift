@@ -56,16 +56,16 @@ final class MainViewController: BaseViewController {
     
     override func configureLayout() {
         logoImage.snp.makeConstraints { make in
-            make.top.equalTo(titleView)
-            make.centerX.equalTo(titleView)
-            make.size.equalTo(40)
+            make.left.equalToSuperview().offset(0)
+            make.centerY.equalToSuperview()
+            make.size.equalTo(CGSize(width: 40, height: 40))
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleView)
-            make.centerX.equalTo(titleView)
+            make.left.equalTo(logoImage.snp.right).offset(8)
+            make.centerY.equalToSuperview()
         }
-
+        
         tableView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide).inset(8)
@@ -78,7 +78,6 @@ final class MainViewController: BaseViewController {
         titleLabel.text = "로또 일기"
         titleLabel.font = .systemFont(ofSize: 16, weight: .bold)
 
-        
         self.navigationItem.titleView = titleView
         
         tableView.delegate = self

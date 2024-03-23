@@ -43,6 +43,36 @@ class NumberRealmRepository {
         }
     }
     
+    // MARK: Update
+//    func updateNumber(number: Number) {
+//        do {
+//            try realm.write {
+//                realm.create(Number.self, value: number, update: .modified)
+//            }
+//        } catch {
+//            print("Number 업데이트 에러: \(error)")
+//        }
+//    }
+    func updateNumber(number: Number) {
+        guard let existingNumber = realm.object(ofType: Number.self, forPrimaryKey: number.id) else { return }
+
+        do {
+            try realm.write {
+                existingNumber.title = number.title
+                existingNumber.number1 = number.number1
+                existingNumber.number2 = number.number2
+                existingNumber.number3 = number.number3
+                existingNumber.number4 = number.number4
+                existingNumber.number5 = number.number5
+                existingNumber.number6 = number.number6
+                
+            }
+        } catch {
+            print("Number 업데이트 실패: \(error)")
+        }
+    }
+
+    
     func findNextDefaultTitle() -> String {
         let allNumbers = realm.objects(Number.self)
         // title이 옵셔널이므로 옵셔널 체이닝을 사용하여 unwrapping
