@@ -164,7 +164,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             let vc = MyLottoViewController()
             navigationController?.pushViewController(vc, animated: true)
         } else if indexPath.section == 2 {
-            let vc = WebViewController()
+            let vc = WebViewController(urlString: "https://www.dhlottery.co.kr/", navigationTitle: "로또 구매하기")
             navigationController?.pushViewController(vc, animated: true)
         }
     }

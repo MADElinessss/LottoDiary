@@ -52,7 +52,7 @@ class StoreMapViewController: BaseMapViewController, CLLocationManagerDelegate {
         let location = viewModel.selectedLocation.value
         let defaultPosition: MapPoint = MapPoint(longitude: location?.longitude ?? 126.98269592885, latitude: location?.latitude ?? 37.5646498601155)
         let mapviewInfo: MapviewInfo = MapviewInfo(viewName: "mapview", viewInfoName: "map", defaultPosition: defaultPosition, defaultLevel: 15)
-        let result = mapController?.addView(mapviewInfo)
+        let result: Void? = mapController?.addView(mapviewInfo)
         print("🐖addViews called, result: \(String(describing: result))")
         
         

@@ -25,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let vc1 = MainViewController()
         let vc2 = DiaryViewController()
 //        let vc3 = ChartViewController()
-//        let vc4 = SettingViewController()
+        let vc4 = SettingViewController()
        
         let resizedCloverImage = UIImage(named: "clover")?.withRenderingMode(.alwaysOriginal)
         let resizedEditImage = UIImage(named: "edit")?.withRenderingMode(.automatic)
@@ -40,12 +40,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         vc2.tabBarItem.tag = 1
 //        vc3.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "stats"), selectedImage: UIImage(named: "stats"))
 //        vc3.tabBarItem.tag = 2
-//        vc4.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "user"), selectedImage: UIImage(named: "user"))
-//        vc4.tabBarItem.tag = 3
+        vc4.tabBarItem = UITabBarItem(title: "설정", image: UIImage(named: "user"), selectedImage: UIImage(named: "user"))
+        vc4.tabBarItem.tag = 3
         
         
         // tabBarController.viewControllers = [vc1, vc2, vc3, vc4].map { UINavigationController(rootViewController: $0) }
-        tabBarController.viewControllers = [vc1, vc2].map { UINavigationController(rootViewController: $0) }
+        tabBarController.viewControllers = [vc1, vc2, vc4].map { UINavigationController(rootViewController: $0) }
         
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()

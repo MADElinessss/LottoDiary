@@ -10,8 +10,18 @@ import UIKit
 import WebKit
 
 final class WebViewController: UIViewController, WKNavigationDelegate {
-
     var webView: WKWebView!
+    var urlString: String
+    var navigationTitle: String
+    init(urlString: String, navigationTitle: String) {
+        self.urlString = urlString
+        self.navigationTitle = navigationTitle
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,13 +41,13 @@ final class WebViewController: UIViewController, WKNavigationDelegate {
     }
     
     private func loadURL() {
-        guard let url = URL(string: "https://www.dhlottery.co.kr/") else { return }
+        guard let url = URL(string: urlString) else { return }
         let request = URLRequest(url: url)
         webView.load(request)
     }
     
     private func setupNavigationBar() {
-        navigationItem.title = "로또 구매하기"
+        navigationItem.title = navigationTitle
         
         let backButton = UIBarButtonItem(title: "뒤로", style: .plain, target: self, action: #selector(backTapped))
         navigationItem.leftBarButtonItem = backButton
