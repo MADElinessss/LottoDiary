@@ -20,16 +20,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let tabBarController = UITabBarController()
         tabBarController.tabBar.backgroundColor = .white
         tabBarController.tabBar.tintColor = .point
-        tabBarController.tabBar.unselectedItemTintColor = .black
+        tabBarController.tabBar.unselectedItemTintColor = .gray
         
         let vc1 = MainViewController()
         let vc2 = DiaryViewController()
 //        let vc3 = ChartViewController()
 //        let vc4 = SettingViewController()
        
-        vc1.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "clover"), selectedImage: UIImage(named: "clover"))
+        let resizedCloverImage = UIImage(named: "clover")?.withRenderingMode(.alwaysOriginal)
+        let resizedEditImage = UIImage(named: "edit")?.withRenderingMode(.automatic)
+
+        vc1.tabBarItem = UITabBarItem(title: "로또", image: resizedCloverImage, selectedImage: UIImage(named: "clover"))
+        vc1.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: -5, right: 0)
+
         vc1.tabBarItem.tag = 0
-        vc2.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "edit"), selectedImage: UIImage(named: "edit"))
+        vc2.tabBarItem = UITabBarItem(title: "일기", image: resizedEditImage, selectedImage: UIImage(named: "edit"))
+        vc2.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: -5, right: 0)
+
         vc2.tabBarItem.tag = 1
 //        vc3.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "stats"), selectedImage: UIImage(named: "stats"))
 //        vc3.tabBarItem.tag = 2

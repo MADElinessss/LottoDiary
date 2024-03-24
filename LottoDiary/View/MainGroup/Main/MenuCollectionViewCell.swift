@@ -26,12 +26,12 @@ final class MenuCollectionViewCell: UICollectionViewCell {
         
         label.snp.makeConstraints { make in
             make.centerX.equalTo(contentView)
-            make.top.equalTo(contentView.safeAreaLayoutGuide).inset(24)
+            make.top.equalTo(imageView.snp.bottom).offset(16)
         }
         
         imageView.snp.makeConstraints { make in
             make.centerX.equalTo(contentView)
-            make.top.equalTo(label.snp.bottom).offset(16)
+            make.centerY.equalTo(contentView).offset(-16)
             make.size.equalTo(40)
         }
         
@@ -39,7 +39,10 @@ final class MenuCollectionViewCell: UICollectionViewCell {
         label.textColor = .black
         label.font = .systemFont(ofSize: 16, weight: .medium)
         
-        imageView.image = UIImage(systemName: "mic.circle")?.withRenderingMode(.automatic)
+        // imageView.image = UIImage(systemName: "mic.circle")?.withRenderingMode(.automatic)
+        let originalImage = UIImage(named: "clover")
+        let tintedImage = originalImage?.withRenderingMode(.alwaysTemplate)
+        imageView.image = tintedImage
         imageView.tintColor = .point
         imageView.contentMode = .scaleAspectFit
         

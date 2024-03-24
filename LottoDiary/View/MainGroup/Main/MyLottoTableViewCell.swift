@@ -49,7 +49,7 @@ final class MyLottoTableViewCell: UITableViewCell {
         dateLabel.font = .systemFont(ofSize: 14, weight: .semibold)
         
         chevronImage.image = UIImage(systemName: "chevron.right")
-        chevronImage.tintColor = .black
+        chevronImage.tintColor = .gray
         
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(contentView.safeAreaLayoutGuide).inset(16)

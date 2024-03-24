@@ -22,6 +22,7 @@
 		C1314E462BAEC642005CF266 /* NumberRealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1314E452BAEC642005CF266 /* NumberRealmRepository.swift */; };
 		C1314E492BAEC979005CF266 /* AddMyNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1314E482BAEC979005CF266 /* AddMyNumberViewController.swift */; };
 		C1314E4B2BAECA9B005CF266 /* NumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1314E4A2BAECA9B005CF266 /* NumberViewModel.swift */; };
+		C1314E4D2BAF50B4005CF266 /* MyLottoResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1314E4C2BAF50B4005CF266 /* MyLottoResultViewController.swift */; };
 		C17008402B9DE99A00008BE7 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C170083F2B9DE99A00008BE7 /* MenuTableViewCell.swift */; };
 		C17008422B9DEA2D00008BE7 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17008412B9DEA2D00008BE7 /* MenuCollectionViewCell.swift */; };
 		C17008442B9DFF6A00008BE7 /* DiaryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17008432B9DFF6A00008BE7 /* DiaryCollectionViewCell.swift */; };
@@ -97,6 +98,7 @@
 		C1314E452BAEC642005CF266 /* NumberRealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberRealmRepository.swift; sourceTree = "<group>"; };
 		C1314E482BAEC979005CF266 /* AddMyNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMyNumberViewController.swift; sourceTree = "<group>"; };
 		C1314E4A2BAECA9B005CF266 /* NumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberViewModel.swift; sourceTree = "<group>"; };
+		C1314E4C2BAF50B4005CF266 /* MyLottoResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLottoResultViewController.swift; sourceTree = "<group>"; };
 		C170083F2B9DE99A00008BE7 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		C17008412B9DEA2D00008BE7 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		C17008432B9DFF6A00008BE7 /* DiaryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 			children = (
 				C17008462B9E178700008BE7 /* MyLottoViewController.swift */,
 				C17008722BA00BF400008BE7 /* QRCodeViewController.swift */,
+				C1314E4C2BAF50B4005CF266 /* MyLottoResultViewController.swift */,
 			);
 			path = MyLotto;
 			sourceTree = "<group>";
@@ -585,6 +588,7 @@
 				C1E63AAA2BA2EA0700707F53 /* MyNumberTableViewCell.swift in Sources */,
 				C1314E462BAEC642005CF266 /* NumberRealmRepository.swift in Sources */,
 				C1978F082BAABD08008EEC9D /* EditMyNumberTableViewCell.swift in Sources */,
+				C1314E4D2BAF50B4005CF266 /* MyLottoResultViewController.swift in Sources */,
 				C18567B62B998DFD00864754 /* SceneDelegate.swift in Sources */,
 				C17008592B9EEB3600008BE7 /* Diary.swift in Sources */,
 				C1F35CD12B99A62100B32B4E /* SettingViewController.swift in Sources */,

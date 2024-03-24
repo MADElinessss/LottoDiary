@@ -43,7 +43,7 @@ class RandomNumberMakerCollectionViewCell: UICollectionViewCell {
         
         titleLabel.text = "오늘의 행운은?"
         titleLabel.font = .systemFont(ofSize: 16, weight: .bold)
-        titleLabel.textColor = .pointSymbol
+        titleLabel.textColor = .black
         imageView.image = UIImage(named: "anumber")
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 50

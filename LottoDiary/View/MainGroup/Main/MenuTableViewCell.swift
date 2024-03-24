@@ -32,18 +32,29 @@ final class MenuTableViewCell: UITableViewCell {
         collectionView.register(MenuCollectionViewCell.self, forCellWithReuseIdentifier: "MenuCollectionViewCell")
         collectionView.isScrollEnabled = false
     }
-    
+
     static func configureCollectionLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
-        let width = UIScreen.main.bounds.width * 0.43
-        layout.itemSize = CGSize(width: width, height: width * 0.9)
-        layout.minimumLineSpacing = 16
-        layout.minimumInteritemSpacing = 4
+
+        let parentViewPadding: CGFloat = 16 * 2
+        let totalWidth = UIScreen.main.bounds.width - parentViewPadding
+
+        let cellSpacing: CGFloat = 10
+
+        let numberOfColumns: CGFloat = 2
+        let totalSpacingBetweenCells = cellSpacing * (numberOfColumns - 1)
+        let cellWidth = (totalWidth - totalSpacingBetweenCells) / numberOfColumns
+
+        layout.itemSize = CGSize(width: cellWidth*0.95, height: cellWidth*0.95)
+        layout.minimumLineSpacing = cellSpacing
+        layout.minimumInteritemSpacing = cellSpacing
+
         layout.sectionInset = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
-        
+
         return layout
     }
-    
+
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

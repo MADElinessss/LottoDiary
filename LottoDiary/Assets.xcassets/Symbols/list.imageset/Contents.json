@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "ballot.png",
+      "filename" : "wishlist-heart (2).png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "ballot 1.png",
+      "filename" : "wishlist-heart (2) 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "ballot 2.png",
+      "filename" : "wishlist-heart (2) 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

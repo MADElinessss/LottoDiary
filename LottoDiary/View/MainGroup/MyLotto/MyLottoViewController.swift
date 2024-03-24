@@ -131,12 +131,13 @@ extension MyLottoViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // "QR 코드 인식"
-        if indexPath.row == 0 {
+        if indexPath.section == 1 && indexPath.row == 0 {
             let vc = QRCodeViewController()
             navigationController?.pushViewController(vc, animated: true)
         } else {
             // "번호 직접 입력"
-            
+            let vc = MyLottoResultViewController()
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
 }

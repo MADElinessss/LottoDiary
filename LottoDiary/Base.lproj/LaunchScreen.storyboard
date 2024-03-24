@@ -17,21 +17,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appstore" translatesAutoresizingMaskIntoConstraints="NO" id="ciB-Xv-fK2">
-                                <rect key="frame" x="121.66666666666669" y="351" width="150" height="150"/>
+                                <rect key="frame" x="146.66666666666666" y="309" width="100" height="100"/>
                                 <color key="backgroundColor" name="background"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="FWn-Mi-vEn"/>
-                                    <constraint firstAttribute="height" constant="150" id="JpG-uC-Ph0"/>
+                                    <constraint firstAttribute="height" constant="100" id="CQJ-sI-XpL"/>
+                                    <constraint firstAttribute="width" constant="100" id="ELl-aJ-Zcx"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="행운을 기록해요," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swR-06-PKc">
-                                <rect key="frame" x="140.66666666666666" y="371" width="112" height="21"/>
+                                <rect key="frame" x="140.66666666666666" y="433" width="112" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="로또일기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VbE-jF-tPL">
-                                <rect key="frame" x="144.66666666666666" y="400" width="104" height="36"/>
+                                <rect key="frame" x="144.66666666666666" y="464" width="104" height="36"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -40,12 +40,14 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="background"/>
                         <constraints>
-                            <constraint firstItem="ciB-Xv-fK2" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="E1r-lP-ocv"/>
-                            <constraint firstItem="VbE-jF-tPL" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Eg3-CM-kTy"/>
-                            <constraint firstItem="VbE-jF-tPL" firstAttribute="top" secondItem="swR-06-PKc" secondAttribute="bottom" constant="8" symbolic="YES" id="JGQ-1Q-Q25"/>
-                            <constraint firstItem="swR-06-PKc" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Xxk-9N-Jua"/>
-                            <constraint firstItem="ciB-Xv-fK2" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="hWz-0n-gzT"/>
-                            <constraint firstItem="swR-06-PKc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="312" id="nhy-hH-PF9"/>
+                            <constraint firstItem="swR-06-PKc" firstAttribute="top" secondItem="ciB-Xv-fK2" secondAttribute="bottom" constant="24" id="1EW-nn-a7s"/>
+                            <constraint firstItem="ciB-Xv-fK2" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="9kj-eR-VZt"/>
+                            <constraint firstItem="VbE-jF-tPL" firstAttribute="centerX" secondItem="ciB-Xv-fK2" secondAttribute="centerX" id="EHr-EB-hfP"/>
+                            <constraint firstItem="swR-06-PKc" firstAttribute="centerX" secondItem="ciB-Xv-fK2" secondAttribute="centerX" id="S7f-xC-nqL"/>
+                            <constraint firstItem="VbE-jF-tPL" firstAttribute="top" secondItem="swR-06-PKc" secondAttribute="bottom" constant="10" id="jAV-37-CDM"/>
+                            <constraint firstItem="VbE-jF-tPL" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ksu-4I-H3O"/>
+                            <constraint firstItem="swR-06-PKc" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="lsi-dS-7aP"/>
+                            <constraint firstItem="ciB-Xv-fK2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="250" id="wF8-F1-80n"/>
                         </constraints>
                     </view>
                 </viewController>

@@ -26,12 +26,11 @@ final class MainViewController: BaseViewController {
         setupBindings()
         viewModel.apiRequest(on: self)
         configureNavigationBar(title: "로또 일기")
+        
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
     func setupBindings() {
-        viewModel.outputLotto.bind { [weak self] lotto in
-            guard let lotto = lotto else { return }
-        }
         
         viewModel.errorMessage.bind { [weak self] errorMessage in
             guard let message = errorMessage, !message.isEmpty else { return }
@@ -81,7 +80,7 @@ final class MainViewController: BaseViewController {
     override func configureLayout() {
         tableView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
-            make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide).inset(8)
+            make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide).inset(16)
         }
     }
     
@@ -127,6 +126,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
             cell.textLabel?.text = "복권 구매"
+            cell.textLabel?.font = .systemFont(ofSize: 16, weight: .medium)
             cell.clipsToBounds = true
             cell.layer.cornerRadius = 15
             cell.selectionStyle = .none
@@ -136,10 +136,11 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let height = UIScreen.main.bounds.height
         if indexPath.section == 0 {
-            return 170
+            return height * 0.2
         } else if indexPath.section == 1 {
-            return 320
+            return height * 0.41
         } else {
             return 60
         }
@@ -151,7 +152,11 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
+        return CGFloat.leastNonzeroMagnitude
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat.leastNonzeroMagnitude
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
