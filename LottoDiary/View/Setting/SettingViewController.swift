@@ -56,7 +56,13 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
+            guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else {
+                return
+            }
             
+            if UIApplication.shared.canOpenURL(settingsURL) {
+                UIApplication.shared.open(settingsURL)
+            }
         } else if indexPath.row == 1 {
             let vc = WebViewController(urlString: "https://purple-edge-98a.notion.site/2d131ab9e7254e20a25bf268864465fd?pvs=4", navigationTitle: "개인정보 처리방침")
             
