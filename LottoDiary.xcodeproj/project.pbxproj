@@ -23,6 +23,7 @@
 		C1314E492BAEC979005CF266 /* AddMyNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1314E482BAEC979005CF266 /* AddMyNumberViewController.swift */; };
 		C1314E4B2BAECA9B005CF266 /* NumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1314E4A2BAECA9B005CF266 /* NumberViewModel.swift */; };
 		C1314E4D2BAF50B4005CF266 /* MyLottoResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1314E4C2BAF50B4005CF266 /* MyLottoResultViewController.swift */; };
+		C1314E4F2BAFF357005CF266 /* StoreListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1314E4E2BAFF356005CF266 /* StoreListTableViewCell.swift */; };
 		C17008402B9DE99A00008BE7 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C170083F2B9DE99A00008BE7 /* MenuTableViewCell.swift */; };
 		C17008422B9DEA2D00008BE7 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17008412B9DEA2D00008BE7 /* MenuCollectionViewCell.swift */; };
 		C17008442B9DFF6A00008BE7 /* DiaryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17008432B9DFF6A00008BE7 /* DiaryCollectionViewCell.swift */; };
@@ -99,6 +100,7 @@
 		C1314E482BAEC979005CF266 /* AddMyNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMyNumberViewController.swift; sourceTree = "<group>"; };
 		C1314E4A2BAECA9B005CF266 /* NumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberViewModel.swift; sourceTree = "<group>"; };
 		C1314E4C2BAF50B4005CF266 /* MyLottoResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLottoResultViewController.swift; sourceTree = "<group>"; };
+		C1314E4E2BAFF356005CF266 /* StoreListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreListTableViewCell.swift; sourceTree = "<group>"; };
 		C170083F2B9DE99A00008BE7 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		C17008412B9DEA2D00008BE7 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		C17008432B9DFF6A00008BE7 /* DiaryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				C170087C2BA033D200008BE7 /* StoreMapViewController.swift */,
 				C1E63ADC2BA95AA100707F53 /* MapViewController.swift */,
 				C1978EFE2BA99BEA008EEC9D /* StoreListViewController.swift */,
+				C1314E4E2BAFF356005CF266 /* StoreListTableViewCell.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 				C1978F0C2BAB0666008EEC9D /* AlertManager.swift in Sources */,
 				C1F35CD72B99A64000B32B4E /* MainViewController.swift in Sources */,
 				C18567B82B998DFD00864754 /* ViewController.swift in Sources */,
+				C1314E4F2BAFF357005CF266 /* StoreListTableViewCell.swift in Sources */,
 				C1E63AD02BA82EA200707F53 /* DetailDiaryViewController.swift in Sources */,
 				C17008472B9E178700008BE7 /* MyLottoViewController.swift in Sources */,
 				C1314E492BAEC979005CF266 /* AddMyNumberViewController.swift in Sources */,

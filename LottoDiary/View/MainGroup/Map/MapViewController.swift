@@ -8,9 +8,9 @@
 import UIKit
 import SnapKit
 
-class MapViewController: UIViewController {
+class MapViewController: BaseViewController {
     
-    private let segmentControl = UISegmentedControl(items: ["복권 판매점 지도", "주변 복권 판매점"])
+    private let segmentControl = UISegmentedControl(items: ["주변 복권 판매점","복권 판매점 지도"])
     private var storeMapViewController: StoreMapViewController!
     private var tableViewController: StoreListViewController!
     
@@ -21,6 +21,13 @@ class MapViewController: UIViewController {
         configureChildViewControllers()
         setupDataPassingBetweenControllers()
         
+        let leftButton = createBarButtonItem(imageName: "chevron.left", action: #selector(leftButtonTapped))
+        configureNavigationBar(title: "복권 판매점", leftBarButton: leftButton, rightBarButton: nil)
+        
+    }
+    
+    @objc func leftButtonTapped() {
+        navigationController?.popViewController(animated: true)
     }
     
     private func configureSegmentControl() {
@@ -61,7 +68,7 @@ class MapViewController: UIViewController {
             make.left.right.bottom.equalTo(view)
         }
         
-        tableViewController.view.isHidden = true
+        storeMapViewController.view.isHidden = true
     }
     
     private func setupDataPassingBetweenControllers() {
@@ -75,12 +82,12 @@ class MapViewController: UIViewController {
     @objc private func segmentControlValueChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            storeMapViewController.view.isHidden = false
-            tableViewController.view.isHidden = true
-        case 1:
             storeMapViewController.view.isHidden = true
             tableViewController.view.isHidden = false
             tableViewController.tableView.reloadData()
+        case 1:
+            storeMapViewController.view.isHidden = false
+            tableViewController.view.isHidden = true
         default:
             break
         }
