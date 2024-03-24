@@ -24,6 +24,7 @@
 		C1314E4B2BAECA9B005CF266 /* NumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1314E4A2BAECA9B005CF266 /* NumberViewModel.swift */; };
 		C1314E4D2BAF50B4005CF266 /* MyLottoResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1314E4C2BAF50B4005CF266 /* MyLottoResultViewController.swift */; };
 		C1314E4F2BAFF357005CF266 /* StoreListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1314E4E2BAFF356005CF266 /* StoreListTableViewCell.swift */; };
+		C1314E512BB00AC5005CF266 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1314E502BB00AC5005CF266 /* MapViewModel.swift */; };
 		C17008402B9DE99A00008BE7 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C170083F2B9DE99A00008BE7 /* MenuTableViewCell.swift */; };
 		C17008422B9DEA2D00008BE7 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17008412B9DEA2D00008BE7 /* MenuCollectionViewCell.swift */; };
 		C17008442B9DFF6A00008BE7 /* DiaryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17008432B9DFF6A00008BE7 /* DiaryCollectionViewCell.swift */; };
@@ -101,6 +102,7 @@
 		C1314E4A2BAECA9B005CF266 /* NumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberViewModel.swift; sourceTree = "<group>"; };
 		C1314E4C2BAF50B4005CF266 /* MyLottoResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLottoResultViewController.swift; sourceTree = "<group>"; };
 		C1314E4E2BAFF356005CF266 /* StoreListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreListTableViewCell.swift; sourceTree = "<group>"; };
+		C1314E502BB00AC5005CF266 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		C170083F2B9DE99A00008BE7 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		C17008412B9DEA2D00008BE7 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		C17008432B9DFF6A00008BE7 /* DiaryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 				C1F35CF22B99FB2100B32B4E /* Observable.swift */,
 				C170085A2B9EF0B900008BE7 /* DiaryViewModel.swift */,
 				C1314E4A2BAECA9B005CF266 /* NumberViewModel.swift */,
+				C1314E502BB00AC5005CF266 /* MapViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -608,6 +611,7 @@
 				C17008782BA028FD00008BE7 /* APIKey.swift in Sources */,
 				C12872AA2BAC3AFC00176AD3 /* SixRandomNumbersViewController.swift in Sources */,
 				C1E63AA52BA2BF1000707F53 /* NumberSelectionView.swift in Sources */,
+				C1314E512BB00AC5005CF266 /* MapViewModel.swift in Sources */,
 				C17008562B9EEAFB00008BE7 /* RealmRepository.swift in Sources */,
 				C1978EFF2BA99BEA008EEC9D /* StoreListViewController.swift in Sources */,
 				C1E63AAD2BA2F77000707F53 /* RandomNumberMakerViewController.swift in Sources */,
@@ -788,7 +792,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -826,7 +830,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

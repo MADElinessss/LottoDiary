@@ -8,10 +8,11 @@
 import SnapKit
 import UIKit
 
-class StoreListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class StoreListViewController: UIViewController {
     
     var documents: [Document] = []
     let tableView = UITableView()
+    let viewModel = MapViewModel()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -34,7 +35,9 @@ class StoreListViewController: UIViewController, UITableViewDataSource, UITableV
             make.edges.equalToSuperview()
         }
     }
-    
+}
+
+extension StoreListViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return documents.count
     }
@@ -72,4 +75,41 @@ class StoreListViewController: UIViewController, UITableViewDataSource, UITableV
         self.documents = documents
         tableView.reloadData()
     }
+
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let document = documents[indexPath.row]
+//        
+//        if let latitude = Double(document.x), let longitude = Double(document.y) {
+//            print("📌 Selected Location: \(latitude), \(longitude)") // 로그 추가
+//            viewModel.selectedLocation.value = (latitude: latitude, longitude: longitude)
+//            
+//            // 뷰모델을 이미 가지고 있는 MapViewController로 이동
+//            let mapViewController = StoreMapViewController()
+//            mapViewController.viewModel = self.viewModel
+//            navigationController?.pushViewController(mapViewController, animated: true)
+//        }
+//    }
+    
+    // StoreListViewController.swift
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let document = documents[indexPath.row]
+        
+        if let latitude = Double(document.y), let longitude = Double(document.x) {
+            viewModel.selectedLocation.value = (latitude: latitude, longitude: longitude)
+            
+            // 현재 뷰모델을 사용하여 StoreMapViewController 생성
+            if let mapViewController = navigationController?.viewControllers.first(where: { $0 is StoreMapViewController }) as? StoreMapViewController {
+                mapViewController.viewModel = viewModel // 이미 있는 ViewModel 사용
+                navigationController?.popToViewController(mapViewController, animated: true)
+            } else {
+                let mapViewController = StoreMapViewController()
+                mapViewController.viewModel = viewModel
+                navigationController?.pushViewController(mapViewController, animated: true)
+            }
+        }
+    }
+
 }
+
+
+
