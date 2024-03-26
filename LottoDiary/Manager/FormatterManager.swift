@@ -87,7 +87,7 @@ class FormatterManager {
             formattedString += "\(numberDecimal(Double(remainder)))"
         }
         
-        return formattedString.trimmingCharacters(in: .whitespaces) + " 원"
+        return formattedString.trimmingCharacters(in: .whitespaces) + "원"
     }
     
     // MARK: 로또 회차 계산

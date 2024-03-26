@@ -99,7 +99,7 @@ final class MainViewController: BaseViewController {
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 2
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -117,32 +117,31 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.configureView(with: lotto)
             }
             return cell
-        } else if indexPath.section == 1 {
+        } else  {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as! MenuTableViewCell
             cell.onItemTapped = { [weak self] itemIndex in
                 self?.navigateToViewController(for: itemIndex)
             }
             return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
-            cell.textLabel?.text = "복권 구매"
-            cell.textLabel?.font = .systemFont(ofSize: 16, weight: .medium)
-            cell.clipsToBounds = true
-            cell.layer.cornerRadius = 15
-            cell.selectionStyle = .none
-            return cell
         }
-        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let height = UIScreen.main.bounds.height
+        
         if indexPath.section == 0 {
-            return height * 0.2
-        } else if indexPath.section == 1 {
-            return height * 0.41
+            if height > 700 {
+                return height * 0.2
+            } else {
+                return height * 0.24
+            }
+            
         } else {
-            return 60
+            if height > 700 {
+                return height * 0.42
+            } else {
+                return height * 0.52
+            }
         }
     }
     
