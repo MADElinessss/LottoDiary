@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "clover-alt.png",
+      "filename" : "clover-alt_24pt_1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "clover-alt 1.png",
+      "filename" : "clover-alt_24pt_2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "clover-alt 2.png",
+      "filename" : "clover-alt_24pt_3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

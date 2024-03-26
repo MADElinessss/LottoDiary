@@ -79,7 +79,7 @@ final class MainViewController: BaseViewController {
 
     override func configureLayout() {
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalTo(view)
             make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide).inset(16)
         }
     }
@@ -140,7 +140,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             if height > 700 {
                 return height * 0.42
             } else {
-                return height * 0.52
+                return height * 0.53
             }
         }
     }

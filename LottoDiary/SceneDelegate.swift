@@ -26,15 +26,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let vc2 = DiaryViewController()
 //        let vc3 = ChartViewController()
         let vc4 = SettingViewController()
-       
-        let resizedCloverImage = UIImage(named: "clover")?.withRenderingMode(.alwaysOriginal)
-        let resizedEditImage = UIImage(named: "edit")?.withRenderingMode(.automatic)
+    
+        
 
-        vc1.tabBarItem = UITabBarItem(title: "로또", image: resizedCloverImage, selectedImage: UIImage(named: "clover"))
+//        vc1.tabBarItem = UITabBarItem(title: "로또", image: resizedCloverImage, selectedImage: UIImage(named: "clover"))
+        vc1.tabBarItem = UITabBarItem(title: "로또", image: UIImage(named: "clover"), selectedImage: UIImage(named: "clover"))
         vc1.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: -5, right: 0)
 
         vc1.tabBarItem.tag = 0
-        vc2.tabBarItem = UITabBarItem(title: "일기", image: resizedEditImage, selectedImage: UIImage(named: "edit"))
+        vc2.tabBarItem = UITabBarItem(title: "일기", image: UIImage(named: "edit"), selectedImage: UIImage(named: "edit"))
         vc2.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: -5, right: 0)
 
         vc2.tabBarItem.tag = 1
@@ -82,3 +82,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 }
 
+extension UIImage
+{
+    func scale(newWidth: CGFloat) -> UIImage
+    {
+        guard self.size.width != newWidth else{return self}
+        
+        let scaleFactor = newWidth / self.size.width
+        
+        let newHeight = self.size.height * scaleFactor
+        let newSize = CGSize(width: newWidth, height: newHeight)
+        
+        UIGraphicsBeginImageContextWithOptions(newSize, true, 0.0)
+        self.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+        
+        let newImage: UIImage? = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+        return newImage ?? self
+    }
+}

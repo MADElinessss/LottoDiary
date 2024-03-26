@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "file-edit.png",
+      "filename" : "file-edit_24pt_1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "file-edit 1.png",
+      "filename" : "file-edit_24pt_2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "file-edit 2.png",
+      "filename" : "file-edit_24pt_3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
