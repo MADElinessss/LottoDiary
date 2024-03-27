@@ -7,6 +7,7 @@
 
 import KakaoMapsSDK
 import UIKit
+import FirebaseCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         SDKInitializer.InitSDK(appKey: APIKey.kakaoNativeAppKey)
         LocalNotificationManager.shared.requestAuthorization()
-        
+        FirebaseApp.configure()
         return true
     }
 

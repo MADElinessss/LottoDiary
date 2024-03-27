@@ -36,7 +36,8 @@ final class WebViewController: UIViewController, WKNavigationDelegate {
         view.addSubview(webView)
         
         webView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.horizontalEdges.bottom.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide)
         }
     }
     

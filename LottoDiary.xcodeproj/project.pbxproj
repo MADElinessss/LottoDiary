@@ -26,6 +26,14 @@
 		C1314E4F2BAFF357005CF266 /* StoreListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1314E4E2BAFF356005CF266 /* StoreListTableViewCell.swift */; };
 		C1314E512BB00AC5005CF266 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1314E502BB00AC5005CF266 /* MapViewModel.swift */; };
 		C1314E542BB01C8F005CF266 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1314E532BB01C8F005CF266 /* LocalNotificationManager.swift */; };
+		C1314EA82BB2B56E005CF266 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1314EA72BB2B56E005CF266 /* GoogleService-Info.plist */; };
+		C1314EC42BB2B692005CF266 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = C1314EC32BB2B692005CF266 /* FirebaseAnalytics */; };
+		C1314EC62BB2B692005CF266 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = C1314EC52BB2B692005CF266 /* FirebaseAnalyticsOnDeviceConversion */; };
+		C1314EC82BB2B692005CF266 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C1314EC72BB2B692005CF266 /* FirebaseAnalyticsSwift */; };
+		C1314ECA2BB2B692005CF266 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = C1314EC92BB2B692005CF266 /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		C1314ECC2BB2B692005CF266 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = C1314ECB2BB2B692005CF266 /* FirebaseCrashlytics */; };
+		C1314ECE2BB2B692005CF266 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = C1314ECD2BB2B692005CF266 /* FirebaseDatabase */; };
+		C1314ED02BB2B692005CF266 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = C1314ECF2BB2B692005CF266 /* FirebaseMessaging */; };
 		C17008402B9DE99A00008BE7 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C170083F2B9DE99A00008BE7 /* MenuTableViewCell.swift */; };
 		C17008422B9DEA2D00008BE7 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17008412B9DEA2D00008BE7 /* MenuCollectionViewCell.swift */; };
 		C17008442B9DFF6A00008BE7 /* DiaryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17008432B9DFF6A00008BE7 /* DiaryCollectionViewCell.swift */; };
@@ -105,6 +113,7 @@
 		C1314E4E2BAFF356005CF266 /* StoreListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreListTableViewCell.swift; sourceTree = "<group>"; };
 		C1314E502BB00AC5005CF266 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		C1314E532BB01C8F005CF266 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
+		C1314EA72BB2B56E005CF266 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C170083F2B9DE99A00008BE7 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		C17008412B9DEA2D00008BE7 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		C17008432B9DFF6A00008BE7 /* DiaryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -165,12 +174,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1314EC82BB2B692005CF266 /* FirebaseAnalyticsSwift in Frameworks */,
+				C1314ECA2BB2B692005CF266 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				C1314EC42BB2B692005CF266 /* FirebaseAnalytics in Frameworks */,
 				C1F35CE72B99B73000B32B4E /* RealmSwift in Frameworks */,
 				C1F35CE52B99B73000B32B4E /* Realm in Frameworks */,
+				C1314ECC2BB2B692005CF266 /* FirebaseCrashlytics in Frameworks */,
+				C1314ECE2BB2B692005CF266 /* FirebaseDatabase in Frameworks */,
 				C170087B2BA029BC00008BE7 /* KakaoMapsSDK_SPM in Frameworks */,
+				C1314ED02BB2B692005CF266 /* FirebaseMessaging in Frameworks */,
 				C1F35CDF2B99B6FE00B32B4E /* SnapKit in Frameworks */,
 				C1F35CE22B99B70800B32B4E /* Alamofire in Frameworks */,
 				C1E63AB02BA2F80F00707F53 /* CollectionViewPagingLayout in Frameworks */,
+				C1314EC62BB2B692005CF266 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +313,7 @@
 		C18567B22B998DFD00864754 /* LottoDiary */ = {
 			isa = PBXGroup;
 			children = (
+				C1314EA72BB2B56E005CF266 /* GoogleService-Info.plist */,
 				C12873442BAC469400176AD3 /* Extension */,
 				C12872AB2BAC459100176AD3 /* Resources */,
 				C18567CC2B999F6200864754 /* Manager */,
@@ -502,6 +519,13 @@
 				C1F35CE62B99B73000B32B4E /* RealmSwift */,
 				C170087A2BA029BC00008BE7 /* KakaoMapsSDK_SPM */,
 				C1E63AAF2BA2F80F00707F53 /* CollectionViewPagingLayout */,
+				C1314EC32BB2B692005CF266 /* FirebaseAnalytics */,
+				C1314EC52BB2B692005CF266 /* FirebaseAnalyticsOnDeviceConversion */,
+				C1314EC72BB2B692005CF266 /* FirebaseAnalyticsSwift */,
+				C1314EC92BB2B692005CF266 /* FirebaseAnalyticsWithoutAdIdSupport */,
+				C1314ECB2BB2B692005CF266 /* FirebaseCrashlytics */,
+				C1314ECD2BB2B692005CF266 /* FirebaseDatabase */,
+				C1314ECF2BB2B692005CF266 /* FirebaseMessaging */,
 			);
 			productName = LottoDiary;
 			productReference = C18567B02B998DFD00864754 /* LottoDiary.app */;
@@ -537,6 +561,7 @@
 				C1F35CE32B99B73000B32B4E /* XCRemoteSwiftPackageReference "realm-swift" */,
 				C17008792BA029BC00008BE7 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */,
 				C1E63AAE2BA2F80F00707F53 /* XCRemoteSwiftPackageReference "CollectionViewPagingLayout" */,
+				C1314EC22BB2B691005CF266 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = C18567B12B998DFD00864754 /* Products */;
 			projectDirPath = "";
@@ -565,6 +590,7 @@
 				C128733B2BAC45D000176AD3 /* Pretendard-Regular.otf in Resources */,
 				C18567BD2B998DFF00864754 /* Assets.xcassets in Resources */,
 				C18567BB2B998DFD00864754 /* Main.storyboard in Resources */,
+				C1314EA82BB2B56E005CF266 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -876,6 +902,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		C1314EC22BB2B691005CF266 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.23.0;
+			};
+		};
 		C17008792BA029BC00008BE7 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kakao-mapsSDK/KakaoMapsSDK-SPM.git";
@@ -919,6 +953,41 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C1314EC32BB2B692005CF266 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C1314EC22BB2B691005CF266 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		C1314EC52BB2B692005CF266 /* FirebaseAnalyticsOnDeviceConversion */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C1314EC22BB2B691005CF266 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsOnDeviceConversion;
+		};
+		C1314EC72BB2B692005CF266 /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C1314EC22BB2B691005CF266 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		C1314EC92BB2B692005CF266 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C1314EC22BB2B691005CF266 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		C1314ECB2BB2B692005CF266 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C1314EC22BB2B691005CF266 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		C1314ECD2BB2B692005CF266 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C1314EC22BB2B691005CF266 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		C1314ECF2BB2B692005CF266 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C1314EC22BB2B691005CF266 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
 		C170087A2BA029BC00008BE7 /* KakaoMapsSDK_SPM */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C17008792BA029BC00008BE7 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */;
