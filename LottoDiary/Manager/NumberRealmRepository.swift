@@ -53,6 +53,7 @@ class NumberRealmRepository {
 //            print("Number 업데이트 에러: \(error)")
 //        }
 //    }
+    
     func updateNumber(number: Number) {
         guard let existingNumber = realm.object(ofType: Number.self, forPrimaryKey: number.id) else { return }
 

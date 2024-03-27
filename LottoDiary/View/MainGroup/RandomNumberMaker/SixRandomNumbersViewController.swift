@@ -12,15 +12,20 @@ class SixRandomNumbersViewController: BaseViewController {
     
     let numberMakerButton = UIButton()
     let descriptionLabel = UILabel()
+    // let saveButton = UIButton()
     var numberButtons: [UIButton] = []
+    var rightButton = UIBarButtonItem()
     let colorNames = ["lotteryYellow", "lotteryBlue", "lotteryRed", "lotteryGray", "lotteryGreen"]
+    var onNumbersSelected: (([Int]) -> Void)?
+
+    let viewModel = NumberViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        rightButton.isEnabled = false
         let leftButton = createBarButtonItem(imageName: "chevron.left", action: #selector(leftButtonTapped))
-        
-        configureNavigationBar(title: "랜덤 로또 번호 추천", leftBarButton: leftButton, rightBarButton: nil)
+        rightButton = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(rightButtonTapped))
+        configureNavigationBar(title: "랜덤 로또 번호 추천", leftBarButton: leftButton, rightBarButton: rightButton)
         
     }
     
@@ -28,15 +33,20 @@ class SixRandomNumbersViewController: BaseViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    @objc func rightButtonTapped() {
+        let title = viewModel.repository.findNextDefaultTitle()
+        viewModel.saveRandomNumbers(title: title)
+    }
+    
     override func configureHierarchy() {
         view.addSubview(numberMakerButton)
         view.addSubview(descriptionLabel)
-        
+
         for _ in 0..<6 {
             let button = UIButton()
-            button.backgroundColor = .systemBlue // Adjust color
-            button.layer.cornerRadius = 25 // Adjust for circular shape
-            button.isHidden = true // Initially hidden
+            button.backgroundColor = .systemBlue
+            button.layer.cornerRadius = 25
+            button.isHidden = true
             numberButtons.append(button)
             view.addSubview(button)
         }
@@ -80,12 +90,15 @@ class SixRandomNumbersViewController: BaseViewController {
         numberMakerButton.layer.shadowOffset = CGSize(width: 0, height: 4)
         numberMakerButton.layer.shadowColor = UIColor.black.cgColor
         
-        descriptionLabel.text = "아래 번호는 랜덤으로 생성됩니다."
-        descriptionLabel.font = .systemFont(ofSize: 16, weight: .medium)
+        descriptionLabel.text = "버튼을 눌러 로또 번호를 추천받아요.\n번호는 랜덤으로 생성됩니다."
+        descriptionLabel.font = .systemFont(ofSize: 15, weight: .medium)
     }
     
     @objc func buttonTapped() {
+        rightButton.isEnabled = true
         let numbers = generateRandomNumbers()
+       
+        viewModel.randomSelectedNumbers.value = numbers
         for (index, number) in numbers.enumerated() {
             let button = numberButtons[index]
             button.setTitle("\(number)", for: .normal)

@@ -13,6 +13,7 @@ class NumberViewModel {
     
     let repository = NumberRealmRepository()
     var selectedNumbers: Observable<[Int]> = Observable([])
+    var randomSelectedNumbers: Observable<[Int]> = Observable([])
     var title: String?
     
     func saveNumberToRealm(title: String) {
@@ -20,6 +21,26 @@ class NumberViewModel {
         number.id = ObjectId.generate()
         number.title = title ?? repository.findNextDefaultTitle()
         let numbers = selectedNumbers.value
+        if numbers.count >= 6 {
+            number.title = title
+            number.number1 = numbers[0]
+            number.number2 = numbers[1]
+            number.number3 = numbers[2]
+            number.number4 = numbers[3]
+            number.number5 = numbers[4]
+            number.number6 = numbers[5]
+            
+            repository.createNumber(numbers: number)
+        } else {
+            print("선택된 숫자가 6개 미만입니다.")
+        }
+    }
+    
+    func saveRandomNumbers(title: String) {
+        let number = Number()
+        number.id = ObjectId.generate()
+        number.title = title
+        let numbers = randomSelectedNumbers.value
         if numbers.count >= 6 {
             number.title = title
             number.number1 = numbers[0]
