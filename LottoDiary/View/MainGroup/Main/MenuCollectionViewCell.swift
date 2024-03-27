@@ -38,6 +38,7 @@ final class MenuCollectionViewCell: UICollectionViewCell {
         layer.shadowColor = UIColor.lightGray.cgColor
         layer.shadowOpacity = 0.1
         layer.shadowRadius = 2
+        layer.shadowOffset = CGSize(width: 2, height: -2)
         contentView.layer.cornerRadius = 15
         contentView.layer.masksToBounds = true
         

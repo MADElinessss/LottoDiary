@@ -109,13 +109,13 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MyLottoTableViewCell", for: indexPath) as! MyLottoTableViewCell
-            
-//             cell.clipsToBounds = true
-//             cell.layer.cornerRadius = 15
+            cell.selectionStyle = .none
+            cell.clipsToBounds = true
+            cell.layer.cornerRadius = 15
             
             viewModel.outputLotto.bind { [weak self] lotto in
                 guard let lotto = lotto else { return }
-                print("🥔🥔", lotto)
+//                print("🥔🥔", lotto)
                 cell.configureView(with: lotto)
             }
             return cell
