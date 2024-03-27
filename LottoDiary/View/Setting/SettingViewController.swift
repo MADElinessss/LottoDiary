@@ -25,14 +25,14 @@ class SettingViewController: BaseViewController {
         
         tableView.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
-            make.height.equalTo(200)
+            make.height.equalTo(180)
         }
         
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.isScrollEnabled = false
-        tableView.separatorStyle = .singleLine
+        tableView.separatorStyle = .none
         tableView.layer.cornerRadius = 15
     }
 }
@@ -44,8 +44,13 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let titles = ["알림 설정", "개인정보 처리방침", "문의하기"]
+        let images = ["bell.circle.fill", "info.circle.fill", "bubble.circle.fill"]
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = titles[indexPath.row]
+        let cellImage = UIImage(systemName: images[indexPath.row])
+        cellImage?.withTintColor(.point)
+        cell.imageView?.image = cellImage
+        
         cell.selectionStyle = .none
         return cell
     }
@@ -79,18 +84,16 @@ extension SettingViewController: MFMailComposeViewControllerDelegate {
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
-            mail.setToRecipients(["jyseen@naver.com"]) // 받는 사람의 이메일 주소
-            mail.setSubject("문의하기") // 이메일 제목
-            mail.setMessageBody("<p>여기에 메시지를 작성하세요.</p>", isHTML: true) // 이메일 본문, HTML 포맷 사용 가능
+            mail.setToRecipients(["jyseen@naver.com"])
+            mail.setSubject("문의하기")
+            mail.setMessageBody("<p>여기에 메시지를 작성하세요.</p>", isHTML: true)
             
             present(mail, animated: true)
         } else {
-            // 사용자가 메일 계정을 설정하지 않았다면 여기서 알림을 표시
             print("Mail services are not available")
         }
     }
     
-    // 메일 컴포즈 뷰 컨트롤러 델리게이트 메서드 구현
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true)
     }
