@@ -76,7 +76,7 @@ extension MyLottoViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MyLottoTableViewCell", for: indexPath) as! MyLottoTableViewCell
             viewModel.outputLotto.bind { [weak self] lotto in
                 guard let lotto = lotto else { return }
-                print("🥔🥔", lotto)
+                // print("🥔🥔", lotto)
                 cell.configureView(with: lotto)
             }
             cell.chevronImage.isHidden = true

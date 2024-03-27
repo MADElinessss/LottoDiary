@@ -38,7 +38,7 @@ final class MyLottoTableViewCell: BaseTableViewCell {
         contentView.backgroundColor = .clear
         
         guard let draw = lotto else { return }
-        print("🥔🥔🥔", draw)
+        // print("🥔🥔🥔", draw)
         let drawNumber: Int = draw.drwNo
         titleLabel.text = "\(drawNumber)회 당첨 결과"
         titleLabel.textColor = .black
