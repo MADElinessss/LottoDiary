@@ -59,7 +59,7 @@ final class AddMyNumberViewController: BaseViewController {
     }
     
     @objc func leftButtonTapped() {
-        navigationController?.popViewController(animated: true)
+        dismiss(animated: true)
     }
     
     @objc func rightButtonTapped() {
