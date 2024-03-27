@@ -41,7 +41,9 @@ class MyLottoResultViewController: BaseViewController {
         }
         resultButton.snp.makeConstraints { make in
             make.top.equalTo(tableView.snp.bottom)
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(24)
             make.centerX.equalTo(view)
+            make.height.equalTo(44)
         }
         
         tableView.delegate = self
@@ -53,7 +55,9 @@ class MyLottoResultViewController: BaseViewController {
         tableView.backgroundColor = .background
         
         resultButton.backgroundColor = .point
+        resultButton.layer.cornerRadius = 15
         resultButton.setTitle("결과 확인하기", for: .normal)
+        resultButton.titleLabel?.font = .pretendard(size: 18, weight: .bold)
         resultButton.addTarget(self, action: #selector(resultButtonTapped), for: .touchUpInside)
     }
     
@@ -62,7 +66,7 @@ class MyLottoResultViewController: BaseViewController {
     }
     
     private func setupView() {
-        view.backgroundColor = .white
+        view.backgroundColor = .background
         
         let leftButton = createBarButtonItem(imageName: "chevron.left", action: #selector(leftButtonTapped))
         
@@ -92,12 +96,7 @@ extension MyLottoResultViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            let height = UIScreen.main.bounds.width
-            return height
-        } else {
-            return 44
-        }
+        return UIScreen.main.bounds.width
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -112,13 +111,6 @@ extension MyLottoResultViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return section == 0 ? "번호 선택" : "번호 메모"
-    }
-    
-    private func setupMemoTextField() {
-        let number: Int = 1
-        memoTextField.placeholder = "나의 번호(\(number))"
-        memoTextField.borderStyle = .none
-        memoTextField.textColor = .black
+        return "번호 선택"
     }
 }
