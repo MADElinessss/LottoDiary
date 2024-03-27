@@ -35,6 +35,12 @@ final class MenuCollectionViewCell: UICollectionViewCell {
             make.size.equalTo(40)
         }
         
+        layer.shadowColor = UIColor.lightGray.cgColor
+        layer.shadowOpacity = 0.1
+        layer.shadowRadius = 2
+        contentView.layer.cornerRadius = 15
+        contentView.layer.masksToBounds = true
+        
         label.text = "번호 생성기"
         label.textColor = .black
         label.font = .systemFont(ofSize: 16, weight: .medium)

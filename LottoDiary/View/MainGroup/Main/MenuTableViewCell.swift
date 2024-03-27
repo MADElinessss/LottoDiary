@@ -35,29 +35,24 @@ final class MenuTableViewCell: UITableViewCell {
 
     static func configureCollectionLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
-        
-        // 기기대응
-        /*
-         height = 844, 568
-         0.03
-         */
+    
         let height = UIScreen.main.bounds.height
         let width = UIScreen.main.bounds.width
         
         let parentViewPadding: CGFloat = height * 0.028
         let totalWidth = width - parentViewPadding
 
-        let cellSpacing: CGFloat = height * 0.01
+        let cellSpacing: CGFloat = height * 0.015
 
         let numberOfColumns: CGFloat = 2
        
         let cellWidth = (totalWidth - cellSpacing) / numberOfColumns
 
-        layout.itemSize = CGSize(width: cellWidth * 0.95, height: cellWidth * 0.95)
-        layout.minimumLineSpacing = cellSpacing
+        layout.itemSize = CGSize(width: cellWidth * 0.9, height: cellWidth * 0.9)
+        layout.minimumLineSpacing = cellSpacing*2
         layout.minimumInteritemSpacing = cellSpacing
 
-        layout.sectionInset = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+        layout.sectionInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
 
         return layout
     }

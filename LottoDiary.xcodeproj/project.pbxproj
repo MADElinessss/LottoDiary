@@ -65,6 +65,7 @@
 		C1978F082BAABD08008EEC9D /* EditMyNumberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1978F072BAABD08008EEC9D /* EditMyNumberTableViewCell.swift */; };
 		C1978F0A2BAAD574008EEC9D /* OneRandomNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1978F092BAAD574008EEC9D /* OneRandomNumberViewController.swift */; };
 		C1978F0C2BAB0666008EEC9D /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1978F0B2BAB0666008EEC9D /* AlertManager.swift */; };
+		C19A13652BB3EF87008609C8 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19A13642BB3EF87008609C8 /* BaseTableViewCell.swift */; };
 		C1E63AA52BA2BF1000707F53 /* NumberSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E63AA42BA2BF1000707F53 /* NumberSelectionView.swift */; };
 		C1E63AA72BA2BFBD00707F53 /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E63AA62BA2BFBD00707F53 /* TextCell.swift */; };
 		C1E63AAA2BA2EA0700707F53 /* MyNumberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E63AA92BA2EA0700707F53 /* MyNumberTableViewCell.swift */; };
@@ -146,6 +147,7 @@
 		C1978F072BAABD08008EEC9D /* EditMyNumberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMyNumberTableViewCell.swift; sourceTree = "<group>"; };
 		C1978F092BAAD574008EEC9D /* OneRandomNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneRandomNumberViewController.swift; sourceTree = "<group>"; };
 		C1978F0B2BAB0666008EEC9D /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		C19A13642BB3EF87008609C8 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		C1E63AA42BA2BF1000707F53 /* NumberSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberSelectionView.swift; sourceTree = "<group>"; };
 		C1E63AA62BA2BFBD00707F53 /* TextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
 		C1E63AA92BA2EA0700707F53 /* MyNumberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNumberTableViewCell.swift; sourceTree = "<group>"; };
@@ -385,6 +387,7 @@
 			isa = PBXGroup;
 			children = (
 				C1F35CD82B99A6D100B32B4E /* BaseViewController.swift */,
+				C19A13642BB3EF87008609C8 /* BaseTableViewCell.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -661,6 +664,7 @@
 				C17008402B9DE99A00008BE7 /* MenuTableViewCell.swift in Sources */,
 				C1F35CD92B99A6D100B32B4E /* BaseViewController.swift in Sources */,
 				C12873462BAC46A700176AD3 /* Fonts.swift in Sources */,
+				C19A13652BB3EF87008609C8 /* BaseTableViewCell.swift in Sources */,
 				C1978F0A2BAAD574008EEC9D /* OneRandomNumberViewController.swift in Sources */,
 				C1314E442BAEC5D8005CF266 /* Number.swift in Sources */,
 				C1978F022BAAADB3008EEC9D /* ListMyNumberViewController.swift in Sources */,

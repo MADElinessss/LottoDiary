@@ -8,8 +8,9 @@
 import SnapKit
 import UIKit
 
-final class MyLottoTableViewCell: UITableViewCell {
+final class MyLottoTableViewCell: BaseTableViewCell {
     
+    let containerView = UIView()
     let titleLabel = UILabel()
     let dateLabel = UILabel()
     let chevronImage = UIImageView()
@@ -20,22 +21,34 @@ final class MyLottoTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        contentView.backgroundColor = .white
-        
+
         configureLayout()
         
     }
     
     private func configureLayout() {
-        contentView.addSubview(titleLabel)
-        contentView.addSubview(dateLabel)
-        contentView.addSubview(chevronImage)
-        contentView.addSubview(stackView)
-        contentView.addSubview(prizeLabel)
+        contentView.addSubview(containerView)
+        containerView.addSubview(titleLabel)
+        containerView.addSubview(dateLabel)
+        containerView.addSubview(chevronImage)
+        containerView.addSubview(stackView)
+        containerView.addSubview(prizeLabel)
     }
     
     func configureView(with lotto: Lotto?) {
+        
+        contentView.backgroundColor = .clear
+        containerView.backgroundColor = .white
+        self.containerView.layer.cornerRadius = 15
+        self.containerView.layer.masksToBounds = true
+
+        contentView.layer.cornerRadius = 15
+        contentView.layer.masksToBounds = true
+        layer.shadowColor = UIColor.lightGray.cgColor
+        layer.shadowOpacity = 0.2
+        layer.shadowRadius = 2
+
+        
         guard let draw = lotto else { return }
         print("🥔🥔🥔", draw)
         let drawNumber: Int = draw.drwNo
@@ -51,8 +64,12 @@ final class MyLottoTableViewCell: UITableViewCell {
         chevronImage.image = UIImage(systemName: "chevron.right")
         chevronImage.tintColor = .gray
         
+        containerView.snp.makeConstraints { make in
+            make.edges.equalTo(contentView)
+        }
+        
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(contentView.safeAreaLayoutGuide).inset(16)
+            make.top.equalTo(contentView.safeAreaLayoutGuide).inset(20)
             make.centerX.equalTo(contentView)
         }
         
