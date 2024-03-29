@@ -18,16 +18,13 @@ final class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjec
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("🐙view,didload")
         let captureDevice = AVCaptureDevice.default(for: .video)
         let videoInput: AVCaptureDeviceInput
         
         do {
             videoInput = try AVCaptureDeviceInput(device: captureDevice!)
-            print("🐙videoInput")
         } catch {
             // TODO: 카메라 권한 허용해달라 알럿!!!!
-            print("🐙videoInput error")
             return
         }
         
@@ -47,7 +44,6 @@ final class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjec
         
         
         captureSession.startRunning()
-        print("🐙startRunning")
     }
     
     private func metaObjectTypes() -> [AVMetadataObject.ObjectType] {

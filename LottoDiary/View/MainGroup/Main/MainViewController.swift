@@ -94,6 +94,8 @@ final class MainViewController: BaseViewController {
         tableView.register(MenuTableViewCell.self, forCellReuseIdentifier: "MenuTableViewCell")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
         tableView.separatorStyle = .none
+        tableView.isScrollEnabled = false
+        
     }
 }
 
@@ -148,16 +150,16 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView()
-        return headerView
+        if section == 1 {
+            let headerView = UIView()
+            return headerView
+        } else {
+            return nil
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return CGFloat.leastNonzeroMagnitude
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return CGFloat.leastNonzeroMagnitude
+        return 0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -173,7 +175,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func navigateToViewController(for index: Int) {
         switch index {
         case 0:
-            
             // 나의 번호 목록
             let vc = ListMyNumberViewController()
             navigationController?.pushViewController(vc, animated: true)

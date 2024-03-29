@@ -14,7 +14,22 @@ class NumberViewModel {
     let repository = NumberRealmRepository()
     var selectedNumbers: Observable<[Int]> = Observable([])
     var randomSelectedNumbers: Observable<[Int]> = Observable([])
+    var inputReloadList: Observable<Void?> = Observable(nil)
+    
+    var outputReloadList: Observable<[Number]> = Observable([])
+    
     var title: String?
+    
+    init() {
+        inputReloadList.bind { _ in
+            print("🐙input 바인딩")
+            self.fetchNumber()
+        }
+    }
+    
+    func fetchNumber() {
+        self.outputReloadList.value = repository.fetchNumber()
+    }
     
     func saveNumberToRealm(title: String) {
         let number = Number()

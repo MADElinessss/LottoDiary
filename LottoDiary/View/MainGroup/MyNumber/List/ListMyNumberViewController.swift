@@ -6,26 +6,53 @@
 //
 
 import UIKit
+import RealmSwift
 
 // MARK: 나의 번호 목록
 class ListMyNumberViewController: BaseViewController {
     
     let tableView = UITableView()
-    var numbers: [Number] = []
-    let repository = NumberRealmRepository()
+    // var numbers: [Number] = []
+    let viewModel = NumberViewModel()
+
+    // MARK: Notification Token
+    let realm = try! Realm()
+    let results = try! Realm().objects(Number.self)
+    var token: NotificationToken?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchNumbers()
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.token = results.observe { change in
+            switch change {
+            case .initial(_):
+                self.tableView.reloadData()
+                print("👀inital")
+            case .update(_, let deletions, let insertions, let modifications):
+                // Query results have changed, so apply them to the TableView
+                self.tableView.beginUpdates()
+                
+                self.tableView.insertSections(IndexSet(insertions), with: .automatic)
+                // self.tableView.insertRows(at: insertions.map { IndexPath(row: $0, section: 0) }, with: .automatic)
+                //self.tableView.deleteRows(at: deletions.map { IndexPath(row: $0, section: 0) }, with: .automatic)
+                //self.tableView.reloadRows(at: modifications.map { IndexPath(row: $0, section: 0) }, with: .automatic)
+                self.tableView.endUpdates()
+           
+            case .error(_):
+                print("👀error")
+            }
+        }
     }
     
     func fetchNumbers() {
-        numbers = repository.fetchNumber()
-        tableView.reloadData()
+        viewModel.outputReloadList.bind { _ in
+            self.tableView.reloadData()
+        }
     }
     
     override func configureHierarchy() {
@@ -67,13 +94,12 @@ class ListMyNumberViewController: BaseViewController {
 extension ListMyNumberViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
         return 120
     }
     
     // TODO: Realm 번호 목록
     func numberOfSections(in tableView: UITableView) -> Int {
-        return numbers.count
+        return results.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -82,8 +108,8 @@ extension ListMyNumberViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListMyNumberTableViewCell", for: indexPath) as! ListMyNumberTableViewCell
-        let number = numbers[indexPath.section]
-        cell.configure(with: number)
+        let object = results[indexPath.section]
+        cell.configure(with: object)
         cell.selectionStyle = .none
         cell.layer.cornerRadius = 15
         return cell
@@ -91,7 +117,8 @@ extension ListMyNumberViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = EditMyNumberViewController()
-        vc.number = numbers[indexPath.section]
+        let object = results[indexPath.section]
+        vc.number = object
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -113,10 +140,11 @@ extension ListMyNumberViewController {
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let numberToDelete = numbers[indexPath.section]
-            repository.deleteNumber(numberId: numberToDelete.id)
+            let object = results[indexPath.section]
             
-            numbers.remove(at: indexPath.section)
+            viewModel.repository.deleteNumber(numberId: object.id)
+            
+            // numbers.remove(at: indexPath.section)
             tableView.deleteSections(IndexSet(integer: indexPath.section), with: .automatic)
         }
     }
