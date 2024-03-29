@@ -36,6 +36,9 @@ class SixRandomNumbersViewController: BaseViewController {
     @objc func rightButtonTapped() {
         let title = viewModel.repository.findNextDefaultTitle()
         viewModel.saveRandomNumbers(title: title)
+        
+        // TODO: Alert
+        AlertManager.shared.showOKayAlert(on: self, title: "나의 번호로 저장", message: "번호가 저장되었습니다.")
     }
     
     override func configureHierarchy() {

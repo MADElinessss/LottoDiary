@@ -39,5 +39,22 @@ class AlertManager {
             viewController.present(alert, animated: true)
         }
     }
+    
+    func showOKayAlert(on viewController: UIViewController,
+                   title: String,
+                   message: String,
+                   confirmButtonText: String = "확인",
+                   confirmAction: (() -> Void)? = nil) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let ok = UIAlertAction(title: confirmButtonText, style: .default) { _ in
+            confirmAction?()
+        }
+        alert.addAction(ok)
+        
+        DispatchQueue.main.async {
+            viewController.present(alert, animated: true)
+        }
+    }
 
 }

@@ -53,6 +53,7 @@ final class MyLottoViewController: BaseViewController {
         tableView.register(MyLottoTableViewCell.self, forCellReuseIdentifier: "MyLottoTableViewCell")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
         tableView.separatorStyle = .none
+        tableView.isScrollEnabled = false
         
         configureNavigationBar(title: "나의 로또", leftBarButton: nil, rightBarButton: nil)
     }
