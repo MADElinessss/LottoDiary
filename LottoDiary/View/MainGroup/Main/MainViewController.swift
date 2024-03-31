@@ -182,8 +182,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         case 1:
             // 나의 당첨내역
             print("winning")
-            // let vc = WinningHistoryViewController()
-            // navigationController?.pushViewController(vc, animated: true)
+//             let vc = MyLottoResultViewController()
+//             navigationController?.pushViewController(vc, animated: true)
+            AlertManager.shared.showOKayAlert(on: self, title: "업데이트 기능", message: "곧 업데이트될 예정이에요.\n개발자를 응원해주세요🥺")
         case 2:
             // 번호 생성기
             let vc = RandomNumberMakerViewController()

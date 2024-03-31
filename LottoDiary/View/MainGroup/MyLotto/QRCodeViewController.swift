@@ -25,6 +25,7 @@ final class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjec
             videoInput = try AVCaptureDeviceInput(device: captureDevice!)
         } catch {
             // TODO: 카메라 권한 허용해달라 알럿!!!!
+            AlertManager.shared.showOKayAlert(on: self, title: "카메라 권한 허용", message: "QR코드 인식을 위해서 카메라 권한 허용이 필요합니다.")
             return
         }
         

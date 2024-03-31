@@ -66,6 +66,8 @@
 		C1978F0A2BAAD574008EEC9D /* OneRandomNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1978F092BAAD574008EEC9D /* OneRandomNumberViewController.swift */; };
 		C1978F0C2BAB0666008EEC9D /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1978F0B2BAB0666008EEC9D /* AlertManager.swift */; };
 		C19A13652BB3EF87008609C8 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19A13642BB3EF87008609C8 /* BaseTableViewCell.swift */; };
+		C19A13AE2BB7236D008609C8 /* LottoResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19A13AD2BB7236D008609C8 /* LottoResultViewController.swift */; };
+		C19A13B02BB72557008609C8 /* NumberDisplayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19A13AF2BB72557008609C8 /* NumberDisplayTableViewCell.swift */; };
 		C1E63AA52BA2BF1000707F53 /* NumberSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E63AA42BA2BF1000707F53 /* NumberSelectionView.swift */; };
 		C1E63AA72BA2BFBD00707F53 /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E63AA62BA2BFBD00707F53 /* TextCell.swift */; };
 		C1E63AAA2BA2EA0700707F53 /* MyNumberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E63AA92BA2EA0700707F53 /* MyNumberTableViewCell.swift */; };
@@ -148,6 +150,8 @@
 		C1978F092BAAD574008EEC9D /* OneRandomNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneRandomNumberViewController.swift; sourceTree = "<group>"; };
 		C1978F0B2BAB0666008EEC9D /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		C19A13642BB3EF87008609C8 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		C19A13AD2BB7236D008609C8 /* LottoResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoResultViewController.swift; sourceTree = "<group>"; };
+		C19A13AF2BB72557008609C8 /* NumberDisplayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberDisplayTableViewCell.swift; sourceTree = "<group>"; };
 		C1E63AA42BA2BF1000707F53 /* NumberSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberSelectionView.swift; sourceTree = "<group>"; };
 		C1E63AA62BA2BFBD00707F53 /* TextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
 		C1E63AA92BA2EA0700707F53 /* MyNumberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNumberTableViewCell.swift; sourceTree = "<group>"; };
@@ -240,6 +244,8 @@
 				C17008462B9E178700008BE7 /* MyLottoViewController.swift */,
 				C17008722BA00BF400008BE7 /* QRCodeViewController.swift */,
 				C1314E4C2BAF50B4005CF266 /* MyLottoResultViewController.swift */,
+				C19A13AD2BB7236D008609C8 /* LottoResultViewController.swift */,
+				C19A13AF2BB72557008609C8 /* NumberDisplayTableViewCell.swift */,
 			);
 			path = MyLotto;
 			sourceTree = "<group>";
@@ -635,6 +641,7 @@
 				C170085B2B9EF0B900008BE7 /* DiaryViewModel.swift in Sources */,
 				C1F35CED2B99EF3F00B32B4E /* APIManager.swift in Sources */,
 				C1E63AA72BA2BFBD00707F53 /* TextCell.swift in Sources */,
+				C19A13AE2BB7236D008609C8 /* LottoResultViewController.swift in Sources */,
 				C17008522B9ED61200008BE7 /* AddContentTableViewCell.swift in Sources */,
 				C17008802BA061B000008BE7 /* EditMyNumberViewController.swift in Sources */,
 				C17008542B9EE6A800008BE7 /* AddImageTableViewCell.swift in Sources */,
@@ -655,6 +662,7 @@
 				C1314E462BAEC642005CF266 /* NumberRealmRepository.swift in Sources */,
 				C1978F082BAABD08008EEC9D /* EditMyNumberTableViewCell.swift in Sources */,
 				C1314E4D2BAF50B4005CF266 /* MyLottoResultViewController.swift in Sources */,
+				C19A13B02BB72557008609C8 /* NumberDisplayTableViewCell.swift in Sources */,
 				C18567B62B998DFD00864754 /* SceneDelegate.swift in Sources */,
 				C17008592B9EEB3600008BE7 /* Diary.swift in Sources */,
 				C1F35CD12B99A62100B32B4E /* SettingViewController.swift in Sources */,

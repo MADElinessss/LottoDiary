@@ -62,8 +62,25 @@ class MyLottoResultViewController: BaseViewController {
     }
     
     @objc func resultButtonTapped() {
-        print("👼🏻")
-        // TODO: 로또 번호 매칭
+        let winningNumbers: Set<Int> = [10, 20, 30, 40, 41, 42]
+        let bonusNumber: Int = 25
+        
+        // 사용자가 선택한 번호
+        let userNumbers: Set<Int> = Set(viewModel.selectedNumbers.value)
+        
+        // 로또 번호 확인 로직
+        let lottoChecker = LottoChecker(winningNumbers: winningNumbers, bonusNumber: bonusNumber)
+        let result = lottoChecker.checkNumbers(userNumbers)
+        
+        // 결과를 새로운 뷰 컨트롤러에 표시
+        showLottoResultScreen(result: result, userNumbers: userNumbers)
+    }
+    
+    func showLottoResultScreen(result: (rank: String, matchedNumbers: Set<Int>), userNumbers: Set<Int>) {
+        let resultVC = LottoResultViewController()
+        resultVC.winningResult = result
+        resultVC.userNumbers = userNumbers
+        self.navigationController?.pushViewController(resultVC, animated: true)
     }
     
     private func setupView() {
@@ -113,5 +130,41 @@ extension MyLottoResultViewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "번호 선택"
+    }
+}
+
+extension MyLottoResultViewController {
+    
+    private class LottoChecker {
+        // 당첨 번호와 보너스 번호 설정
+        let winningNumbers: Set<Int>
+        let bonusNumber: Int
+        
+        init(winningNumbers: Set<Int>, bonusNumber: Int) {
+            self.winningNumbers = winningNumbers
+            self.bonusNumber = bonusNumber
+        }
+        
+        func checkNumbers(_ numbers: Set<Int>) -> (rank: String, matchedNumbers: Set<Int>) {
+            let matchedNumbers = numbers.intersection(winningNumbers)
+            let matchedCount = matchedNumbers.count
+            
+            switch matchedCount {
+            case 6:
+                return ("1등", matchedNumbers)
+            case 5:
+                if numbers.contains(bonusNumber) {
+                    return ("2등", matchedNumbers.union([bonusNumber]))
+                } else {
+                    return ("3등", matchedNumbers)
+                }
+            case 4:
+                return ("4등", matchedNumbers)
+            case 3:
+                return ("5등", matchedNumbers)
+            default:
+                return ("당첨되지 않았습니다.", matchedNumbers)
+            }
+        }
     }
 }

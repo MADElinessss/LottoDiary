@@ -32,15 +32,15 @@ class StoreListTableViewCell: UITableViewCell {
             make.leading.equalTo(contentView.safeAreaLayoutGuide).inset(16)
         }
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(contentView.safeAreaLayoutGuide).inset(8)
+            make.top.equalTo(contentView.safeAreaLayoutGuide).inset(6)
             make.leading.equalTo(indexLabel.snp.trailing).offset(16)
         }
         addressLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).inset(-8)
+            make.top.equalTo(titleLabel.snp.bottom).inset(-6)
             make.leading.equalTo(indexLabel.snp.trailing).offset(16)
         }
         phoneLabel.snp.makeConstraints { make in
-            make.top.equalTo(addressLabel.snp.bottom).inset(-4)
+            make.top.equalTo(addressLabel.snp.bottom).inset(-2)
             make.leading.equalTo(indexLabel.snp.trailing).offset(16)
         }
     }
