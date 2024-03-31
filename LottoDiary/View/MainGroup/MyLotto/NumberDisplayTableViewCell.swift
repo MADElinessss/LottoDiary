@@ -36,19 +36,14 @@ class NumberDisplayTableViewCell: UITableViewCell {
         
         for _ in 0..<6 {
             let button = UIButton()
-            // button.layer.cornerRadius = 20
             button.backgroundColor = .gray
+            button.snp.makeConstraints { make in
+                make.width.height.equalTo(40)
+            }
+            button.layer.cornerRadius = 20
             button.titleLabel?.font = .pretendard(size: 16, weight: .bold)
             stackView.addArrangedSubview(button)
             numberButtons.append(button)
-        }
-    }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        // Auto Layout 후에 버튼의 크기가 확정되므로 여기서 cornerRadius를 설정합니다.
-        numberButtons.forEach { button in
-            // 버튼의 높이를 기준으로 cornerRadius 설정하여 원형으로 만듭니다.
-            button.layer.cornerRadius = button.frame.height / 2
         }
     }
     
@@ -58,8 +53,27 @@ class NumberDisplayTableViewCell: UITableViewCell {
             guard index < sortedNumbers.count else { return }
             let number = sortedNumbers[index]
             button.setTitle("\(number)", for: .normal)
-            button.backgroundColor = highlightedNumbers.contains(number) ? .green : .gray
+            
+            let color = highlightedNumbers.contains(number) ? color(for: number) : .gray
+            button.backgroundColor = color
             button.setTitleColor(.white, for: .normal)
+        }
+    }
+    
+    private func color(for drawNumber: Int) -> UIColor {
+        switch drawNumber {
+        case 1...10:
+            return UIColor(named: "lotteryYellow") ?? .yellow
+        case 11...20:
+            return UIColor(named: "lotteryBlue") ?? .blue
+        case 21...30:
+            return UIColor(named: "lotteryRed") ?? .red
+        case 31...40:
+            return UIColor(named: "lotteryGray") ?? .gray
+        case 41...45:
+            return UIColor(named: "lotteryGreen") ?? .green
+        default:
+            return .lightGray
         }
     }
 }

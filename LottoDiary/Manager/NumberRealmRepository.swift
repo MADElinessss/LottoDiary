@@ -42,18 +42,7 @@ class NumberRealmRepository {
             print("🗑️ 삭제error", error)
         }
     }
-    
-    // MARK: Update
-//    func updateNumber(number: Number) {
-//        do {
-//            try realm.write {
-//                realm.create(Number.self, value: number, update: .modified)
-//            }
-//        } catch {
-//            print("Number 업데이트 에러: \(error)")
-//        }
-//    }
-    
+
     func updateNumber(number: Number) {
         guard let existingNumber = realm.object(ofType: Number.self, forPrimaryKey: number.id) else { return }
 

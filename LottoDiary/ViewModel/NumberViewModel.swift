@@ -22,7 +22,6 @@ class NumberViewModel {
     
     init() {
         inputReloadList.bind { _ in
-            print("🐙input 바인딩")
             self.fetchNumber()
         }
     }

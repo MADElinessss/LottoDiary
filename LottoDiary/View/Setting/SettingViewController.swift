@@ -91,6 +91,7 @@ extension SettingViewController: MFMailComposeViewControllerDelegate {
             present(mail, animated: true)
         } else {
             print("Mail services are not available")
+            AlertManager.shared.showOKayAlert(on: self, title: "메일 전송 실패", message: "메일 서비스가 원활하지 않습니다.\n 다시 시도해주세요.")
         }
     }
     

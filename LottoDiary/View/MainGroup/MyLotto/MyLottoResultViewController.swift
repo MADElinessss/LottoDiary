@@ -24,7 +24,6 @@ class MyLottoResultViewController: BaseViewController {
         configureTableView()
         setupView()
         updateTitlePlaceholder()
-        
     }
 
     func updateTitlePlaceholder() {
@@ -62,27 +61,43 @@ class MyLottoResultViewController: BaseViewController {
     }
     
     @objc func resultButtonTapped() {
-        let winningNumbers: Set<Int> = [10, 20, 30, 40, 41, 42]
-        let bonusNumber: Int = 25
+        guard let currentDrawNumber = FormatterManager.shared.findLottoDrawNumber() else {
+            print("로또 회차를 계산할 수 없습니다.")
+            return
+        }
         
-        // 사용자가 선택한 번호
-        let userNumbers: Set<Int> = Set(viewModel.selectedNumbers.value)
-        
-        // 로또 번호 확인 로직
-        let lottoChecker = LottoChecker(winningNumbers: winningNumbers, bonusNumber: bonusNumber)
-        let result = lottoChecker.checkNumbers(userNumbers)
-        
-        // 결과를 새로운 뷰 컨트롤러에 표시
-        showLottoResultScreen(result: result, userNumbers: userNumbers)
+        APIManager.shared.lottoCallRequest(drwNumber: currentDrawNumber) { [weak self] result in
+            switch result {
+            case .success(let lotto):
+                DispatchQueue.main.async {
+                    // 당첨 번호와 보너스 번호 설정
+                    let winningNumbers: Set<Int> = [lotto.drwtNo1, lotto.drwtNo2, lotto.drwtNo3, lotto.drwtNo4, lotto.drwtNo5, lotto.drwtNo6]
+                    let bonusNumber = lotto.bnusNo
+                    
+                    // 사용자가 선택한 번호를 Set<Int>으로 변환
+                    let userNumbersSet: Set<Int> = Set(self?.viewModel.selectedNumbers.value ?? [])
+                    
+                    // 로또 번호 확인 로직
+                    let lottoChecker = LottoChecker(winningNumbers: winningNumbers, bonusNumber: bonusNumber)
+                    let result = lottoChecker.checkNumbers(userNumbersSet)
+                    
+                    // 결과를 LottoResultViewController에 전달
+                    self?.showLottoResultScreen(lotto: lotto, result: result, userNumbers: userNumbersSet)
+                }
+            case .failure(let error):
+                print("로또 데이터 로드 실패: \(error.localizedDescription)")
+            }
+        }
     }
-    
-    func showLottoResultScreen(result: (rank: String, matchedNumbers: Set<Int>), userNumbers: Set<Int>) {
+
+    func showLottoResultScreen(lotto: Lotto, result: (rank: String, matchedNumbers: Set<Int>), userNumbers: Set<Int>) {
         let resultVC = LottoResultViewController()
+        resultVC.lotto = lotto
         resultVC.winningResult = result
         resultVC.userNumbers = userNumbers
         self.navigationController?.pushViewController(resultVC, animated: true)
     }
-    
+
     private func setupView() {
         view.backgroundColor = .background
         
@@ -151,17 +166,17 @@ extension MyLottoResultViewController {
             
             switch matchedCount {
             case 6:
-                return ("1등", matchedNumbers)
+                return ("1등! 축하합니다 🎉", matchedNumbers)
             case 5:
                 if numbers.contains(bonusNumber) {
-                    return ("2등", matchedNumbers.union([bonusNumber]))
+                    return ("2등! 축하합니다 🎉", matchedNumbers.union([bonusNumber]))
                 } else {
-                    return ("3등", matchedNumbers)
+                    return ("3등! 축하합니다 🎉", matchedNumbers)
                 }
             case 4:
-                return ("4등", matchedNumbers)
+                return ("4등! 축하합니다 🎉", matchedNumbers)
             case 3:
-                return ("5등", matchedNumbers)
+                return ("5등! 축하합니다 🎉", matchedNumbers)
             default:
                 return ("당첨되지 않았습니다.", matchedNumbers)
             }

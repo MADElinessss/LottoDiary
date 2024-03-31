@@ -108,18 +108,15 @@ final class DetailDiaryViewController: BaseViewController {
         // MARK: 이미지 있을 때
         if let imageName = viewModel.selectedImage.value {
             let image = saveImageToDocumentDirectory(image: imageName) ?? ""
-            print("🐲 이미지 들어옴")
             newDiaryEntry.imageName = image
         }
 
         newDiaryEntry.date = diary?.date ?? Date()
         
         if let tag = selectedTag {
-            print("🐲tag", tag)
             newDiaryEntry.tag = tag
         }
         if let colorName = selectedColorName {
-            print("🐲color", colorName)
             newDiaryEntry.colorString = colorName
         }
         

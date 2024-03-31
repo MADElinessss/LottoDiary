@@ -16,18 +16,6 @@ class MainViewModel {
     var outputLotto: Observable<Lotto?> = Observable(nil)
     var errorMessage: Observable<String?> = Observable(nil)
     
-//    func apiRequest() {
-//        APIManager.shared.lottoCallRequest(drwNumber: inputDrawNumber.value) { [weak self] result in
-//            switch result {
-//            case .success(let lotto):
-//                self?.outputLotto.value = lotto
-//                print("viewmodel🥔")
-//            case .failure(let error):
-//                self?.errorMessage.value = "네트워크 오류 또는 기타 오류가 발생했습니다. \(error.localizedDescription)"
-//            }
-//        }
-//    }
-    
     func apiRequest(on viewController: UIViewController) {
         if let drawNumber = FormatterManager.shared.findLottoDrawNumber() {
             inputDrawNumber.value = drawNumber

@@ -41,7 +41,9 @@ class LottoResultViewController: BaseViewController, UITableViewDelegate, UITabl
         tableView.separatorStyle = .none
         
     }
-    
+}
+
+extension LottoResultViewController {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
@@ -50,17 +52,30 @@ class LottoResultViewController: BaseViewController, UITableViewDelegate, UITabl
         return 1
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let height = UIScreen.main.bounds.height
+        if indexPath.section == 0 {
+            if height > 700 {
+                return height * 0.18
+            } else {
+                return height * 0.22
+            }
+        } else if indexPath.section == 1 {
+            return 44
+        } else {
+            return 60
+        }
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "MyLottoTableViewCell", for: indexPath) as! MyLottoTableViewCell
-            
+            cell.prizeLabel.isHidden = true
             if let lotto = self.lotto {
                 cell.configureView(with: lotto)
-                print("🍋")
             } else {
-                cell.titleLabel.text = "로또 정보 없음"
-                print("🫒")
+                cell.titleLabel.text = "로또 정보를 받아오는 데에 실패했어요."
             }
 
             cell.chevronImage.isHidden = true
@@ -68,16 +83,20 @@ class LottoResultViewController: BaseViewController, UITableViewDelegate, UITabl
             cell.layer.cornerRadius = 15
             return cell
         case 1:
-            // 당첨 결과를 표시하는 셀
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-            cell.textLabel?.text = "당첨 결과: \(winningResult.rank)"
-            cell.textLabel?.font = .pretendard(size: 16, weight: .medium)
+            if let winningResult = self.winningResult {
+                cell.textLabel?.text = "당첨 결과: \(winningResult.rank)"
+            } else {
+                cell.textLabel?.text = "당첨 결과 정보가 없습니다."
+            }
             return cell
         case 2:
-            // 사용자 번호를 원형 버튼으로 표시하는 셀
             let cell = tableView.dequeueReusableCell(withIdentifier: "NumberDisplayTableViewCell", for: indexPath) as! NumberDisplayTableViewCell
-            cell.configure(with: Array(userNumbers), highlightedNumbers: winningResult.matchedNumbers)
+            
+            let numbersToDisplay = userNumbers ?? Set<Int>()
+            cell.configure(with: Array(numbersToDisplay), highlightedNumbers: winningResult?.matchedNumbers ?? Set<Int>())
             return cell
+
         default:
             fatalError("Unexpected section")
         }

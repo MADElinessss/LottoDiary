@@ -117,7 +117,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             
             viewModel.outputLotto.bind { [weak self] lotto in
                 guard let lotto = lotto else { return }
-//                print("🥔🥔", lotto)
                 cell.configureView(with: lotto)
             }
             return cell

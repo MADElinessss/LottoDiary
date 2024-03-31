@@ -77,7 +77,7 @@ final class AddWishTagViewController: BaseViewController {
         for i in 0...4 {
             let buttonColor = color(for: i)
             let button = NumberButton(backgroundColor: buttonColor, number: nil)
-            button.tag = i // 각 버튼에 고유한 태그 할당
+            button.tag = i 
             button.snp.makeConstraints { make in
                 make.size.equalTo(30)
             }
@@ -106,9 +106,7 @@ final class AddWishTagViewController: BaseViewController {
     }
     
     @objc func colorButtonTapped(_ sender: UIButton) {
-        selectedColorName = colorNames[sender.tag] // 선택된 색상 이름을 저장
-        
-        // 선택된 버튼에 시각적 표시를 업데이트
+        selectedColorName = colorNames[sender.tag]
         stackView.arrangedSubviews.forEach { view in
             if let button = view as? UIButton {
                 button.layer.borderWidth = (button.tag == sender.tag) ? 2 : 0
@@ -124,7 +122,6 @@ final class AddWishTagViewController: BaseViewController {
     @objc func rightBarButtonTapped() {
         guard let content = textField.text, !content.isEmpty, let selectedColorName = self.selectedColorName else { return }
         onTagAndColorSelected?(content, selectedColorName)
-        print("🐲 onTagAndColorSelected", content, selectedColorName)
         dismiss(animated: true)
     }
     

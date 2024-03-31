@@ -67,7 +67,6 @@ final class AddMyNumberViewController: BaseViewController {
         viewModel.saveNumberToRealm(title: title)
         dismiss(animated: true)
         viewModel.inputReloadList.value = ()
-        print("🐙input value")
     }
     
     @objc func dismissKeyboard() {
