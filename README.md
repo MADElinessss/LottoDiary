@@ -4,7 +4,7 @@
 우리의 삶에서 희망을 품고 로또를 구매하는 순간이 주는 작은 설렘이 있습니다.
 '로또 일기'로 그 설렘과 희망을 담아, 당첨되면 실현하고 싶은 꿈들을 기록하고, 나만의 행운을 찾아가보아요 🍀
 
-[![download](https://github.com/MADElinessss/LottoDiary/assets/88757043/0f13fd44-daba-48fe-8f82-aee9e8b07560)](https://apps.apple.com/kr/app/lottodiary/id6479727804)
+[![download](https://github.com/MADElinessss/LottoDiary/assets/88757043/4525bb83-201e-4440-97f0-4b7cc3d8e666)](https://apps.apple.com/kr/app/lottodiary/id6479727804)
 
 
 ## 프로젝트
