@@ -21,60 +21,47 @@ class SettingViewController: BaseViewController {
     }
     
     func configure() {
-        view.addSubview(tableView)
-        
-        tableView.snp.makeConstraints { make in
+        let settingTableView = SettingTableView()
+        view.addSubview(settingTableView)
+        settingTableView.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
             make.height.equalTo(180)
         }
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        tableView.isScrollEnabled = false
-        tableView.separatorStyle = .none
-        tableView.layer.cornerRadius = 15
-    }
-}
-
-extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let titles = ["알림 설정", "개인정보 처리방침", "문의하기"]
-        let images = ["bell.circle.fill", "info.circle.fill", "bubble.circle.fill"]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = titles[indexPath.row]
-        let cellImage = UIImage(systemName: images[indexPath.row])
-        cellImage?.withTintColor(.point)
-        cell.imageView?.image = cellImage
-        
-        cell.selectionStyle = .none
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
-            guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else {
-                return
+        settingTableView.didSelectItemAtIndex = { [weak self] index in
+            // 각 항목 선택 시 처리
+            switch index {
+            case 0:
+                self?.openAppSettings()
+            case 1:
+                self?.openPrivacyPolicy()
+            case 2:
+                self?.sendEmail()
+            default:
+                break
             }
-            
-            if UIApplication.shared.canOpenURL(settingsURL) {
-                UIApplication.shared.open(settingsURL)
-            }
-        } else if indexPath.row == 1 {
-            let vc = WebViewController(urlString: "https://purple-edge-98a.notion.site/2d131ab9e7254e20a25bf268864465fd?pvs=4", navigationTitle: "개인정보 처리방침")
-            
-            navigationController?.pushViewController(vc, animated: true)
-        } else {
-            sendEmail()
         }
+    }
+    
+    private func openAppSettings() {
+        guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else {
+            AlertManager.shared.showOKayAlert(on: self, title: "네트워크 오류", message: "잘못된 접근이에요. 네트워크를 다시 확인해주세요.")
+            return
+        }
+        
+        if UIApplication.shared.canOpenURL(settingsURL) {
+            UIApplication.shared.open(settingsURL)
+        }
+    }
+    
+    func openPrivacyPolicy() {
+        let urlString = "https://purple-edge-98a.notion.site/2d131ab9e7254e20a25bf268864465fd?pvs=4"
+        guard let url = URL(string: urlString) else {
+            AlertManager.shared.showOKayAlert(on: self, title: "네트워크 오류", message: "잘못된 접근이에요. 네트워크를 다시 확인해주세요. 문제가 계속되면 지원팀에 연락해주세요.")
+            return
+        }
+        let vc = WebViewController(urlString: url.absoluteString, navigationTitle: "개인정보 처리방침")
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

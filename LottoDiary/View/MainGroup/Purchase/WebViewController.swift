@@ -50,11 +50,18 @@ final class WebViewController: UIViewController, WKNavigationDelegate {
     private func setupNavigationBar() {
         navigationItem.title = navigationTitle
         
-        let backButton = UIBarButtonItem(title: "뒤로", style: .plain, target: self, action: #selector(backTapped))
+        let backButton = UIBarButtonItem(title: "뒤로", style: .plain, target: self, action: #selector(backButtonTapped))
         navigationItem.leftBarButtonItem = backButton
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor.white
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
     
-    @objc func backTapped() {
+    @objc func backButtonTapped() {
         if webView.canGoBack {
             webView.goBack()
         } else {

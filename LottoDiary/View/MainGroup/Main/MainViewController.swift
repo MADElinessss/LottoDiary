@@ -31,7 +31,6 @@ final class MainViewController: BaseViewController {
     }
     
     func setupBindings() {
-
         viewModel.errorMessage.bind { [weak self] errorMessage in
             guard let message = errorMessage, !message.isEmpty else { return }
             DispatchQueue.main.async {
