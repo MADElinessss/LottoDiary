@@ -17,15 +17,18 @@ final class MyLottoViewController: BaseViewController {
         super.viewDidLoad()
 
         setupBindings()
-        viewModel.apiRequest(on: self)
+        viewModel.apiRequest()
         
     }
     
     func setupBindings() {
         viewModel.outputLotto.bind { lotto in
             guard let lotto = lotto else { return }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
-        
+
         viewModel.errorMessage.bind { [weak self] errorMessage in
             guard let message = errorMessage, !message.isEmpty else { return }
             DispatchQueue.main.async {

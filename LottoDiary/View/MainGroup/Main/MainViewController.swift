@@ -24,7 +24,7 @@ final class MainViewController: BaseViewController {
         }
 
         setupBindings()
-        viewModel.apiRequest(on: self)
+        viewModel.apiRequest()
         configureNavigationBar(title: "로또 일기")
         
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)

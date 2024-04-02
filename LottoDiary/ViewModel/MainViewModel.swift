@@ -16,7 +16,7 @@ class MainViewModel {
     var outputLotto: Observable<Lotto?> = Observable(nil)
     var errorMessage: Observable<String?> = Observable(nil)
     
-    func apiRequest(on viewController: UIViewController) {
+    func apiRequest() {
         if let drawNumber = FormatterManager.shared.findLottoDrawNumber() {
             inputDrawNumber.value = drawNumber
             
