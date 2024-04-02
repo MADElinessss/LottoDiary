@@ -23,14 +23,9 @@ class SixRandomNumbersViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         rightButton.isEnabled = false
-        let leftButton = createBarButtonItem(imageName: "chevron.left", action: #selector(leftButtonTapped))
         rightButton = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(rightButtonTapped))
-        configureNavigationBar(title: "랜덤 로또 번호 추천", leftBarButton: leftButton, rightBarButton: rightButton)
+        configureNavigationBar(title: "랜덤 로또 번호 추천", rightBarButton: rightButton)
         
-    }
-    
-    @objc func leftButtonTapped() {
-        navigationController?.popViewController(animated: true)
     }
     
     @objc func rightButtonTapped() {

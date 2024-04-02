@@ -55,7 +55,7 @@ final class MyLottoViewController: BaseViewController {
         tableView.separatorStyle = .none
         tableView.isScrollEnabled = false
         
-        configureNavigationBar(title: "나의 로또", leftBarButton: nil, rightBarButton: nil)
+        configureNavigationBar(title: "나의 로또", rightBarButton: nil)
     }
 }
 

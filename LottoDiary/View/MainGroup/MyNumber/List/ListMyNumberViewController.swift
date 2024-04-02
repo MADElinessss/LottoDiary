@@ -69,16 +69,11 @@ class ListMyNumberViewController: BaseViewController {
         
         tableView.separatorStyle = .none
         tableView.register(ListMyNumberTableViewCell.self, forCellReuseIdentifier: "ListMyNumberTableViewCell")
-        
-        let leftButton = createBarButtonItem(imageName: "chevron.left", action: #selector(leftButtonTapped))
+   
         let rightButton = createBarButtonItem(imageName: "plus", action: #selector(rightButtonTapped))
-        configureNavigationBar(title: "나의 번호 목록", leftBarButton: leftButton, rightBarButton: rightButton)
+        configureNavigationBar(title: "나의 번호 목록", rightBarButton: rightButton)
     }
-    
-    @objc func leftButtonTapped() {
-        navigationController?.popViewController(animated: true)
-    }
-    
+
     @objc func rightButtonTapped() {
         let vc = AddMyNumberViewController()
         let navController = UINavigationController(rootViewController: vc)

@@ -21,7 +21,7 @@ class LottoResultViewController: BaseViewController, UITableViewDelegate, UITabl
         super.viewDidLoad()
         
         view.backgroundColor = .white
-        configureNavigationBar(title: "로또 결과 확인", leftBarButton: nil, rightBarButton: nil)
+        configureNavigationBar(title: "로또 결과 확인", rightBarButton: nil)
         
         setupTableView()
     }

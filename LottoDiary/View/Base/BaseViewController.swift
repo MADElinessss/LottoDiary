@@ -31,12 +31,8 @@ class BaseViewController: UIViewController {
         
     }
     
-    func configureNavigationBar(title: String, leftBarButton: UIBarButtonItem? = nil, rightBarButton: UIBarButtonItem? = nil) {
+    func configureNavigationBar(title: String, rightBarButton: UIBarButtonItem? = nil) {
         self.navigationItem.title = title
-        
-        if let leftButton = leftBarButton {
-            self.navigationItem.leftBarButtonItem = leftButton
-        }
         
         if let rightButton = rightBarButton {
             self.navigationItem.rightBarButtonItem = rightButton

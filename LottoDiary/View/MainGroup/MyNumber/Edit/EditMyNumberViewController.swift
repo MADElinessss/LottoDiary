@@ -58,19 +58,14 @@ final class EditMyNumberViewController: BaseViewController {
     private func setupView() {
         view.backgroundColor = .white
         
-        let leftButton = createBarButtonItem(imageName: "chevron.left", action: #selector(leftButtonTapped))
         let rightButton = UIBarButtonItem(title: "저장", style: .done, target: self, action: #selector(rightButtonTapped))
-        configureNavigationBar(title: "나의 번호 편집", leftBarButton: leftButton, rightBarButton: rightButton)
+        configureNavigationBar(title: "나의 번호 편집", rightBarButton: rightButton)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
         
         guard let number = number else { return }
-    }
-    
-    @objc func leftButtonTapped() {
-        navigationController?.popViewController(animated: true)
     }
     
     @objc func rightButtonTapped() {

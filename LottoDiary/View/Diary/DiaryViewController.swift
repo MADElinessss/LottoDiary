@@ -31,7 +31,7 @@ final class DiaryViewController: BaseViewController {
         viewModel.inputViewWillAppearTrigger.value = ()
         
         let rightButton = createBarButtonItem(imageName: "line.3.horizontal.decrease", action: #selector(rightButtonTapped))
-        configureNavigationBar(title: "로또 일기장", leftBarButton: nil, rightBarButton: rightButton)
+        configureNavigationBar(title: "로또 일기장", rightBarButton: rightButton)
         
         setConstraints()
         makeCellRegistration()

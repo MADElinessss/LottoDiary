@@ -16,7 +16,7 @@ class SettingViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureNavigationBar(title: "설정", leftBarButton: nil, rightBarButton: nil)
+        configureNavigationBar(title: "설정", rightBarButton: nil)
         configure()
     }
     
@@ -91,7 +91,7 @@ extension SettingViewController: MFMailComposeViewControllerDelegate {
             present(mail, animated: true)
         } else {
             print("Mail services are not available")
-            AlertManager.shared.showOKayAlert(on: self, title: "메일 전송 실패", message: "메일 서비스가 원활하지 않습니다.\n 다시 시도해주세요.")
+            AlertManager.shared.showOKayAlert(on: self, title: "메일 전송 실패", message: "문의를 보낼 수 없습니다. 아이폰 메일 설정을 확인해주세요.")
         }
     }
     

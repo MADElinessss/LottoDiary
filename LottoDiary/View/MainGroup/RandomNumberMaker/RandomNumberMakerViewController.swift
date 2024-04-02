@@ -17,13 +17,7 @@ class RandomNumberMakerViewController: BaseViewController, UICollectionViewDataS
         super.viewDidLoad()
         setupCollectionView()
         
-        let leftButton = createBarButtonItem(imageName: "chevron.left", action: #selector(leftButtonTapped))
-        
-        configureNavigationBar(title: "번호 생성기", leftBarButton: leftButton, rightBarButton: nil)
-    }
-    
-    @objc func leftButtonTapped() {
-        navigationController?.popViewController(animated: true)
+        configureNavigationBar(title: "번호 생성기", rightBarButton: nil)
     }
 
     private func setupCollectionView() {

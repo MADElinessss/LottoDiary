@@ -21,11 +21,15 @@ final class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjec
         let captureDevice = AVCaptureDevice.default(for: .video)
         let videoInput: AVCaptureDeviceInput
         
+        guard captureDevice != nil else {
+            self.handle(error: QRCodeError.invalidDeviceInput)
+            return
+        }
+        
         do {
             videoInput = try AVCaptureDeviceInput(device: captureDevice!)
         } catch {
-            // TODO: 카메라 권한 허용해달라 알럿!!!!
-            AlertManager.shared.showOKayAlert(on: self, title: "카메라 권한 허용", message: "QR코드 인식을 위해서 카메라 권한 허용이 필요합니다.")
+            self.handle(error: QRCodeError.invalidDeviceInput)
             return
         }
         
@@ -47,6 +51,10 @@ final class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjec
         captureSession.startRunning()
     }
     
+    func handle(error: QRCodeError) {
+        AlertManager.shared.showOKayAlert(on: self, title: "오류 발생", message: error.localizedDescription)
+    }
+    
     private func metaObjectTypes() -> [AVMetadataObject.ObjectType] {
         return [.qr]
     }
@@ -56,7 +64,14 @@ extension QRCodeViewController {
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         print("1")
         if let metadataObject = metadataObjects.first {
-            guard let data = metadataObject as? AVMetadataMachineReadableCodeObject else { return }
+            
+            // guard let data = metadataObject as? AVMetadataMachineReadableCodeObject else { return }
+            
+            guard let data = metadataObject as? AVMetadataMachineReadableCodeObject else {
+                self.handle(error: QRCodeError.invalidQRCode)
+                return
+            }
+            
             if let url = data.stringValue {
                 captureSession.stopRunning()
                 

@@ -59,11 +59,10 @@ final class AddWishTagViewController: BaseViewController {
     }
     
     override func configureView() {
-        
-        let leftBarButton = UIBarButtonItem(title: "취소", style: .done, target: self, action: #selector(leftBarButtonTapped))
+
         let rightBarButton = UIBarButtonItem(title: "저장", style: .done, target: self, action: #selector(rightBarButtonTapped))
         
-        configureNavigationBar(title: "소원 태그", leftBarButton: leftBarButton, rightBarButton: rightBarButton)
+        configureNavigationBar(title: "소원 태그", rightBarButton: rightBarButton)
         
         headerLabel.text = "색 선택"
         headerLabel.font = .systemFont(ofSize: 16, weight: .regular)
@@ -113,10 +112,6 @@ final class AddWishTagViewController: BaseViewController {
                 button.layer.borderColor = (button.tag == sender.tag) ? UIColor.point.cgColor : nil
             }
         }
-    }
-    
-    @objc func leftBarButtonTapped() {
-        dismiss(animated: true)
     }
     
     @objc func rightBarButtonTapped() {

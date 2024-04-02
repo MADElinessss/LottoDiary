@@ -16,6 +16,8 @@ class LocalNotificationManager {
         UNUserNotificationCenter.current().requestAuthorization(options: options) { granted, error in
             if let error = error {
                 print("Request Authorization Failed (\(error), \(error.localizedDescription))")
+            } else {
+                self.scheduleWeeklySaturdayNotification()
             }
         }
     }
@@ -28,7 +30,7 @@ class LocalNotificationManager {
 
         var dateComponents = DateComponents()
         dateComponents.weekday = 7
-        dateComponents.hour = 21 
+        dateComponents.hour = 21
         dateComponents.minute = 0
         dateComponents.timeZone = TimeZone(identifier: "Asia/Seoul")
         

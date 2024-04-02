@@ -70,12 +70,11 @@ final class DetailDiaryViewController: BaseViewController {
         tableView.register(AddImageTableViewCell.self, forCellReuseIdentifier: "AddImageTableViewCell")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "AddLottoTableViewCell")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DeleteLottoTableViewCell")
-        
-        let leftButton = createBarButtonItem(imageName: "chevron.left", action: #selector(leftButtonTapped))
+    
         let rightButton = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(rightButtonTapped))
         rightButton.tintColor = .pointSymbol
         
-        configureNavigationBar(title: "로또 일기 편집", leftBarButton: leftButton, rightBarButton: rightButton)
+        configureNavigationBar(title: "로또 일기 편집", rightBarButton: rightButton)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tapGesture.cancelsTouchesInView = false
@@ -90,10 +89,6 @@ final class DetailDiaryViewController: BaseViewController {
         let picker = PHPickerViewController(configuration: configuration)
         picker.delegate = self
         present(picker, animated: true)
-    }
-    
-    @objc func leftButtonTapped() {
-        navigationController?.popViewController(animated: true)
     }
     
     // MARK: Update

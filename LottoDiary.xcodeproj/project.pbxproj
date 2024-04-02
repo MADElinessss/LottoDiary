@@ -34,6 +34,7 @@
 		C1314ECC2BB2B692005CF266 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = C1314ECB2BB2B692005CF266 /* FirebaseCrashlytics */; };
 		C1314ECE2BB2B692005CF266 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = C1314ECD2BB2B692005CF266 /* FirebaseDatabase */; };
 		C1314ED02BB2B692005CF266 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = C1314ECF2BB2B692005CF266 /* FirebaseMessaging */; };
+		C14FA1B72BBBD9520090DEEC /* Extension+UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14FA1B62BBBD9520090DEEC /* Extension+UINavigationController.swift */; };
 		C17008402B9DE99A00008BE7 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C170083F2B9DE99A00008BE7 /* MenuTableViewCell.swift */; };
 		C17008422B9DEA2D00008BE7 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17008412B9DEA2D00008BE7 /* MenuCollectionViewCell.swift */; };
 		C17008442B9DFF6A00008BE7 /* DiaryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17008432B9DFF6A00008BE7 /* DiaryCollectionViewCell.swift */; };
@@ -68,6 +69,8 @@
 		C19A13652BB3EF87008609C8 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19A13642BB3EF87008609C8 /* BaseTableViewCell.swift */; };
 		C19A13AE2BB7236D008609C8 /* LottoResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19A13AD2BB7236D008609C8 /* LottoResultViewController.swift */; };
 		C19A13B02BB72557008609C8 /* NumberDisplayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19A13AF2BB72557008609C8 /* NumberDisplayTableViewCell.swift */; };
+		C19A13B32BB94CBB008609C8 /* UserFriendlyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19A13B22BB94CBB008609C8 /* UserFriendlyError.swift */; };
+		C19A13B52BB9C6AE008609C8 /* QRCodeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19A13B42BB9C6AE008609C8 /* QRCodeError.swift */; };
 		C1E63AA52BA2BF1000707F53 /* NumberSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E63AA42BA2BF1000707F53 /* NumberSelectionView.swift */; };
 		C1E63AA72BA2BFBD00707F53 /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E63AA62BA2BFBD00707F53 /* TextCell.swift */; };
 		C1E63AAA2BA2EA0700707F53 /* MyNumberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E63AA92BA2EA0700707F53 /* MyNumberTableViewCell.swift */; };
@@ -117,6 +120,7 @@
 		C1314E502BB00AC5005CF266 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		C1314E532BB01C8F005CF266 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		C1314EA72BB2B56E005CF266 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C14FA1B62BBBD9520090DEEC /* Extension+UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UINavigationController.swift"; sourceTree = "<group>"; };
 		C170083F2B9DE99A00008BE7 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		C17008412B9DEA2D00008BE7 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		C17008432B9DFF6A00008BE7 /* DiaryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -152,6 +156,8 @@
 		C19A13642BB3EF87008609C8 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		C19A13AD2BB7236D008609C8 /* LottoResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoResultViewController.swift; sourceTree = "<group>"; };
 		C19A13AF2BB72557008609C8 /* NumberDisplayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberDisplayTableViewCell.swift; sourceTree = "<group>"; };
+		C19A13B22BB94CBB008609C8 /* UserFriendlyError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFriendlyError.swift; sourceTree = "<group>"; };
+		C19A13B42BB9C6AE008609C8 /* QRCodeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeError.swift; sourceTree = "<group>"; };
 		C1E63AA42BA2BF1000707F53 /* NumberSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberSelectionView.swift; sourceTree = "<group>"; };
 		C1E63AA62BA2BFBD00707F53 /* TextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
 		C1E63AA92BA2EA0700707F53 /* MyNumberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNumberTableViewCell.swift; sourceTree = "<group>"; };
@@ -226,6 +232,7 @@
 		C12873442BAC469400176AD3 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				C14FA1B62BBBD9520090DEEC /* Extension+UINavigationController.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -356,6 +363,7 @@
 		C18567CA2B999F5900864754 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C19A13B12BB94CA3008609C8 /* ErrorMessage */,
 				C17008572B9EEB3000008BE7 /* Realm */,
 				C1F35CEE2B99F0C500B32B4E /* Lotto.swift */,
 				C17008772BA028FD00008BE7 /* APIKey.swift */,
@@ -427,6 +435,15 @@
 				C1978F072BAABD08008EEC9D /* EditMyNumberTableViewCell.swift */,
 			);
 			path = Edit;
+			sourceTree = "<group>";
+		};
+		C19A13B12BB94CA3008609C8 /* ErrorMessage */ = {
+			isa = PBXGroup;
+			children = (
+				C19A13B22BB94CBB008609C8 /* UserFriendlyError.swift */,
+				C19A13B42BB9C6AE008609C8 /* QRCodeError.swift */,
+			);
+			path = ErrorMessage;
 			sourceTree = "<group>";
 		};
 		C1E63AA82BA2E13A00707F53 /* NumberButtons */ = {
@@ -668,6 +685,7 @@
 				C1F35CD12B99A62100B32B4E /* SettingViewController.swift in Sources */,
 				C1F35CF12B99FA1700B32B4E /* MainViewModel.swift in Sources */,
 				C17008422B9DEA2D00008BE7 /* MenuCollectionViewCell.swift in Sources */,
+				C14FA1B72BBBD9520090DEEC /* Extension+UINavigationController.swift in Sources */,
 				C1F35CEB2B99BBC200B32B4E /* FormatterManager.swift in Sources */,
 				C17008402B9DE99A00008BE7 /* MenuTableViewCell.swift in Sources */,
 				C1F35CD92B99A6D100B32B4E /* BaseViewController.swift in Sources */,
@@ -684,11 +702,13 @@
 				C1978EFF2BA99BEA008EEC9D /* StoreListViewController.swift in Sources */,
 				C1E63AAD2BA2F77000707F53 /* RandomNumberMakerViewController.swift in Sources */,
 				C1E63AB22BA2F82F00707F53 /* RandomNumberMakerCollectionViewCell.swift in Sources */,
+				C19A13B32BB94CBB008609C8 /* UserFriendlyError.swift in Sources */,
 				C1F35CE92B99B86000B32B4E /* MyLottoTableViewCell.swift in Sources */,
 				C1314E4B2BAECA9B005CF266 /* NumberViewModel.swift in Sources */,
 				C170084F2B9ED4E900008BE7 /* AddDiaryViewController.swift in Sources */,
 				C17008822BA06A6C00008BE7 /* AddWishTagViewController.swift in Sources */,
 				C1F35CDC2B99B59800B32B4E /* NumberButton.swift in Sources */,
+				C19A13B52BB9C6AE008609C8 /* QRCodeError.swift in Sources */,
 				C1F35CD52B99A63900B32B4E /* DiaryViewController.swift in Sources */,
 				C17008732BA00BF400008BE7 /* QRCodeViewController.swift in Sources */,
 				C1E63ADD2BA95AA100707F53 /* MapViewController.swift in Sources */,

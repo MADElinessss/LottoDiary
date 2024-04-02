@@ -51,7 +51,7 @@ final class AddMyNumberViewController: BaseViewController {
         
         let leftButton = createBarButtonItem(imageName: "chevron.left", action: #selector(leftButtonTapped))
         let rightButton = UIBarButtonItem(title: "저장", style: .done, target: self, action: #selector(rightButtonTapped))
-        configureNavigationBar(title: "나의 번호 추가", leftBarButton: leftButton, rightBarButton: rightButton)
+        configureNavigationBar(title: "나의 번호 추가", rightBarButton: rightButton)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tapGesture.cancelsTouchesInView = false

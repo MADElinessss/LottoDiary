@@ -101,17 +101,11 @@ class MyLottoResultViewController: BaseViewController {
     private func setupView() {
         view.backgroundColor = .background
         
-        let leftButton = createBarButtonItem(imageName: "chevron.left", action: #selector(leftButtonTapped))
-        
-        configureNavigationBar(title: "번호 직접 입력", leftBarButton: leftButton, rightBarButton: nil)
+        configureNavigationBar(title: "번호 직접 입력", rightBarButton: nil)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
-    }
-    
-    @objc func leftButtonTapped() {
-        navigationController?.popViewController(animated: true)
     }
     
     @objc func dismissKeyboard() {

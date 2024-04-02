@@ -21,13 +21,8 @@ class MapViewController: BaseViewController {
         configureChildViewControllers()
         setupDataPassingBetweenControllers()
         
-        let leftButton = createBarButtonItem(imageName: "chevron.left", action: #selector(leftButtonTapped))
-        configureNavigationBar(title: "복권 판매점", leftBarButton: leftButton, rightBarButton: nil)
+        configureNavigationBar(title: "복권 판매점", rightBarButton: nil)
         
-    }
-    
-    @objc func leftButtonTapped() {
-        navigationController?.popViewController(animated: true)
     }
     
     private func configureSegmentControl() {

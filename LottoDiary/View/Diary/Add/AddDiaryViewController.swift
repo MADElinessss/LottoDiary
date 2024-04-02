@@ -60,7 +60,7 @@ final class AddDiaryViewController: BaseViewController {
         rightButton.tintColor = .lightGray
         rightButton.isEnabled = false
         
-        configureNavigationBar(title: "일기 작성", leftBarButton: leftButton, rightBarButton: rightButton)
+        configureNavigationBar(title: "일기 작성", rightBarButton: rightButton)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tapGesture.cancelsTouchesInView = false
