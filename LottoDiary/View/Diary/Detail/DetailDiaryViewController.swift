@@ -177,7 +177,7 @@ extension DetailDiaryViewController: UITableViewDelegate, UITableViewDataSource 
             
             cell.textView.text = diary?.content ?? ""
             
-            if let content = diary?.content {
+            if (diary?.content) != nil {
                 cell.textView.textColor = .black
                 let count = cell.textView.text.count
                 cell.remainCountLabel.text = "\(count)/500"

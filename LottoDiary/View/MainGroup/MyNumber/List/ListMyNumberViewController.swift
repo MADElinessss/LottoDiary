@@ -32,7 +32,7 @@ class ListMyNumberViewController: BaseViewController {
             switch change {
             case .initial(_):
                 self.tableView.reloadData()
-            case .update(_, let deletions, let insertions, let modifications):
+            case .update(_, _, let insertions, _):
                 // Query results have changed, so apply them to the TableView
                 self.tableView.beginUpdates()
                 
