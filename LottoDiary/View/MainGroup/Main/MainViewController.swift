@@ -22,7 +22,7 @@ final class MainViewController: BaseViewController {
         if let url = Realm.Configuration.defaultConfiguration.fileURL {
             print("Realm Database File URL: \(url)")
         }
-
+        configureNavigationBar()
         setupBindings()
         viewModel.apiRequest()
         configureNavigationBar(title: "로또 일기")
@@ -52,29 +52,9 @@ final class MainViewController: BaseViewController {
         view.addSubview(tableView)
     }
     
-    func configureNavigationBar(title: String) {
-        let logoImageView = UIImageView(image: UIImage(named: "appstore"))
-        logoImageView.contentMode = .scaleAspectFit
-        titleView.addSubview(logoImageView)
-
-        let titleLabel = UILabel()
-        titleLabel.text = title
-        titleLabel.font = .systemFont(ofSize: 16, weight: .bold)
-        titleView.addSubview(titleLabel)
-
-        logoImageView.snp.makeConstraints { make in
-            make.left.equalToSuperview()
-            make.centerY.equalToSuperview()
-            make.width.height.equalTo(40)
-        }
-
-        titleLabel.snp.makeConstraints { make in
-            make.left.equalTo(logoImageView.snp.right).offset(8)
-            make.centerY.equalToSuperview()
-            make.right.lessThanOrEqualToSuperview()
-        }
-
-        self.navigationItem.titleView = titleView
+    func configureNavigationBar() {
+        let customNavigationBar = CustomNavigationBar(title: "로또 일기", logoImage: UIImage(named: "appstore"))
+        navigationItem.titleView = customNavigationBar
     }
 
     override func configureLayout() {

@@ -35,6 +35,7 @@
 		C1314ECE2BB2B692005CF266 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = C1314ECD2BB2B692005CF266 /* FirebaseDatabase */; };
 		C1314ED02BB2B692005CF266 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = C1314ECF2BB2B692005CF266 /* FirebaseMessaging */; };
 		C14FA1B72BBBD9520090DEEC /* Extension+UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14FA1B62BBBD9520090DEEC /* Extension+UINavigationController.swift */; };
+		C14FA1B92BBC69590090DEEC /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14FA1B82BBC69590090DEEC /* CustomNavigationBar.swift */; };
 		C17008402B9DE99A00008BE7 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C170083F2B9DE99A00008BE7 /* MenuTableViewCell.swift */; };
 		C17008422B9DEA2D00008BE7 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17008412B9DEA2D00008BE7 /* MenuCollectionViewCell.swift */; };
 		C17008442B9DFF6A00008BE7 /* DiaryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17008432B9DFF6A00008BE7 /* DiaryCollectionViewCell.swift */; };
@@ -121,6 +122,7 @@
 		C1314E532BB01C8F005CF266 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		C1314EA72BB2B56E005CF266 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C14FA1B62BBBD9520090DEEC /* Extension+UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UINavigationController.swift"; sourceTree = "<group>"; };
+		C14FA1B82BBC69590090DEEC /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		C170083F2B9DE99A00008BE7 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		C17008412B9DEA2D00008BE7 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		C17008432B9DFF6A00008BE7 /* DiaryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -518,6 +520,7 @@
 			children = (
 				C1F35CDB2B99B59800B32B4E /* NumberButton.swift */,
 				C12873452BAC46A700176AD3 /* Fonts.swift */,
+				C14FA1B82BBC69590090DEEC /* CustomNavigationBar.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -673,6 +676,7 @@
 				C1314E4F2BAFF357005CF266 /* StoreListTableViewCell.swift in Sources */,
 				C1E63AD02BA82EA200707F53 /* DetailDiaryViewController.swift in Sources */,
 				C17008472B9E178700008BE7 /* MyLottoViewController.swift in Sources */,
+				C14FA1B92BBC69590090DEEC /* CustomNavigationBar.swift in Sources */,
 				C1314E492BAEC979005CF266 /* AddMyNumberViewController.swift in Sources */,
 				C18567B42B998DFD00864754 /* AppDelegate.swift in Sources */,
 				C1E63AAA2BA2EA0700707F53 /* MyNumberTableViewCell.swift in Sources */,
