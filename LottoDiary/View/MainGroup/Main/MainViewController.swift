@@ -31,20 +31,12 @@ final class MainViewController: BaseViewController {
     }
     
     func setupBindings() {
-        
+
         viewModel.errorMessage.bind { [weak self] errorMessage in
             guard let message = errorMessage, !message.isEmpty else { return }
             DispatchQueue.main.async {
-                AlertManager.shared.showAlert(on: self!, title: "오류", message: message)
+                AlertManager.shared.showAlert(on: self!, title: "네트워크 오류", message: message)
             }
-        }
-    }
-    
-    private func showErrorAlert(message: String) {
-        let alert = UIAlertController(title: "오류", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "확인", style: .default))
-        DispatchQueue.main.async {
-            self.present(alert, animated: true)
         }
     }
     
