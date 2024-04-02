@@ -53,7 +53,8 @@ final class DetailDiaryViewController: BaseViewController {
     
     override func configureLayout() {
         tableView.snp.makeConstraints { make in
-            make.verticalEdges.equalTo(view)
+            make.top.equalTo(view)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(24)
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(8)
         }
     }
