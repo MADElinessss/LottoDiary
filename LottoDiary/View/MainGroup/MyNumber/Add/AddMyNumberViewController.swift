@@ -11,11 +11,14 @@ final class AddMyNumberViewController: BaseViewController {
 
     private let tableView = UITableView()
     private let memoTextField = UITextField()
+    var rightButton = UIBarButtonItem()
+    
     let viewModel = NumberViewModel()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateTitlePlaceholder()
+        self.rightButton.isEnabled = false
     }
     
     override func viewDidLoad() {
@@ -23,7 +26,6 @@ final class AddMyNumberViewController: BaseViewController {
         configureTableView()
         setupView()
         updateTitlePlaceholder()
-        
     }
 
     func updateTitlePlaceholder() {
@@ -49,8 +51,7 @@ final class AddMyNumberViewController: BaseViewController {
     private func setupView() {
         view.backgroundColor = .white
         
-        let leftButton = createBarButtonItem(imageName: "chevron.left", action: #selector(leftButtonTapped))
-        let rightButton = UIBarButtonItem(title: "저장", style: .done, target: self, action: #selector(rightButtonTapped))
+        rightButton = UIBarButtonItem(title: "저장", style: .done, target: self, action: #selector(rightButtonTapped))
         configureNavigationBar(title: "나의 번호 추가", rightBarButton: rightButton)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -65,8 +66,8 @@ final class AddMyNumberViewController: BaseViewController {
     @objc func rightButtonTapped() {
         let title = memoTextField.text?.isEmpty ?? true ? viewModel.repository.findNextDefaultTitle() : memoTextField.text!
         viewModel.saveNumberToRealm(title: title)
-        dismiss(animated: true)
         viewModel.inputReloadList.value = ()
+        dismiss(animated: true)
     }
     
     @objc func dismissKeyboard() {
@@ -99,6 +100,11 @@ extension AddMyNumberViewController: UITableViewDelegate, UITableViewDataSource 
             let cell = tableView.dequeueReusableCell(withIdentifier: "EditMyNumberTableViewCell", for: indexPath) as! EditMyNumberTableViewCell
             cell.onNumbersSelected = { [weak self] selectedNumbers in
                 self?.viewModel.selectedNumbers.value = selectedNumbers
+                if self?.viewModel.selectedNumbers.value.count != 6 {
+                    self?.rightButton.isEnabled = false
+                } else {
+                    self?.rightButton.isEnabled = true
+                }
             }
             
             cell.selectionStyle = .none

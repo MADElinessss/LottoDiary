@@ -28,7 +28,7 @@ class EditMyNumberTableViewCell: UITableViewCell {
         contentView.backgroundColor = .background
         contentView.addSubview(stackView)
         contentView.addSubview(numberSelectionView)
-        setupNumberSelectionView()
+        
         numberSelectionView.snp.makeConstraints { make in
             make.top.equalTo(contentView.safeAreaLayoutGuide).inset(70)
             make.horizontalEdges.bottom.equalToSuperview()
@@ -43,7 +43,6 @@ class EditMyNumberTableViewCell: UITableViewCell {
             if index < numbers.count {
                 let number = numbers[index]
                 button.setTitle("\(number)", for: .normal)
-                // 선택된 상태 표시를 위한 스타일 적용
                 button.layer.borderWidth = 2
                 button.layer.borderColor = UIColor.black.cgColor
                 button.backgroundColor = color(for: number)
@@ -103,7 +102,6 @@ class EditMyNumberTableViewCell: UITableViewCell {
             make.top.equalTo(contentView.safeAreaLayoutGuide)
             make.horizontalEdges.equalTo(contentView.safeAreaLayoutGuide).inset(16)
             make.centerX.equalTo(contentView)
-            //make.height.equalTo(50)
         }
 
         selectedButtons.forEach { button in
@@ -126,7 +124,6 @@ class EditMyNumberTableViewCell: UITableViewCell {
                 button.backgroundColor = color(for: number)
             }
         }
-        
         onNumbersSelected?(numbers)
     }
     
