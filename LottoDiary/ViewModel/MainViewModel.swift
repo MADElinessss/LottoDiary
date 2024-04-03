@@ -16,6 +16,10 @@ class MainViewModel {
     var outputLotto: Observable<Lotto?> = Observable(nil)
     var errorMessage: Observable<String?> = Observable(nil)
     
+    init() {
+        apiRequest()
+    }
+    
     func apiRequest() {
         if let drawNumber = FormatterManager.shared.findLottoDrawNumber() {
             inputDrawNumber.value = drawNumber
@@ -26,7 +30,7 @@ class MainViewModel {
                     self?.outputLotto.value = lotto
                 case .failure(let error):
                     // 에러 메시지를 Observable을 통해 업데이트
-                    self?.errorMessage.value = "네트워크 오류 또는 기타 오류가 발생했습니다. \(error.localizedDescription)"
+                    self?.errorMessage.value = "네트워크 오류가 발생했습니다. \(error.localizedDescription)"
                 }
             }
         } else {

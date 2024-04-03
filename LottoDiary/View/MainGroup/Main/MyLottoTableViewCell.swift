@@ -14,9 +14,7 @@ final class MyLottoTableViewCell: BaseTableViewCell {
     let dateLabel = UILabel()
     let chevronImage = UIImageView()
     let stackView = UIStackView()
-    let prizeLabel = UILabel()
-    
-    let viewModel = MainViewModel()
+    let prizeLabel = UILabel() 
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super .init(style: style, reuseIdentifier: reuseIdentifier)

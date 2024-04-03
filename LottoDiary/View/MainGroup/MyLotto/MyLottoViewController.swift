@@ -78,10 +78,8 @@ extension MyLottoViewController: UITableViewDelegate, UITableViewDataSource {
         
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MyLottoTableViewCell", for: indexPath) as! MyLottoTableViewCell
-            viewModel.outputLotto.bind { lotto in
-                guard let lotto = lotto else { return }
-                cell.configureView(with: lotto)
-            }
+            let lotto = viewModel.outputLotto.value
+            cell.configureView(with: lotto)
             cell.chevronImage.isHidden = true
             cell.clipsToBounds = true
             cell.layer.cornerRadius = 15
