@@ -86,7 +86,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             cell.clipsToBounds = true
             cell.layer.cornerRadius = 15
             
-            viewModel.outputLotto.bind { [weak self] lotto in
+            viewModel.outputLotto.bind { lotto in
                 guard let lotto = lotto else { return }
                 cell.configureView(with: lotto)
             }
@@ -134,7 +134,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            let vc = MyLottoViewController()
+            let vc = MyLottoViewController(viewModel: viewModel)
             navigationController?.pushViewController(vc, animated: true)
         } else if indexPath.section == 2 {
             let vc = WebViewController(urlString: "https://www.dhlottery.co.kr/", navigationTitle: "로또 구매하기")

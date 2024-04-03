@@ -14,7 +14,7 @@ final class MyLottoTableViewCell: BaseTableViewCell {
     let dateLabel = UILabel()
     let chevronImage = UIImageView()
     let stackView = UIStackView()
-    let prizeLabel = UILabel() 
+    let prizeLabel = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
@@ -22,6 +22,14 @@ final class MyLottoTableViewCell: BaseTableViewCell {
         configureLayout()
         
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        stackView.arrangedSubviews.forEach {
+            $0.removeFromSuperview()
+        }
+    }
+
     
     private func configureLayout() {
         contentView.addSubview(titleLabel)
