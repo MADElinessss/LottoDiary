@@ -28,7 +28,7 @@ class CustomNavigationBar: UIView {
         logoImageView.image = logoImage
         logoImageView.contentMode = .scaleAspectFit
         titleLabel.text = title
-        titleLabel.font = .systemFont(ofSize: 16, weight: .bold)
+        titleLabel.font = .pretendard(size: 16, weight: .bold)
         
         logoImageView.snp.makeConstraints { make in
             make.left.equalToSuperview()

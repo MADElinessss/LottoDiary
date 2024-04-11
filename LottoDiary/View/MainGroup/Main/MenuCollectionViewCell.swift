@@ -44,7 +44,7 @@ final class MenuCollectionViewCell: UICollectionViewCell {
         
         label.text = "번호 생성기"
         label.textColor = .black
-        label.font = .systemFont(ofSize: 16, weight: .medium)
+        label.font = .pretendard(size: 16, weight: .medium)
         
         // imageView.image = UIImage(systemName: "mic.circle")?.withRenderingMode(.automatic)
         let originalImage = UIImage(named: "clover")

@@ -123,7 +123,7 @@ extension MyLottoViewController: UITableViewDelegate, UITableViewDataSource {
         if section == 1 {
             let headerLabel = UILabel()
             headerLabel.text = "결과 확인하기"
-            headerLabel.font = .systemFont(ofSize: 14, weight: .regular)
+            headerLabel.font = .pretendard(size: 14, weight: .regular)
             return headerLabel
         } else {
             return nil

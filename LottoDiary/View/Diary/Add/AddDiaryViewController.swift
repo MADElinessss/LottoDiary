@@ -167,7 +167,7 @@ extension AddDiaryViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddContentTableViewCell", for: indexPath) as! AddContentTableViewCell
             cell.onTextChanged = { [weak self] text in
                 self?.viewModel.diaryContent.value = text
-                self?.rightButton.tintColor = .point
+                self?.rightButton.tintColor = .pointSymbol
                 self?.rightButton.isEnabled = true
             }
             cell.clipsToBounds = true
@@ -190,7 +190,7 @@ extension AddDiaryViewController: UITableViewDelegate, UITableViewDataSource {
         } else if indexPath.section == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddLottoTableViewCell", for: indexPath)
             cell.textLabel?.text = "로또 번호 입력"
-            cell.textLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
+            cell.textLabel?.font = .pretendard(size: 18, weight: .semibold)
             cell.textLabel?.textColor = .lightGray
             cell.clipsToBounds = true
             cell.layer.cornerRadius = 15
@@ -207,7 +207,7 @@ extension AddDiaryViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.textLabel?.textColor = .black
             }
             
-            cell.textLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
+            cell.textLabel?.font = .pretendard(size: 18, weight: .semibold)
             cell.clipsToBounds = true
             cell.layer.cornerRadius = 15
             cell.selectionStyle = .none

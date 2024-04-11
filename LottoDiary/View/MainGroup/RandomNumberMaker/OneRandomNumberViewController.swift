@@ -20,7 +20,7 @@ public struct OneRandomNumberView: View {
     
     public var body: some View {
         VStack {
-            Text("소원을 빌고, 원하는 것을 드래그해서 넣어보세요.")
+            Text("번호 1개를 추천해드릴게요.\n소원을 빌고, 롱탭해서 원하는 것을 드래그해서 넣어보세요.")
                 .fontWeight(.medium)
                 .font(.system(size: 16))
                 .padding(.top, 24)

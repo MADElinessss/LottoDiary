@@ -35,7 +35,7 @@ class SettingTableView: UITableView, UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = titles[indexPath.row]
-        let cellImage = UIImage(systemName: images[indexPath.row])?.withTintColor(.point, renderingMode: .alwaysOriginal)
+        let cellImage = UIImage(systemName: images[indexPath.row])?.withTintColor(.pointSymbol, renderingMode: .alwaysOriginal)
         cell.imageView?.image = cellImage
         cell.selectionStyle = .none
         return cell

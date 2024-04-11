@@ -54,7 +54,7 @@ final class DetailDiaryViewController: BaseViewController {
     override func configureLayout() {
         tableView.snp.makeConstraints { make in
             make.top.equalTo(view)
-            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(24)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(50)
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(8)
         }
     }
@@ -217,11 +217,11 @@ extension DetailDiaryViewController: UITableViewDelegate, UITableViewDataSource 
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddLottoTableViewCell", for: indexPath)
             // TODO: 로또 번호가 없다면
             cell.textLabel?.text = "로또 번호 입력"
-            cell.textLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
+            cell.textLabel?.font = .pretendard(size: 18, weight: .semibold)
             cell.textLabel?.textColor = .lightGray
             // TODO: 로또 번호가 있다면
             cell.textLabel?.text = "구매한 로또 번호"
-            cell.textLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
+            cell.textLabel?.font = .pretendard(size: 18, weight: .semibold)
             cell.textLabel?.textColor = .lightGray
             
             cell.clipsToBounds = true
@@ -234,16 +234,16 @@ extension DetailDiaryViewController: UITableViewDelegate, UITableViewDataSource 
             
             cell.textLabel?.text = "소원 태그"
             cell.textLabel?.textColor = .black
-            cell.textLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
+            cell.textLabel?.font = .pretendard(size: 18, weight: .semibold)
             
             if let tag = diary?.tag, let colorName = diary?.colorString, let color = UIColor(named: colorName) {
                 cell.detailTextLabel?.text = "#\(tag)"
                 cell.detailTextLabel?.textColor = color
-                cell.detailTextLabel?.font = .systemFont(ofSize: 16, weight: .bold)
+                cell.detailTextLabel?.font = .pretendard(size: 16, weight: .bold)
             } else if let tag = selectedTag, let colorName = selectedColorName, let color = UIColor(named: colorName) {
                 cell.detailTextLabel?.text = "#\(tag)"
                 cell.detailTextLabel?.textColor = color
-                cell.detailTextLabel?.font = .systemFont(ofSize: 16, weight: .bold)
+                cell.detailTextLabel?.font = .pretendard(size: 16, weight: .bold)
             } else {
                 cell.detailTextLabel?.text = "태그 없음"
                 cell.detailTextLabel?.textColor = .black
@@ -258,7 +258,7 @@ extension DetailDiaryViewController: UITableViewDelegate, UITableViewDataSource 
             
             cell.textLabel?.text = "일기 삭제"
             cell.textLabel?.textColor = .red
-            cell.textLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
+            cell.textLabel?.font = .pretendard(size: 18, weight: .semibold)
             cell.clipsToBounds = true
             cell.layer.cornerRadius = 15
             cell.selectionStyle = .none

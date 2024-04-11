@@ -48,12 +48,12 @@ final class MyLottoTableViewCell: BaseTableViewCell {
         let drawNumber: Int = draw.drwNo
         titleLabel.text = "\(drawNumber)회 당첨 결과"
         titleLabel.textColor = .black
-        titleLabel.font = .systemFont(ofSize: 16, weight: .bold)
+        titleLabel.font = .pretendard(size: 16, weight: .bold)
         
         let drawDate = FormatterManager.shared.drawDateFormat(date: draw.drwNoDate)
         dateLabel.text = "(\(drawDate))"
         dateLabel.textColor = .gray
-        dateLabel.font = .systemFont(ofSize: 14, weight: .semibold)
+        dateLabel.font = .pretendard(size: 14, weight: .semibold)
         
         chevronImage.image = UIImage(systemName: "chevron.right")
         chevronImage.tintColor = .gray
@@ -102,7 +102,7 @@ final class MyLottoTableViewCell: BaseTableViewCell {
         let winAmount = FormatterManager.shared.formatWinAmount(draw.firstWinamnt)
         prizeLabel.text = "1등 당첨금: \(winAmount)"
         prizeLabel.textColor = .black
-        prizeLabel.font = .systemFont(ofSize: 14, weight: .semibold)
+        prizeLabel.font = .pretendard(size: 14, weight: .semibold)
     }
     
     private func color(for drawNumber: Int) -> UIColor {

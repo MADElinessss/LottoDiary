@@ -88,7 +88,7 @@ class SixRandomNumbersViewController: BaseViewController {
         numberMakerButton.layer.shadowColor = UIColor.black.cgColor
         
         descriptionLabel.text = "버튼을 눌러 로또 번호를 추천받아요.\n번호는 랜덤으로 생성됩니다."
-        descriptionLabel.font = .systemFont(ofSize: 15, weight: .medium)
+        descriptionLabel.font = .pretendard(size: 15, weight: .medium)
     }
     
     @objc func buttonTapped() {

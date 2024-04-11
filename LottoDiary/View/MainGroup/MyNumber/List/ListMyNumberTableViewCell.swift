@@ -31,7 +31,7 @@ class ListMyNumberTableViewCell: UITableViewCell {
         stackView.spacing = 10
         
         titleLabel.text = "나의 번호(1)"
-        titleLabel.font = .systemFont(ofSize: 16, weight: .regular)
+        titleLabel.font = .pretendard(size: 16, weight: .regular)
         titleLabel.textColor = .black
         
         titleLabel.snp.makeConstraints { make in

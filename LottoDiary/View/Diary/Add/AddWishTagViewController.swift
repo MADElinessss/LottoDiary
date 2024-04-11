@@ -65,7 +65,7 @@ final class AddWishTagViewController: BaseViewController {
         configureNavigationBar(title: "소원 태그", rightBarButton: rightBarButton)
         
         headerLabel.text = "색 선택"
-        headerLabel.font = .systemFont(ofSize: 16, weight: .regular)
+        headerLabel.font = .pretendard(size: 16, weight: .regular)
         headerLabel.textColor = .black
         
         stackView.backgroundColor = .background
@@ -90,7 +90,7 @@ final class AddWishTagViewController: BaseViewController {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
         headerLabel2.text = "소원 태그명"
-        headerLabel2.font = .systemFont(ofSize: 16, weight: .regular)
+        headerLabel2.font = .pretendard(size: 16, weight: .regular)
         headerLabel2.textColor = .black
         
         textField.placeholder = "  로또에 당첨된다면? ex) 아파트, 저축"

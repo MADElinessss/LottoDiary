@@ -60,7 +60,7 @@ final class AddContentTableViewCell: UITableViewCell {
             make.trailing.equalTo(contentView.safeAreaLayoutGuide).inset(16)
         }
         
-        dateLabel.font = .systemFont(ofSize: 16, weight: .semibold)
+        dateLabel.font = .pretendard(size: 16, weight: .semibold)
         dateLabel.text = FormatterManager.shared.formatDateWithDayToString(date: Date())
         dateLabel.textColor = .black
         

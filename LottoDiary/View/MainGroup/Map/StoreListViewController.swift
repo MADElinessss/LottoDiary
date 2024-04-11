@@ -49,19 +49,19 @@ extension StoreListViewController: UITableViewDataSource, UITableViewDelegate{
         //cell.textLabel?.text = "Place: \(document.placeName)\nAddress: \(document.addressName)\nPhone: \(document.phone)"
         cell.indexLabel.text = "\(indexPath.row + 1)"
         cell.indexLabel.textColor = .black
-        cell.indexLabel.font = .systemFont(ofSize: 20, weight: .bold)
+        cell.indexLabel.font = .pretendard(size: 20, weight: .bold)
         
         cell.titleLabel.text = document.placeName
         cell.titleLabel.textColor = .black
-        cell.titleLabel.font = .systemFont(ofSize: 13, weight: .medium)
+        cell.titleLabel.font = .pretendard(size: 13, weight: .medium)
         
         cell.addressLabel.text = document.addressName
         cell.addressLabel.textColor = .black
-        cell.addressLabel.font = .systemFont(ofSize: 12, weight: .regular)
+        cell.addressLabel.font = .pretendard(size: 12, weight: .regular)
         
         cell.phoneLabel.text = document.phone
         cell.phoneLabel.textColor = .darkGray
-        cell.phoneLabel.font = .systemFont(ofSize: 12, weight: .light)
+        cell.phoneLabel.font = .pretendard(size: 12, weight: .light)
         
         cell.selectionStyle = .none
         return cell
