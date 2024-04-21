@@ -44,5 +44,29 @@ class LocalNotificationManager {
             }
         }
     }
+    
+    func scheduleWeeklyMondayNotification() {
+        let content = UNMutableNotificationContent()
+        content.title = "🍀 당신의 일주일을 로또일기가 응원합니다 🍀"
+        content.body = "오늘도 월요팅!하세요:)"
+        content.sound = .default
+
+        var dateComponents = DateComponents()
+        dateComponents.weekday = 2
+        dateComponents.hour = 9
+        dateComponents.minute = 0
+        dateComponents.timeZone = TimeZone(identifier: "Asia/Seoul")
+
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+
+        let request = UNNotificationRequest(identifier: "weeklyMondayReminder", content: content, trigger: trigger)
+
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print("Error adding notification: \(error)")
+            }
+        }
+    }
+
 
 }
