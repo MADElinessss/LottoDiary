@@ -36,7 +36,7 @@ class LocalNotificationManager {
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: "weeklyLotteryResult", content: content, trigger: trigger)
         
         UNUserNotificationCenter.current().add(request) { error in
             if let error = error {
@@ -44,4 +44,5 @@ class LocalNotificationManager {
             }
         }
     }
+
 }

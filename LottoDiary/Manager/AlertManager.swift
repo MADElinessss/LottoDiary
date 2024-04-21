@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import Alamofire
 
 class AlertManager {
     static let shared = AlertManager()
