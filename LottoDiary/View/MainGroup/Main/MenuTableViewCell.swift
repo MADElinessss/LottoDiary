@@ -36,9 +36,8 @@ final class MenuTableViewCell: UITableViewCell {
     static func configureCollectionLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
     
-        layout.itemSize = CGSize(width: 100, height: 100)
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width * 0.44, height: UIScreen.main.bounds.width * 0.43)
         
-
         return layout
     }
 
