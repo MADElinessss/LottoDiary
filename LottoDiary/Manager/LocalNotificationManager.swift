@@ -18,6 +18,7 @@ class LocalNotificationManager {
                 print("Request Authorization Failed (\(error), \(error.localizedDescription))")
             } else {
                 self.scheduleWeeklySaturdayNotification()
+                self.scheduleWeeklyMondayNotification()
             }
         }
     }
@@ -67,6 +68,4 @@ class LocalNotificationManager {
             }
         }
     }
-
-
 }
