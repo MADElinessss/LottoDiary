@@ -64,15 +64,16 @@ final class MainViewController: BaseViewController {
         tableView.register(MyLottoTableViewCell.self, forCellReuseIdentifier: "MyLottoTableViewCell")
         tableView.register(MenuTableViewCell.self, forCellReuseIdentifier: "MenuTableViewCell")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
+        tableView.register(AdBannerTableViewCell.self, forCellReuseIdentifier: AdBannerTableViewCell.identifier)
         tableView.separatorStyle = .none
-        tableView.isScrollEnabled = false
-        
+        tableView.isScrollEnabled = true
+        tableView.showsVerticalScrollIndicator = false
     }
 }
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -91,11 +92,14 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.configureView(with: lotto)
             }
             return cell
-        } else  {
+        } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as! MenuTableViewCell
             cell.onItemTapped = { [weak self] itemIndex in
                 self?.navigateToViewController(for: itemIndex)
             }
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: AdBannerTableViewCell.identifier, for: indexPath) as! AdBannerTableViewCell
             return cell
         }
     }
@@ -110,12 +114,14 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                 return height * 0.24
             }
             
-        } else {
+        } else if indexPath.section == 1 {
             if height > 700 {
                 return height * 0.42
             } else {
                 return height * 0.53
             }
+        } else {
+            return height * 0.11
         }
     }
     

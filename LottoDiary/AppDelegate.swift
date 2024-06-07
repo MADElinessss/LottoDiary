@@ -5,6 +5,7 @@
 //  Created by Madeline on 3/7/24.
 //
 
+import GoogleMobileAds
 import KakaoMapsSDK
 import UIKit
 import FirebaseCore
@@ -14,9 +15,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        /// Kakao Map
         SDKInitializer.InitSDK(appKey: APIKey.kakaoNativeAppKey)
+        /// Local Noti
         LocalNotificationManager.shared.requestAuthorization()
+        /// Remote Noti
         FirebaseApp.configure()
+        /// Google Ad
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
+
         return true
     }
 
