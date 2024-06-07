@@ -99,6 +99,7 @@
 		C1F35CEF2B99F0C500B32B4E /* Lotto.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F35CEE2B99F0C500B32B4E /* Lotto.swift */; };
 		C1F35CF12B99FA1700B32B4E /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F35CF02B99FA1700B32B4E /* MainViewModel.swift */; };
 		C1F35CF32B99FB2100B32B4E /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F35CF22B99FB2100B32B4E /* Observable.swift */; };
+		C1F790F82C12F07E00B533D4 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = C1F790F72C12F07E00B533D4 /* GoogleMobileAds */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -196,6 +197,7 @@
 				C1F35CE72B99B73000B32B4E /* RealmSwift in Frameworks */,
 				C1F35CE52B99B73000B32B4E /* Realm in Frameworks */,
 				C1314ECC2BB2B692005CF266 /* FirebaseCrashlytics in Frameworks */,
+				C1F790F82C12F07E00B533D4 /* GoogleMobileAds in Frameworks */,
 				C1314ECE2BB2B692005CF266 /* FirebaseDatabase in Frameworks */,
 				C170087B2BA029BC00008BE7 /* KakaoMapsSDK_SPM in Frameworks */,
 				C1314ED02BB2B692005CF266 /* FirebaseMessaging in Frameworks */,
@@ -559,6 +561,7 @@
 				C1314ECB2BB2B692005CF266 /* FirebaseCrashlytics */,
 				C1314ECD2BB2B692005CF266 /* FirebaseDatabase */,
 				C1314ECF2BB2B692005CF266 /* FirebaseMessaging */,
+				C1F790F72C12F07E00B533D4 /* GoogleMobileAds */,
 			);
 			productName = LottoDiary;
 			productReference = C18567B02B998DFD00864754 /* LottoDiary.app */;
@@ -595,6 +598,7 @@
 				C17008792BA029BC00008BE7 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */,
 				C1E63AAE2BA2F80F00707F53 /* XCRemoteSwiftPackageReference "CollectionViewPagingLayout" */,
 				C1314EC22BB2B691005CF266 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				C1F790F62C12F07E00B533D4 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 			);
 			productRefGroup = C18567B12B998DFD00864754 /* Products */;
 			projectDirPath = "";
@@ -1018,6 +1022,14 @@
 				kind = branch;
 			};
 		};
+		C1F790F62C12F07E00B533D4 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.5.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1085,6 +1097,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C1F35CE32B99B73000B32B4E /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		C1F790F72C12F07E00B533D4 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C1F790F62C12F07E00B533D4 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
