@@ -5,6 +5,7 @@
 //  Created by Madeline on 3/7/24.
 //
 
+import GoogleMobileAds
 import SnapKit
 import UIKit
 import RealmSwift
@@ -71,7 +72,7 @@ final class MainViewController: BaseViewController {
     }
 }
 
-extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+extension MainViewController: UITableViewDelegate, UITableViewDataSource, GADBannerViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
@@ -100,6 +101,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: AdBannerTableViewCell.identifier, for: indexPath) as! AdBannerTableViewCell
+            cell.bannerView.delegate = self
             return cell
         }
     }
@@ -170,4 +172,35 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             break
         }
     }
+}
+
+/// AD Related
+extension MainViewController {
+    /// Tells the delegate an ad request loaded an ad.
+    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+        print("adViewDidReceiveAd")
+    }
+    
+    /// Tells the delegate that a full-screen view will be presented in response
+    /// to the user clicking on an ad.
+    func adViewWillPresentScreen(_ bannerView: GADBannerView) {
+        print("adViewWillPresentScreen")
+    }
+    
+    /// Tells the delegate that the full-screen view will be dismissed.
+    func adViewWillDismissScreen(_ bannerView: GADBannerView) {
+        print("adViewWillDismissScreen")
+    }
+    
+    /// Tells the delegate that the full-screen view has been dismissed.
+    func adViewDidDismissScreen(_ bannerView: GADBannerView) {
+        print("adViewDidDismissScreen")
+    }
+    
+    /// Tells the delegate that a user click will open another app (such as
+    /// the App Store), backgrounding the current app.
+    func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
+        print("adViewWillLeaveApplication")
+    }
+    
 }
