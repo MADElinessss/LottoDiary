@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C108359F2C3244BD00E66E64 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C108359E2C3244BD00E66E64 /* APIKey.swift */; };
+		C10835A22C3249FA00E66E64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C10835A02C3248F200E66E64 /* GoogleService-Info.plist */; };
+		C10835A42C324A7500E66E64 /* MainTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10835A32C324A7500E66E64 /* MainTableView.swift */; };
+		C10835A72C324B0F00E66E64 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = C10835A62C324B0F00E66E64 /* RxCocoa */; };
+		C10835A92C324B0F00E66E64 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = C10835A82C324B0F00E66E64 /* RxRelay */; };
+		C10835AB2C324B0F00E66E64 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C10835AA2C324B0F00E66E64 /* RxSwift */; };
 		C12872AA2BAC3AFC00176AD3 /* SixRandomNumbersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12872A92BAC3AFC00176AD3 /* SixRandomNumbersViewController.swift */; };
 		C128733B2BAC45D000176AD3 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C12873322BAC45CF00176AD3 /* Pretendard-Regular.otf */; };
 		C128733C2BAC45D000176AD3 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C12873332BAC45D000176AD3 /* Pretendard-Bold.otf */; };
@@ -18,6 +24,8 @@
 		C12873422BAC45D000176AD3 /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = C12873392BAC45D000176AD3 /* Pretendard-Light.otf */; };
 		C12873432BAC45D000176AD3 /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = C128733A2BAC45D000176AD3 /* Pretendard-Black.otf */; };
 		C12873462BAC46A700176AD3 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12873452BAC46A700176AD3 /* Fonts.swift */; };
+		C12F04B32C33A3CA0012AAFB /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = C12F04B22C33A3CA0012AAFB /* Differentiator */; };
+		C12F04B52C33A3CA0012AAFB /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = C12F04B42C33A3CA0012AAFB /* RxDataSources */; };
 		C1314E442BAEC5D8005CF266 /* Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1314E432BAEC5D8005CF266 /* Number.swift */; };
 		C1314E462BAEC642005CF266 /* NumberRealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1314E452BAEC642005CF266 /* NumberRealmRepository.swift */; };
 		C1314E492BAEC979005CF266 /* AddMyNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1314E482BAEC979005CF266 /* AddMyNumberViewController.swift */; };
@@ -26,7 +34,6 @@
 		C1314E4F2BAFF357005CF266 /* StoreListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1314E4E2BAFF356005CF266 /* StoreListTableViewCell.swift */; };
 		C1314E512BB00AC5005CF266 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1314E502BB00AC5005CF266 /* MapViewModel.swift */; };
 		C1314E542BB01C8F005CF266 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1314E532BB01C8F005CF266 /* LocalNotificationManager.swift */; };
-		C1314EA82BB2B56E005CF266 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1314EA72BB2B56E005CF266 /* GoogleService-Info.plist */; };
 		C1314EC42BB2B692005CF266 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = C1314EC32BB2B692005CF266 /* FirebaseAnalytics */; };
 		C1314EC62BB2B692005CF266 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = C1314EC52BB2B692005CF266 /* FirebaseAnalyticsOnDeviceConversion */; };
 		C1314EC82BB2B692005CF266 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C1314EC72BB2B692005CF266 /* FirebaseAnalyticsSwift */; };
@@ -50,7 +57,6 @@
 		C170085B2B9EF0B900008BE7 /* DiaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C170085A2B9EF0B900008BE7 /* DiaryViewModel.swift */; };
 		C17008732BA00BF400008BE7 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17008722BA00BF400008BE7 /* QRCodeViewController.swift */; };
 		C17008762BA027A000008BE7 /* BaseMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17008752BA027A000008BE7 /* BaseMapViewController.swift */; };
-		C17008782BA028FD00008BE7 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17008772BA028FD00008BE7 /* APIKey.swift */; };
 		C170087B2BA029BC00008BE7 /* KakaoMapsSDK_SPM in Frameworks */ = {isa = PBXBuildFile; productRef = C170087A2BA029BC00008BE7 /* KakaoMapsSDK_SPM */; };
 		C170087D2BA033D200008BE7 /* StoreMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C170087C2BA033D200008BE7 /* StoreMapViewController.swift */; };
 		C17008802BA061B000008BE7 /* EditMyNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C170087F2BA061B000008BE7 /* EditMyNumberViewController.swift */; };
@@ -79,7 +85,6 @@
 		C1E63AAD2BA2F77000707F53 /* RandomNumberMakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E63AAC2BA2F77000707F53 /* RandomNumberMakerViewController.swift */; };
 		C1E63AB02BA2F80F00707F53 /* CollectionViewPagingLayout in Frameworks */ = {isa = PBXBuildFile; productRef = C1E63AAF2BA2F80F00707F53 /* CollectionViewPagingLayout */; };
 		C1E63AB22BA2F82F00707F53 /* RandomNumberMakerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E63AB12BA2F82F00707F53 /* RandomNumberMakerCollectionViewCell.swift */; };
-		C1E63AC82BA4434E00707F53 /* MainTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E63AC72BA4434E00707F53 /* MainTableView.swift */; };
 		C1E63ACA2BA5A60F00707F53 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E63AC92BA5A60F00707F53 /* SearchResult.swift */; };
 		C1E63AD02BA82EA200707F53 /* DetailDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E63ACF2BA82EA200707F53 /* DetailDiaryViewController.swift */; };
 		C1E63ADD2BA95AA100707F53 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E63ADC2BA95AA100707F53 /* MapViewController.swift */; };
@@ -104,6 +109,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C108359E2C3244BD00E66E64 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		C10835A02C3248F200E66E64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C10835A32C324A7500E66E64 /* MainTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableView.swift; sourceTree = "<group>"; };
 		C12872A92BAC3AFC00176AD3 /* SixRandomNumbersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SixRandomNumbersViewController.swift; sourceTree = "<group>"; };
 		C12873322BAC45CF00176AD3 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		C12873332BAC45D000176AD3 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
@@ -123,7 +131,6 @@
 		C1314E4E2BAFF356005CF266 /* StoreListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreListTableViewCell.swift; sourceTree = "<group>"; };
 		C1314E502BB00AC5005CF266 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		C1314E532BB01C8F005CF266 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
-		C1314EA72BB2B56E005CF266 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C14FA1B62BBBD9520090DEEC /* Extension+UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UINavigationController.swift"; sourceTree = "<group>"; };
 		C14FA1B82BBC69590090DEEC /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		C14FA1BA2BBC6BA90090DEEC /* SettingTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableView.swift; sourceTree = "<group>"; };
@@ -140,7 +147,6 @@
 		C170085A2B9EF0B900008BE7 /* DiaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewModel.swift; sourceTree = "<group>"; };
 		C17008722BA00BF400008BE7 /* QRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
 		C17008752BA027A000008BE7 /* BaseMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMapViewController.swift; sourceTree = "<group>"; };
-		C17008772BA028FD00008BE7 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		C170087C2BA033D200008BE7 /* StoreMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreMapViewController.swift; sourceTree = "<group>"; };
 		C170087F2BA061B000008BE7 /* EditMyNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMyNumberViewController.swift; sourceTree = "<group>"; };
 		C17008812BA06A6C00008BE7 /* AddWishTagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWishTagViewController.swift; sourceTree = "<group>"; };
@@ -169,7 +175,6 @@
 		C1E63AA92BA2EA0700707F53 /* MyNumberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNumberTableViewCell.swift; sourceTree = "<group>"; };
 		C1E63AAC2BA2F77000707F53 /* RandomNumberMakerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNumberMakerViewController.swift; sourceTree = "<group>"; };
 		C1E63AB12BA2F82F00707F53 /* RandomNumberMakerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNumberMakerCollectionViewCell.swift; sourceTree = "<group>"; };
-		C1E63AC72BA4434E00707F53 /* MainTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainTableView.swift; path = ../../../../../Documents/MainTableView.swift; sourceTree = "<group>"; };
 		C1E63AC92BA5A60F00707F53 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		C1E63ACF2BA82EA200707F53 /* DetailDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDiaryViewController.swift; sourceTree = "<group>"; };
 		C1E63ADC2BA95AA100707F53 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -201,11 +206,16 @@
 				C1314ECC2BB2B692005CF266 /* FirebaseCrashlytics in Frameworks */,
 				C1F790F82C12F07E00B533D4 /* GoogleMobileAds in Frameworks */,
 				C1314ECE2BB2B692005CF266 /* FirebaseDatabase in Frameworks */,
+				C10835AB2C324B0F00E66E64 /* RxSwift in Frameworks */,
 				C170087B2BA029BC00008BE7 /* KakaoMapsSDK_SPM in Frameworks */,
 				C1314ED02BB2B692005CF266 /* FirebaseMessaging in Frameworks */,
 				C1F35CDF2B99B6FE00B32B4E /* SnapKit in Frameworks */,
 				C1F35CE22B99B70800B32B4E /* Alamofire in Frameworks */,
+				C10835A72C324B0F00E66E64 /* RxCocoa in Frameworks */,
 				C1E63AB02BA2F80F00707F53 /* CollectionViewPagingLayout in Frameworks */,
+				C10835A92C324B0F00E66E64 /* RxRelay in Frameworks */,
+				C12F04B32C33A3CA0012AAFB /* Differentiator in Frameworks */,
+				C12F04B52C33A3CA0012AAFB /* RxDataSources in Frameworks */,
 				C1314EC62BB2B692005CF266 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -336,7 +346,7 @@
 		C18567B22B998DFD00864754 /* LottoDiary */ = {
 			isa = PBXGroup;
 			children = (
-				C1314EA72BB2B56E005CF266 /* GoogleService-Info.plist */,
+				C10835A02C3248F200E66E64 /* GoogleService-Info.plist */,
 				C12873442BAC469400176AD3 /* Extension */,
 				C12872AB2BAC459100176AD3 /* Resources */,
 				C18567CC2B999F6200864754 /* Manager */,
@@ -374,8 +384,8 @@
 				C19A13B12BB94CA3008609C8 /* ErrorMessage */,
 				C17008572B9EEB3000008BE7 /* Realm */,
 				C1F35CEE2B99F0C500B32B4E /* Lotto.swift */,
-				C17008772BA028FD00008BE7 /* APIKey.swift */,
 				C1E63AC92BA5A60F00707F53 /* SearchResult.swift */,
+				C108359E2C3244BD00E66E64 /* APIKey.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -482,7 +492,7 @@
 				C1F35CE82B99B86000B32B4E /* MyLottoTableViewCell.swift */,
 				C170083F2B9DE99A00008BE7 /* MenuTableViewCell.swift */,
 				C17008412B9DEA2D00008BE7 /* MenuCollectionViewCell.swift */,
-				C1E63AC72BA4434E00707F53 /* MainTableView.swift */,
+				C10835A32C324A7500E66E64 /* MainTableView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -573,6 +583,11 @@
 				C1314ECD2BB2B692005CF266 /* FirebaseDatabase */,
 				C1314ECF2BB2B692005CF266 /* FirebaseMessaging */,
 				C1F790F72C12F07E00B533D4 /* GoogleMobileAds */,
+				C10835A62C324B0F00E66E64 /* RxCocoa */,
+				C10835A82C324B0F00E66E64 /* RxRelay */,
+				C10835AA2C324B0F00E66E64 /* RxSwift */,
+				C12F04B22C33A3CA0012AAFB /* Differentiator */,
+				C12F04B42C33A3CA0012AAFB /* RxDataSources */,
 			);
 			productName = LottoDiary;
 			productReference = C18567B02B998DFD00864754 /* LottoDiary.app */;
@@ -610,6 +625,8 @@
 				C1E63AAE2BA2F80F00707F53 /* XCRemoteSwiftPackageReference "CollectionViewPagingLayout" */,
 				C1314EC22BB2B691005CF266 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				C1F790F62C12F07E00B533D4 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+				C10835A52C324B0F00E66E64 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				C12F04B12C33A3CA0012AAFB /* XCRemoteSwiftPackageReference "RxDataSources" */,
 			);
 			productRefGroup = C18567B12B998DFD00864754 /* Products */;
 			projectDirPath = "";
@@ -625,6 +642,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C10835A22C3249FA00E66E64 /* GoogleService-Info.plist in Resources */,
 				C12873412BAC45D000176AD3 /* Pretendard-SemiBold.otf in Resources */,
 				C128733D2BAC45D000176AD3 /* Pretendard-ExtraLight.otf in Resources */,
 				C12873402BAC45D000176AD3 /* Pretendard-Medium.otf in Resources */,
@@ -638,7 +656,6 @@
 				C128733B2BAC45D000176AD3 /* Pretendard-Regular.otf in Resources */,
 				C18567BD2B998DFF00864754 /* Assets.xcassets in Resources */,
 				C18567BB2B998DFD00864754 /* Main.storyboard in Resources */,
-				C1314EA82BB2B56E005CF266 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -675,7 +692,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1978F052BAAAE68008EEC9D /* ListMyNumberTableViewCell.swift in Sources */,
-				C1E63AC82BA4434E00707F53 /* MainTableView.swift in Sources */,
 				C170085B2B9EF0B900008BE7 /* DiaryViewModel.swift in Sources */,
 				C1F35CED2B99EF3F00B32B4E /* APIManager.swift in Sources */,
 				C1E63AA72BA2BFBD00707F53 /* TextCell.swift in Sources */,
@@ -702,6 +718,7 @@
 				C1314E462BAEC642005CF266 /* NumberRealmRepository.swift in Sources */,
 				C1978F082BAABD08008EEC9D /* EditMyNumberTableViewCell.swift in Sources */,
 				C1314E4D2BAF50B4005CF266 /* MyLottoResultViewController.swift in Sources */,
+				C108359F2C3244BD00E66E64 /* APIKey.swift in Sources */,
 				C19A13B02BB72557008609C8 /* NumberDisplayTableViewCell.swift in Sources */,
 				C18567B62B998DFD00864754 /* SceneDelegate.swift in Sources */,
 				C17008592B9EEB3600008BE7 /* Diary.swift in Sources */,
@@ -717,12 +734,12 @@
 				C1978F0A2BAAD574008EEC9D /* OneRandomNumberViewController.swift in Sources */,
 				C1314E442BAEC5D8005CF266 /* Number.swift in Sources */,
 				C1978F022BAAADB3008EEC9D /* ListMyNumberViewController.swift in Sources */,
-				C17008782BA028FD00008BE7 /* APIKey.swift in Sources */,
 				C12872AA2BAC3AFC00176AD3 /* SixRandomNumbersViewController.swift in Sources */,
 				C1E63AA52BA2BF1000707F53 /* NumberSelectionView.swift in Sources */,
 				C14FA1BB2BBC6BA90090DEEC /* SettingTableView.swift in Sources */,
 				C1314E512BB00AC5005CF266 /* MapViewModel.swift in Sources */,
 				C17008562B9EEAFB00008BE7 /* RealmRepository.swift in Sources */,
+				C10835A42C324A7500E66E64 /* MainTableView.swift in Sources */,
 				C1978EFF2BA99BEA008EEC9D /* StoreListViewController.swift in Sources */,
 				C1E63AAD2BA2F77000707F53 /* RandomNumberMakerViewController.swift in Sources */,
 				C1E63AB22BA2F82F00707F53 /* RandomNumberMakerCollectionViewCell.swift in Sources */,
@@ -986,6 +1003,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		C10835A52C324B0F00E66E64 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.7.1;
+			};
+		};
+		C12F04B12C33A3CA0012AAFB /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.2;
+			};
+		};
 		C1314EC22BB2B691005CF266 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1045,6 +1078,31 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C10835A62C324B0F00E66E64 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C10835A52C324B0F00E66E64 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		C10835A82C324B0F00E66E64 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C10835A52C324B0F00E66E64 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		C10835AA2C324B0F00E66E64 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C10835A52C324B0F00E66E64 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		C12F04B22C33A3CA0012AAFB /* Differentiator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C12F04B12C33A3CA0012AAFB /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = Differentiator;
+		};
+		C12F04B42C33A3CA0012AAFB /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C12F04B12C33A3CA0012AAFB /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
+		};
 		C1314EC32BB2B692005CF266 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C1314EC22BB2B691005CF266 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

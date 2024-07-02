@@ -7,8 +7,10 @@
 
 import GoogleMobileAds
 import SnapKit
-import UIKit
 import RealmSwift
+import RxSwift
+import RxDataSources
+import UIKit
 
 final class MainViewController: BaseViewController {
     let logoImage = UIImageView()
@@ -16,6 +18,7 @@ final class MainViewController: BaseViewController {
     let titleLabel = UILabel()
     let tableView = MainTableView()
     let viewModel = MainViewModel()
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,19 +28,64 @@ final class MainViewController: BaseViewController {
         }
         configureNavigationBar()
         setupBindings()
-        // viewModel.apiRequest()
         configureNavigationBar(title: "로또 일기")
         
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
     func setupBindings() {
-        viewModel.errorMessage.bind { [weak self] errorMessage in
-            guard let message = errorMessage, !message.isEmpty else { return }
-            DispatchQueue.main.async {
-                AlertManager.shared.showAlert(on: self!, title: "네트워크 오류", message: message)
+        
+        let input = MainViewModel.Input()
+        let output = viewModel.transform(input)
+        
+        output.outputLotto
+            .do(onNext: { lotto in
+                print("Received lotto: \(String(describing: lotto))")
+            })
+            .observe(on: MainScheduler.instance)
+            .compactMap { $0 }
+            .map { [$0] }
+            .do(onNext: { lottoArray in
+                print("Received lottoArray: \(lottoArray)")
+            })
+            .bind(to: tableView.rx.items) { tableView, index, element in
+                print("Binding element at index \(index): \(element)")
+                let indexPath = IndexPath(row: 0, section: index)
+                if indexPath.section == 0 {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "MyLottoTableViewCell", for: indexPath) as! MyLottoTableViewCell
+                    print("Configuring MyLottoTableViewCell at index \(index)")
+                    cell.selectionStyle = .none
+                    cell.clipsToBounds = true
+                    cell.layer.cornerRadius = 15
+                    cell.configureView(with: element)
+                    return cell
+                } else if indexPath.section == 1 {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as! MenuTableViewCell
+                    print("Configuring MenuTableViewCell at index \(index)")
+                    cell.onItemTapped = { [weak self] itemIndex in
+                        self?.navigateToViewController(for: itemIndex)
+                    }
+                    return cell
+                } else {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: AdBannerTableViewCell.identifier, for: indexPath) as! AdBannerTableViewCell
+                    print("Configuring AdBannerTableViewCell at index \(index)")
+                    cell.bannerView.delegate = self
+                    return cell
+                }
             }
-        }
+            .disposed(by: disposeBag)
+        
+        output.errorMessage
+            .bind { [weak self] errorMessage in
+                guard let message = errorMessage, !message.isEmpty else { return }
+                DispatchQueue.main.async {
+                    AlertManager.shared.showAlert(on: self!, title: "네트워크 오류", message: message)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        tableView.rx.setDelegate(self) // 델리게이트 설정 추가
+                .disposed(by: disposeBag)
     }
     
     override func configureHierarchy() {
@@ -58,9 +106,7 @@ final class MainViewController: BaseViewController {
     
     override func configureView() {
         self.navigationItem.titleView = titleView
-        
-        tableView.delegate = self
-        tableView.dataSource = self
+        // tableView.delegate = self
         tableView.backgroundColor = .background
         tableView.register(MyLottoTableViewCell.self, forCellReuseIdentifier: "MyLottoTableViewCell")
         tableView.register(MenuTableViewCell.self, forCellReuseIdentifier: "MenuTableViewCell")
@@ -72,50 +118,25 @@ final class MainViewController: BaseViewController {
     }
 }
 
-extension MainViewController: UITableViewDelegate, UITableViewDataSource, GADBannerViewDelegate {
+extension MainViewController: UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "MyLottoTableViewCell", for: indexPath) as! MyLottoTableViewCell
-            cell.selectionStyle = .none
-            cell.clipsToBounds = true
-            cell.layer.cornerRadius = 15
-            
-            viewModel.outputLotto.bind { lotto in
-                guard let lotto = lotto else { return }
-                cell.configureView(with: lotto)
-            }
-            return cell
-        } else if indexPath.section == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as! MenuTableViewCell
-            cell.onItemTapped = { [weak self] itemIndex in
-                self?.navigateToViewController(for: itemIndex)
-            }
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: AdBannerTableViewCell.identifier, for: indexPath) as! AdBannerTableViewCell
-            cell.bannerView.delegate = self
-            return cell
-        }
-    }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let height = UIScreen.main.bounds.height
-        
+        print("--heightForRowAt section: \(indexPath.section)")
+
         if indexPath.section == 0 {
             if height > 700 {
                 return height * 0.2
             } else {
                 return height * 0.24
             }
-            
         } else if indexPath.section == 1 {
             if height > 700 {
                 return height * 0.42
@@ -142,7 +163,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource, GADBan
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            let vc = MyLottoViewController(viewModel: viewModel)
+            let vc = MyLottoViewController()
             navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -175,7 +196,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource, GADBan
 }
 
 /// AD Related
-extension MainViewController {
+extension MainViewController: GADBannerViewDelegate {
     /// Tells the delegate an ad request loaded an ad.
     func adViewDidReceiveAd(_ bannerView: GADBannerView) {
         print("adViewDidReceiveAd")
