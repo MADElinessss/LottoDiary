@@ -6,74 +6,44 @@
 //
 
 import SnapKit
-import RxCocoa
-import RxSwift
 import UIKit
 
 final class MyLottoViewController: BaseViewController {
 
     let tableView = UITableView()
-    var viewModel = MainViewModel()
-    private let disposeBag = DisposeBag()
+    var viewModel: MainViewModel
+
+    init(viewModel: MainViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupBindings()
+        viewModel.apiRequest()
+        
     }
     
     func setupBindings() {
-        
-        let input = MainViewModel.Input(inputDrawNumber: BehaviorSubject<Int>(value: 1110))
-        let output = viewModel.transform(input)
-        
-        output.outputLotto
-            .observe(on: MainScheduler.instance)
-            .bind { lotto in
-                guard let lotto = lotto else { return }
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
+        viewModel.outputLotto.bind { lotto in
+            guard let lotto = lotto else { return }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
             }
-            .disposed(by: disposeBag)
-        
-        output.outputLotto
-            .observe(on: MainScheduler.instance)
-            .compactMap { $0 } // 옵셔널 값 처리
-            .map { [$0] }
-            .bind(to: tableView.rx.items) { tableView, row, element in
-                let indexPath = IndexPath(row: row, section: 1)
-                if indexPath.section == 0 {
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "MyLottoTableViewCell", for: indexPath) as! MyLottoTableViewCell
-                    cell.configureView(with: element)
-                    cell.chevronImage.isHidden = true
-                    cell.clipsToBounds = true
-                    cell.layer.cornerRadius = 15
-                    return cell
-                } else {
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
-                    if indexPath.row == 0 {
-                        cell.textLabel?.text = "QR 코드 인식"
-                    } else {
-                        cell.textLabel?.text = "번호 직접 입력"
-                    }
-                    cell.clipsToBounds = true
-                    cell.layer.cornerRadius = 15
-                    cell.selectionStyle = .none
-                    return cell
-                }
+        }
+
+        viewModel.errorMessage.bind { [weak self] errorMessage in
+            guard let message = errorMessage, !message.isEmpty else { return }
+            DispatchQueue.main.async {
+                AlertManager.shared.showAlert(on: self!, title: "오류", message: message)
             }
-            .disposed(by: disposeBag)
-        
-        output.errorMessage
-            .observe(on: MainScheduler.instance)
-            .bind { [weak self] errorMessage in
-                guard let message = errorMessage, !message.isEmpty else { return }
-                DispatchQueue.main.async {
-                    AlertManager.shared.showAlert(on: self!, title: "오류", message: message)
-                }
-            }
-            .disposed(by: disposeBag)
+        }
     }
     
     override func configureHierarchy() {
@@ -89,6 +59,8 @@ final class MyLottoViewController: BaseViewController {
     }
     
     override func configureView() {
+        tableView.delegate = self
+        tableView.dataSource = self
         tableView.backgroundColor = .background
         tableView.register(MyLottoTableViewCell.self, forCellReuseIdentifier: "MyLottoTableViewCell")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
@@ -99,10 +71,43 @@ final class MyLottoViewController: BaseViewController {
     }
 }
 
-extension MyLottoViewController {
-    
+extension MyLottoViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return 1
+        } else {
+            return 2
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MyLottoTableViewCell", for: indexPath) as! MyLottoTableViewCell
+            let lotto = viewModel.outputLotto.value
+            cell.configureView(with: lotto)
+            cell.chevronImage.isHidden = true
+            cell.clipsToBounds = true
+            cell.layer.cornerRadius = 15
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
+            if indexPath.row == 0 {
+                cell.textLabel?.text = "QR 코드 인식"
+            } else {
+                cell.textLabel?.text = "번호 직접 입력"
+            }
+            
+            cell.clipsToBounds = true
+            cell.layer.cornerRadius = 15
+            cell.selectionStyle = .none
+            
+            return cell
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

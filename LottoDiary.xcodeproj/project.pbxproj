@@ -12,8 +12,8 @@
 		C10835A72C324B0F00E66E64 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = C10835A62C324B0F00E66E64 /* RxCocoa */; };
 		C10835A92C324B0F00E66E64 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = C10835A82C324B0F00E66E64 /* RxRelay */; };
 		C10835AB2C324B0F00E66E64 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C10835AA2C324B0F00E66E64 /* RxSwift */; };
-		C10BD2A22C3E58E900AB790E /* MainTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10BD2A12C3E58E900AB790E /* MainTableView.swift */; };
-		C10BD2A42C3E592000AB790E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C10BD2A32C3E592000AB790E /* GoogleService-Info.plist */; };
+		C10BD2A22C3E58E900AB790E /* (null) in Sources */ = {isa = PBXBuildFile; };
+		C10BD2A62C3E61D300AB790E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C10BD2A52C3E61D300AB790E /* GoogleService-Info.plist */; };
 		C12872AA2BAC3AFC00176AD3 /* SixRandomNumbersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12872A92BAC3AFC00176AD3 /* SixRandomNumbersViewController.swift */; };
 		C128733B2BAC45D000176AD3 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C12873322BAC45CF00176AD3 /* Pretendard-Regular.otf */; };
 		C128733C2BAC45D000176AD3 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C12873332BAC45D000176AD3 /* Pretendard-Bold.otf */; };
@@ -111,8 +111,8 @@
 
 /* Begin PBXFileReference section */
 		C108359E2C3244BD00E66E64 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
-		C10835A02C3248F200E66E64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C10835A32C324A7500E66E64 /* MainTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableView.swift; sourceTree = "<group>"; };
+		C10BD2A52C3E61D300AB790E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C12872A92BAC3AFC00176AD3 /* SixRandomNumbersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SixRandomNumbersViewController.swift; sourceTree = "<group>"; };
 		C12873322BAC45CF00176AD3 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		C12873332BAC45D000176AD3 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
@@ -224,6 +224,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C10BD2A72C3E62CB00AB790E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C17008412B9DEA2D00008BE7 /* MenuCollectionViewCell.swift */,
+				C170083F2B9DE99A00008BE7 /* MenuTableViewCell.swift */,
+				C1F35CE82B99B86000B32B4E /* MyLottoTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		C12872AB2BAC459100176AD3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -347,7 +357,7 @@
 		C18567B22B998DFD00864754 /* LottoDiary */ = {
 			isa = PBXGroup;
 			children = (
-				C10835A02C3248F200E66E64 /* GoogleService-Info.plist */,
+				C10BD2A52C3E61D300AB790E /* GoogleService-Info.plist */,
 				C12873442BAC469400176AD3 /* Extension */,
 				C12872AB2BAC459100176AD3 /* Resources */,
 				C18567CC2B999F6200864754 /* Manager */,
@@ -489,10 +499,8 @@
 		C1E63AC62BA4433C00707F53 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				C10BD2A72C3E62CB00AB790E /* Cell */,
 				C1F35CD62B99A64000B32B4E /* MainViewController.swift */,
-				C1F35CE82B99B86000B32B4E /* MyLottoTableViewCell.swift */,
-				C170083F2B9DE99A00008BE7 /* MenuTableViewCell.swift */,
-				C17008412B9DEA2D00008BE7 /* MenuCollectionViewCell.swift */,
 				C10835A32C324A7500E66E64 /* MainTableView.swift */,
 			);
 			path = Main;
@@ -643,7 +651,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C10835A22C3249FA00E66E64 /* GoogleService-Info.plist in Resources */,
 				C12873412BAC45D000176AD3 /* Pretendard-SemiBold.otf in Resources */,
 				C128733D2BAC45D000176AD3 /* Pretendard-ExtraLight.otf in Resources */,
 				C12873402BAC45D000176AD3 /* Pretendard-Medium.otf in Resources */,
@@ -657,6 +664,7 @@
 				C128733B2BAC45D000176AD3 /* Pretendard-Regular.otf in Resources */,
 				C18567BD2B998DFF00864754 /* Assets.xcassets in Resources */,
 				C18567BB2B998DFD00864754 /* Main.storyboard in Resources */,
+				C10BD2A62C3E61D300AB790E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -747,7 +755,7 @@
 				C19A13B32BB94CBB008609C8 /* UserFriendlyError.swift in Sources */,
 				C1F35CE92B99B86000B32B4E /* MyLottoTableViewCell.swift in Sources */,
 				C1314E4B2BAECA9B005CF266 /* NumberViewModel.swift in Sources */,
-				C10BD2A22C3E58E900AB790E /* MainTableView.swift in Sources */,
+				C10BD2A22C3E58E900AB790E /* (null) in Sources */,
 				C170084F2B9ED4E900008BE7 /* AddDiaryViewController.swift in Sources */,
 				C17008822BA06A6C00008BE7 /* AddWishTagViewController.swift in Sources */,
 				C1F35CDC2B99B59800B32B4E /* NumberButton.swift in Sources */,
