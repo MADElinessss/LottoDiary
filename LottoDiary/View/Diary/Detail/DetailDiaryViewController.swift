@@ -273,7 +273,7 @@ extension DetailDiaryViewController: UITableViewDelegate, UITableViewDataSource 
             if let imageName = diary?.imageName, !imageName.isEmpty, viewModel.loadImageFromDocumentDirectory(fileName: imageName) != nil {
                 return 270
             } 
-            if let image = viewModel.selectedImage.value {
+            if viewModel.selectedImage.value != nil {
                 return 270
             }
             else {

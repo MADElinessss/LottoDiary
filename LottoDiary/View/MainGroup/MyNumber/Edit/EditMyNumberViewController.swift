@@ -65,7 +65,7 @@ final class EditMyNumberViewController: BaseViewController {
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
         
-        guard let number = number else { return }
+        guard number != nil else { return }
     }
     
     @objc func rightButtonTapped() {

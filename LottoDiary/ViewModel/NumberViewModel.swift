@@ -33,7 +33,7 @@ class NumberViewModel {
     func saveNumberToRealm(title: String) {
         let number = Number()
         number.id = ObjectId.generate()
-        number.title = title ?? repository.findNextDefaultTitle()
+        number.title = title
         let numbers = selectedNumbers.value
         if numbers.count >= 6 {
             number.title = title
