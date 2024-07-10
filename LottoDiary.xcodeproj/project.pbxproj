@@ -15,6 +15,7 @@
 		C10BD2A22C3E58E900AB790E /* (null) in Sources */ = {isa = PBXBuildFile; };
 		C10BD2A62C3E61D300AB790E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C10BD2A52C3E61D300AB790E /* GoogleService-Info.plist */; };
 		C10BD2AB2C3E67E500AB790E /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10BD2AA2C3E67E500AB790E /* ImageManager.swift */; };
+		C10BD2AF2C3E835C00AB790E /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10BD2AE2C3E835C00AB790E /* APIRouter.swift */; };
 		C12872AA2BAC3AFC00176AD3 /* SixRandomNumbersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12872A92BAC3AFC00176AD3 /* SixRandomNumbersViewController.swift */; };
 		C128733B2BAC45D000176AD3 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C12873322BAC45CF00176AD3 /* Pretendard-Regular.otf */; };
 		C128733C2BAC45D000176AD3 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C12873332BAC45D000176AD3 /* Pretendard-Bold.otf */; };
@@ -115,6 +116,7 @@
 		C10835A32C324A7500E66E64 /* MainTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableView.swift; sourceTree = "<group>"; };
 		C10BD2A52C3E61D300AB790E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C10BD2AA2C3E67E500AB790E /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		C10BD2AE2C3E835C00AB790E /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
 		C12872A92BAC3AFC00176AD3 /* SixRandomNumbersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SixRandomNumbersViewController.swift; sourceTree = "<group>"; };
 		C12873322BAC45CF00176AD3 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		C12873332BAC45D000176AD3 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
@@ -234,6 +236,23 @@
 				C1F35CE82B99B86000B32B4E /* MyLottoTableViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		C10BD2AC2C3E834800AB790E /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C10BD2AD2C3E835700AB790E /* API */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		C10BD2AD2C3E835700AB790E /* API */ = {
+			isa = PBXGroup;
+			children = (
+				C10BD2AE2C3E835C00AB790E /* APIRouter.swift */,
+				C1F35CEC2B99EF3F00B32B4E /* APIManager.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		C12872AB2BAC459100176AD3 /* Resources */ = {
@@ -360,6 +379,7 @@
 			isa = PBXGroup;
 			children = (
 				C10BD2A52C3E61D300AB790E /* GoogleService-Info.plist */,
+				C10BD2AC2C3E834800AB790E /* Network */,
 				C12873442BAC469400176AD3 /* Extension */,
 				C12872AB2BAC459100176AD3 /* Resources */,
 				C18567CC2B999F6200864754 /* Manager */,
@@ -419,7 +439,6 @@
 			isa = PBXGroup;
 			children = (
 				C1F35CEA2B99BBC200B32B4E /* FormatterManager.swift */,
-				C1F35CEC2B99EF3F00B32B4E /* APIManager.swift */,
 				C17008552B9EEAFB00008BE7 /* RealmRepository.swift */,
 				C1978F0B2BAB0666008EEC9D /* AlertManager.swift */,
 				C1314E452BAEC642005CF266 /* NumberRealmRepository.swift */,
@@ -770,6 +789,7 @@
 				C17008762BA027A000008BE7 /* BaseMapViewController.swift in Sources */,
 				C170087D2BA033D200008BE7 /* StoreMapViewController.swift in Sources */,
 				C17008442B9DFF6A00008BE7 /* DiaryCollectionViewCell.swift in Sources */,
+				C10BD2AF2C3E835C00AB790E /* APIRouter.swift in Sources */,
 				C1F35CD32B99A63300B32B4E /* ChartViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
