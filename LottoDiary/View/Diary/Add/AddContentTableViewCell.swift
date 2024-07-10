@@ -12,15 +12,7 @@ final class AddContentTableViewCell: UITableViewCell {
     
     let textViewPlaceHolder = "오늘은 어떤 일이 있었나요?"
     
-    lazy var textView: UITextView = {
-        let view = UITextView()
-        view.font = .systemFont(ofSize: 18)
-        view.text = textViewPlaceHolder
-        view.textColor = .lightGray
-        view.delegate = self
-
-        return view
-    }()
+    var textView = UITextView()
     
     let remainCountLabel = UILabel()
     let dateLabel = UILabel()
@@ -65,7 +57,8 @@ final class AddContentTableViewCell: UITableViewCell {
         dateLabel.textColor = .black
         
         textView.delegate = self
-       
+        textView.attributedText = attributedPlaceholderText()
+        
         remainCountLabel.text = "0/500"
         remainCountLabel.font = .systemFont(ofSize: 14)
         remainCountLabel.textColor = .lightGray
@@ -86,6 +79,20 @@ final class AddContentTableViewCell: UITableViewCell {
 }
 
 extension AddContentTableViewCell: UITextViewDelegate {
+    
+    private func attributedPlaceholderText() -> NSAttributedString {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 4
+        
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: 18),
+            .foregroundColor: UIColor.lightGray,
+            .paragraphStyle: paragraphStyle
+        ]
+        
+        return NSAttributedString(string: textViewPlaceHolder, attributes: attributes)
+    }
+    
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == .lightGray {
             textView.text = nil

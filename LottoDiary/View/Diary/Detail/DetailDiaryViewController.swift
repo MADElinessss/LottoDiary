@@ -54,7 +54,7 @@ final class DetailDiaryViewController: BaseViewController {
     override func configureLayout() {
         tableView.snp.makeConstraints { make in
             make.top.equalTo(view)
-            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(50)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(8)
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(8)
         }
     }
@@ -268,7 +268,7 @@ extension DetailDiaryViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 150
+            return 200
         } else if indexPath.section == 1 {
             if let imageName = diary?.imageName, !imageName.isEmpty, ImageManager.shared.loadImageFromDocumentDirectory(fileName: imageName) != nil {
                 return 270

@@ -50,6 +50,7 @@ final class AddDiaryViewController: BaseViewController {
         tableView.separatorStyle = .none
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100
+
         tableView.register(AddContentTableViewCell.self, forCellReuseIdentifier: "AddContentTableViewCell")
         tableView.register(AddImageTableViewCell.self, forCellReuseIdentifier: "AddImageTableViewCell")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "AddLottoTableViewCell")
@@ -217,7 +218,7 @@ extension AddDiaryViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 380
+            return 400
         } else if indexPath.section == 1 {
             return viewModel.selectedImage.value == nil ? 60 : 270
         } else {

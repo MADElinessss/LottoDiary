@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     
                     let repository = RealmRepository()
                     let dummyDiary = Diary()
-                    dummyDiary.content = "안녕하세요. 로또일기 개발자입니다 ☺️\n 꾸준히 업데이트 해보겠습니다. 행운 가~득한 하루 되길 바랄게요."
+                    dummyDiary.content = "안녕하세요. 로또일기 개발자입니다 ☺️\n로또일기를 설치해주셔서 감사합니다. 꾸준히 업데이트 해보겠습니다!\n오늘도 행운 가~득한 하루 되길 바랄게요."
                     dummyDiary.date = Date()
                     dummyDiary.imageName = imageName
                     repository.create(diary: dummyDiary)

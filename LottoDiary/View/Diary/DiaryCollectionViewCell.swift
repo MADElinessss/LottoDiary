@@ -31,6 +31,7 @@ final class DiaryCollectionViewCell: UICollectionViewCell {
         
         contentLabel.text = diary.content
         contentLabel.font = .pretendard(size: 16, weight: .regular)
+        
         let todayDateString = FormatterManager.shared.formatDateToString(date: Date())
         let diaryDateString = FormatterManager.shared.formatDateToString(date: diary.date)
         dateLabel.text = todayDateString == diaryDateString ? "TODAY" : diaryDateString
@@ -75,7 +76,7 @@ final class DiaryCollectionViewCell: UICollectionViewCell {
         }
         
         imageView.snp.makeConstraints { make in
-            make.top.equalTo(tagLabel.snp.bottom).offset(8)
+            make.top.equalTo(tagLabel.snp.bottom).offset(16)
             make.horizontalEdges.equalTo(contentView.safeAreaLayoutGuide).inset(16)
             make.height.equalTo(200)
         }
@@ -88,8 +89,8 @@ final class DiaryCollectionViewCell: UICollectionViewCell {
         
         contentLabel.snp.makeConstraints { make in
             make.horizontalEdges.equalTo(contentView.safeAreaLayoutGuide).inset(16)
-            make.top.equalTo(imageView.snp.bottom).offset(8)
-            make.bottom.equalTo(contentView.safeAreaLayoutGuide).inset(16)
+            make.top.equalTo(imageView.snp.bottom).offset(16)
+            make.bottom.equalTo(contentView.safeAreaLayoutGuide).inset(32)
         }
         
         tagLabel.text = ""
@@ -100,10 +101,16 @@ final class DiaryCollectionViewCell: UICollectionViewCell {
         dateLabel.textColor = .gray
         dateLabel.font = .pretendard(size: 12, weight: .light)
         
-        contentLabel.text = "꿈자리가 사나웠따. 당첨되면 아파트 살거다."
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 4
+        
+        let attributedString = NSMutableAttributedString(string: "꿈자리가 사나웠다. 당첨되면 아파트 살거다.")
+        attributedString.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: attributedString.length))
+        
+        contentLabel.attributedText = attributedString
         contentLabel.font = .pretendard(size: 16, weight: .regular)
         contentLabel.textColor = .black
-        contentLabel.numberOfLines = 3
+        contentLabel.numberOfLines = 0
     }
     
     private func setupTagLabel() {
