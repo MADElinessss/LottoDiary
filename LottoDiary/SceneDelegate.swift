@@ -14,17 +14,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         let isFirstLaunch = UserDefaults.standard.bool(forKey: "hasLaunchedBefore")
+        print("처음이냐", isFirstLaunch)
         if !isFirstLaunch {
-            let repository = RealmRepository()
-            let dummyDiary = Diary()
-            dummyDiary.content = "안녕하세요. 로또일기 개발자입니다 ☺️\n 꾸준히 업데이트 해보겠습니다. 행운 가~득한 하루 되길 바랄게요."
-            dummyDiary.imageName = "temporary"
-            dummyDiary.date = Date()
+            print("처음이다")
+            if let dummyImage = UIImage(named: "temporary") {
+                ImageManager.shared.saveImageToDocumentDirectory(image: dummyImage) { imageName in
+                    guard let imageName = imageName else { return }
+                    
+                    let repository = RealmRepository()
+                    let dummyDiary = Diary()
+                    dummyDiary.content = "안녕하세요. 로또일기 개발자입니다 ☺️\n 꾸준히 업데이트 해보겠습니다. 행운 가~득한 하루 되길 바랄게요."
+                    dummyDiary.date = Date()
+                    dummyDiary.imageName = imageName
+                    repository.create(diary: dummyDiary)
+                    
+                    UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
+                    UserDefaults.standard.synchronize()
+                }
+            }
             
-            repository.create(diary: dummyDiary)
-            
-            UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
-            UserDefaults.standard.synchronize()
         }
 
         guard let scene = (scene as? UIWindowScene) else { return }

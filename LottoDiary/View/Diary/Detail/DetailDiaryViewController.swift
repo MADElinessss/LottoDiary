@@ -202,7 +202,7 @@ extension DetailDiaryViewController: UITableViewDelegate, UITableViewDataSource 
             if let image = viewModel.selectedImage.value {
                 cell.configure(with: image, title: title)
             } else if let imageName = diary?.imageName, !imageName.isEmpty {
-                if let image = viewModel.loadImageFromDocumentDirectory(fileName: imageName) {
+                if let image = ImageManager.shared.loadImageFromDocumentDirectory(fileName: imageName) {
                     cell.configure(with: image, title: title)
                 }
             } else {
@@ -270,7 +270,7 @@ extension DetailDiaryViewController: UITableViewDelegate, UITableViewDataSource 
         if indexPath.section == 0 {
             return 150
         } else if indexPath.section == 1 {
-            if let imageName = diary?.imageName, !imageName.isEmpty, viewModel.loadImageFromDocumentDirectory(fileName: imageName) != nil {
+            if let imageName = diary?.imageName, !imageName.isEmpty, ImageManager.shared.loadImageFromDocumentDirectory(fileName: imageName) != nil {
                 return 270
             } 
             if viewModel.selectedImage.value != nil {

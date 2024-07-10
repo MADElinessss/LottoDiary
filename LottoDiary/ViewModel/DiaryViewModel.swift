@@ -30,7 +30,7 @@ class DiaryViewModel {
         saveButtonTapped.bind { [weak self] _ in
             guard let self = self, let content = self.diaryContent.value else { return }
             if let image = self.selectedImage.value {
-                self.saveImageToDocumentDirectory(image: image) { [weak self] imageName in
+                ImageManager.shared.saveImageToDocumentDirectory(image: image) { [weak self] imageName in
                     guard let imageName = imageName else { return }
                     let newDiary = Diary()
                     newDiary.content = content
@@ -45,49 +45,6 @@ class DiaryViewModel {
     func fetchDiaries() {
         let diariesResults = repository.fetchDiary()
         self.outputDiary.value = diariesResults
-    }
-    
-    private func saveImageToDocumentDirectory(image: UIImage, completion: @escaping (String?) -> Void) {
-        DispatchQueue.global(qos: .background).async {
-            guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
-                completion(nil)
-                return
-            }
-            
-            let fileName = UUID().uuidString + ".jpg"
-            let fileURL = documentDirectory.appendingPathComponent(fileName)
-            
-            guard let imageData = image.jpegData(compressionQuality: 1.0) else {
-                completion(nil)
-                return
-            }
-            
-            do {
-                try imageData.write(to: fileURL)
-                DispatchQueue.main.async {
-                    completion(fileName)
-                }
-            } catch {
-                print("Error saving image: \(error)")
-                DispatchQueue.main.async {
-                    completion(nil)
-                }
-            }
-        }
-    }
-    
-    func loadImageFromDocumentDirectory(fileName: String) -> UIImage? {
-        let fileURL = self.getDocumentDirectory().appendingPathComponent(fileName)
-        do {
-            let imageData = try Data(contentsOf: fileURL)
-            return UIImage(data: imageData)
-        } catch {
-            return nil
-        }
-    }
-    
-    private func getDocumentDirectory() -> URL {
-        FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     }
     
     func saveDiaryEntry(_ diaryEntry: Diary) {

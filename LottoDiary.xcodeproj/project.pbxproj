@@ -14,6 +14,7 @@
 		C10835AB2C324B0F00E66E64 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C10835AA2C324B0F00E66E64 /* RxSwift */; };
 		C10BD2A22C3E58E900AB790E /* (null) in Sources */ = {isa = PBXBuildFile; };
 		C10BD2A62C3E61D300AB790E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C10BD2A52C3E61D300AB790E /* GoogleService-Info.plist */; };
+		C10BD2AB2C3E67E500AB790E /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10BD2AA2C3E67E500AB790E /* ImageManager.swift */; };
 		C12872AA2BAC3AFC00176AD3 /* SixRandomNumbersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12872A92BAC3AFC00176AD3 /* SixRandomNumbersViewController.swift */; };
 		C128733B2BAC45D000176AD3 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C12873322BAC45CF00176AD3 /* Pretendard-Regular.otf */; };
 		C128733C2BAC45D000176AD3 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C12873332BAC45D000176AD3 /* Pretendard-Bold.otf */; };
@@ -113,6 +114,7 @@
 		C108359E2C3244BD00E66E64 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		C10835A32C324A7500E66E64 /* MainTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableView.swift; sourceTree = "<group>"; };
 		C10BD2A52C3E61D300AB790E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C10BD2AA2C3E67E500AB790E /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		C12872A92BAC3AFC00176AD3 /* SixRandomNumbersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SixRandomNumbersViewController.swift; sourceTree = "<group>"; };
 		C12873322BAC45CF00176AD3 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		C12873332BAC45D000176AD3 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
@@ -422,6 +424,7 @@
 				C1978F0B2BAB0666008EEC9D /* AlertManager.swift */,
 				C1314E452BAEC642005CF266 /* NumberRealmRepository.swift */,
 				C1314E532BB01C8F005CF266 /* LocalNotificationManager.swift */,
+				C10BD2AA2C3E67E500AB790E /* ImageManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -735,6 +738,7 @@
 				C1F35CF12B99FA1700B32B4E /* MainViewModel.swift in Sources */,
 				C17008422B9DEA2D00008BE7 /* MenuCollectionViewCell.swift in Sources */,
 				C14FA1B72BBBD9520090DEEC /* Extension+UINavigationController.swift in Sources */,
+				C10BD2AB2C3E67E500AB790E /* ImageManager.swift in Sources */,
 				C1F35CEB2B99BBC200B32B4E /* FormatterManager.swift in Sources */,
 				C17008402B9DE99A00008BE7 /* MenuTableViewCell.swift in Sources */,
 				C1F35CD92B99A6D100B32B4E /* BaseViewController.swift in Sources */,
