@@ -9,8 +9,16 @@ import UIKit
 
 class SettingTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
 
-    let titles = ["알림 설정", "개인정보 처리방침", "문의하기"]
-    let images = ["bell.circle.fill", "info.circle.fill", "bubble.circle.fill"]
+    // Subscript
+    private var items: [(title: String, icon: String)] = [
+        ("알림 설정", "bell.circle.fill"),
+        ("개인정보 처리방침", "info.circle.fill"),
+        ("문의하기", "bubble.circle.fill")
+    ]
+    
+    subscript(index: Int) -> (title: String, icon: String) {
+        return items[index]
+    }
     
     var didSelectItemAtIndex: ((Int) -> Void)?
 
@@ -29,13 +37,14 @@ class SettingTableView: UITableView, UITableViewDelegate, UITableViewDataSource 
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return titles.count
+        return items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = titles[indexPath.row]
-        let cellImage = UIImage(systemName: images[indexPath.row])?.withTintColor(.pointSymbol, renderingMode: .alwaysOriginal)
+        let item = self[indexPath.row]
+        cell.textLabel?.text = item.title
+        let cellImage = UIImage(systemName: item.icon)?.withTintColor(.pointSymbol, renderingMode: .alwaysOriginal)
         cell.imageView?.image = cellImage
         cell.selectionStyle = .none
         return cell
