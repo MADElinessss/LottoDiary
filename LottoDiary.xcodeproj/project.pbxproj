@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-<<<<<<< HEAD
 		C108359F2C3244BD00E66E64 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C108359E2C3244BD00E66E64 /* APIKey.swift */; };
 		C10835A42C324A7500E66E64 /* MainTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10835A32C324A7500E66E64 /* MainTableView.swift */; };
 		C10835A72C324B0F00E66E64 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = C10835A62C324B0F00E66E64 /* RxCocoa */; };
