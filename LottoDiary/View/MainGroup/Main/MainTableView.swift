@@ -24,8 +24,6 @@ class MainTableView: UITableView {
         register(MenuTableViewCell.self, forCellReuseIdentifier: "MenuTableViewCell")
         register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
         separatorStyle = .none
-        
-        
-        
+
     }
 }

@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+<<<<<<< HEAD
 		C108359F2C3244BD00E66E64 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C108359E2C3244BD00E66E64 /* APIKey.swift */; };
-		C10835A22C3249FA00E66E64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C10835A02C3248F200E66E64 /* GoogleService-Info.plist */; };
 		C10835A42C324A7500E66E64 /* MainTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10835A32C324A7500E66E64 /* MainTableView.swift */; };
 		C10835A72C324B0F00E66E64 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = C10835A62C324B0F00E66E64 /* RxCocoa */; };
 		C10835A92C324B0F00E66E64 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = C10835A82C324B0F00E66E64 /* RxRelay */; };
 		C10835AB2C324B0F00E66E64 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C10835AA2C324B0F00E66E64 /* RxSwift */; };
+		C10BD2A22C3E58E900AB790E /* MainTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10BD2A12C3E58E900AB790E /* MainTableView.swift */; };
+		C10BD2A42C3E592000AB790E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C10BD2A32C3E592000AB790E /* GoogleService-Info.plist */; };
 		C12872AA2BAC3AFC00176AD3 /* SixRandomNumbersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12872A92BAC3AFC00176AD3 /* SixRandomNumbersViewController.swift */; };
 		C128733B2BAC45D000176AD3 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C12873322BAC45CF00176AD3 /* Pretendard-Regular.otf */; };
 		C128733C2BAC45D000176AD3 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C12873332BAC45D000176AD3 /* Pretendard-Bold.otf */; };
@@ -746,6 +748,7 @@
 				C19A13B32BB94CBB008609C8 /* UserFriendlyError.swift in Sources */,
 				C1F35CE92B99B86000B32B4E /* MyLottoTableViewCell.swift in Sources */,
 				C1314E4B2BAECA9B005CF266 /* NumberViewModel.swift in Sources */,
+				C10BD2A22C3E58E900AB790E /* MainTableView.swift in Sources */,
 				C170084F2B9ED4E900008BE7 /* AddDiaryViewController.swift in Sources */,
 				C17008822BA06A6C00008BE7 /* AddWishTagViewController.swift in Sources */,
 				C1F35CDC2B99B59800B32B4E /* NumberButton.swift in Sources */,
