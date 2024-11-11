@@ -17,9 +17,20 @@ class LocalNotificationManager {
             if let error = error {
                 print("Request Authorization Failed (\(error), \(error.localizedDescription))")
             } else {
-                self.scheduleWeeklySaturdayNotification()
-                self.scheduleWeeklyMondayNotification()
+                self.removeAllPendingNotifications {
+                    self.scheduleWeeklySaturdayNotification()
+                    self.scheduleWeeklyMondayNotification()
+                }
             }
+        }
+    }
+    
+    // 기존 알림들을 모두 제거하는 메서드 추가
+    private func removeAllPendingNotifications(completion: @escaping () -> Void) {
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        // 제거가 완료된 후 새로운 알림을 스케줄링하기 위해 약간의 지연을 줌
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            completion()
         }
     }
     
